@@ -1,0 +1,13 @@
+--recurse=yes
+--tag-relative=yes
+
+--exclude=.git*
+--exclude=.hg*
+--exclude=*.pyc
+--exclude=*.pyo
+--exclude=.DS_Store
+--exclude=*.js
+--exclude=*.css
+--exclude=*.html
+
+--python-kinds=-i

@@ -1,0 +1,23 @@
+# Mercurial configuration file
+# See hgrc(5) for more information
+
+# User Interface settings
+[ui]
+username=
+ssh=ssh -C
+merge = vimdiff 
+
+# Enabled extensions
+[extensions]
+hgext.convert=
+color =
+hgext.mq=
+shelve=
+pager =
+
+[pager]
+pager = LESS='FRX' less
+
+[merge-tools]
+vimdiff.executable = nvim
+vimdiff.args = -d $base $local $output $other +close +close
