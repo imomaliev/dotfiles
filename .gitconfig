@@ -1,23 +1,16 @@
+# man git-config
 [user]
-	name = 
-	email = 
+	name = Sardorbek Imomaliev
+	useConfigOnly = true
 [color]
 	ui = true
 [push]
+	# Defines the action git push should take if no refspec is explicitly given. 'simple': push if the upstream branch's name is same as the local one
 	default = simple
 [alias]
-	lol = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all --color
 	rollback = reset --soft HEAD^
-[filter "media"]
-	clean = git media clean %f
-	smudge = git media smudge %f
-	required = true
+	graph = log --graph
 [core]
 	excludesfile = $HOME/.gitignore_global
 	editor = "nvim"
-[merge]
-    tool = splice
 
-[mergetool "splice"]
-    cmd = "nvim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
-    trustExitCode = true
