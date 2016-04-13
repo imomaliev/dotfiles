@@ -1,7 +1,3 @@
-export HOMEBREW_PREFIX=$(brew --prefix)
-# coreutlis -  as default command line tools
-export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH:$HOMEBREW_PREFIX/sbin"
-export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Commands output encoding
@@ -11,7 +7,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Avoid duplicates in your bash history
-export HISTCONTROL='erasedups:ignoreboth'
+export HISTCONTROL="erasedups:ignoreboth"
 
 # A colon-separated list of patterns used to decide which command lines should be saved on the history list.
 ##export HISTIGNORE="history*:ls*"
@@ -40,10 +36,3 @@ bind "set show-all-if-ambiguous on"
 # case insensitive completion
 bind "set completion-ignore-case on"
 
-if [ -f $HOMEBREW_PREFIX/etc/bash_completion ]; then
-    source $HOMEBREW_PREFIX/etc/bash_completion
-fi
-
-if [ -f ~/.bash_aliases ]; then
-   source ~/.bash_aliases
-fi
