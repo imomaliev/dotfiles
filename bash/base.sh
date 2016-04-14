@@ -12,11 +12,6 @@ export HISTCONTROL="erasedups:ignoreboth"
 # A colon-separated list of patterns used to decide which command lines should be saved on the history list.
 ##export HISTIGNORE="history*:ls*"
 
-# terminfo and coloring
-## export TERM=screen-256color
-## export CLICOLOR=1
-## export LSCOLORS=ExGxCxDxBxegedabagacad
-
 hg_branch() {
     hg branch 2> /dev/null | awk '{print "["$1"] " }'
 }
