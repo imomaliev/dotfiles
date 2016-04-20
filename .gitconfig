@@ -4,6 +4,8 @@
 	useConfigOnly = true
 [color]
 	ui = true
+[pull]
+	rebase = true
 [push]
 	# Defines the action git push should take if no refspec is explicitly given. 'simple': push if the upstream branch's name is same as the local one
 	default = simple
@@ -13,4 +15,3 @@
 [core]
 	excludesfile = $HOME/.gitignore_global
 	editor = "nvim"
-
