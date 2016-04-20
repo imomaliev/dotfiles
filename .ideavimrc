@@ -1,3 +1,6 @@
 set showmode
 set gdefault
 
+" Keep selection when indenting
+vnoremap < <gv
+vnoremap > >gv

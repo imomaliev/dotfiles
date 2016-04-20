@@ -128,7 +128,6 @@ set showmatch
 let python_highlight_all = 1
 
 " Font and colorscheme
-set guifont=Menlo:h12
 color zenburn 
 
 set nobackup
@@ -150,10 +149,12 @@ endfunction
 if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     call plug#begin('~/.config/nvim/plugged')
 
-    Plug 'kien/ctrlp.vim'
+    Plug 'ctrlpvim/ctrlp.vim'
     Plug 'tpope/vim-surround'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+
     Plug 'mitsuhiko/vim-jinja'
+    Plug 'digitaltoad/vim-pug'
     call plug#end()
 
 endif
