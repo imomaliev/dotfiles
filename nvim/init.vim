@@ -164,5 +164,3 @@ endif
 
 " Usually you shouldn't do this but for now it's ok
 ""set clipboard=unnamed
-
-""let g:python_host_prog = '/usr/local/bin/python'

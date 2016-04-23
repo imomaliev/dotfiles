@@ -33,3 +33,4 @@ bind "set completion-ignore-case on"
 
 # set default editor to nvim
 export EDITOR=$(which nvim)
+export VIEWER=$(which nvim)
