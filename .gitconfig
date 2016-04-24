@@ -12,6 +12,8 @@
 [alias]
 	rollback = reset --soft HEAD^
 	graph = log --graph
+	up = checkout
+	st = status
 [core]
 	excludesfile = $HOME/.gitignore_global
 	editor = "nvim"

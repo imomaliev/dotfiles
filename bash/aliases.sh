@@ -1,4 +1,4 @@
-alias ls='ls --color'
+alias ls='ls --color -la'
 alias watch='watch --color'
 alias grep='grep --color'
 alias vim='nvim'
