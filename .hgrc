@@ -5,15 +5,19 @@
 [ui]
 username=
 ssh=ssh -C
-merge = vimdiff 
+merge=vimdiff
 
 # Enabled extensions
 [extensions]
 hgext.convert=
-color =
+color=
 hgext.mq=
 shelve=
-pager =
+pager=
+
+[alias]
+pull = pull -u
+graph = log --graph
 
 [pager]
 pager = LESS='FRX' less
