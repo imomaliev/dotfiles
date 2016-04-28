@@ -1,5 +1,6 @@
 set showmode
 set gdefault
+set smartcase
 
 " Keep selection when indenting
 vnoremap < <gv

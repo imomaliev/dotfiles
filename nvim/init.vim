@@ -32,7 +32,7 @@ set suffixes+=.pyc
 set number
 
 " If the 'ignorecase' option is on, the case of normal letters is ignored.
-set ignorecase
+set smartcase
 
 "Show the line number relative to the line with the cursor in front of each line.
 """set relativenumber
@@ -123,6 +123,9 @@ set cursorline
 
 " show the matching part of the pair for [] {} and ()
 set showmatch
+
+" When on, splitting a window will put the new window right of the current one.
+set splitright
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
