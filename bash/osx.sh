@@ -11,4 +11,4 @@ if [ -f $HOMEBREW_PREFIX/etc/bash_completion ]; then
 fi
 
 source $HOME/Development/dotfiles/bash/aliases.sh
-
+source $HOME/Development/dotfiles/bash/functions.sh
