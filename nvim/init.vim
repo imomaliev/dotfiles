@@ -17,7 +17,7 @@ set showcmd
 set omnifunc=syntaxcomplete#Complete
 
 " Completion mode that is used for the character specified with 'wildchar'.
-"" set wildmode=list:longest
+set wildmode=longest:full,full
 
 " When set case is ignored when completing file names and directories.
 set wildignorecase
@@ -51,7 +51,7 @@ set listchars=tab:▸\ ,eol:¬
 
 " Set additional keymap for using <Ctrl>+^ to switch in instert mode
 ""unmap <C-Space>
-inoremap <A-Space> <C-^>
+imap <C-Space> <C-^>
 set keymap=mac-russian-colemak
 set iminsert=0
 set imsearch=0
@@ -131,7 +131,7 @@ set splitright
 let python_highlight_all = 1
 
 " Font and colorscheme
-color zenburn 
+color zenburn
 
 set nobackup
 set nowritebackup
@@ -154,7 +154,7 @@ if !empty(glob("~/.config/nvim/autoload/plug.vim"))
 
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'tpope/vim-surround'
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
     Plug 'mitsuhiko/vim-jinja'
     Plug 'digitaltoad/vim-pug'
