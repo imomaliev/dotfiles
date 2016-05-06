@@ -5,3 +5,11 @@ set smartcase
 " Keep selection when indenting
 vnoremap < <gv
 vnoremap > >gv
+
+" Leader configurations
+let mapleader = " "
+map <Leader>r :registers<CR>
+map <Leader>m :marks<CR>
+map <Leader>p "+p
+map <Leader>P "+P
+map <Leader>y "+y

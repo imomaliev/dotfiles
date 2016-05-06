@@ -9,6 +9,11 @@ syntax on
 
 " To define a mapping which uses the mapleader variable.
 let mapleader = " "
+map <Leader>r :registers<CR>
+map <Leader>m :marks<CR>
+map <Leader>p "+p
+map <Leader>P "+P
+map <Leader>y "+y
 
 " Show (partial) command in the last line of the screen.
 set showcmd
@@ -154,7 +159,7 @@ if !empty(glob("~/.config/nvim/autoload/plug.vim"))
 
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'tpope/vim-surround'
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
     Plug 'mitsuhiko/vim-jinja'
     Plug 'digitaltoad/vim-pug'
