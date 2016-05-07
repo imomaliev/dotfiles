@@ -157,12 +157,13 @@ endfunction
 if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     call plug#begin('~/.config/nvim/plugged')
 
-    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'ctrlpvim/ctrlp.vim' | Plug 'mattn/ctrlp-register'
+
+    Plug 'imomaliev/registers.vim'
+
     Plug 'tpope/vim-surround'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
-    Plug 'mitsuhiko/vim-jinja'
-    Plug 'digitaltoad/vim-pug'
     call plug#end()
 
 endif
