@@ -11,3 +11,4 @@
 --exclude=*.html
 
 --python-kinds=-i
+-f .dotfiles/tags

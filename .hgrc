@@ -6,6 +6,7 @@
 username=
 ssh=ssh -C
 merge=vimdiff
+ignore = ~/.hgignore_global
 
 # Enabled extensions
 [extensions]
