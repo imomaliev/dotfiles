@@ -7,15 +7,6 @@ filetype plugin indent on
 " Switch syntax highlighting on according to the current value of the 'filetype' option.
 syntax on
 
-" To define a mapping which uses the mapleader variable.
-let mapleader = " "
-map <Leader>r :registers<CR>
-map <Leader>m :marks<CR>
-map <Leader>p "+p
-map <Leader>P "+P
-map <Leader>y "+y
-map <Leader>n :NERDTreeToggle<CR>
-
 " Show (partial) command in the last line of the screen.
 set showcmd
 
@@ -193,6 +184,20 @@ function! ApplyLocalSettings(dirname)
 endfunction
 
 call ApplyLocalSettings(expand('.'))
+
+" To define a mapping which uses the mapleader variable.
+let mapleader = " "
+map <Leader>r :registers<CR>
+map <Leader>m :marks<CR>
+map <Leader>p "+p
+map <Leader>P "+P
+map <Leader>y "+y
+map <Leader>n :NERDTreeToggle<CR>
+map <Leader>t :!ctags<CR>
+map <Leader>b :CtrlPBuffer<CR>
+
+" Plugins Configuration
+let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
 " show ctrl+X tooltip
 "" set shortmess-=c
