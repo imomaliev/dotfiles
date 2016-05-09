@@ -3,6 +3,22 @@ set gdefault
 set smartcase
 set surround
 
+" Hardmode
+" Disable arrow keys
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+noremap <PageUp> <nop>
+noremap <PageDown> <nop>
+
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+inoremap <PageUp> <nop>
+inoremap <PageDown> <nop>
+
 " Keep selection when indenting
 vnoremap < <gv
 vnoremap > >gv

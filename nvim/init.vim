@@ -32,7 +32,7 @@ set number
 set smartcase
 
 "Show the line number relative to the line with the cursor in front of each line.
-"""set relativenumber
+""set relativenumber
 
 " Show the line and column number of the cursor position, separated by a comma.
 set ruler
@@ -66,7 +66,7 @@ set expandtab
 
 " Netrw configuartion
 " Comma separated pattern list for hiding files
-let g:netrw_list_hide= '.*\.swp$,.*\.pyc'
+let g:netrw_list_hide= '.*\.swp$,.*\.pyc$'
 
 " Set the default listing style: tree
 let g:netrw_liststyle=3
@@ -76,25 +76,13 @@ let g:netrw_liststyle=3
 ""set grepprg=ag\ --vimgrep\ $*
 ""set grepformat=%f:%l:%c:%m
 
-" Remaps
-" Colemak remap
-"" set langmap=jk,kj
-
 " Remap :
 "" noremap : ;
 "" noremap ; :
 
-" Disable arrow keys
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-
-
 " Keep selection when indenting
 vnoremap < <gv
 vnoremap > >gv
-
 
 " Move by row not by line when 'wrap' set
 nnoremap j gj
@@ -108,9 +96,6 @@ nnoremap g$ $
 
 nnoremap ^ g^
 nnoremap g^ ^
-
-" Use 256 colours (Use this setting only if your terminal supports 256 colours)
-set t_Co=256
 
 " indent when moving to the next line while writing code
 set autoindent
@@ -133,6 +118,22 @@ color zenburn
 set nobackup
 set nowritebackup
 
+" Disable arrow keys
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+noremap <PageUp> <nop>
+noremap <PageDown> <nop>
+
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+inoremap <PageUp> <nop>
+inoremap <PageDown> <nop>
+
+
 function! InstallPlug()
     if empty(glob("~/.config/nvim/autoload/plug.vim"))
         execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -144,24 +145,6 @@ function! UninstallPlug()
         execute '!rm -rf ~/.config/nvim/autoload/ ~/.config/nvim/plugged/'
     endif
 endfunction
-
-
-if !empty(glob("~/.config/nvim/autoload/plug.vim"))
-    call plug#begin('~/.config/nvim/plugged')
-
-    Plug 'ctrlpvim/ctrlp.vim' | Plug 'mattn/ctrlp-register'
-    Plug 'scrooloose/nerdtree'
-
-    Plug 'imomaliev/registers.vim'
-
-    Plug 'tpope/vim-surround'
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-
-    Plug 'mitsuhiko/vim-jinja'
-
-    call plug#end()
-
-endif
 
 
 " recursively search up from dirname, sourcing all .dotfiles/.vimrc files along the way
@@ -183,18 +166,33 @@ function! ApplyLocalSettings(dirname)
     endif
 endfunction
 
-call ApplyLocalSettings(expand('.'))
+
+if !empty(glob("~/.config/nvim/autoload/plug.vim"))
+    call plug#begin('~/.config/nvim/plugged')
+
+    Plug 'ctrlpvim/ctrlp.vim' | Plug 'mattn/ctrlp-register'
+    Plug 'scrooloose/nerdtree'
+
+    Plug '~/.config/nvim/plugged/registers.vim'
+
+    Plug 'tpope/vim-surround'
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+
+    Plug 'mitsuhiko/vim-jinja'
+
+    call plug#end()
+endif
 
 " To define a mapping which uses the mapleader variable.
 let mapleader = " "
-map <Leader>r :registers<CR>
-map <Leader>m :marks<CR>
+map <Leader>r <Esc>:registers<CR>
+map <Leader>m <Esc>:marks<CR>
 map <Leader>p "+p
 map <Leader>P "+P
 map <Leader>y "+y
-map <Leader>n :NERDTreeToggle<CR>
-map <Leader>t :!ctags<CR>
-map <Leader>b :CtrlPBuffer<CR>
+map <Leader>n <Esc>:NERDTreeToggle<CR>
+map <Leader>t <Esc>:!ctags<CR>
+map <Leader>b <Esc>:CtrlPBuffer<CR>
 
 " Plugins Configuration
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
@@ -202,5 +200,5 @@ let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 " show ctrl+X tooltip
 "" set shortmess-=c
 
-" Usually you shouldn't do this but for now it's ok
-""set clipboard=unnamed
+
+call ApplyLocalSettings(expand('.'))
