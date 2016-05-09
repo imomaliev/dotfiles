@@ -22,6 +22,7 @@ graph = log --graph
 
 [pager]
 pager = LESS='FRX' less
+attend = graph
 
 [merge-tools]
 vimdiff.executable = nvim
