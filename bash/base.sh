@@ -17,7 +17,7 @@ hg_branch() {
 }
 
 # prompt customization
-export PS1=" \[\e[1;34m\]\w\[\e[m\] \[\e[1;33m\]\$(hg_branch)\[\e[m\]\\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\$ "
+export PS1=" \[\e[1;34m\]\w\[\e[m\] \[\e[1;33m\]\$(hg_branch)\[\e[m\]\\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\n❯ "
 
 # Use vi mode
 set -o vi
