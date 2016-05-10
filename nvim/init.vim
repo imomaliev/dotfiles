@@ -46,13 +46,6 @@ set list
 " Strings to use in 'list' mode and for the :list command.
 set listchars=tab:▸\ ,eol:¬
 
-" Set additional keymap for using <Ctrl>+^ to switch in instert mode
-""unmap <C-Space>
-imap <C-Space> <C-^>
-set keymap=mac-russian-colemak
-set iminsert=0
-set imsearch=0
-
 " A comma separated list of options for Insert mode completion ins-completion.
 set completeopt=longest,menu,preview
 
@@ -112,9 +105,6 @@ set splitright
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
-" Font and colorscheme
-color zenburn
-
 set nobackup
 set nowritebackup
 
@@ -170,6 +160,9 @@ endfunction
 if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     call plug#begin('~/.config/nvim/plugged')
 
+    Plug 'jnurmine/Zenburn'
+    Plug 'imomaliev/mac-russian-colemak.vim'
+
     Plug 'ctrlpvim/ctrlp.vim' | Plug 'mattn/ctrlp-register'
     Plug 'scrooloose/nerdtree'
 
@@ -182,6 +175,17 @@ if !empty(glob("~/.config/nvim/autoload/plug.vim"))
 
     call plug#end()
 endif
+
+" Font and colorscheme
+color zenburn
+
+
+" Set additional keymap for using <Ctrl>+^ to switch in instert mode
+""unmap <C-Space>
+imap <C-Space> <C-^>
+set keymap=mac-russian-colemak
+set iminsert=0
+set imsearch=0
 
 " To define a mapping which uses the mapleader variable.
 let mapleader = " "
