@@ -20,7 +20,7 @@ set wildmode=longest:full,full
 set wildignorecase
 
 " A file that matches with one of these patterns is ignored when expanding wildcards.
-set wildignore+=.pyc
+set wildignore+=*.pyc
 
 " Files with these suffixes get a lower priority when multiple files match a wildcard.
 set suffixes+=.pyc
@@ -166,15 +166,32 @@ if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     Plug 'ctrlpvim/ctrlp.vim' | Plug 'mattn/ctrlp-register'
     Plug 'scrooloose/nerdtree'
 
-    Plug '~/.config/nvim/plugged/registers.vim'
-
     Plug 'tpope/vim-surround'
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+""    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
     Plug 'mitsuhiko/vim-jinja'
 
     call plug#end()
 endif
+
+" https://robots.thoughtbot.com/faster-grepping-in-vim
+" The Silver Searcher
+if executable('ag')
+    " Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor\ -p\ \"./.dotfiles/.agignore\"
+
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 " Font and colorscheme
 color zenburn
@@ -197,6 +214,7 @@ map <Leader>y "+y
 map <Leader>n <Esc>:NERDTreeToggle<CR>
 map <Leader>t <Esc>:!ctags<CR>
 map <Leader>b <Esc>:CtrlPBuffer<CR>
+map <Leader>/ :Ag<SPACE>
 
 " Plugins Configuration
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
