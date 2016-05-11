@@ -44,7 +44,7 @@ set laststatus=2
 set list
 
 " Strings to use in 'list' mode and for the :list command.
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,space:·
 
 " A comma separated list of options for Insert mode completion ins-completion.
 set completeopt=longest,menu,preview
@@ -167,7 +167,7 @@ if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     Plug 'scrooloose/nerdtree'
 
     Plug 'tpope/vim-surround'
-""    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
     Plug 'mitsuhiko/vim-jinja'
 
