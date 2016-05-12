@@ -169,7 +169,10 @@ if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     Plug 'tpope/vim-surround'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
+    Plug 'nathanaelkane/vim-indent-guides'
+
     Plug 'mitsuhiko/vim-jinja'
+    Plug 'digitaltoad/vim-pug'
 
     call plug#end()
 endif
@@ -191,11 +194,14 @@ endif
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+""command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 " Font and colorscheme
 color zenburn
 
+"" vim-indent colors
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
 
 " Set additional keymap for using <Ctrl>+^ to switch in instert mode
 ""unmap <C-Space>
@@ -214,7 +220,8 @@ map <Leader>y "+y
 map <Leader>n <Esc>:NERDTreeToggle<CR>
 map <Leader>t <Esc>:!ctags<CR>
 map <Leader>b <Esc>:CtrlPBuffer<CR>
-map <Leader>/ :Ag<SPACE>
+map <Leader>; <Esc>@:
+""map <Leader>/ :Ag<SPACE>
 
 " Plugins Configuration
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
