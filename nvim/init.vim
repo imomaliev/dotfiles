@@ -225,6 +225,8 @@ map <Leader>; <Esc>@:
 
 " Plugins Configuration
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+let g:NERDTreeShowBookmarks = 1
+let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
 
 " show ctrl+X tooltip
 "" set shortmess-=c
