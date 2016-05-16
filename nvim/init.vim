@@ -55,7 +55,7 @@ set nowrap
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set expandtab
+""set expandtab
 
 " Netrw configuartion
 " Comma separated pattern list for hiding files
