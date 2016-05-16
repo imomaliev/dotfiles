@@ -1,5 +1,5 @@
-" Change nvimrc with auto reload
-"" autocmd BufWritePost .nvimrc source %
+" Change init.vim with auto reload
+"" autocmd BufWritePost init.vim source $MYVIMRC
 
 " Detect filetype and enable plugin and indentation.
 filetype plugin indent on
@@ -123,7 +123,6 @@ inoremap <Right> <nop>
 inoremap <PageUp> <nop>
 inoremap <PageDown> <nop>
 
-
 function! InstallPlug()
     if empty(glob("~/.config/nvim/autoload/plug.vim"))
         execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -136,9 +135,8 @@ function! UninstallPlug()
     endif
 endfunction
 
-
-" recursively search up from dirname, sourcing all .dotfiles/.vimrc files along the way
-function! ApplyLocalSettings(dirname)
+" recursively search up from 'dirname', sourcing all 'filename' files along the way
+function! ApplyLocalSettings(dirname, filename)
     " convert windows paths to unix style
     let l:curDir = substitute(a:dirname, '\\', '/', 'g')
 
@@ -150,12 +148,11 @@ function! ApplyLocalSettings(dirname)
 
     " now walk back down the path and source .vimsettings as you find them.
     " child directories can inherit from their parents
-    let l:settingsFile = a:dirname . '/.dotfiles/.vimrc'
+    let l:settingsFile = a:dirname . a:filename
     if filereadable(l:settingsFile)
         exec ':source' . l:settingsFile
     endif
 endfunction
-
 
 if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     call plug#begin('~/.config/nvim/plugged')
@@ -171,8 +168,8 @@ if !empty(glob("~/.config/nvim/autoload/plug.vim"))
 
     Plug 'nathanaelkane/vim-indent-guides'
 
-    Plug 'mitsuhiko/vim-jinja'
-    Plug 'digitaltoad/vim-pug'
+    " https://github.com/junegunn/vim-plug/issues/300#issuecomment-149173517
+    call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/plugins.vim')
 
     call plug#end()
 endif
@@ -197,6 +194,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 ""command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 " Font and colorscheme
+set termguicolors
 color zenburn
 
 "" vim-indent colors
@@ -231,5 +229,5 @@ let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
 " show ctrl+X tooltip
 "" set shortmess-=c
 
-
-call ApplyLocalSettings(expand('.'))
+exe "set runtimepath+=" . $PWD . "/.dotfiles/nvim"
+call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
