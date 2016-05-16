@@ -19,6 +19,7 @@ pager=
 [alias]
 pull = pull -u
 graph = log --graph
+df = diff
 
 [pager]
 pager = LESS='FRX' less
