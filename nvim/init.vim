@@ -64,10 +64,6 @@ let g:netrw_list_hide= '.*\.swp$,.*\.pyc$'
 " Set the default listing style: tree
 let g:netrw_liststyle=3
 
-" :vimgrep/:grep configuartion
-" Program to use for the :grep command.
-""set grepprg=ag\ --vimgrep\ $*
-""set grepformat=%f:%l:%c:%m
 
 " Remap :
 "" noremap : ;
@@ -92,8 +88,20 @@ set splitright
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
+" backup
 set nobackup
 set nowritebackup
+
+" switching buffer configs
+set hidden
+
+" undohistory
+set undofile
+set undodir+=.dotfiles/nvim/undo
+
+" auto load and save files
+set autoread
+set autowrite
 
 " Disable arrow keys
 noremap <Up> <nop>
@@ -109,6 +117,9 @@ inoremap <Left> <nop>
 inoremap <Right> <nop>
 inoremap <PageUp> <nop>
 inoremap <PageDown> <nop>
+
+"terminal mapping
+tnoremap <Esc> <C-\><C-n>
 
 function! InstallPlug()
     if empty(glob("~/.config/nvim/autoload/plug.vim"))
