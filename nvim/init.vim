@@ -77,19 +77,6 @@ let g:netrw_liststyle=3
 vnoremap < <gv
 vnoremap > >gv
 
-" Move by row not by line when 'wrap' set
-nnoremap j gj
-nnoremap gj j
-
-nnoremap k gk
-nnoremap gk k
-
-nnoremap $ g$
-nnoremap g$ $
-
-nnoremap ^ g^
-nnoremap g^ ^
-
 " indent when moving to the next line while writing code
 set autoindent
 
@@ -194,7 +181,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 ""command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 " Font and colorscheme
-set termguicolors
+""set termguicolors
 color zenburn
 
 "" vim-indent colors
