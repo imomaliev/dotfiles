@@ -162,6 +162,7 @@ if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     Plug 'scrooloose/nerdtree'
 
     Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
     Plug 'nathanaelkane/vim-indent-guides'
@@ -227,5 +228,6 @@ let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
 " show ctrl+X tooltip
 "" set shortmess-=c
 
+set tags+=.dotfiles/tags
 exe "set runtimepath+=" . $PWD . "/.dotfiles/nvim"
 call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
