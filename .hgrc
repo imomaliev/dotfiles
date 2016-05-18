@@ -18,12 +18,11 @@ pager=
 
 [alias]
 pull = pull -u
-graph = log --graph
-df = diff
+graph = log --graph --pager=yes
+df = diff --pager=yes
 
 [pager]
-pager = LESS='FRX' less
-attend = graph
+pager = less -FRX
 
 [merge-tools]
 vimdiff.executable = nvim
