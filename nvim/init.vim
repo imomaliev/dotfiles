@@ -194,6 +194,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Font and colorscheme
 ""set termguicolors
+let g:zenburn_force_dark_Background = 1
 color zenburn
 
 "" vim-indent colors
