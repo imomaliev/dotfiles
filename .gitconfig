@@ -14,7 +14,7 @@
 	graph = log --graph
 	up = checkout
 	st = status
-	ci = commit
+	ci = commit -a
 	df = diff -r HEAD
 [core]
 	excludesfile = ~/.gitignore_global

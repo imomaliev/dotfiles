@@ -75,6 +75,7 @@ vnoremap > >gv
 
 " indent when moving to the next line while writing code
 set autoindent
+set smartindent
 
 " show a visual line under the cursor's current line 
 set cursorline
