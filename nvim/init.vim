@@ -178,13 +178,13 @@ endif
 " The Silver Searcher
 if executable('ag')
     " Use ag over grep
-    set grepprg=ag\ --nogroup\ --nocolor\ -p\ \"./.dotfiles/.agignore\"
+    set grepprg=ag\ --nogroup\ --nocolor\ -p\ \".dotfiles/.agignore\"
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_user_command = 'ag -Q -l --nocolor -p ".dotfiles/.agignore" -g "" %s'
 
     " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
+    ""let g:ctrlp_use_caching = 1
 endif
 
 " bind K to grep word under cursor
