@@ -223,9 +223,19 @@ map <Leader>; <Esc>@:
 ""map <Leader>/ :Ag<SPACE>
 
 " Plugins Configuration
+" NERDTree
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
+
+"CtrlP
+""let g:ctrlp_cmd = 'CtrlPMRU'
+
+" YouCompleteMe
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'gitcommit': 1,
+      \ 'po': 1
+      \}
 
 " show ctrl+X tooltip
 "" set shortmess-=c
