@@ -156,7 +156,7 @@ endfunction
 if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     call plug#begin('~/.config/nvim/plugged')
 
-    Plug 'jnurmine/Zenburn'
+    Plug 'imomaliev/zenburn.vim'
     Plug 'imomaliev/mac-russian-colemak.vim'
 
     Plug 'ctrlpvim/ctrlp.vim' | Plug 'mattn/ctrlp-register'
