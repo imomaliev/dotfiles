@@ -159,12 +159,13 @@ if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     Plug 'imomaliev/zenburn.vim'
     Plug 'imomaliev/mac-russian-colemak.vim'
 
-    Plug 'ctrlpvim/ctrlp.vim' | Plug 'mattn/ctrlp-register'
+    Plug 'ctrlpvim/ctrlp.vim'
     Plug 'scrooloose/nerdtree'
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
+    Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
     Plug 'nathanaelkane/vim-indent-guides'
 
