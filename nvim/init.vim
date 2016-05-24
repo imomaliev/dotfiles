@@ -1,11 +1,11 @@
 " Change init.vim with auto reload
 "" autocmd BufWritePost init.vim source $MYVIMRC
 
-" Detect filetype and enable plugin and indentation.
-filetype plugin indent on
+" (Nvim by default) Detect filetype and enable plugin and indentation.
+""filetype plugin indent on
 
-" Switch syntax highlighting on according to the current value of the 'filetype' option.
-syntax on
+" (Nvim by default) Switch syntax highlighting on according to the current value of the 'filetype' option.
+""syntax on
 
 " Show (partial) command in the last line of the screen.
 set showcmd
@@ -37,8 +37,8 @@ set smartcase
 " Show the line and column number of the cursor position, separated by a comma.
 set ruler
 
-" Influences when the last window will have a status line.
-set laststatus=2
+" (Nvim by default) Influences when the last window will have a status line.
+""set laststatus=2
 
 " Show tabs as CTRL-I is displayed, display $ after end of line.
 set list
@@ -73,8 +73,8 @@ let g:netrw_liststyle=3
 vnoremap < <gv
 vnoremap > >gv
 
-" indent when moving to the next line while writing code
-set autoindent
+" (Nvim by default) indent when moving to the next line while writing code
+""set autoindent
 set smartindent
 
 " show a visual line under the cursor's current line 
@@ -100,8 +100,8 @@ set hidden
 set undofile
 set undodir+=.dotfiles/nvim/undo
 
-" auto load and save files
-set autoread
+" (Nvim by default) auto load and save files
+""set autoread
 set autowrite
 
 " Disable arrow keys
