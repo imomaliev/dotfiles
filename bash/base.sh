@@ -26,3 +26,7 @@ export VIEWER=$(which nvim)
 if [ -n "$VIRTUAL_ENV" ]; then
     source $VIRTUAL_ENV/bin/activate;
 fi
+
+if [ -n "$DOTFILES" ]; then
+    source $DOTFILES;
+fi
