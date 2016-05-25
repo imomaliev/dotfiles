@@ -1,15 +1,16 @@
 function find_dotfiles() {
     if [ "$1" == "/" ]; then
-        return 0;
+        return 1;
     fi
     if [ -z $1 ]; then
-        cur_dir=$PWD;
+        local cur_dir=$PWD;
     else
-        cur_dir=$1;
+        local cur_dir=$1;
     fi
-    if [ -f "$cur_dir/.dotfiles/.bashrc" ]; then
-        DOTFILES="$cur_dir/.dotfiles/.bashrc";
-        return 1;
+    DOTFILES="$cur_dir/.dotfiles/.bashrc";
+    if [ -f "$DOTFILES" ]; then
+        source $DOTFILES;
+        return 0;
     else
         find_dotfiles $(dirname $cur_dir);
     fi
@@ -21,15 +22,14 @@ function venv() {
             source venv/bin/activate;
             find_dotfiles;
             if [ -n "$TMUX" ]; then
-                source $DOTFILES;
-            fi
-            if [ -n "$TMUX" ]; then
                 tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV;
                 tmux set-environment DOTFILES $DOTFILES;
             fi
         ;;
         create)
-            virtualenv venv -p python --prompt=" \[\e[1;30m\]($2)\[\e[m\]";
+            local prompt=$2;
+            shift 2;
+            virtualenv venv --prompt=" \[\e[1;30m\]($prompt)\[\e[m\]" "$@"
         ;;
     esac
 }
