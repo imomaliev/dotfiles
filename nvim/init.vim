@@ -181,7 +181,7 @@ endif
 " The Silver Searcher
 if executable('ag')
     " Use ag over grep
-    set grepprg=ag\ --nogroup\ --nocolor\ -p\ \".dotfiles/.agignore\"
+    set grepprg=ag\ --nogroup\ --nocolor\ -p\ \".dotfiles/.agignore\"\ $*
 
     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
     let g:ctrlp_user_command = 'ag -Q -l --nocolor -p ".dotfiles/.agignore" -g "" %s'
@@ -191,7 +191,8 @@ if executable('ag')
 endif
 
 " bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" http://stackoverflow.com/a/12170748/3627387
+nnoremap <silent> K :setl nois<CR>:grep! "\b<C-R><C-W>\b"<CR>:setl is<CR>
 
 " bind \ (backward slash) to grep shortcut
 ""command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
@@ -224,7 +225,12 @@ map <Leader>t <Esc>:!ctags<CR>
 map <Leader>b <Esc>:CtrlPBuffer<CR>
 map <Leader>; <Esc>@:
 map <Leader>w :w<CR>
-""map <Leader>/ :Ag<SPACE>
+" http://vim.wikia.com/wiki/Using_normal_command_in_a_script_for_searching
+" http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
+command! -nargs=1 LocalGrep :normal! /<args> | :silent lvimgrep <args> %
+command! -nargs=+ Grep :silent grep! <args>
+map <Leader>/ :LocalGrep<Space>
+map <Leader>? :Grep<Space>
 
 " Plugins Configuration
 " NERDTree
@@ -258,6 +264,13 @@ let g:ycm_filetype_blacklist = {
 
 " show ctrl+X tooltip
 "" set shortmess-=c
+
+augroup configgroup
+    autocmd!
+    " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
+    autocmd QuickFixCmdPost [^l]* nested botright cwindow
+    autocmd QuickFixCmdPost    l* nested lwindow
+augroup END
 
 set tags+=.dotfiles/tags
 exe "set runtimepath+=" . $PWD . "/.dotfiles/nvim"
