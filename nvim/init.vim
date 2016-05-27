@@ -165,6 +165,7 @@ if !empty(glob("~/.config/nvim/autoload/plug.vim"))
     Plug 'scrooloose/nerdtree'
     Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 
+    Plug 'Raimondi/delimitMate'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
@@ -246,7 +247,6 @@ let g:ycm_filetype_specific_completion_to_disable = {
       \ 'gitcommit': 1,
       \ 'po': 1
       \}
-
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
@@ -260,6 +260,7 @@ let g:ycm_filetype_blacklist = {
       \ 'mail' : 1,
       \ 'po': 1
       \}
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 
 " show ctrl+X tooltip
@@ -268,8 +269,8 @@ let g:ycm_filetype_blacklist = {
 augroup configgroup
     autocmd!
     " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
-    autocmd QuickFixCmdPost [^l]* nested botright cwindow
-    autocmd QuickFixCmdPost    l* nested lwindow
+    autocmd QuickFixCmdPost [^l]* nested botright cwindow | redraw!
+    autocmd QuickFixCmdPost    l* nested lwindow | redraw!
 augroup END
 
 set tags+=.dotfiles/tags
