@@ -106,6 +106,9 @@ set undodir+=.dotfiles/nvim/undo
 ""set autoread
 set autowrite
 
+" show ctrl+X tooltip
+"" set shortmess-=c
+
 " Disable arrow keys
 noremap <Up> <nop>
 noremap <Down> <nop>
@@ -124,71 +127,66 @@ inoremap <PageDown> <nop>
 "terminal mapping
 tnoremap <Esc> <C-\><C-n>
 
-function! InstallPlug()
-    if empty(glob("~/.config/nvim/autoload/plug.vim"))
-        execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    endif
-endfunction
-
-function! UninstallPlug()
-    if !empty(glob("~/.config/nvim/autoload/plug.vim"))
-        execute '!rm -rf ~/.config/nvim/autoload/ ~/.config/nvim/plugged/'
-    endif
-endfunction
-
 " recursively search up from 'dirname', sourcing all 'filename' files along the way
 function! ApplyLocalSettings(dirname, filename)
-    " convert windows paths to unix style
-    let l:curDir = substitute(a:dirname, '\\', '/', 'g')
+  " convert windows paths to unix style
+  let l:curDir = substitute(a:dirname, '\\', '/', 'g')
 
-    " walk to the top of the dir tree
-    let l:parentDir = strpart(l:curDir, 0, strridx(l:curDir, '/'))
-    if isdirectory(l:parentDir)
-        call ApplyLocalSettings(l:parentDir)
-    endif
+  " walk to the top of the dir tree
+  let l:parentDir = strpart(l:curDir, 0, strridx(l:curDir, '/'))
+  if isdirectory(l:parentDir)
+      call ApplyLocalSettings(l:parentDir)
+  endif
 
-    " now walk back down the path and source .vimsettings as you find them.
-    " child directories can inherit from their parents
-    let l:settingsFile = a:dirname . a:filename
-    if filereadable(l:settingsFile)
-        exec ':source' . l:settingsFile
-    endif
+  " now walk back down the path and source .vimsettings as you find them.
+  " child directories can inherit from their parents
+  let l:settingsFile = a:dirname . a:filename
+  if filereadable(l:settingsFile)
+      exe ':source' . l:settingsFile
+      exe "set runtimepath+=" . a:dirname . "/.dotfiles/nvim"
+  endif
 endfunction
 
-if !empty(glob("~/.config/nvim/autoload/plug.vim"))
-    call plug#begin('~/.config/nvim/plugged')
-
-    Plug 'imomaliev/zenburn.vim'
-    Plug 'imomaliev/mac-russian-colemak.vim'
-
-    Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'scrooloose/nerdtree'
-    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-
-    Plug 'Raimondi/delimitMate'
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-repeat'
-
-    Plug 'nathanaelkane/vim-indent-guides'
-
-    " https://github.com/junegunn/vim-plug/issues/300#issuecomment-149173517
-    call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/plugins.vim')
-
-    call plug#end()
+if empty(glob("~/.config/nvim/autoload/plug.vim"))
+  execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
+
+call plug#begin('~/.config/nvim/plugged')
+
+Plug 'imomaliev/zenburn.vim'
+Plug 'imomaliev/mac-russian-colemak.vim'
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+
+Plug 'Raimondi/delimitMate'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+
+Plug 'nathanaelkane/vim-indent-guides'
+
+" Filetype plugins
+Plug 'tmux-plugins/vim-tmux'
+
+" https://github.com/junegunn/vim-plug/issues/300#issuecomment-149173517
+call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/plugins.vim')
+
+call plug#end()
+
 
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
 if executable('ag')
-    " Use ag over grep
-    set grepprg=ag\ --nogroup\ --nocolor\ -p\ \".dotfiles/.agignore\"\ $*
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor\ -p\ \".dotfiles/.agignore\"\ $*
 
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag -Q -l --nocolor -p ".dotfiles/.agignore" -g "" %s'
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag -Q -l --nocolor -p ".dotfiles/.agignore" -g "" %s'
 
-    " ag is fast enough that CtrlP doesn't need to cache
-    ""let g:ctrlp_use_caching = 1
+  " ag is fast enough that CtrlP doesn't need to cache
+  ""let g:ctrlp_use_caching = 1
 endif
 
 " bind K to grep word under cursor
@@ -213,6 +211,7 @@ imap <C-Space> <C-^>
 set keymap=mac-russian-colemak
 set iminsert=0
 set imsearch=0
+
 
 " To define a mapping which uses the mapleader variable.
 let mapleader = " "
@@ -263,16 +262,12 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
 
-" show ctrl+X tooltip
-"" set shortmess-=c
-
 augroup configgroup
-    autocmd!
-    " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
-    autocmd QuickFixCmdPost [^l]* nested botright cwindow | redraw!
-    autocmd QuickFixCmdPost    l* nested lwindow | redraw!
+  autocmd!
+  " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
+  autocmd QuickFixCmdPost [^l]* nested botright cwindow | redraw!
+  autocmd QuickFixCmdPost    l* nested lwindow | redraw!
 augroup END
 
 set tags+=.dotfiles/tags
-exe "set runtimepath+=" . $PWD . "/.dotfiles/nvim"
 call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
