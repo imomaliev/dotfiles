@@ -3,6 +3,8 @@ alias watch='watch --color'
 alias grep='grep --color'
 alias vim='nvim'
 alias cal='gcal'
+alias rm_orig='find . -name "*.orig" -delete'
+
 alias noveo_connect='sshfs noveo:$HOME/Development ~/Noveo/Remote/'
 alias noveo_disconnect='umount ~/Noveo/Remote/'
 alias docker_rm='docker rm $(docker ps -a -q)'

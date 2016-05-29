@@ -209,14 +209,14 @@ hi IndentGuidesEven ctermbg=darkgrey
 
 " Set additional keymap for using <Ctrl>+^ to switch in instert mode
 ""unmap <C-Space>
-imap <C-Space> <C-^>
+""imap <C-Space> <C-^>
 set keymap=mac-russian-colemak
 set iminsert=0
 set imsearch=0
 
 
 " To define a mapping which uses the mapleader variable.
-let mapleader = " "
+let mapleader = "\<Space>"
 map <Leader>r <Esc>:registers<CR>
 map <Leader>m <Esc>:marks<CR>
 map <Leader>p "+p
