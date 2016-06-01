@@ -15,7 +15,7 @@
 	up = checkout
 	st = status
 	ci = commit -a
-	df = diff -r HEAD
+	di = diff -r HEAD
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = "nvim"
