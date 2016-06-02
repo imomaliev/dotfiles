@@ -12,6 +12,7 @@
 [alias]
 	rollback = reset --soft HEAD^
 	graph = log --graph
+	rpull = pull --no-rebase
 	up = checkout
 	st = status
 	ci = commit -a
