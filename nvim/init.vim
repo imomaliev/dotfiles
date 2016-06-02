@@ -100,11 +100,10 @@ set hidden
 
 " undohistory
 set undofile
-set undodir+=.dotfiles/nvim/undo
 
 " (Nvim by default) auto load and save files
 ""set autoread
-set autowrite
+set autowriteall
 
 " show ctrl+X tooltip
 "" set shortmess-=c
@@ -144,6 +143,8 @@ function! ApplyLocalSettings(dirname, filename)
   if filereadable(l:settingsFile)
       exe ':source' . l:settingsFile
       exe "set runtimepath+=" . a:dirname . "/.dotfiles/nvim"
+      set undodir+=.dotfiles/nvim/undo
+      set tags+=.dotfiles/tags
   endif
 endfunction
 
@@ -281,5 +282,4 @@ augroup configgroup
 
 augroup END
 
-set tags+=.dotfiles/tags
 call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
