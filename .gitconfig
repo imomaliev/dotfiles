@@ -16,6 +16,7 @@
 	st = status
 	ci = commit -a
 	di = diff -r HEAD
+	ri = rebase -i
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = "nvim"

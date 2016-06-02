@@ -268,9 +268,17 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 
 augroup configgroup
   autocmd!
+  " Automaticaly open quickfix findow
   " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
   autocmd QuickFixCmdPost [^l]* nested botright cwindow | redraw!
   autocmd QuickFixCmdPost    l* nested lwindow | redraw!
+  " Cursor position handling
+  " http://vim.wikia.com/wiki/Avoid_scrolling_when_switch_buffers
+  autocmd BufLeave * if !&diff | let b:winview = winsaveview() | endif
+  autocmd BufEnter * if exists("b:winview") && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
+  " :h restore-cursor
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
 augroup END
 
 set tags+=.dotfiles/tags
