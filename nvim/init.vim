@@ -222,11 +222,9 @@ map <Leader>m <Esc>:marks<CR>
 map <Leader>p "+p
 map <Leader>P "+P
 map <Leader>y "+y
-map <Leader>n <Esc>:NERDTreeToggle<CR>
-map <Leader>t <Esc>:!ctags<CR>
-map <Leader>b <Esc>:CtrlPBuffer<CR>
 map <Leader>; <Esc>@:
 map <Leader>w :w<CR>
+
 " http://vim.wikia.com/wiki/Using_normal_command_in_a_script_for_searching
 " http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
 command! -nargs=1 LocalGrep :normal! /<args> | :silent lvimgrep <args> %
@@ -239,9 +237,13 @@ map <Leader>? :Grep<Space>
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
+nmap <Leader>n :NERDTreeToggle<CR>
+nmap <Leader>f :NERDTreeFind<CR>
 
 "CtrlP
 ""let g:ctrlp_cmd = 'CtrlPMRU'
+nmap <Leader>t <Esc>:CtrlPTag<CR>
+nmap <Leader>b <Esc>:CtrlPBuffer<CR>
 
 " YouCompleteMe
 let g:ycm_filetype_specific_completion_to_disable = {
