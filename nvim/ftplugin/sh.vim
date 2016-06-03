@@ -15,9 +15,3 @@ setlocal shiftwidth=4
 
 setlocal shiftround
 setlocal nosmartindent
-
-" A file that matches with one of these patterns is ignored when expanding wildcards.
-setlocal wildignore+=*.pyc
-
-" Files with these suffixes get a lower priority when multiple files match a wildcard.
-setlocal suffixes+=.pyc
