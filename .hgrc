@@ -19,6 +19,7 @@ pager=
 [alias]
 pull = pull -u
 graph = log --graph --pager=yes
+sh = shelve
 
 [pager]
 pager = less -FRX

@@ -160,6 +160,7 @@ Plug 'imomaliev/mac-russian-colemak.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+Plug 'neomake/neomake'
 
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
@@ -286,7 +287,7 @@ augroup configgroup
   autocmd BufEnter * if exists("b:winview") && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
   " :h restore-cursor
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
+  autocmd BufWritePost * Neomake
 augroup END
 
 call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
