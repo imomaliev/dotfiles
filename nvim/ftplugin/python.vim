@@ -21,3 +21,9 @@ setlocal wildignore+=*.pyc
 
 " Files with these suffixes get a lower priority when multiple files match a wildcard.
 setlocal suffixes+=.pyc
+
+
+iabbrev pdb import pdb; pdb.set_trace()
+iabbrev ipdb import ipdb; ipdb.set_trace()
+iabbrev rpdb import rpdb; rpdb.set_trace()
+iabbrev npdb import nose; nose.tools.set_trace()

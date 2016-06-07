@@ -18,6 +18,8 @@
 	ci = commit -a
 	di = diff -r HEAD
 	ri = rebase -i
+	sh = stash
+	unsh = stash pop
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = "nvim"
