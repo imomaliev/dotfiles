@@ -1,26 +1,37 @@
-function find_dotfiles() {
-    if [ "$1" == "/" ]; then
-        return 1;
-    fi
-    if [ -z $1 ]; then
-        local cur_dir=$PWD;
-    else
-        local cur_dir=$1;
-    fi
-    DOTFILES="$cur_dir/.dotfiles/.bashrc";
-    if [ -f "$DOTFILES" ]; then
-        source $DOTFILES;
-        return 0;
-    else
-        find_dotfiles $(dirname $cur_dir);
-    fi
+dotfiles() {
+    case $1 in
+        find)
+            if [ "$2" == "/" ]; then
+                return 1;
+            fi
+            if [ -z $2 ]; then
+                local cur_dir=$PWD;
+            else
+                local cur_dir=$2;
+            fi
+            DOTFILES="$cur_dir/.dotfiles/.bashrc";
+            if [ -f "$DOTFILES" ]; then
+                source $DOTFILES;
+                return 0;
+            else
+                dotfiles find $(dirname $cur_dir);
+            fi
+        ;;
+        create)
+            local bashrc=".dotfiles/.bashrc"
+            local vimrc=".dotfiles/nvim/init.vim";
+            mkdir -p $(dirname $vimrc);
+            touch $bashrc;
+            touch $vimrc;
+        ;;
+    esac
 }
 
-function venv() {
+venv() {
     case $1 in
         "")
             source venv/bin/activate;
-            find_dotfiles;
+            dotfiles find;
             if [ -n "$TMUX" ]; then
                 tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV;
                 tmux set-environment DOTFILES $DOTFILES;
@@ -34,7 +45,7 @@ function venv() {
     esac
 }
 
-function swap() {
+swap() {
     local TMPFILE=tmp.$$
     mv "$1" $TMPFILE
     mv "$2" "$1"

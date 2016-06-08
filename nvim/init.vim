@@ -145,6 +145,7 @@ function! ApplyLocalSettings(dirname, filename)
       exe "set runtimepath+=" . a:dirname . "/.dotfiles/nvim"
       set undodir+=.dotfiles/nvim/undo
       set tags+=.dotfiles/tags
+      let g:ctrlp_cache_dir = ".dotfiles/nvim/.cache/ctrlp"
   endif
 endfunction
 
@@ -173,6 +174,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'digitaltoad/vim-pug'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'vim-scripts/python_match.vim'
 
 " https://github.com/junegunn/vim-plug/issues/300#issuecomment-149173517
 ""call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/plugins.vim')
