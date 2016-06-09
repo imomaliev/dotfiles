@@ -5,6 +5,7 @@
 --exclude=.hg*
 --exclude=*.pyc
 --exclude=*.pyo
+--exclude=*.hpp
 --exclude=.DS_Store
 --exclude=*.js
 --exclude=*.css
