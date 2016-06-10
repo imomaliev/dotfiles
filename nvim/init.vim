@@ -126,6 +126,14 @@ inoremap <PageDown> <nop>
 "terminal mapping
 tnoremap <Esc> <C-\><C-n>
 
+" http://stackoverflow.com/a/2605181/3627387
+cabbrev cc cclose
+cabbrev lc lclose
+cabbrev hc helpclose
+
+" http://andrewradev.com/2011/06/08/vim-and-ctags/
+nnoremap <C-]> :ltag <C-r><C-w> <bar> lopen <CR>
+
 " recursively search up from 'dirname', sourcing all 'filename' files along the way
 function! ApplyLocalSettings(dirname, filename)
   " convert windows paths to unix style
