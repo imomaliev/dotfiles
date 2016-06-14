@@ -23,3 +23,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = "nvim"
+[merge]
+	tool = vimdiff2
+[mergetool "vimdiff2"]
+	path = "nvim"
