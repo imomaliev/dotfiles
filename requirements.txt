@@ -1,0 +1,9 @@
+pip
+neovim
+setuptools
+pep8
+pylint
+ipython
+ipdb
+rpdb
+pylint_django
