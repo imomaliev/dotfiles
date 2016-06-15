@@ -181,8 +181,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 " Filetype plugins
 Plug 'tmux-plugins/vim-tmux'
 Plug 'digitaltoad/vim-pug'
-Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'vim-scripts/python_match.vim'
+Plug 'niftylettuce/Vim-Jinja2-Syntax'
 
 " https://github.com/junegunn/vim-plug/issues/300#issuecomment-149173517
 ""call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/plugins.vim')
