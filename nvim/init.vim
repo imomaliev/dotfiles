@@ -194,7 +194,7 @@ call plug#end()
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor\ -p\ \".dotfiles/.agignore\"\ $*
+  set grepprg=ag\ --nogroup\ --nocolor\ -U\ -p\ \".dotfiles/.agignore\"\ $*
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag -Q -l --nocolor -p ".dotfiles/.agignore" -g "" %s'
