@@ -35,3 +35,9 @@ set colored-stats on
 # ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
 # Readline used by Bash 4.)
 set skip-completed-text on
+
+# http://stackoverflow.com/a/23558325/3627387
+set bind-tty-special-chars off
+Control-w: backward-kill-word
+Control-k: previous-history
+Control-j: next-history

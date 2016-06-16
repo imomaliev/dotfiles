@@ -134,6 +134,7 @@ cabbrev hc helpclose
 " http://andrewradev.com/2011/06/08/vim-and-ctags/
 " TODO: write smart function which will open location window if there is more than 1 tag
 "" nnoremap <C-]> :ltag <C-r><C-w> <bar> lopen <CR> <CR>
+nnoremap <C-k> k
 nnoremap <C-]> :ltag <C-r><C-w> <CR>
 
 " recursively search up from 'dirname', sourcing all 'filename' files along the way
