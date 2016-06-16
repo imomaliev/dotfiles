@@ -239,6 +239,7 @@ map <Leader>P "+P
 map <Leader>y "+y
 map <Leader>; <Esc>@:
 map <Leader>w :w<CR>
+map <Leader>c :lclose <bar> cclose <bar> NERDTreeClose<CR>
 
 " http://vim.wikia.com/wiki/Using_normal_command_in_a_script_for_searching
 " http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
