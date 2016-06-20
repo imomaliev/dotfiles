@@ -20,6 +20,7 @@
 	ri = rebase -i
 	sh = stash
 	unsh = stash pop
+	br = checkout -b
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = "nvim"
