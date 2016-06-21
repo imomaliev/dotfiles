@@ -66,7 +66,6 @@ let g:netrw_list_hide= '.*\.swp$,.*\.pyc$'
 " Set the default listing style: tree
 let g:netrw_liststyle=3
 
-
 " Remap :
 "" noremap : ;
 "" noremap ; :
@@ -74,6 +73,13 @@ let g:netrw_liststyle=3
 " Keep selection when indenting
 vnoremap < <gv
 vnoremap > >gv
+
+" https://bitbucket.org/sjl/dotfiles/src/1ff33bef59847fa2fcec2e172e16c010080923dd/vim/vimrc?at=default&fileviewer=file-view-default
+" Reselect last-pasted text
+"" nnoremap gp `[v`]
+
+" When on, the ':substitute' flag 'g' is default on.
+set gdefault
 
 " (Nvim by default) indent when moving to the next line while writing code
 ""set autoindent
