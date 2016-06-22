@@ -28,3 +28,30 @@ iabbrev pdb import pdb; pdb.set_trace()
 iabbrev ipdb import ipdb; ipdb.set_trace()
 iabbrev rpdb import rpdb; rpdb.set_trace()
 iabbrev npdb import nose; nose.tools.set_trace()
+
+
+" http://vim.wikia.com/wiki/VimTip1546
+" python << EOF
+" import os
+" import sys
+" import vim
+" for p in sys.path:
+"     # Add each directory in sys.path, if it exists.
+"     if os.path.isdir(p):
+"         # Command 'set' needs backslash before each space.
+"         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+" EOF
+
+" https://github.com/jmcantrell/vim-virtualenv
+" https://github.com/tudorprodan/pyfinder.vim
+" https://github.com/mkomitee/vim-gf-python
+let s:current_script_dir = expand("<sfile>:p:h")
+
+if has('python')
+  exec "pyfile ".s:current_script_dir."/"."python.py"
+  nnoremap <buffer> gf :python python_goto_file()<cr>
+endif
+if has('python3')
+  exec "py3file ".s:current_script_dir."/"."python.py"
+  nnoremap <buffer> gf :python3 python_goto_file()<cr>
+endif
