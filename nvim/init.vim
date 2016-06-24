@@ -76,7 +76,8 @@ vnoremap > >gv
 
 " https://bitbucket.org/sjl/dotfiles/src/1ff33bef59847fa2fcec2e172e16c010080923dd/vim/vimrc?at=default&fileviewer=file-view-default
 " Reselect last-pasted text
-"" nnoremap gp `[v`]
+nnoremap gvv gv
+nnoremap gvp `[v`]
 
 " When on, the ':substitute' flag 'g' is default on.
 set gdefault
