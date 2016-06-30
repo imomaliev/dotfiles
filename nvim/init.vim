@@ -49,7 +49,7 @@ set list
 set listchars=tab:▸\ ,eol:¬,space:·
 
 " A comma separated list of options for Insert mode completion ins-completion.
-set completeopt=longest,menu,preview
+set completeopt=longest,menu
 
 " When on, lines longer than the width of the window will not wrap and displaying will not continue on the next line.
 set nowrap
