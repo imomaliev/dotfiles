@@ -122,6 +122,7 @@ noremap <Left> <nop>
 noremap <Right> <nop>
 noremap <PageUp> <nop>
 noremap <PageDown> <nop>
+noremap <F1> <nop>
 
 inoremap <Up> <nop>
 inoremap <Down> <nop>
@@ -129,6 +130,7 @@ inoremap <Left> <nop>
 inoremap <Right> <nop>
 inoremap <PageUp> <nop>
 inoremap <PageDown> <nop>
+inoremap <F1> <nop>
 
 "terminal mapping
 tnoremap <Esc> <C-\><C-n>
