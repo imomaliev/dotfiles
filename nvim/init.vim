@@ -310,8 +310,9 @@ augroup configgroup
   autocmd BufEnter * if exists("b:winview") && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
   " :h restore-cursor
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  " autocmd TextChanged,InsertLeave * if &buftype != 'nofile' | :write
-  autocmd BufWritePost,BufEnter * Neomake
+  " autocmd TextChanged,InsertLeave * if &buftype != 'nofile' | :lockmarks write
+  " autocmd BufWritePost,BufEnter * Neomake
+  autocmd BufWritePost * Neomake
 augroup END
 
 call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
