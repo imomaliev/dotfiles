@@ -21,6 +21,7 @@
 	sh = stash
 	unsh = stash pop
 	br = checkout -b
+	mvbr = branch -m
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = "nvim"
