@@ -70,6 +70,9 @@ let g:netrw_liststyle=3
 "" noremap : ;
 "" noremap ; :
 
+" make Y consistent with D, C
+nnoremap Y y$
+
 " Keep selection when indenting
 vnoremap < <gv
 vnoremap > >gv
