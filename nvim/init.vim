@@ -97,6 +97,8 @@ set showmatch
 
 " When on, splitting a window will put the new window right of the current one.
 set splitright
+" When on, splitting a window will put the new window below of the current one.
+set splitbelow
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
