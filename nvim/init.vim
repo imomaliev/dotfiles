@@ -97,8 +97,14 @@ set showmatch
 
 " When on, splitting a window will put the new window right of the current one.
 set splitright
+
 " When on, splitting a window will put the new window below of the current one.
 set splitbelow
+
+"virtual editing means that the cursor can be positioned where there is no actual character.
+"onemore: Allow the cursor to move just past the end of the line
+nnoremap g<C-v> :setl virtualedit=block<CR><C-v>
+nnoremap <C-v> :setl virtualedit=<CR><C-v>
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
