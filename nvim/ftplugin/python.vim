@@ -45,13 +45,13 @@ iabbrev npdb import nose; nose.tools.set_trace()
 " https://github.com/jmcantrell/vim-virtualenv
 " https://github.com/tudorprodan/pyfinder.vim
 " https://github.com/mkomitee/vim-gf-python
-let s:current_script_dir = expand("<sfile>:p:h")
+" let s:current_script_dir = expand("<sfile>:p:h")
 
-if has('python')
-  exec "pyfile ".s:current_script_dir."/"."python.py"
-  nnoremap <buffer> gf :python python_goto_file()<cr>
-endif
-if has('python3')
-  exec "py3file ".s:current_script_dir."/"."python.py"
-  nnoremap <buffer> gf :python3 python_goto_file()<cr>
-endif
+" if has('python')
+"   exec "pyfile ".s:current_script_dir."/"."python.py"
+"   nnoremap <buffer> gf :python python_goto_file()<cr>
+" endif
+" if has('python3')
+"   exec "py3file ".s:current_script_dir."/"."python.py"
+"   nnoremap <buffer> gf :python3 python_goto_file()<cr>
+" endif
