@@ -198,6 +198,8 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tweekmonster/braceless.vim'
+" Plug 'vim-scripts/camelcasemotion'
 
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -324,6 +326,7 @@ augroup configgroup
   " autocmd TextChanged,InsertLeave * if &buftype != 'nofile' | :lockmarks write
   " autocmd BufWritePost,BufEnter * Neomake
   autocmd BufWritePost * Neomake
+  autocmd FileType python BracelessEnable +indent
 augroup END
 
 call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
