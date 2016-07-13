@@ -327,7 +327,7 @@ augroup configgroup
   " autocmd TextChanged,InsertLeave * if &buftype != 'nofile' | :lockmarks write
   " autocmd BufWritePost,BufEnter * Neomake
   autocmd BufWritePost * Neomake
-  autocmd FileType python BracelessEnable +indent
+  " autocmd FileType python BracelessEnable +indent
 augroup END
 
 call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
