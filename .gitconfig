@@ -22,6 +22,8 @@
 	unsh = stash pop
 	br = checkout -b
 	mvbr = branch -m
+	puo = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
+	puf = push -f
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = "nvim"
