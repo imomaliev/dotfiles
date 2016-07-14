@@ -157,6 +157,9 @@ cabbrev hc helpclose
 nnoremap <C-k> k
 nnoremap <C-]> :ltag <C-r><C-w> <CR>
 
+" fix camelcase mapping
+noremap ,, ,
+
 " recursively search up from 'dirname', sourcing all 'filename' files along the way
 function! ApplyLocalSettings(dirname, filename)
   " convert windows paths to unix style
@@ -199,8 +202,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tweekmonster/braceless.vim'
-" TODO: rebind ,
-" Plug 'vim-scripts/camelcasemotion'
+Plug 'vim-scripts/camelcasemotion'
 
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -327,7 +329,7 @@ augroup configgroup
   " autocmd TextChanged,InsertLeave * if &buftype != 'nofile' | :lockmarks write
   " autocmd BufWritePost,BufEnter * Neomake
   autocmd BufWritePost * Neomake
-  " autocmd FileType python BracelessEnable +indent
+  autocmd FileType python BracelessEnable
 augroup END
 
 call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
