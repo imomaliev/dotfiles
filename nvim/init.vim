@@ -330,6 +330,9 @@ augroup configgroup
   " autocmd BufWritePost,BufEnter * Neomake
   autocmd BufWritePost * Neomake
   autocmd FileType python BracelessEnable
+  " 'formatoptions' This is a sequence of letters which describes how automatic formatting is to be done.
+  autocmd FileType * set fo-=o fo-=c
+
 augroup END
 
 call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
