@@ -254,7 +254,6 @@ set keymap=mac-russian-colemak
 set iminsert=0
 set imsearch=0
 
-
 " To define a mapping which uses the mapleader variable.
 let mapleader = "\<Space>"
 map <Leader>r <Esc>:registers<CR>
@@ -262,6 +261,7 @@ map <Leader>m <Esc>:marks<CR>
 map <Leader>p "+p
 map <Leader>P "+P
 map <Leader>y "+y
+map <Leader>Y "+Y
 map <Leader>; <Esc>@:
 map <Leader>w :w<CR>
 map <Leader>c :lclose <bar> cclose <bar> helpclose <bar> NERDTreeClose<CR>
