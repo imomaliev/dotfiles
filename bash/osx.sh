@@ -17,3 +17,4 @@ fi
 
 source $HOME/Development/dotfiles/bash/aliases.sh
 source $HOME/Development/dotfiles/bash/functions.sh
+source $HOME/Development/dotfiles/bash/completions.sh
