@@ -82,6 +82,8 @@ vnoremap > >gv
 nnoremap gvv gv
 nnoremap gvp `[v`]
 
+nnoremap gG <C-End>
+
 " When on, the ':substitute' flag 'g' is default on.
 set gdefault
 
