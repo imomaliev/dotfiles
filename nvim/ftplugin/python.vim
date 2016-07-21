@@ -30,7 +30,7 @@ iabbrev rpdb import rpdb; rpdb.set_trace()
 iabbrev npdb import nose; nose.tools.set_trace()
 
 " TODO: Check exactly end of the line
-nnoremap <buffer> <expr> C (getline('.')[getpos('.')[2]:] =~ ':')? "ct:" : "c$"
+" nnoremap <buffer> <expr> C (getline('.')[getpos('.')[2]:] =~ ':')? "ct:" : "c$"
 
 " http://vim.wikia.com/wiki/VimTip1546
 " python << EOF
