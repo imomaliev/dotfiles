@@ -194,11 +194,14 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'imomaliev/zenburn.vim'
 Plug 'imomaliev/mac-russian-colemak.vim'
 
+" IDE
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 Plug 'neomake/neomake'
+Plug 'nathanaelkane/vim-indent-guides'
 
+" Edit
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
@@ -206,7 +209,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tweekmonster/braceless.vim'
 Plug 'vim-scripts/camelcasemotion'
 
-Plug 'nathanaelkane/vim-indent-guides'
+" Vcs
+Plug 'tpope/vim-fugitive'
 
 " Filetype plugins
 Plug 'tmux-plugins/vim-tmux'
