@@ -268,6 +268,11 @@ map <Leader>p "+p
 map <Leader>P "+P
 map <Leader>y "+y
 map <Leader>Y "+Y
+map <Leader>d "+d
+map <Leader>D "+D
+" http://vim.wikia.com/wiki/Copy_filename_to_clipboard
+map <Leader><Leader>yf :let @+=expand("%:t")<CR>
+map <Leader><Leader>yF :let @+=expand("%:p")<CR>
 map <Leader>; <Esc>@:
 map <Leader>w :w<CR>
 map <Leader>c :lclose <bar> cclose <bar> helpclose <bar> NERDTreeClose<CR>
