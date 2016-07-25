@@ -294,8 +294,9 @@ nmap <Leader>f :NERDTreeFind<CR>
 
 "CtrlP
 ""let g:ctrlp_cmd = 'CtrlPMRU'
-nmap <Leader>t <Esc>:CtrlPTag<CR>
-nmap <Leader>l <Esc>:CtrlPBuffer<CR>
+nmap <Leader>tp <Esc>:CtrlPTag<CR>
+nmap <Leader>tl <Esc>:CtrlPBuffer<CR>
+let g:ctrlp_map = '<Leader>tt'
 
 " YouCompleteMe
 let g:ycm_filetype_specific_completion_to_disable = {
