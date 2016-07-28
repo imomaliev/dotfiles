@@ -84,6 +84,10 @@ nnoremap gvp `[v`]
 
 nnoremap gG <C-End>
 
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
+
 " When on, the ':substitute' flag 'g' is default on.
 set gdefault
 
