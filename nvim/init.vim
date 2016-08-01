@@ -302,6 +302,9 @@ nmap <Leader>tp <Esc>:CtrlPTag<CR>
 nmap <Leader>tl <Esc>:CtrlPBuffer<CR>
 let g:ctrlp_map = '<Leader>tt'
 
+" Surround
+nmap dsf diwds(
+
 " YouCompleteMe
 let g:ycm_filetype_specific_completion_to_disable = {
       \ 'gitcommit': 1,
