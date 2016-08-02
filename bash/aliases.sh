@@ -1,3 +1,5 @@
+# allow aliases be called with sudo
+alias sudo='sudo '
 alias ls='ls --color -la'
 alias watch='watch --color'
 alias grep='grep --color'
