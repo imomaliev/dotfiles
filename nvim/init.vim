@@ -107,6 +107,9 @@ set splitright
 " When on, splitting a window will put the new window below of the current one.
 set splitbelow
 
+" Minimal number of screen lines to keep above and below the cursor.
+set scrolloff=999
+
 "virtual editing means that the cursor can be positioned where there is no actual character.
 "onemore: Allow the cursor to move just past the end of the line
 nnoremap g<C-v> :setl virtualedit=block<CR><C-v>
