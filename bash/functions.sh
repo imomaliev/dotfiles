@@ -62,3 +62,8 @@ swap() {
     mv "$2" "$1"
     mv $TMPFILE "$2"
 }
+
+
+rmft() {
+    find . -name "*.$1" -delete
+}
