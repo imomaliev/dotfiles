@@ -115,6 +115,12 @@ set scrolloff=999
 nnoremap g<C-v> :setl virtualedit=block<CR><C-v>
 nnoremap <C-v> :setl virtualedit=<CR><C-v>
 
+" turn on paste when inserting in INSERT mode and turn it off again after paste
+" http://vim.wikia.com/wiki/Pasting_registers
+" http://stackoverflow.com/questions/26997172/passing-argument-to-vim-map
+inoremap <expr> <C-R> '<C-G>u<C-O>:set paste<CR><C-R>'.nr2char(getchar()).'<C-O>:set nopaste<CR>'
+
+
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
