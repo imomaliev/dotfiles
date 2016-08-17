@@ -109,6 +109,12 @@ set splitbelow
 
 " Minimal number of screen lines to keep above and below the cursor.
 set scrolloff=999
+"" with scrolloff!=0 'H' and 'L' are useless so we map them to start and end of line
+noremap H ^
+noremap L $
+"" do not include endofline in visual selection
+vnoremap L g_
+
 
 "virtual editing means that the cursor can be positioned where there is no actual character.
 "onemore: Allow the cursor to move just past the end of the line
