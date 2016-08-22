@@ -315,6 +315,7 @@ nmap <Leader>f :NERDTreeFind<CR>
 ""let g:ctrlp_cmd = 'CtrlPMRU'
 nmap <Leader>tp <Esc>:CtrlPTag<CR>
 nmap <Leader>tl <Esc>:CtrlPBuffer<CR>
+nmap <Leader>tf <Esc>:CtrlPMRUFiles<CR>
 let g:ctrlp_map = '<Leader>tt'
 
 " Surround
