@@ -308,8 +308,8 @@ map <Leader>? :Grep<Space>
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
-nmap <Leader>n :NERDTreeToggle<CR>
-nmap <Leader>f :NERDTreeFind<CR>
+nmap <Leader>nn :NERDTreeToggle<CR>
+nmap <Leader>nf :NERDTreeFind<CR>
 
 "CtrlP
 ""let g:ctrlp_cmd = 'CtrlPMRU'
