@@ -320,6 +320,7 @@ let g:ctrlp_map = '<Leader>tt'
 
 " Surround
 nmap dsf diwds(
+nmap daf diwda(
 
 " YouCompleteMe
 let g:ycm_filetype_specific_completion_to_disable = {
