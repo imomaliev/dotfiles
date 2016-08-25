@@ -319,8 +319,13 @@ nmap <Leader>tf <Esc>:CtrlPMRUFiles<CR>
 let g:ctrlp_map = '<Leader>tt'
 
 " Surround
+" function call manipulation
 nmap dsf diwds(
 nmap daf diwda(
+nmap dif f(di(
+nmap csf ciw
+nmap caf diwca(
+nmap cif f(ci(
 
 " YouCompleteMe
 let g:ycm_filetype_specific_completion_to_disable = {
