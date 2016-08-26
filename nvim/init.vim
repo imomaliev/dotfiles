@@ -258,7 +258,7 @@ endif
 
 " bind K to grep word under cursor
 " http://stackoverflow.com/a/12170748/3627387
-nnoremap <silent> K :setl nois<CR>:grep! "\b<C-R><C-W>\b"<CR>:setl is<CR>
+nnoremap <expr> <silent> K ':grep! "\b'.expand("<cword>").'\b"<CR>'
 
 " bind \ (backward slash) to grep shortcut
 ""command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
