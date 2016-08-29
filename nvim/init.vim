@@ -59,6 +59,47 @@ set softtabstop=4
 set shiftwidth=4
 ""set expandtab
 
+" When on, the ':substitute' flag 'g' is default on.
+set gdefault
+
+" (Nvim by default) indent when moving to the next line while writing code
+""set autoindent
+set smartindent
+
+" show a visual line under the cursor's current line
+set cursorline
+
+" show the matching part of the pair for [] {} and ()
+set showmatch
+
+" When on, splitting a window will put the new window right of the current one.
+set splitright
+
+" When on, splitting a window will put the new window below of the current one.
+set splitbelow
+
+" Minimal number of screen lines to keep above and below the cursor.
+set scrolloff=999
+" backup
+set nobackup
+set nowritebackup
+
+" switching buffer configs
+set hidden
+
+" undohistory
+set undofile
+
+" (Nvim by default) auto load and save files
+""set autoread
+set autowriteall
+
+" show ctrl+X tooltip
+"" set shortmess-=c
+
+" enable all Python syntax highlighting features
+let python_highlight_all = 1
+
 " Netrw configuartion
 " Comma separated pattern list for hiding files
 let g:netrw_list_hide= '.*\.swp$,.*\.pyc$'
@@ -88,33 +129,11 @@ nnoremap gG <C-End>
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
-" When on, the ':substitute' flag 'g' is default on.
-set gdefault
-
-" (Nvim by default) indent when moving to the next line while writing code
-""set autoindent
-set smartindent
-
-" show a visual line under the cursor's current line 
-set cursorline
-
-" show the matching part of the pair for [] {} and ()
-set showmatch
-
-" When on, splitting a window will put the new window right of the current one.
-set splitright
-
-" When on, splitting a window will put the new window below of the current one.
-set splitbelow
-
-" Minimal number of screen lines to keep above and below the cursor.
-set scrolloff=999
 "" with scrolloff!=0 'H' and 'L' are useless so we map them to start and end of line
 noremap H ^
 noremap L $
 "" do not include endofline in visual selection
 vnoremap L g_
-
 
 "virtual editing means that the cursor can be positioned where there is no actual character.
 "onemore: Allow the cursor to move just past the end of the line
@@ -125,27 +144,6 @@ nnoremap <C-v> :setl virtualedit=<CR><C-v>
 " http://vim.wikia.com/wiki/Pasting_registers
 " http://stackoverflow.com/questions/26997172/passing-argument-to-vim-map
 inoremap <expr> <C-R> '<C-G>u<C-O>:set paste<CR><C-R>'.nr2char(getchar()).'<C-O>:set nopaste<CR>'
-
-
-" enable all Python syntax highlighting features
-let python_highlight_all = 1
-
-" backup
-set nobackup
-set nowritebackup
-
-" switching buffer configs
-set hidden
-
-" undohistory
-set undofile
-
-" (Nvim by default) auto load and save files
-""set autoread
-set autowriteall
-
-" show ctrl+X tooltip
-"" set shortmess-=c
 
 " Disable arrow keys
 noremap <Up> <nop>
