@@ -306,24 +306,25 @@ map <Leader>? :Grep<Space>
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
-nmap <Leader>nn :NERDTreeToggle<CR>
-nmap <Leader>nf :NERDTreeFind<CR>
+nnoremap <Leader>nn :NERDTreeToggle<CR>
+nnoremap <Leader>nf :NERDTreeFind<CR>
 
 "CtrlP
 ""let g:ctrlp_cmd = 'CtrlPMRU'
-nmap <Leader>tp <Esc>:CtrlPTag<CR>
-nmap <Leader>tl <Esc>:CtrlPBuffer<CR>
-nmap <Leader>tf <Esc>:CtrlPMRUFiles<CR>
+nnoremap <Leader>tp <Esc>:CtrlPTag<CR>
+nnoremap <Leader>tl <Esc>:CtrlPBuffer<CR>
+nnoremap <Leader>tf <Esc>:CtrlPMRUFiles<CR>
 let g:ctrlp_map = '<Leader>tt'
 
 " Surround
 " function call manipulation
-nmap dsf diwds(
-nmap daf diwda(
-nmap dif f(di(
-nmap csf ciw
-nmap caf diwca(
-nmap cif f(ci(
+nnoremap dsf diwds( :silent! call repeat#set("dsf")<CR>
+nnoremap daf diwda( :silent! call repeat#set("daf")<CR>
+nnoremap dif f(di( :silent! call repeat#set("dif")<CR>
+nnoremap csf ciw :silent! call repeat#set("csf")<CR>
+nnoremap caf diwca( :silent! call repeat#set("caf")<CR>
+nnoremap cif f(ci( :silent! call repeat#set("cif")<CR>
+" TODO yank mappings
 
 " YouCompleteMe
 let g:ycm_filetype_specific_completion_to_disable = {
