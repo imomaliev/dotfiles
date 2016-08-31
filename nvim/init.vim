@@ -318,12 +318,12 @@ let g:ctrlp_map = '<Leader>tt'
 
 " Surround
 " function call manipulation
-nnoremap dsf diwds( :silent! call repeat#set("dsf")<CR>
-nnoremap daf diwda( :silent! call repeat#set("daf")<CR>
-nnoremap dif f(di( :silent! call repeat#set("dif")<CR>
-nnoremap csf ciw :silent! call repeat#set("csf")<CR>
-nnoremap caf diwca( :silent! call repeat#set("caf")<CR>
-nnoremap cif f(ci( :silent! call repeat#set("cif")<CR>
+nmap dsf diwds( :silent! call repeat#set("dsf")<CR>
+nmap daf diwda( :silent! call repeat#set("daf")<CR>
+nmap dif f(di( :silent! call repeat#set("dif")<CR>
+nmap csf ciw :silent! call repeat#set("csf")<CR>
+nmap caf diwca( :silent! call repeat#set("caf")<CR>
+nmap cif f(ci( :silent! call repeat#set("cif")<CR>
 " TODO yank mappings
 
 " YouCompleteMe
