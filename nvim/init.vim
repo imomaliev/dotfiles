@@ -179,6 +179,10 @@ nnoremap <C-]> :ltag <C-r><C-w> <CR>
 " fix camelcase mapping
 noremap ,, ,
 
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
 " recursively search up from 'dirname', sourcing all 'filename' files along the way
 function! ApplyLocalSettings(dirname, filename)
   " convert windows paths to unix style
