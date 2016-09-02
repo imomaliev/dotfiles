@@ -170,6 +170,10 @@ cabbrev cc cclose
 cabbrev lc lclose
 cabbrev hc helpclose
 
+" Emacs like keys for the command line
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+
 " http://andrewradev.com/2011/06/08/vim-and-ctags/
 " TODO: write smart function which will open location window if there is more than 1 tag
 "" nnoremap <C-]> :ltag <C-r><C-w> <bar> lopen <CR> <CR>
