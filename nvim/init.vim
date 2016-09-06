@@ -185,7 +185,7 @@ noremap ,, ,
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " recursively search up from 'dirname', sourcing all 'filename' files along the way
 function! ApplyLocalSettings(dirname, filename)
@@ -229,6 +229,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 " Edit
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tweekmonster/braceless.vim'
