@@ -330,9 +330,9 @@ let g:ctrlp_map = '<Leader>tt'
 nmap dsf diwds( :silent! call repeat#set("dsf")<CR>
 nmap daf diwda( :silent! call repeat#set("daf")<CR>
 nmap dif f(di( :silent! call repeat#set("dif")<CR>
-nmap csf ciw :silent! call repeat#set("csf")<CR>
-nmap caf diwca( :silent! call repeat#set("caf")<CR>
-nmap cif f(ci( :silent! call repeat#set("cif")<CR>
+nmap csf ciw<C-O>:silent! call repeat#set("csf")<CR>
+nmap caf diwca(<C-O>:silent! call repeat#set("caf")<CR>
+nmap cif f(ci(<C-O>:silent! call repeat#set("cif")<CR>
 " TODO yank mappings
 
 " YouCompleteMe
