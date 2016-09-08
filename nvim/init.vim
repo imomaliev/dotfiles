@@ -10,7 +10,7 @@
 " Show (partial) command in the last line of the screen.
 set showcmd
 
-"This option specifies a function to be used for Insert mode omni completion with CTRL-X CTRL-O.
+" This option specifies a function to be used for Insert mode omni completion with CTRL-X CTRL-O.
 set omnifunc=syntaxcomplete#Complete
 
 " Completion mode that is used for the character specified with 'wildchar'.
@@ -33,7 +33,7 @@ set ignorecase
 set smartcase
 set tagcase=match
 
-"Show the line number relative to the line with the cursor in front of each line.
+" Show the line number relative to the line with the cursor in front of each line.
 ""set relativenumber
 
 " Show the line and column number of the cursor position, separated by a comma.
@@ -128,15 +128,17 @@ nnoremap gG <C-End>
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
+" Some for CTRL-W
+inoremap <C-W> <C-G>u<C-W>
 
-"" with scrolloff!=0 'H' and 'L' are useless so we map them to start and end of line
+" with scrolloff!=0 'H' and 'L' are useless so we map them to start and end of line
 noremap H ^
 noremap L $
-"" do not include endofline in visual selection
+" do not include endofline in visual selection
 vnoremap L g_
 
-"virtual editing means that the cursor can be positioned where there is no actual character.
-"onemore: Allow the cursor to move just past the end of the line
+" virtual editing means that the cursor can be positioned where there is no actual character.
+" onemore: Allow the cursor to move just past the end of the line
 nnoremap g<C-v> :setl virtualedit=block<CR><C-v>
 nnoremap <C-v> :setl virtualedit=<CR><C-v>
 
@@ -162,7 +164,7 @@ inoremap <PageUp> <nop>
 inoremap <PageDown> <nop>
 inoremap <F1> <nop>
 
-"terminal mapping
+" terminal mapping
 tnoremap <Esc> <C-\><C-n>
 
 " http://stackoverflow.com/a/2605181/3627387
@@ -275,7 +277,7 @@ nnoremap <expr> <silent> K ':grep! "\b'.expand("<cword>").'\b"<CR>'
 let g:zenburn_force_dark_Background = 1
 color zenburn
 
-"" vim-indent colors
+" vim-indent colors
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
@@ -318,7 +320,7 @@ let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
 nnoremap <Leader>nn :NERDTreeToggle<CR>
 nnoremap <Leader>nf :NERDTreeFind<CR>
 
-"CtrlP
+" CtrlP
 ""let g:ctrlp_cmd = 'CtrlPMRU'
 nnoremap <Leader>tp <Esc>:CtrlPTag<CR>
 nnoremap <Leader>tl <Esc>:CtrlPBuffer<CR>
