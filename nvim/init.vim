@@ -155,6 +155,8 @@ noremap <Right> <nop>
 noremap <PageUp> <nop>
 noremap <PageDown> <nop>
 noremap <F1> <nop>
+" Disable ex-mode mapping
+noremap Q <nop>
 
 inoremap <Up> <nop>
 inoremap <Down> <nop>
