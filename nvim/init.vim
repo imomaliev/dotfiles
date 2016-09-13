@@ -305,6 +305,7 @@ map <Leader><Leader>yf :let @+=expand("%:t")<CR>
 map <Leader><Leader>yF :let @+=expand("%:p")<CR>
 map <Leader>; <Esc>@:
 map <Leader>w :w<CR>
+map <Leader>s :setlocal spell!<CR>
 map <Leader>c :lclose <bar> cclose <bar> helpclose <bar> NERDTreeClose<CR>
 
 " http://vim.wikia.com/wiki/Using_normal_command_in_a_script_for_searching
