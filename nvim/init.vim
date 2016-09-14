@@ -292,8 +292,10 @@ set imsearch=0
 
 " To define a mapping which uses the mapleader variable.
 let mapleader = "\<Space>"
+
 map <Leader>r <Esc>:registers<CR>
 map <Leader>m <Esc>:marks<CR>
+
 map <Leader>p "+p
 map <Leader>P "+P
 map <Leader>y "+y
@@ -303,10 +305,14 @@ map <Leader>D "+D
 " http://vim.wikia.com/wiki/Copy_filename_to_clipboard
 map <Leader><Leader>yf :let @+=expand("%:t")<CR>
 map <Leader><Leader>yF :let @+=expand("%:p")<CR>
+
 map <Leader>; <Esc>@:
 map <Leader>w :w<CR>
-map <Leader>s :setlocal spell!<CR>
 map <Leader>c :lclose <bar> cclose <bar> helpclose <bar> NERDTreeClose<CR>
+
+" spelling mappings
+map <Leader>ss :setlocal spell!<CR>
+map <Leader>sc :setlocal nospell!<CR>
 
 " http://vim.wikia.com/wiki/Using_normal_command_in_a_script_for_searching
 " http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
