@@ -184,8 +184,12 @@ cnoremap <C-E> <End>
 nnoremap <C-k> k
 nnoremap <C-]> :ltag <C-r><C-w> <CR>
 
-" fix camelcase mapping
-noremap ,, ,
+" Keep the cursor in place while joining lines
+nnoremap J mzJ`z
+
+" Split line (sister to [J]oin lines)
+" The normal use of S is covered by cc, so don't worry about shadowing it.
+nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
 
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
@@ -253,6 +257,8 @@ Plug 'niftylettuce/Vim-Jinja2-Syntax'
 
 call plug#end()
 
+" fix camelcase mapping
+noremap ,, ,
 
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " The Silver Searcher
