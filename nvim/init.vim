@@ -224,8 +224,12 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'imomaliev/zenburn.vim'
+" keymap
 Plug 'imomaliev/mac-russian-colemak.vim'
+
+" Visual
+Plug 'imomaliev/zenburn.vim'
+Plug 'itchyny/lightline.vim'
 
 " IDE
 Plug 'ctrlpvim/ctrlp.vim'
@@ -242,6 +246,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tweekmonster/braceless.vim'
 Plug 'vim-scripts/camelcasemotion'
+" Plug 'vim-scripts/YankRing.vim'
 
 " Vcs
 Plug 'tpope/vim-fugitive'
@@ -385,6 +390,22 @@ let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+
+" Lightline
+let g:lightline = {
+    \'active': {
+        \ 'left': [ [ 'mode', 'paste' ],
+        \           [ 'readonly', 'relativepath', 'modified' ] ],
+        \ 'right': [ [ 'lineinfo' ],
+        \            [ 'percent' ],
+        \            [ 'fileformat', 'fileencoding', 'filetype' ] ]
+    \},
+    \'inactive': {
+        \ 'left': [ [ 'relativepath' ] ],
+        \ 'right': [ [ 'lineinfo' ],
+        \            [ 'percent' ] ]
+    \}
+\}
 
 
 augroup configgroup
