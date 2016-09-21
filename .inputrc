@@ -1,6 +1,9 @@
 # show mode and default mode vi
 set show-mode-in-prompt on
 set editing-mode vi
+set vi-ins-mode-string +
+set vi-cmd-mode-string :
+set keyseq-timeout 0
 
 # show all possible compleations
 set show-all-if-ambiguous on
