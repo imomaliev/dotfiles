@@ -349,20 +349,20 @@ let g:ctrlp_map = '<Leader>tt'
 
 " Surround
 " function call manipulation
-nmap dsf diwds(:silent! call repeat#set("dsf")<CR>
-nmap daf diwda(:silent! call repeat#set("daf")<CR>
-nmap dif f(di(:silent! call repeat#set("dif")<CR>
+nmap dsf diw"_ds(:silent! call repeat#set("dsf")<CR>
+nmap <expr> daf 'viwl%"'.v:register.'d:silent! call repeat#set("daf")<CR>'
+nmap <expr> dif 'f("'.v:register.'di(:silent! call repeat#set("dif")<CR>'
 " nmap csf ciw<C-O>:silent! call repeat#set("csf")<CR>
+nmap <expr> caf 'viwl%"'.v:register.'c<C-O>:silent! call repeat#set("caf")<CR>'
+nmap <expr> cif 'f("'.v:register.'ci(<C-O>:silent! call repeat#set("dif")<CR>'
 nmap caf diwca(<C-O>:silent! call repeat#set("caf")<CR>
 nmap cif f(ci(<C-O>:silent! call repeat#set("cif")<CR>
 " nmap ysf yiw:silent! call repeat#set("csf")<CR>
-" FIXME don't use 's' register for this mapping
 " http://stackoverflow.com/questions/18536511/vim-how-to-append-yanked-text-to-unnamed-register
 " http://stackoverflow.com/questions/14632109/passing-register-name-in-mapping-to-an-ex-command
 " http://stackoverflow.com/questions/19430200/how-to-clear-vim-registers-effectively
-nmap yaf "syiwf("Sya(:let @"=@s <bar> let @s=""<CR>:silent! call repeat#set("yaf")<CR>
-nmap yif f(yi(:silent! call repeat#set("yif")<CR>
-" TODO yank mappings
+nmap <expr> yaf 'viwl%"'.v:register.'y:silent! call repeat#set("yaf")<CR>'
+nmap <expr> yif 'f("'.v:register.'yi(:silent! call repeat#set("yif")<CR>'
 
 " YouCompleteMe
 let g:ycm_filetype_specific_completion_to_disable = {
