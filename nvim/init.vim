@@ -180,9 +180,8 @@ cnoremap <C-E> <End>
 
 " http://andrewradev.com/2011/06/08/vim-and-ctags/
 " TODO: write smart function which will open location window if there is more than 1 tag
-"" nnoremap <C-]> :ltag <C-r><C-w> <bar> lopen <CR> <CR>
 nnoremap <C-k> k
-nnoremap <C-]> :ltag <C-r><C-w> <CR>
+nnoremap <expr> <C-]> ':ltag '.expand("<cword>").' <bar> lopen <CR> <CR>'
 
 " Keep the cursor in place while joining lines
 nnoremap J mzJ`z
@@ -319,7 +318,12 @@ map <Leader><Leader>yF :let @+=expand("%:p")<CR>
 
 map <Leader>; <Esc>@:
 map <Leader>w :w<CR>
-map <Leader>c :lclose <bar> cclose <bar> helpclose <bar> NERDTreeClose<CR>
+map <Leader>cc :lclose <bar> cclose <bar> helpclose <bar> NERDTreeClose<CR>
+
+" tags mappings
+map <Leader>lt <Esc>:!ctags<CR>
+map <Leader>ll <Esc>:lopen<CR>
+map <Leader>lc <Esc>:copen<CR>
 
 " spelling mappings
 map <Leader>ss :setlocal spell!<CR>
