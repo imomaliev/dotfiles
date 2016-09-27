@@ -26,6 +26,7 @@
 	puo = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
 	puf = push -f
 	id = show-ref HEAD --hash
+	cl = checkout .
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = "nvim"

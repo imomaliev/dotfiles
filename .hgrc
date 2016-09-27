@@ -14,6 +14,7 @@ pull = pull -u
 graph = log --graph --pager=yes
 sh = shelve
 br = branch
+cl = up -C
 [pager]
 pager = less -FRX
 [merge-tools]
