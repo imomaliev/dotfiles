@@ -277,9 +277,18 @@ if executable('ag')
   ""let g:ctrlp_use_caching = 1
 endif
 
+function! GrepWordUnderCursor()
+  let l:word = expand("<cword>")
+  if len(l:word) > 3
+    execute 'grep! "\b'.l:word.'\b"'
+  else
+    echom "cword is too short!"
+  endif
+endfunction
+
 " bind K to grep word under cursor
 " http://stackoverflow.com/a/12170748/3627387
-nnoremap <expr> <silent> K ':grep! "\b'.expand("<cword>").'\b"<CR>'
+nnoremap <silent> K :call GrepWordUnderCursor()<CR>
 
 " bind \ (backward slash) to grep shortcut
 ""command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
