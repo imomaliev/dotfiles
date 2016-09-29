@@ -28,6 +28,10 @@ set revert-all-at-newline on
 
 set blink-matching-paren on
 
+set colored-completion-prefix on
+
+set enable-bracketed-paste on
+
 # colored compleation and additional info
 ##set visible-stats on
 set colored-stats on
