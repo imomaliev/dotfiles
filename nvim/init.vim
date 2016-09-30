@@ -139,8 +139,8 @@ vnoremap L g_
 
 " virtual editing means that the cursor can be positioned where there is no actual character.
 " onemore: Allow the cursor to move just past the end of the line
-nnoremap g<C-v> :setl virtualedit=block<CR><C-v>
-nnoremap <C-v> :setl virtualedit=<CR><C-v>
+nnoremap g<C-V> :setl virtualedit=block<CR><C-V>
+nnoremap <C-V> :setl virtualedit=<CR><C-V>
 
 " turn on paste when inserting in INSERT mode and turn it off again after paste
 " http://vim.wikia.com/wiki/Pasting_registers
@@ -167,7 +167,7 @@ inoremap <PageDown> <nop>
 inoremap <F1> <nop>
 
 " terminal mapping
-tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-N>
 
 " http://stackoverflow.com/a/2605181/3627387
 cabbrev cc cclose
@@ -178,10 +178,24 @@ cabbrev hc helpclose
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
+nnoremap <C-K> k
+
 " http://andrewradev.com/2011/06/08/vim-and-ctags/
 " TODO: write smart function which will open location window if there is more than 1 tag
-nnoremap <C-k> k
-nnoremap <expr> <C-]> ':ltag '.expand("<cword>").' <bar> lopen <CR> <CR>'
+function! JumpToTagWithList()
+  let l:word = expand("<cword>")
+  if len(taglist(l:word)) == 0
+    echom "No tags found"
+  elseif len(taglist(l:word)) == 1
+    execute 'ltag '.l:word
+  else
+    execute 'ltag '.l:word.' | lopen'
+    " h expr-string vs literal-string
+    execute "normal! \<CR>"
+  endif
+endfunction
+
+nnoremap <C-]> :call JumpToTagWithList()<CR>
 
 " Keep the cursor in place while joining lines
 nnoremap J mzJ`z
@@ -327,7 +341,7 @@ map <Leader><Leader>yF :let @+=expand("%:p")<CR>
 
 map <Leader>; <Esc>@:
 map <Leader>w :w<CR>
-map <Leader>cc :lclose <bar> cclose <bar> helpclose <bar> NERDTreeClose<CR>
+map <Leader>cc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose<CR>
 
 " tags mappings
 map <Leader>lt <Esc>:!ctags<CR>
