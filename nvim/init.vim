@@ -181,7 +181,6 @@ cnoremap <C-E> <End>
 nnoremap <C-K> k
 
 " http://andrewradev.com/2011/06/08/vim-and-ctags/
-" TODO: write smart function which will open location window if there is more than 1 tag
 function! JumpToTagWithList()
   let l:word = expand("<cword>")
   if len(taglist(l:word)) == 0
@@ -329,28 +328,40 @@ let mapleader = "\<Space>"
 map <Leader>r <Esc>:registers<CR>
 map <Leader>m <Esc>:marks<CR>
 
+" Unnamedplus register mappings
 map <Leader>p "+p
 map <Leader>P "+P
 map <Leader>y "+y
 map <Leader>Y "+Y
 map <Leader>d "+d
 map <Leader>D "+D
+
 " http://vim.wikia.com/wiki/Copy_filename_to_clipboard
-map <Leader><Leader>yf :let @+=expand("%:t")<CR>
-map <Leader><Leader>yF :let @+=expand("%:p")<CR>
+map <Leader><Leader>yf <Esc>:let @+=expand("%:t")<CR>
+map <Leader><Leader>yF <Esc>:let @+=expand("%:p")<CR>
 
 map <Leader>; <Esc>@:
-map <Leader>w :w<CR>
-map <Leader>cc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose<CR>
+map <Leader>w <Esc>:w<CR>
+
+" Quickfix window mappings
+map <Leader>co <Esc>:cwindow<CR>
+map <Leader>cp <Esc>:cprevious<CR>
+map <Leader>cn <Esc>:cnext<CR>
+map <Leader>cc <Esc>:cclose<CR>
+
+" Location window mappings
+map <Leader>lo <Esc>:lwindow<CR>
+map <Leader>lp <Esc>:lprevious<CR>
+map <Leader>ln <Esc>:lnext<CR>
+map <Leader>lc <Esc>:lclose<CR>
 
 " tags mappings
-map <Leader>lt <Esc>:!ctags<CR>
-map <Leader>ll <Esc>:lopen<CR>
-map <Leader>lc <Esc>:copen<CR>
+map <Leader>gg <Esc>:!ctags<CR>
+map <Leader>gc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose<CR>
 
 " spelling mappings
-map <Leader>ss :setlocal spell!<CR>
-map <Leader>sc :setlocal nospell!<CR>
+map <Leader>ss <Esc>:setlocal spell!<CR>
+map <Leader>sc <Esc>:setlocal nospell!<CR>
 
 " http://vim.wikia.com/wiki/Using_normal_command_in_a_script_for_searching
 " http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
@@ -364,8 +375,9 @@ map <Leader>? :Grep<Space>
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
-nnoremap <Leader>nn :NERDTreeToggle<CR>
-nnoremap <Leader>nf :NERDTreeFind<CR>
+nnoremap <Leader>nn <Esc>:NERDTreeToggle<CR>
+nnoremap <Leader>nf <Esc>:NERDTreeFind<CR>
+nnoremap <Leader>nc <Esc>:NERDTreeClose<CR>
 
 " CtrlP
 ""let g:ctrlp_cmd = 'CtrlPMRU'
