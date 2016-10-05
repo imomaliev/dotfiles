@@ -367,8 +367,8 @@ map <Leader>sc <Esc>:setlocal nospell!<CR>
 " http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
 command! -nargs=1 LocalGrep :normal! /<args> | :silent lvimgrep <args> %
 command! -nargs=+ Grep :silent grep! <args>
-map <Leader>/ :LocalGrep<Space>
-map <Leader>? :Grep<Space>
+map <Leader>? :LocalGrep<Space>
+map <Leader>/ :Grep<Space>
 
 " Plugins Configuration
 " NERDTree
