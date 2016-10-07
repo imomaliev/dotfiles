@@ -385,6 +385,8 @@ nnoremap <Leader>tp <Esc>:CtrlPTag<CR>
 nnoremap <Leader>tl <Esc>:CtrlPBuffer<CR>
 nnoremap <Leader>tf <Esc>:CtrlPMRUFiles<CR>
 let g:ctrlp_map = '<Leader>tt'
+" -'r' here so it will work properly when there is sub vcs
+let g:ctrlp_working_path_mode = 'a'
 
 " Surround
 " function call manipulation
