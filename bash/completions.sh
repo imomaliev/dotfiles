@@ -4,6 +4,7 @@ __init_completion()
     _get_comp_words_by_ref cur prev words cword
 }
 
+
 _venv()
 {
     local cur prev words cword;
@@ -12,7 +13,7 @@ _venv()
     else
         __init_completion
     fi
-    opts="create"
+    opts="init"
     if [[ $cword -eq 1 ]]; then
         COMPREPLY=($( compgen -W "${opts}" -- "$cur" ));
         return 0
@@ -20,3 +21,21 @@ _venv()
 }
 
 complete -F _venv venv
+
+
+_dotfiles()
+{
+    local cur prev words cword;
+    if declare -F _init_completions >/dev/null 2>&1; then
+        _init_completion
+    else
+        __init_completion
+    fi
+    opts="init source"
+    if [[ $cword -eq 1 ]]; then
+        COMPREPLY=($( compgen -W "${opts}" -- "$cur" ));
+        return 0
+    fi
+}
+
+complete -F _dotfiles dotfiles

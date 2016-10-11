@@ -1,6 +1,6 @@
 dotfiles() {
     case $1 in
-        find)
+        source)
             if [ "$2" == "/" ]; then
                 return 1
             fi
@@ -14,14 +14,16 @@ dotfiles() {
                 source $DOTFILES
                 return 0
             else
-                dotfiles find $(dirname $cur_dir)
+                dotfiles source $(dirname $cur_dir)
             fi
         ;;
-        create)
+        init)
             local bashrc=".dotfiles/.bashrc"
+            local agignore=".dotfiles/.agignore"
             local vimrc=".dotfiles/nvim/init.vim"
-            mkdir -p $(dirname $vimrc)
             touch $bashrc
+            touch $agignore
+            mkdir -p $(dirname $vimrc)
             touch $vimrc
         ;;
     esac
@@ -32,13 +34,13 @@ venv() {
     case $1 in
         "")
             source venv/bin/activate
-            dotfiles find
+            dotfiles source
             if [ -n "$TMUX" ]; then
                 tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
                 tmux set-environment DOTFILES $DOTFILES
             fi
         ;;
-        create)
+        init)
             local prompt=$2
             if [ -z $prompt ]; then
                 prompt=$(basename $(pwd))
