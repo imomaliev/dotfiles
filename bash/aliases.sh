@@ -8,6 +8,8 @@ alias cal='gcal'
 alias untar='tar -xvf'
 alias ungzip='tar -xzvf'
 alias unbzip2='tar -xjvf'
+# revert splited files
+alias unsplit='cat'
 
 alias gif='git flow'
 alias gis='git submodule'
