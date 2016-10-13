@@ -12,6 +12,9 @@ dotfiles() {
             DOTFILES="$cur_dir/.dotfiles/.bashrc"
             if [ -f "$DOTFILES" ]; then
                 source $DOTFILES
+                if [ -n "$TMUX" ]; then
+                    tmux set-environment DOTFILES $DOTFILES
+                fi
                 return 0
             else
                 dotfiles source $(dirname $cur_dir)
@@ -37,7 +40,6 @@ venv() {
             dotfiles source
             if [ -n "$TMUX" ]; then
                 tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
-                tmux set-environment DOTFILES $DOTFILES
             fi
         ;;
         init)
