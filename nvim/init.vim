@@ -481,6 +481,8 @@ augroup configgroup
   " http://vim.wikia.com/wiki/Avoid_scrolling_when_switch_buffers
   autocmd BufLeave * if !&diff | let b:winview = winsaveview() | endif
   autocmd BufEnter * if exists("b:winview") && !&diff | call winrestview(b:winview) | unlet! b:winview | endif
+  " open original file instead of symlink
+  autocmd BufEnter * if getftype(expand("%")) == 'link' | execute 'file '.system('readlink '.expand('%')) | endif
   " :h restore-cursor
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   " autocmd TextChanged,InsertLeave * if &buftype != 'nofile' | :lockmarks write
