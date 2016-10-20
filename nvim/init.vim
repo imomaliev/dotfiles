@@ -249,6 +249,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 Plug 'neomake/neomake'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'majutsushi/tagbar'
 
 " Edit
 Plug 'Raimondi/delimitMate'
@@ -434,19 +435,31 @@ let g:ycm_complete_in_strings = 1 " Completion in string
 
 " Lightline
 let g:lightline = {
-    \'active': {
+    \ 'active': {
         \ 'left': [ [ 'mode', 'paste' ],
-        \           [ 'readonly', 'relativepath', 'modified' ] ],
+        \           [ 'readonly', 'relativepath', 'modified' ],
+        \           [ 'tagbar' ] ],
         \ 'right': [ [ 'lineinfo' ],
         \            [ 'percent' ],
         \            [ 'fileformat', 'fileencoding', 'filetype' ] ]
-    \},
-    \'inactive': {
+    \ },
+    \ 'inactive': {
         \ 'left': [ [ 'relativepath' ] ],
         \ 'right': [ [ 'lineinfo' ],
         \            [ 'percent' ] ]
-    \}
+    \ },
+    \ 'component': {
+    \   'tagbar': '%{tagbar#currenttag("[%s]", "", "f")}',
+    \ }
 \}
+
+" Tagbar
+let g:tagbar_status_func = 'TagbarStatusFunc'
+
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+  return lightline#statusline(0)
+endfunction
 
 " mercurial
 " https://bitbucket.org/sjl/dotfiles/src
