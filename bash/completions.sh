@@ -13,7 +13,7 @@ _venv()
     else
         __init_completion
     fi
-    opts="init"
+    opts="create delete"
     if [[ $cword -eq 1 ]]; then
         COMPREPLY=($( compgen -W "${opts}" -- "$cur" ));
         return 0
@@ -31,7 +31,7 @@ _dotfiles()
     else
         __init_completion
     fi
-    opts="init source"
+    opts="create delete"
     if [[ $cword -eq 1 ]]; then
         COMPREPLY=($( compgen -W "${opts}" -- "$cur" ));
         return 0
