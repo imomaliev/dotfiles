@@ -31,7 +31,7 @@ _dotfiles()
     else
         __init_completion
     fi
-    opts="create delete"
+    opts="create delete source"
     if [[ $cword -eq 1 ]]; then
         COMPREPLY=($( compgen -W "${opts}" -- "$cur" ));
         return 0

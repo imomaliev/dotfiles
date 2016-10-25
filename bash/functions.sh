@@ -1,23 +1,30 @@
+_source_dotfiles() {
+    local cur_dir=$1
+    DOTFILES="$cur_dir/.dotfiles/.bashrc"
+    if [[ -f "$DOTFILES" ]]; then
+        source $DOTFILES
+        if [[ -n "$TMUX" ]]; then
+            tmux set-environment DOTFILES $DOTFILES
+        fi
+        return 0
+    else
+        dotfiles source $(dirname $cur_dir)
+    fi
+}
+
 dotfiles() {
     case $1 in
+        "")
+            _source_dotfiles $PWD
+        ;;
         source)
             if [[ "$2" == "/" ]]; then
                 return 1
             fi
             if [[ -z $2 ]]; then
-                local cur_dir=$PWD
+                _source_dotfiles $PWD
             else
-                local cur_dir=$2
-            fi
-            DOTFILES="$cur_dir/.dotfiles/.bashrc"
-            if [[ -f "$DOTFILES" ]]; then
-                source $DOTFILES
-                if [[ -n "$TMUX" ]]; then
-                    tmux set-environment DOTFILES $DOTFILES
-                fi
-                return 0
-            else
-                dotfiles source $(dirname $cur_dir)
+                _source_dotfiles $2
             fi
         ;;
         create)
@@ -46,8 +53,8 @@ dotfiles() {
 venv() {
     case $1 in
         "")
-            source venv/bin/activate;
-            dotfiles source
+            source venv/bin/activate
+            dotfiles
             if [[ -n "$TMUX" ]]; then
                 tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
             fi
