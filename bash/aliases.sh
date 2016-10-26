@@ -11,6 +11,9 @@ alias unbzip2='tar -xjvf'
 # revert splited files
 alias unsplit='cat'
 
+alias mchown='chown $USER:$USER'
+alias rchown='chown root:root'
+
 alias gif='git flow'
 alias gis='git submodule'
 
