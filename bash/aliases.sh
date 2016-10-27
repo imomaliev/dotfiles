@@ -11,6 +11,8 @@ alias unbzip2='tar -xjvf'
 # revert splited files
 alias unsplit='cat'
 
+alias multi_zgrep='find -name \*.gz -print0 | xargs -0 zgrep'
+
 alias mchown='chown $USER:$USER'
 alias rchown='chown root:root'
 
@@ -19,6 +21,7 @@ alias gis='git submodule'
 
 alias noveo_connect='sshfs noveo:$HOME/Development ~/Noveo/Remote/'
 alias noveo_disconnect='umount ~/Noveo/Remote/'
+
 alias docker_rm='docker rm $(docker ps -a -q)'
 alias docker_rmi='docker rmi $(docker images -q -f dangling=true)'
 
