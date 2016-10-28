@@ -263,6 +263,7 @@ Plug 'vim-scripts/camelcasemotion'
 
 " Vcs
 Plug 'tpope/vim-fugitive'
+Plug 'ludovicchabant/vim-lawrencium'
 
 " Filetype plugins
 Plug 'tmux-plugins/vim-tmux'
