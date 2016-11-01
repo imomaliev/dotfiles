@@ -292,6 +292,16 @@ if executable('ag')
   ""let g:ctrlp_use_caching = 1
 endif
 
+function! GetVisualSelection()
+  " Why is this not a built-in Vim script function?!
+  let [lnum1, col1] = getpos("'<")[1:2]
+  let [lnum2, col2] = getpos("'>")[1:2]
+  let lines = getline(lnum1, lnum2)
+  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][col1 - 1:]
+  return join(lines, "\n")
+endfunction
+
 function! GrepWordUnderCursor()
   let l:word = expand("<cword>")
   if len(l:word) > 3
@@ -301,9 +311,19 @@ function! GrepWordUnderCursor()
   endif
 endfunction
 
+function! GrepVisualSelection()
+  let l:word = GetVisualSelection()
+  if len(l:word) > 3
+    execute 'grep! "'.l:word.'"'
+  else
+    echom "selection is too short!"
+  endif
+endfunction
+
 " bind K to grep word under cursor
 " http://stackoverflow.com/a/12170748/3627387
 nnoremap <silent> K :call GrepWordUnderCursor()<CR>
+vnoremap <silent> K :call GrepVisualSelection()<CR>
 
 " bind \ (backward slash) to grep shortcut
 ""command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
