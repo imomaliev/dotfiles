@@ -320,6 +320,10 @@ function! GrepVisualSelection()
   endif
 endfunction
 
+function! GrepCurrentFileName()
+  execute 'grep! "'.expand("%:t:r").'"'
+endfunction
+
 " bind K to grep word under cursor
 " http://stackoverflow.com/a/12170748/3627387
 nnoremap <silent> K :call GrepWordUnderCursor()<CR>
