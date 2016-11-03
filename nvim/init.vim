@@ -431,6 +431,9 @@ nmap cif f(ci(<C-O>:silent! call repeat#set("cif")<CR>
 nmap <expr> yaf 'viwl%"'.v:register.'y:silent! call repeat#set("yaf")<CR>'
 nmap <expr> yif 'f("'.v:register.'yi(:silent! call repeat#set("yif")<CR>'
 
+vmap af iwl%
+vmap if vf(vi(
+
 " YouCompleteMe
 let g:ycm_filetype_specific_completion_to_disable = {
       \ 'gitcommit': 1,
