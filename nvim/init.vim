@@ -107,6 +107,10 @@ let g:netrw_list_hide= '.*\.swp$,.*\.pyc$'
 " Set the default listing style: tree
 let g:netrw_liststyle=3
 
+" use normal regex for search
+nnoremap / /\v
+vnoremap / /\v
+
 " Remap :
 "" noremap : ;
 "" noremap ; :
@@ -391,7 +395,7 @@ map <Leader>sc <Esc>:setlocal nospell!<CR>
 
 " http://vim.wikia.com/wiki/Using_normal_command_in_a_script_for_searching
 " http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
-command! -nargs=1 LocalGrep :normal! /<args> | :silent lvimgrep <args> %
+command! -nargs=1 LocalGrep :normal! /\v<args> | :silent lvimgrep <args> %
 command! -nargs=+ Grep :silent grep! <args>
 map <Leader>? :LocalGrep<Space>
 map <Leader>/ :Grep<Space>
