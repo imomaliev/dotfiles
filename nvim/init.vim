@@ -402,7 +402,7 @@ map <Leader>/ :Grep<Space>
 
 " Plugins Configuration
 " NERDTree
-let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$']
+let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$', '__pycache__']
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
 nnoremap <Leader>nn <Esc>:NERDTreeToggle<CR>
