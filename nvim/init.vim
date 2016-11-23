@@ -111,6 +111,9 @@ let g:netrw_liststyle=3
 nnoremap / /\v
 vnoremap / /\v
 
+noremap ' `
+noremap ` '
+
 " Remap :
 "" noremap : ;
 "" noremap ; :
