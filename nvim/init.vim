@@ -110,6 +110,8 @@ let g:netrw_liststyle=3
 " use normal regex for search
 nnoremap / /\v
 vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
 
 noremap ' `
 noremap ` '
