@@ -140,6 +140,9 @@ inoremap <C-U> <C-G>u<C-U>
 " Some for CTRL-W
 inoremap <C-W> <C-G>u<C-W>
 
+inoremap <CR> <C-G>u<CR>
+" nnoremap <CR> o<Esc>
+
 " with scrolloff!=0 'H' and 'L' are useless so we map them to start and end of line
 noremap H ^
 noremap L $
@@ -268,6 +271,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tweekmonster/braceless.vim'
 Plug 'vim-scripts/camelcasemotion'
+" Plug 'imomaliev/registers.vim'
 " Plug 'vim-scripts/YankRing.vim'
 
 " Vcs
