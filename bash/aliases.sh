@@ -16,9 +16,6 @@ alias multi_zgrep='find -name \*.gz -print0 | xargs -0 zgrep'
 alias mchown='chown $USER:$USER'
 alias rchown='chown root:root'
 
-alias gif='git flow'
-alias gis='git submodule'
-
 alias noveo_connect='sshfs noveo:$HOME/Development ~/Noveo/Remote/'
 alias noveo_disconnect='umount ~/Noveo/Remote/'
 
