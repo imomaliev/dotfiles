@@ -28,10 +28,7 @@
 	puf = push -f
 	id = show-ref HEAD --hash
 	cl = checkout .
-	# git flow
-	ffs = flow feature start
-	fff = flow feature finish
-	ffp = flow feature publish
+	tags = tag --list
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = "nvim"
