@@ -13,7 +13,7 @@ _venv()
     else
         __init_completion
     fi
-    opts="create delete"
+    opts="create create3 deactivate delete"
     if [[ $cword -eq 1 ]]; then
         COMPREPLY=($( compgen -W "${opts}" -- "$cur" ));
         return 0

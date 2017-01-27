@@ -50,6 +50,29 @@ dotfiles() {
 }
 
 
+_create_venv() {
+    local prompt=$1
+    if [[ -z $prompt ]] || [[ $prompt == -* ]]; then
+        prompt=$(basename $(pwd))
+    else
+        shift 1
+    fi
+    virtualenv venv --prompt=" \[\e[1;30m\]($prompt)\[\e[m\]" "$@"
+    venv
+    if [[ -f requirements.txt ]]; then
+        pip install -U -r requirements.txt
+    fi
+}
+
+_deactivate_venv() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        deactivate
+    fi
+    if [[ -n "$TMUX" ]]; then
+        tmux set-environment -u VIRTUAL_ENV
+    fi
+}
+
 venv() {
     case $1 in
         "")
@@ -60,26 +83,18 @@ venv() {
             fi
         ;;
         create)
-            local prompt=$2
-            if [[ -z $prompt ]] || [[ $prompt == -* ]]; then
-                prompt=$(basename $(pwd))
-                shift 1
-            else
-                shift 2
-            fi
-            virtualenv venv --prompt=" \[\e[1;30m\]($prompt)\[\e[m\]" "$@"
-            venv
-            if [[ -f requirements.txt ]]; then
-                pip install -U -r requirements.txt
-            fi
+            shift 1
+            _create_venv "$@"
+        ;;
+        create3)
+            shift 1
+            _create_venv "$@" -p python3
+        ;;
+        deactivate)
+            _deactivate_venv
         ;;
         delete)
-            if [[ -n "$VIRTUAL_ENV" ]]; then
-                deactivate
-            fi
-            if [[ -n "$TMUX" ]]; then
-                tmux set-environment -u VIRTUAL_ENV
-            fi
+            _deactivate_venv
             rm -rf venv/
         ;;
     esac
