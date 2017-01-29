@@ -33,12 +33,12 @@ dotfiles() {
             if [[ ! -d "$dotfiles_dir" ]]; then
                 mkdir -p $dotfiles_dir
             fi
-            touch "$dotfiles_dir.bashrc"
-            touch "$dotfiles_dir.agignore"
+            touch "${dotfiles_dir}.bashrc"
+            touch "${dotfiles_dir}.agignore"
             if [[ ! -d "$dotfiles_nvim_dir" ]]; then
                 mkdir -p $dotfiles_nvim_dir
             fi
-            touch "$dotfiles_nvim_dir.init.vim"
+            touch "${dotfiles_nvim_dir}init.vim"
         ;;
         delete)
             if [[ -n "$TMUX" ]]; then
