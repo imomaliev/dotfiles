@@ -157,7 +157,7 @@ nnoremap <C-V> :setl virtualedit=<CR><C-V>
 " turn on paste when inserting in INSERT mode and turn it off again after paste
 " http://vim.wikia.com/wiki/Pasting_registers
 " http://stackoverflow.com/questions/26997172/passing-argument-to-vim-map
-inoremap <expr> <C-R> '<C-G>u<C-O>:set paste<CR><C-R>'.nr2char(getchar()).'<C-O>:set nopaste<CR>'
+" inoremap <expr> <C-R> '<C-G>u<C-O>:set paste<CR><C-R>'.nr2char(getchar()).'<C-O>:set nopaste<CR>'
 
 " Disable arrow keys
 noremap <Up> <nop>
@@ -277,6 +277,7 @@ Plug 'vim-scripts/camelcasemotion'
 " Vcs
 Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-lawrencium'
+Plug 'mhinz/vim-signify'
 
 " Filetype plugins
 Plug 'tmux-plugins/vim-tmux'
@@ -525,6 +526,9 @@ function! s:HgBlame() " {{{
 endfunction " }}}
 command! -nargs=0 HgBlame call s:HgBlame()
 
+" signify
+let g:signify_vcs_list              = [ 'git', 'hg' ]
+
 augroup configgroup
   autocmd!
   " Automaticaly open quickfix findow
@@ -542,7 +546,7 @@ augroup configgroup
   " autocmd TextChanged,InsertLeave * if &buftype != 'nofile' | :lockmarks write
   " autocmd BufWritePost,BufEnter * Neomake
   autocmd BufWritePost * Neomake
-  autocmd FileType python BracelessEnable
+  autocmd FileType python BracelessEnable +indent
   autocmd FileType jinja setlocal commentstring={#\ %s\ #}
 
   " 'formatoptions' This is a sequence of letters which describes how automatic formatting is to be done.
