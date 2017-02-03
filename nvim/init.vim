@@ -185,6 +185,7 @@ tnoremap <Esc> <C-\><C-N>
 cabbrev cc cclose
 cabbrev lc lclose
 cabbrev hc helpclose
+cabbrev te Terminal
 
 " Emacs like keys for the command line
 cnoremap <C-A> <Home>
@@ -403,6 +404,10 @@ map <Leader>gc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose<CR>
 map <Leader>ss <Esc>:setlocal spell!<CR>
 map <Leader>sc <Esc>:setlocal nospell!<CR>
 
+" Terminal
+command! Terminal :call termopen("bash -l", {"pty": 1}) | startinsert
+
+" Grep
 " http://vim.wikia.com/wiki/Using_normal_command_in_a_script_for_searching
 " http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
 command! -nargs=1 LocalGrep :normal! /\v<args> | :silent lvimgrep <args> %
@@ -551,6 +556,7 @@ augroup configgroup
 
   " 'formatoptions' This is a sequence of letters which describes how automatic formatting is to be done.
   autocmd FileType * set fo-=o fo-=c
+  autocmd TermOpen * setlocal nolist
 
 augroup END
 
