@@ -425,10 +425,10 @@ nnoremap <Leader>nf <Esc>:NERDTreeFind<CR>
 nnoremap <Leader>nc <Esc>:NERDTreeClose<CR>
 
 " CtrlP
-""let g:ctrlp_cmd = 'CtrlPMRU'
-nnoremap <Leader>tp <Esc>:CtrlPTag<CR>
-nnoremap <Leader>tl <Esc>:CtrlPBuffer<CR>
-nnoremap <Leader>tf <Esc>:CtrlPMRUFiles<CR>
+let g:ctrlp_cmd = ':NERDTreeClose\|CtrlP'
+nnoremap <Leader>tp <Esc>:NERDTreeClose \| CtrlPTag<CR>
+nnoremap <Leader>tl <Esc>:NERDTreeClose \| CtrlPBuffer<CR>
+nnoremap <Leader>tf <Esc>:NERDTreeClose \| CtrlPMRUFiles<CR>
 let g:ctrlp_map = '<Leader>tt'
 " -'r' here so it will work properly when there is sub vcs
 let g:ctrlp_working_path_mode = 'a'
