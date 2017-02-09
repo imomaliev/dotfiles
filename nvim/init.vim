@@ -113,15 +113,17 @@ vnoremap / /\v
 nnoremap ? ?\v
 vnoremap ? ?\v
 
-noremap ' `
-noremap ` '
+" noremap ' `
+" noremap ` '
 
 " Remap :
 "" noremap : ;
 "" noremap ; :
 
-" make Y consistent with D, C
+" make Y and V consistent with D, C
 nnoremap Y y$
+nnoremap vv V
+nnoremap V vg_
 
 " Keep selection when indenting
 vnoremap < <gv
