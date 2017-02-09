@@ -162,23 +162,23 @@ nnoremap <C-V> :setl virtualedit=<CR><C-V>
 " inoremap <expr> <C-R> '<C-G>u<C-O>:set paste<CR><C-R>'.nr2char(getchar()).'<C-O>:set nopaste<CR>'
 
 " Disable arrow keys
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-noremap <PageUp> <nop>
-noremap <PageDown> <nop>
-noremap <F1> <nop>
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+noremap <PageUp> <Nop>
+noremap <PageDown> <Nop>
+noremap <F1> <Nop>
 " Disable ex-mode mapping
-noremap Q <nop>
+noremap Q <Nop>
 
-inoremap <Up> <nop>
-inoremap <Down> <nop>
-inoremap <Left> <nop>
-inoremap <Right> <nop>
-inoremap <PageUp> <nop>
-inoremap <PageDown> <nop>
-inoremap <F1> <nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+inoremap <PageUp> <Nop>
+inoremap <PageDown> <Nop>
+inoremap <F1> <Nop>
 
 " terminal mapping
 tnoremap <Esc> <C-\><C-N>
