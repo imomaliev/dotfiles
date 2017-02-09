@@ -144,10 +144,10 @@ inoremap <CR> <C-G>u<CR>
 " nnoremap <CR> o<Esc>
 
 " with scrolloff!=0 'H' and 'L' are useless so we map them to start and end of line
-noremap H ^
-noremap L $
+noremap <expr> H (col('.') == matchend(getline('.'), '^\s*')+1 ? '0' : '^')
+noremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$' : 'g_')
 " do not include endofline in visual selection
-vnoremap L g_
+vnoremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$h' : 'g_')
 
 " virtual editing means that the cursor can be positioned where there is no actual character.
 " onemore: Allow the cursor to move just past the end of the line
