@@ -560,6 +560,8 @@ augroup configgroup
   autocmd FileType * set fo-=o fo-=c
   autocmd TermOpen * setlocal nolist
 
+  " Autoresize windows
+  autocmd VimResized * :wincmd =
 augroup END
 
 call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
