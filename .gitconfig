@@ -20,8 +20,7 @@
 	ci = commit -a
 	di = diff -r HEAD
 	ri = rebase -i
-	fi = rebase -i HEAD^^
-	cifi = "!git commit -am 'fixup' && git rebase -i HEAD^^"
+	fixup = "!git ci --fixup=HEAD && EDITOR=true git ri --autosquash HEAD^^"
 	sh = stash
 	unsh = stash pop
 	br = checkout -b
@@ -36,7 +35,6 @@
 	tags = tag --list
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = "nvim"
 [merge]
 	tool = vimdiff2
 [mergetool "vimdiff2"]
