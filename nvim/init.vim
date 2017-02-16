@@ -397,10 +397,31 @@ map <Leader>lp <Esc>:lprevious<CR>
 map <Leader>ln <Esc>:lnext<CR>
 map <Leader>lc <Esc>:lclose<CR>
 
-let python_version = split(system("python -V"))[1][0:2]
+
+function! GetPythonStandardLibiraryPath()
+  " https://github.com/neovim/neovim/blob/v0.1.7/runtime/autoload/health/provider.vim#L275
+  let python_version = split(system("python -V"))[1][0:2]
+  let python_bin_name = 'python'.python_version[0]
+  let python_bin = exepath(python_bin_name)
+  let python_multiple = []
+  if exists('$PATH')
+    for path in split($PATH, ':')
+      let path_bin = path.'/'.python_bin_name
+      if path_bin != python_bin && index(python_multiple, path_bin) == -1
+            \ && executable(path_bin)
+        call add(python_multiple, path_bin)
+      endif
+    endfor
+  endif
+  if len(python_multiple)
+    let python_bin = python_multiple[-1]
+  endif
+  return fnamemodify(resolve(python_bin), ':h:h').'/lib/python'.python_version
+endfunction
+
 
 " tags mappings
-map <Leader>gg <Esc>:execute "!ctags . /usr/lib/python".g:python_version<CR>
+map <Leader>gg <Esc>:execute "!ctags . ".GetPythonStandardLibiraryPath()<CR>
 map <Leader>gc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose <Bar> UndotreeHide<CR>
 
 " spelling mappings
