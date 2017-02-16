@@ -1,6 +1,6 @@
 source $HOME/Development/dotfiles/bash/base.sh
 
-export TERM=xterm-256color
+export TERM=screen-256color
 
 # http://stackoverflow.com/a/791800/3627387
 [[ $- == *i* ]] && stty -ixon

@@ -263,6 +263,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 Plug 'neomake/neomake'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'majutsushi/tagbar'
+Plug 'mbbill/undotree'
 
 " Edit
 Plug 'Raimondi/delimitMate'
@@ -396,9 +397,11 @@ map <Leader>lp <Esc>:lprevious<CR>
 map <Leader>ln <Esc>:lnext<CR>
 map <Leader>lc <Esc>:lclose<CR>
 
+let python_version = split(system("python -V"))[1][0:2]
+
 " tags mappings
-map <Leader>gg <Esc>:!ctags<CR>
-map <Leader>gc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose<CR>
+map <Leader>gg <Esc>:execute "!ctags . /usr/lib/python".g:python_version<CR>
+map <Leader>gc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose <Bar> UndotreeHide<CR>
 
 " spelling mappings
 map <Leader>ss <Esc>:setlocal spell!<CR>
@@ -423,6 +426,7 @@ let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
 nnoremap <Leader>nn <Esc>:NERDTreeToggle<CR>
 nnoremap <Leader>nf <Esc>:NERDTreeFind<CR>
 nnoremap <Leader>nc <Esc>:NERDTreeClose<CR>
+
 
 " CtrlP
 let g:ctrlp_cmd = ':NERDTreeClose\|CtrlP'
