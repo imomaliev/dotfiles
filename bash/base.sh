@@ -12,12 +12,12 @@ export HISTCONTROL="erasedups:ignoreboth"
 # A colon-separated list of patterns used to decide which command lines should be saved on the history list.
 ##export HISTIGNORE="history*:ls*"
 
-hg_branch() {
-    hg branch 2> /dev/null | awk '{print "["$1"] " }'
+__hg_ps1() {
+    hg prompt "[{branch}] " 2> /dev/null
 }
 
 # prompt customization
-export PS1=" \[\e[1;34m\]\w\[\e[m\] \[\e[1;33m\]\$(hg_branch)\[\e[m\]\\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]|\[\e[1;32m\]\D{%H:%M:%S %d-%b-%y}\[\e[m\]|\n ❯ "
+export PS1=" \[\e[1;34m\]\w\[\e[m\] \[\e[1;33m\]\$(__hg_ps1)\[\e[m\]\\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]|\[\e[1;32m\]\D{%H:%M:%S %d-%b-%y}\[\e[m\]|\n ❯ "
 
 # set default editor to nvim
 export EDITOR=$(which nvim)

@@ -9,6 +9,7 @@ color=
 hgext.mq=
 shelve=
 pager=
+prompt = ~/Development/Python/hg-prompt/prompt.py
 [alias]
 pull = pull -u
 graph = log --graph --pager=yes
