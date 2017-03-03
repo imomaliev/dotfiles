@@ -21,6 +21,7 @@ alias noveo_disconnect='umount ~/Noveo/Remote/'
 
 alias docker_rm='docker rm $(docker ps -a -q)'
 alias docker_rmi='docker rmi $(docker images -q -f dangling=true)'
+alias docker_rmv='docker volume rm $(docker volume ls -qf dangling=true)'
 
 
 # https://github.com/Bash-it/bash-it/blob/master/plugins/available/alias-completion.plugin.bash
