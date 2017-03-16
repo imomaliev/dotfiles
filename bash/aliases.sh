@@ -13,6 +13,7 @@ alias unsplit='cat'
 
 alias multi_zgrep='find -name \*.gz -print0 | xargs -0 zgrep'
 
+alias rpdb='nc 127.0.0.1 4444'
 alias mchown='chown $USER:$USER'
 alias rchown='chown root:root'
 

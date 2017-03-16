@@ -273,6 +273,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tweekmonster/braceless.vim'
 Plug 'vim-scripts/camelcasemotion'
+Plug 'wellle/targets.vim'
 " Plug 'imomaliev/registers.vim'
 " Plug 'vim-scripts/YankRing.vim'
 
@@ -381,6 +382,7 @@ map <Leader>D "+D
 " http://vim.wikia.com/wiki/Copy_filename_to_clipboard
 map <Leader><Leader>yf <Esc>:let @+=expand("%:t")<CR>
 map <Leader><Leader>yF <Esc>:let @+=expand("%:p")<CR>
+map <Leader><Leader>yl <Esc>:let @+=expand("%:t").':'.line(".")<CR>
 
 map <Leader>; <Esc>@:
 map <Leader>w <Esc>:w<CR>
