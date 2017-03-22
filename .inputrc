@@ -48,3 +48,4 @@ set bind-tty-special-chars off
 Control-w: backward-kill-word
 Control-k: previous-history
 Control-j: next-history
+# Control-i: menu-complete
