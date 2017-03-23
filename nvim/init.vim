@@ -274,6 +274,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tweekmonster/braceless.vim'
 Plug 'vim-scripts/camelcasemotion'
 Plug 'wellle/targets.vim'
+Plug 'machakann/vim-highlightedyank'
 " Plug 'imomaliev/registers.vim'
 " Plug 'vim-scripts/YankRing.vim'
 
@@ -545,6 +546,9 @@ endfunction
 
 " signify
 let g:signify_vcs_list              = [ 'git', 'hg' ]
+
+" HighlightedyankRegion
+let g:highlightedyank_highlight_duration = 1000
 
 augroup configgroup
   autocmd!
