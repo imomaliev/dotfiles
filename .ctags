@@ -1,6 +1,7 @@
 --recurse=yes
 --tag-relative=yes
 
+--exclude=venv/local/*
 --exclude=.git*
 --exclude=.hg*
 --exclude=*.pyc
