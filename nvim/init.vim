@@ -94,6 +94,9 @@ set undofile
 ""set autoread
 set autowriteall
 
+" Use one space, not two, after punctuation.
+set nojoinspaces
+
 " show ctrl+X tooltip
 "" set shortmess-=c
 
