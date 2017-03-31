@@ -189,6 +189,8 @@ cabbrev cc cclose
 cabbrev lc lclose
 cabbrev hc helpclose
 cabbrev te Terminal
+cabbrev man vertical Man
+
 
 " Emacs like keys for the command line
 cnoremap <C-A> <Home>
