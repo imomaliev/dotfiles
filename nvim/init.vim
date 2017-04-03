@@ -336,7 +336,9 @@ endfunction
 function! GrepWordUnderCursor()
   let l:word = expand("<cword>")
   if len(l:word) > 3
-    execute 'grep! "\b'.l:word.'\b"'
+    let l:cmd = 'Grep "\b'.l:word.'\b"'
+    execute cmd
+    call histadd(':', l:cmd)
   else
     echom "cword is too short!"
   endif
@@ -345,14 +347,16 @@ endfunction
 function! GrepVisualSelection()
   let l:word = GetVisualSelection()
   if len(l:word) > 3
-    execute 'grep! "'.l:word.'"'
+    let l:cmd = 'Grep "'.l:word.'"'
+    execute cmd
+    call histadd(':', l:cmd)
   else
     echom "selection is too short!"
   endif
 endfunction
 
 function! GrepCurrentFileName()
-  execute 'grep! "'.expand("%:t:r").'"'
+  execute 'Grep "'.expand("%:t:r").'"'
 endfunction
 
 " bind K to grep word under cursor
