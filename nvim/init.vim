@@ -201,9 +201,10 @@ nnoremap <C-K> k
 " http://andrewradev.com/2011/06/08/vim-and-ctags/
 function! JumpToTagWithList()
   let l:word = expand("<cword>")
-  if len(taglist(l:word)) == 0
+  let l:taglist_len = len(taglist('^'.l:word.'$'))
+  if  l:taglist_len == 0
     echom "No tags found"
-  elseif len(taglist(l:word)) == 1
+  elseif l:taglist_len == 1
     execute 'ltag '.l:word
   else
     execute 'ltag '.l:word.' | lopen'
