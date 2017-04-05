@@ -265,7 +265,9 @@ Plug 'itchyny/lightline.vim'
 " IDE
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'zchee/deoplete-jedi'
 Plug 'neomake/neomake'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'majutsushi/tagbar'
@@ -281,6 +283,7 @@ Plug 'tweekmonster/braceless.vim'
 Plug 'vim-scripts/camelcasemotion'
 Plug 'wellle/targets.vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'ervandew/supertab'
 " Plug 'imomaliev/registers.vim'
 " Plug 'vim-scripts/YankRing.vim'
 
@@ -499,32 +502,8 @@ nmap <expr> yif 'f("'.v:register.'yi(:silent! call repeat#set("yif")<CR>'
 vmap af iwl%
 vmap if vf(vi(
 
-" YouCompleteMe
-let g:ycm_filetype_specific_completion_to_disable = {
-      \ 'gitcommit': 1,
-      \ 'po': 1
-      \}
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1,
-      \ 'po': 1
-      \}
-let g:ycm_autoclose_preview_window_after_insertion = 1
-" https://code.djangoproject.com/wiki/UsingVimWithDjango
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " Lightline
 let g:lightline = {
