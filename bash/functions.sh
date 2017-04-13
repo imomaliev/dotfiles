@@ -112,3 +112,7 @@ swap() {
 rmft() {
     find . -name "*.$1" -delete
 }
+
+lsft() {
+    find . -type f -regextype posix-extended -regex "\./.+[^/%]\.[^/]+" | sed "s/.*\.//" | sort -u
+}
