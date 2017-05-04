@@ -97,6 +97,9 @@ set autowriteall
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
+" enable mouse
+set mouse=a
+
 " show ctrl+X tooltip
 "" set shortmess-=c
 
