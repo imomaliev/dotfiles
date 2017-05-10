@@ -97,7 +97,7 @@ set autowriteall
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
-" enable mouse
+" Enable the use of the mouse.
 set mouse=a
 
 " show ctrl+X tooltip
@@ -454,6 +454,8 @@ map <Leader>gc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose <Bar> Un
 
 " spelling mappings
 map <Leader>ss <Esc>:setlocal spell!<CR>
+" always forget what mapping for adding spelling
+map <Leader>sa zg
 map <Leader>sc <Esc>:setlocal nospell!<CR>
 
 " Terminal
