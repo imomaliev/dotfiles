@@ -24,7 +24,7 @@
 	sh = stash
 	unsh = stash pop
 	br = checkout -b
-	brreset = "!git checkout -B \"$(git rev-parse --abbrev-ref @)\" \"$(git rev-parse --abbrev-ref @{u})\""
+	brreset = "!git fetch && git checkout -B \"$(git rev-parse --abbrev-ref @)\" \"$(git rev-parse --abbrev-ref @{u})\""
 	brmv = branch -m
 	branches = branch --list
 	brs = branch --list

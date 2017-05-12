@@ -545,12 +545,20 @@ let g:signify_vcs_list              = [ 'git', 'hg' ]
 " HighlightedyankRegion
 let g:highlightedyank_highlight_duration = 1000
 
+" Neomake
+" This setting will open the location-list or quickfix list (depending on
+" whether it is operating on a file) when adding entries. A value of 2 will
+" preserve the cursor position when the location-list or quickfix window is
+" opened.
+let g:neomake_open_list = 2
+
 augroup configgroup
   autocmd!
   " Automaticaly open quickfix findow
   " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
-  "" autocmd QuickFixCmdPost [^l]* nested botright cwindow | redraw! | wincmd p
-  "" autocmd QuickFixCmdPost    l* nested lwindow | redraw! | wincmd p
+  " wincmd p switch to previous window
+  autocmd QuickFixCmdPost [^l]* nested botright cwindow | redraw! | wincmd p
+  autocmd QuickFixCmdPost    l* nested lwindow | redraw! | wincmd p
   " Cursor position handling
   " http://vim.wikia.com/wiki/Avoid_scrolling_when_switch_buffers
   autocmd BufLeave * if !&diff | let b:winview = winsaveview() | endif
