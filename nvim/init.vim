@@ -280,7 +280,7 @@ Plug 'mbbill/undotree'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-surround'
+Plug 'imomaliev/vim-surround'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-repeat'
 Plug 'tweekmonster/braceless.vim'
@@ -549,8 +549,8 @@ augroup configgroup
   autocmd!
   " Automaticaly open quickfix findow
   " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
-  autocmd QuickFixCmdPost [^l]* nested botright cwindow | redraw!
-  autocmd QuickFixCmdPost    l* nested lwindow | redraw!
+  "" autocmd QuickFixCmdPost [^l]* nested botright cwindow | redraw! | wincmd p
+  "" autocmd QuickFixCmdPost    l* nested lwindow | redraw! | wincmd p
   " Cursor position handling
   " http://vim.wikia.com/wiki/Avoid_scrolling_when_switch_buffers
   autocmd BufLeave * if !&diff | let b:winview = winsaveview() | endif
