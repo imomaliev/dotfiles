@@ -347,6 +347,9 @@ function! GrepWordUnderCursor()
     let l:cmd = 'Grep "\b'.l:word.'\b"'
     execute cmd
     call histadd(':', l:cmd)
+    botright cwindow
+    redraw!
+    normal <C-W>W
   else
     echom "cword is too short!"
   endif
@@ -358,6 +361,9 @@ function! GrepVisualSelection()
     let l:cmd = 'Grep "'.l:word.'"'
     execute cmd
     call histadd(':', l:cmd)
+    botright cwindow
+    redraw!
+    normal <C-W>W
   else
     echom "selection is too short!"
   endif
@@ -365,6 +371,9 @@ endfunction
 
 function! GrepCurrentFileName()
   execute 'Grep "'.expand("%:t:r").'"'
+  botright cwindow
+  redraw!
+  normal <C-W>W
 endfunction
 
 " bind K to grep word under cursor
@@ -465,7 +474,7 @@ command! Terminal :call termopen("bash -l", {"pty": 1}) | startinsert
 " http://vim.wikia.com/wiki/Using_normal_command_in_a_script_for_searching
 " http://vim.wikia.com/wiki/Search_using_quickfix_to_list_occurrences
 command! -nargs=1 LocalGrep :normal! /\v<args> | :silent lvimgrep <args> %
-command! -nargs=+ Grep :silent grep! <args>
+command! -nargs=+ Grep :silent grep! <args> | botright cwindow | redraw! | normal <C-W>W
 map <Leader>? :LocalGrep<Space>
 map <Leader>/ :Grep<Space>
 
@@ -550,15 +559,15 @@ let g:highlightedyank_highlight_duration = 1000
 " whether it is operating on a file) when adding entries. A value of 2 will
 " preserve the cursor position when the location-list or quickfix window is
 " opened.
-let g:neomake_open_list = 2
+let g:neomake_open_list = 0
 
 augroup configgroup
   autocmd!
   " Automaticaly open quickfix findow
   " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
   " wincmd p switch to previous window
-  autocmd QuickFixCmdPost [^l]* nested botright cwindow | redraw! | wincmd p
-  autocmd QuickFixCmdPost    l* nested lwindow | redraw! | wincmd p
+  "" autocmd QuickFixCmdPost [^l]* nested botright cwindow | redraw! | wincmd p
+  "" autocmd QuickFixCmdPost    l* nested lwindow | redraw! | wincmd p
   " Cursor position handling
   " http://vim.wikia.com/wiki/Avoid_scrolling_when_switch_buffers
   autocmd BufLeave * if !&diff | let b:winview = winsaveview() | endif
