@@ -581,7 +581,7 @@ augroup configgroup
   " autocmd BufWritePost,BufEnter * Neomake
   autocmd BufWritePost * Neomake
   autocmd FileType python BracelessEnable +indent
-  autocmd FileType jinja setlocal commentstring={#\ %s\ #}
+  autocmd FileType jinja,jinja.html setlocal commentstring={#\ %s\ #}
 
   " 'formatoptions' This is a sequence of letters which describes how automatic formatting is to be done.
   autocmd FileType * set fo-=o fo-=c
