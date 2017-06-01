@@ -435,6 +435,13 @@ map <Leader>lp <Esc>:lprevious<CR>
 map <Leader>ln <Esc>:lnext<CR>
 map <Leader>lc <Esc>:lclose<CR>
 
+" http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection
+" https://stackoverflow.com/a/3196630/3627387
+vnoremap <Leader>" :s/'\([^']*\)'/"\1"/<CR>
+vnoremap <Leader>' :s/"\([^"]*\)"/'\1'/<CR>
+" https://stackoverflow.com/questions/7652590/is-it-possible-to-map-c-to-in-vim
+" mapping for <C-/> typed with <C-V><C-/>
+"" vnoremap  <C-O>/\%V
 
 function! GetPythonStandardLibiraryPath()
   " https://github.com/neovim/neovim/blob/v0.1.7/runtime/autoload/health/provider.vim#L275
