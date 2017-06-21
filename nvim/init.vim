@@ -300,6 +300,7 @@ Plug 'mhinz/vim-signify'
 " Filetype plugins
 Plug 'tmux-plugins/vim-tmux'
 Plug 'digitaltoad/vim-pug'
+Plug 'posva/vim-vue'
 Plug 'vim-scripts/python_match.vim'
 Plug 'niftylettuce/Vim-Jinja2-Syntax'
 
@@ -589,6 +590,7 @@ augroup configgroup
   autocmd BufWritePost * Neomake
   autocmd FileType python BracelessEnable +indent
   autocmd FileType jinja,jinja.html setlocal commentstring={#\ %s\ #}
+  autocmd BufRead,BufNewFile Dockerfile.template set filetype=dockerfile
 
   " 'formatoptions' This is a sequence of letters which describes how automatic formatting is to be done.
   autocmd FileType * set fo-=o fo-=c
