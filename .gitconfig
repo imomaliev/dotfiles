@@ -16,11 +16,13 @@
 	rpull = pull --rebase
 	sup = submodule update
 	up = checkout
+	upc = "!f() { if [[ $OSTYPE == "linux-gnu" ]]; then git checkout $(clipit -p); else git checkout $(pbpaste); fi;}; f"
 	st = status
-	ci = commit -a
+	ci = commit
+	cim = commit -a -m
 	di = diff -r HEAD
 	ri = rebase -i
-	fixup = "!git ci --fixup=HEAD && EDITOR=true git ri --autosquash HEAD^^"
+	fixup = "!git ci -a --fixup=HEAD && EDITOR=true git ri --autosquash HEAD^^"
 	sh = stash
 	unsh = stash pop
 	br = checkout -b
@@ -31,7 +33,7 @@
 	puo = "!git push -u origin \"$(git rev-parse --abbrev-ref @)\""
 	puf = push -f
 	id = show-ref HEAD --hash
-	cl = "!f() { if [[ $# -eq 0 ]]; then git checkout -- . ;else git checkout -- $@; fi;}; f"
+	cl = "!f() { if [[ $# -eq 0 ]]; then git checkout -- . ; else git checkout -- $@; fi;}; f"
 	tags = tag --list
 [core]
 	excludesfile = ~/.gitignore_global
