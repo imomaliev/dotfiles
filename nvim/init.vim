@@ -1,18 +1,6 @@
 " Change init.vim with auto reload
 "" autocmd BufWritePost init.vim source $MYVIMRC
 
-" (Nvim by default) Detect filetype and enable plugin and indentation.
-""filetype plugin indent on
-
-" (Nvim by default) Switch syntax highlighting on according to the current value of the 'filetype' option.
-""syntax on
-
-" Show (partial) command in the last line of the screen.
-set showcmd
-
-" This option specifies a function to be used for Insert mode omni completion with CTRL-X CTRL-O.
-set omnifunc=syntaxcomplete#Complete
-
 " Completion mode that is used for the character specified with 'wildchar'.
 set wildmode=longest:full,full
 
@@ -38,9 +26,6 @@ set tagcase=match
 
 " Show the line and column number of the cursor position, separated by a comma.
 set ruler
-
-" (Nvim by default) Influences when the last window will have a status line.
-""set laststatus=2
 
 " Show tabs as CTRL-I is displayed, display $ after end of line.
 set list
@@ -572,6 +557,11 @@ let g:neomake_open_list = 0
 
 augroup configgroup
   autocmd!
+  " This option specifies a function to be used for Insert mode omni completion with CTRL-X CTRL-O.
+  " Set completion to this script only if a specific plugin does not already exist for that filetype.
+  if has("autocmd") && exists("+omnifunc")
+    autocmd Filetype * if &omnifunc == "" | setlocal omnifunc=syntaxcomplete#Complete | endif
+  endif
   " Automaticaly open quickfix findow
   " http://vim.wikia.com/wiki/Automatically_open_the_quickfix_window_on_:make
   " wincmd p switch to previous window
