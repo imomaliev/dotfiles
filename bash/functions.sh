@@ -51,6 +51,7 @@ dotfiles() {
 
 
 _create_venv() {
+    dotfiles
     local prompt=$1
     if [[ -z $prompt ]] || [[ $prompt == -* ]]; then
         prompt=$(basename $(pwd))
@@ -77,8 +78,8 @@ _deactivate_venv() {
 venv() {
     case $1 in
         "")
-            source venv/bin/activate
             dotfiles
+            source venv/bin/activate
             if [[ -n "$TMUX" ]]; then
                 tmux set-environment VIRTUAL_ENV $VIRTUAL_ENV
             fi
