@@ -274,6 +274,7 @@ Plug 'vim-scripts/camelcasemotion'
 Plug 'wellle/targets.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'ervandew/supertab'
+Plug 'maksimr/vim-jsbeautify'
 " Plug 'imomaliev/registers.vim'
 " Plug 'vim-scripts/YankRing.vim'
 
@@ -362,6 +363,8 @@ function! GrepCurrentFileName()
   redraw!
   normal <C-W>W
 endfunction
+
+command! GrepCurrentFileName call GrepCurrentFileName()
 
 " bind K to grep word under cursor
 " http://stackoverflow.com/a/12170748/3627387
