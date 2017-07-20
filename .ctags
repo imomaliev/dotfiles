@@ -7,8 +7,11 @@
 --exclude=*.pyc
 --exclude=*.pyo
 --exclude=*.hpp
+--exclude=*.pxd
+--exclude=*.pth
 --exclude=.DS_Store
 --exclude=*.min.js
+--exclude=*.spec.js
 --exclude=*.css
 --exclude=*.html
 --exclude=static/*
