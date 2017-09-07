@@ -12,7 +12,7 @@
 	prune = true
 [alias]
 	rollback = reset --soft HEAD^
-	graph = log --graph
+	graph = log --graph --decorate
 	rpull = pull --rebase
 	sup = submodule update
 	up = checkout
