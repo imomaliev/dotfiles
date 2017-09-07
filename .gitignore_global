@@ -3,3 +3,4 @@
 .dotfiles/
 .tern-project
 Session.vim
+.tern-port
