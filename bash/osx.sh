@@ -18,3 +18,7 @@ fi
 source $HOME/Development/dotfiles/bash/aliases.sh
 source $HOME/Development/dotfiles/bash/functions.sh
 source $HOME/Development/dotfiles/bash/completions.sh
+
+if [ -n "$VIRTUAL_ENV" ]; then
+    source $VIRTUAL_ENV/bin/activate
+fi
