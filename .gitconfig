@@ -30,6 +30,7 @@
 	brmv = branch -m
 	branches = branch --list
 	brs = branch --list
+	brprune = "!f() { git branch --merged | grep -v -e 'master\\|develop\\|\\*' | xargs -n 1 git branch -d; }; f"
 	puo = "!git push -u origin \"$(git rev-parse --abbrev-ref @)\""
 	puf = push -f
 	id = show-ref HEAD --hash
