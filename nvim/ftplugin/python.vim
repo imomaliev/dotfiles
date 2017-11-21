@@ -28,6 +28,7 @@ iabbrev pdb import pdb; pdb.set_trace()
 iabbrev ipdb import ipdb; ipdb.set_trace()
 iabbrev rpdb import rpdb; rpdb.set_trace()
 iabbrev npdb import nose; nose.tools.set_trace()
+iabbrev cdb from celery.contrib import rdb; rdb.set_trace()
 
 " TODO: Check exactly end of the line
 " nnoremap <buffer> <expr> C (getline('.')[getpos('.')[2]:] =~ ':')? "ct:" : "c$"

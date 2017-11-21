@@ -584,7 +584,8 @@ augroup configgroup
   autocmd BufWritePost * Neomake
   autocmd FileType python BracelessEnable +indent
   autocmd FileType jinja,jinja.html setlocal commentstring={#\ %s\ #}
-  autocmd BufRead,BufNewFile Dockerfile.template set filetype=dockerfile
+  autocmd BufRead,BufNewFile Dockerfile* setl filetype=dockerfile ts=4 sw=4 sts=4 et
+  " autocmd BufRead,BufNewFile docker-compose*.{yaml,yml}* setl ts=2 sw=2 sts=2
 
   " 'formatoptions' This is a sequence of letters which describes how automatic formatting is to be done.
   autocmd FileType * set fo-=o fo-=c
