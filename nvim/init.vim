@@ -234,6 +234,7 @@ function! ApplyLocalSettings(dirname, filename)
       set undodir+=.dotfiles/nvim/undo
       set tags+=.dotfiles/tags
       let g:ctrlp_cache_dir = ".dotfiles/nvim/.cache/ctrlp"
+      let g:miniyank_filename = ".dotfiles/nvim/.miniyank.mpack"
   endif
 endfunction
 
@@ -243,6 +244,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" base
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " keymap
 Plug 'imomaliev/mac-russian-colemak.vim'
 
@@ -277,7 +280,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'ervandew/supertab'
 Plug 'maksimr/vim-jsbeautify'
 " Plug 'imomaliev/registers.vim'
-" Plug 'vim-scripts/YankRing.vim'
+Plug 'bfredl/nvim-miniyank'
 
 " Vcs
 Plug 'tpope/vim-fugitive'
@@ -394,8 +397,25 @@ set imsearch=0
 " To define a mapping which uses the mapleader variable.
 let mapleader = "\<Space>"
 
-map <Leader>r <Esc>:registers<CR>
 map <Leader>m <Esc>:marks<CR>
+
+" Denite
+map <Leader>r <Esc>:Denite miniyank<CR>
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-j>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-k>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
+" Miniyank
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
 
 " Unnamedplus register mappings
 map <Leader>p "+p
