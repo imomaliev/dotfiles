@@ -264,7 +264,6 @@ Plug 'neomake/neomake'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
-Plug 'roxma/vim-tmux-clipboard'
 
 " Edit
 Plug 'Raimondi/delimitMate'

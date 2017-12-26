@@ -4,6 +4,7 @@
 --exclude=venv/local/*
 --exclude=.git*
 --exclude=.hg*
+--exclude=*.h
 --exclude=*.pyc
 --exclude=*.pyo
 --exclude=*.hpp
