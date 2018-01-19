@@ -280,6 +280,7 @@ Plug 'ervandew/supertab'
 Plug 'maksimr/vim-jsbeautify'
 " Plug 'imomaliev/registers.vim'
 Plug 'bfredl/nvim-miniyank'
+Plug 'roxma/vim-tmux-clipboard'
 
 " Vcs
 Plug 'tpope/vim-fugitive'
