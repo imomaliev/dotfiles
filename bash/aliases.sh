@@ -17,6 +17,9 @@ alias rpdb='nc 127.0.0.1 4444'
 alias mchown='chown $USER:$USER'
 alias rchown='chown root:root'
 
+alias python='python3'
+alias pip='pip3'
+
 alias noveo_connect='sshfs noveo:$HOME/Development ~/Noveo/Remote/'
 alias noveo_disconnect='umount ~/Noveo/Remote/'
 

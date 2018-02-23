@@ -31,6 +31,7 @@ export PS1=" \[\e[1;35m\]\$(__dotfiles_ps1)\[\e[m\]\\[\e[1;33m\]\[\e[1;34m\]\w\[
 nvim=$(which nvim)
 export EDITOR=$nvim
 export VIEWER=$nvim
+export PIPENV_VENV_IN_PROJECT=1
 
 if [ -n "$DOTFILES" ]; then
     source $DOTFILES;
