@@ -415,6 +415,7 @@ call denite#custom#map(
       \ 'noremap'
       \)
 " Miniyank
+let g:miniyank_maxitems = 100
 map p <Plug>(miniyank-autoput)
 map P <Plug>(miniyank-autoPut)
 
