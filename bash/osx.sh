@@ -7,12 +7,8 @@ export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
 
 
 # completion
-# bash-compleation 2 need to `brew tap homebrew/versions
-# if [ -f $HOMEBREW_PREFIX/share/bash-completion/bash_completion ]; then
-#     . $HOMEBREW_PREFIX/share/bash-completion/bash_completion
-# fi
-if [ -f $HOMEBREW_PREFIX/etc/bash_completion ]; then
-    source $HOMEBREW_PREFIX/etc/bash_completion
+if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+. /usr/local/share/bash-completion/bash_completion
 fi
 
 source $HOME/Development/dotfiles/bash/aliases.sh

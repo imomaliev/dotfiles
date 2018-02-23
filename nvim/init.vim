@@ -256,14 +256,16 @@ Plug 'itchyny/lightline.vim'
 " IDE
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/context_filetype.vim'
 Plug 'neomake/neomake'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
+
+" completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/context_filetype.vim'
 
 " Edit
 Plug 'Raimondi/delimitMate'
