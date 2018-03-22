@@ -16,23 +16,33 @@ __hg_ps1() {
     hg prompt "[{branch}] " 2> /dev/null
 }
 
-__dotfiles_ps1() {
-    if [ -n "$DOTFILES" ]; then
-        echo "{$(basename $(dirname $(dirname $DOTFILES)))} "
+__venv_ps1() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        if [[ "$VIRTUAL_ENV" == *.venv ]]; then
+            echo "($(basename $PWD)) "
+        else
+            echo "($(basename $VIRTUAL_ENV)) "
+        fi
     else
         echo ""
     fi
 }
 
+__dotfiles_ps1() {
+    if [[ -n "$PIPENV_ACTIVE" ]]; then
+        echo "{$(basename $PWD)} "
+    else
+        echo ""
+    fi
+}
+
+eval "$(direnv hook bash)"
+
 # prompt customization
-export PS1=" \[\e[1;35m\]\$(__dotfiles_ps1)\[\e[m\]\\[\e[1;33m\]\[\e[1;34m\]\w\[\e[m\] \[\e[1;33m\]\$(__hg_ps1)\[\e[m\]\\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\[\e[1;32m\]|\D{%H:%M:%S %d-%b-%y}|\[\e[m\]\n ❯ "
+export PS1=" \[\e[1;30m\]\$(__venv_ps1)\[\e[m\]\[\e[1;35m\]\$(__dotfiles_ps1)\[\e[m\]\\[\e[1;33m\]\[\e[1;34m\]\w\[\e[m\] \[\e[1;33m\]\$(__hg_ps1)\[\e[m\]\\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\[\e[1;32m\]|\D{%H:%M:%S %d-%b-%y}|\[\e[m\]\n ❯ "
 
 # set default editor to nvim
 nvim=$(which nvim)
 export EDITOR=$nvim
 export VIEWER=$nvim
 export PIPENV_VENV_IN_PROJECT=1
-
-if [ -n "$DOTFILES" ]; then
-    source $DOTFILES;
-fi

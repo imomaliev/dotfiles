@@ -3,6 +3,8 @@ syntax: glob
 *~
 .DS_Store
 .dotfiles/
+.envrc
 .venv/
 .tern-project
+.tern-port
 Session.vim

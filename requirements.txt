@@ -1,9 +1,6 @@
 pip
 neovim
 setuptools
-pycodestyle
-pylint
 ipython
 ipdb
 rpdb
-pylint_django

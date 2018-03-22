@@ -480,7 +480,7 @@ endfunction
 
 
 " tags mappings
-map <Leader>gg <Esc>:execute "!ctags . ".GetPythonStandardLibiraryPath()<CR>
+map <Leader>gg <Esc>:execute "!ctags . ".$VIRTUAL_ENV." ".GetPythonStandardLibiraryPath()<CR>
 map <Leader>gc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose <Bar> UndotreeHide<CR>
 
 " spelling mappings
@@ -582,6 +582,10 @@ let g:highlightedyank_highlight_duration = 1000
 " preserve the cursor position when the location-list or quickfix window is
 " opened.
 let g:neomake_open_list = 0
+
+" Use bash syntax as default for shell scripts
+let g:is_bash = 1
+
 
 augroup configgroup
   autocmd!

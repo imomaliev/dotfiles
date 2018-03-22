@@ -1,7 +1,8 @@
 *~
 .DS_Store
 .dotfiles/
+.envrc
 .venv/
 .tern-project
-Session.vim
 .tern-port
+Session.vim
