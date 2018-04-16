@@ -20,7 +20,7 @@ lsft() {
         # https://superuser.com/questions/231704/list-all-unique-extensions-for-files-contained-in-a-directory
         # find . -type f -regextype posix-extended -regex "\./.+[^/%]\.[^/]+" | sed "s/.*\.//" | sort -u
         # FIXME: use something more correct than grep -v
-        find . -type f | grep -ve "\.git/" -ve "\.dotfiles/" -ve "\.hg/" | sed -rn 's|.*/[^/]+\.([^/.]+)$|\1|p' | sort -u
+        find . -type f | grep -ve "\.git/" -ve "\.direnv/" -ve "\.hg/" | sed -rn 's|.*/[^/]+\.([^/.]+)$|\1|p' | sort -u
     else
         for ftype in "$@"; do
             find . -name "*.$ftype"

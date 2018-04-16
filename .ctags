@@ -19,7 +19,7 @@
 --exclude=static/*
 
 --python-kinds=-i
--f .dotfiles/tags
+-f .direnv/tags
 
 --langdef=js
 --langmap=js:.js

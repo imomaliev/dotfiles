@@ -230,11 +230,11 @@ function! ApplyLocalSettings(dirname, filename)
   let l:settingsFile = a:dirname . a:filename
   if filereadable(l:settingsFile)
       exe ':source' . l:settingsFile
-      exe "set runtimepath+=" . a:dirname . "/.dotfiles/nvim"
-      set undodir+=.dotfiles/nvim/undo
-      set tags+=.dotfiles/tags
-      let g:ctrlp_cache_dir = ".dotfiles/nvim/.cache/ctrlp"
-      let g:miniyank_filename = ".dotfiles/nvim/.miniyank.mpack"
+      exe "set runtimepath+=" . a:dirname . "/.direnv/nvim"
+      set undodir+=.direnv/nvim/undo
+      set tags+=.direnv/tags
+      let g:ctrlp_cache_dir = ".direnv/nvim/.cache/ctrlp"
+      let g:miniyank_filename = ".direnv/nvim/.miniyank.mpack"
   endif
 endfunction
 
@@ -298,7 +298,7 @@ Plug 'niftylettuce/Vim-Jinja2-Syntax'
 Plug 'cespare/vim-toml'
 
 " https://github.com/junegunn/vim-plug/issues/300#issuecomment-149173517
-""call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/plugins.vim')
+""call ApplyLocalSettings(expand('.'), '/.direnv/nvim/plugins.vim')
 
 call plug#end()
 
@@ -309,13 +309,13 @@ noremap ,, ,
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor\ -U\ -p\ \".dotfiles/.agignore\"\ $*
+  set grepprg=ag\ --nogroup\ --nocolor\ -U\ -p\ \".direnv/.agignore\"\ $*
 
   function! s:agwildignore()
     let ignore = join(map(split(&wig, ','), '"--ignore \"".v:val."\""'), ' ')
 
     " Set the user_command option
-    let g:ctrlp_user_command = 'ag -l --nocolor -U -p ".dotfiles/.agignore" '.ignore.' -g "" %s'
+    let g:ctrlp_user_command = 'ag -l --nocolor -U -p ".direnv/.agignore" '.ignore.' -g "" %s'
   endfunction
 
   call s:agwildignore()
@@ -504,7 +504,7 @@ map <Leader>/ :Grep<Space>
 " NERDTree
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$', '__pycache__']
 let g:NERDTreeShowBookmarks = 1
-let g:NERDTreeBookmarksFile = '.dotfiles/.NERDTreeBookmarks'
+let g:NERDTreeBookmarksFile = '.direnv/nvim/.NERDTreeBookmarks'
 nnoremap <Leader>nn <Esc>:NERDTreeToggle<CR>
 nnoremap <Leader>nf <Esc>:NERDTreeFind<CR>
 nnoremap <Leader>nc <Esc>:NERDTreeClose<CR>
@@ -625,4 +625,4 @@ augroup configgroup
   autocmd VimResized * :wincmd =
 augroup END
 
-call ApplyLocalSettings(expand('.'), '/.dotfiles/nvim/init.vim')
+call ApplyLocalSettings(expand('.'), '/.direnv/nvim/init.vim')

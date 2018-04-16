@@ -20,3 +20,17 @@ layout_folder_pipenv() {
   export PIPENV_ACTIVE=1
   cd ..
 }
+
+
+layout_nvim() {
+  local nvim_dir=$(direnv_layout_dir)/nvim/
+  if [[ ! -d "$nvim_dir" ]]; then
+    mkdir -p $nvim_dir
+  fi
+  touch "${nvim_dir}init.vim"
+}
+
+
+layout_ag() {
+  touch $(direnv_layout_dir)/.agignore
+}
