@@ -1,7 +1,8 @@
 layout_folder_pipenv() {
-  local folder=$1
+  local folder=.
   local pipfile="Pipfile"
   if [[ $# -ne 0 ]]; then
+	  folder=$1
       pipfile=$folder"Pipfile"
   fi
   if [[ ! -f $pipfile ]]; then
@@ -18,7 +19,7 @@ layout_folder_pipenv() {
   export VIRTUAL_ENV=$(pipenv --venv)
   PATH_add "$VIRTUAL_ENV/bin"
   export PIPENV_ACTIVE=1
-  cd ..
+  cd -
 }
 
 
