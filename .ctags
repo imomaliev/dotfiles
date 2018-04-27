@@ -2,6 +2,7 @@
 --tag-relative=yes
 
 --exclude=venv/local/*
+--exclude=.tox
 --exclude=.git*
 --exclude=.hg*
 --exclude=*.h
