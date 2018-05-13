@@ -233,7 +233,7 @@ function! ApplyLocalSettings(dirname, filename)
       exe "set runtimepath+=" . a:dirname . "/.direnv/nvim"
       set undodir+=.direnv/nvim/undo
       set tags+=.direnv/tags
-      let g:ctrlp_cache_dir = ".direnv/nvim/.cache/ctrlp"
+      let g:fzf_history_dir = ".direnv/nvim/fzf-history"
       let g:miniyank_filename = ".direnv/nvim/.miniyank.mpack"
   endif
 endfunction
@@ -254,7 +254,8 @@ Plug 'imomaliev/zenburn.vim'
 Plug 'itchyny/lightline.vim'
 
 " IDE
-Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'neomake/neomake'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -315,15 +316,10 @@ if executable('ag')
     let ignore = join(map(split(&wig, ','), '"--ignore \"".v:val."\""'), ' ')
 
     " Set the user_command option
-    let g:ctrlp_user_command = 'ag -l --nocolor -U -p ".direnv/.agignore" '.ignore.' -g "" %s'
   endfunction
 
   call s:agwildignore()
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  ""let g:ctrlp_use_caching = 1
 endif
 
 function! GetVisualSelection()
@@ -478,11 +474,6 @@ function! GetPythonStandardLibiraryPath()
   return fnamemodify(resolve(python_bin), ':h:h').'/lib/python'.python_version
 endfunction
 
-
-" tags mappings
-map <Leader>gg <Esc>:execute "!ctags . ".$VIRTUAL_ENV." ".GetPythonStandardLibiraryPath()<CR>
-map <Leader>gc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose <Bar> UndotreeHide<CR>
-
 " spelling mappings
 map <Leader>ss <Esc>:setlocal spell!<CR>
 " always forget what mapping for adding spelling
@@ -510,14 +501,28 @@ nnoremap <Leader>nf <Esc>:NERDTreeFind<CR>
 nnoremap <Leader>nc <Esc>:NERDTreeClose<CR>
 
 
-" CtrlP
-let g:ctrlp_cmd = ':NERDTreeClose\|CtrlP'
-nnoremap <Leader>tp <Esc>:NERDTreeClose \| CtrlPTag<CR>
-nnoremap <Leader>tl <Esc>:NERDTreeClose \| CtrlPBuffer<CR>
-nnoremap <Leader>tf <Esc>:NERDTreeClose \| CtrlPMRUFiles<CR>
-let g:ctrlp_map = '<Leader>tt'
-" -'r' here so it will work properly when there is sub vcs
-let g:ctrlp_working_path_mode = 'a'
+" FZF
+let g:fzf_layout = { 'down': '~30%' }
+
+function FZFClose()
+  let buffers = filter(range(1, bufnr('$')), 'bufname(v:val) =~# ";#FZF"')
+  for i in buffers
+    " Delete buffer by ID
+    execute 'bw! ' . i
+  endfor
+  " we need to sleep here so fzf will be focused properly
+  sleep 10m
+endfunction
+
+" https://github.com/junegunn/fzf.vim/issues/113
+nnoremap <Leader>tt <Esc>:NERDTreeClose \| call FZFClose() \| GFiles<CR>
+nnoremap <Leader>tp <Esc>:NERDTreeClose \| call FZFClose() \| Tags<CR>
+nnoremap <Leader>tl <Esc>:NERDTreeClose \| call FZFClose() \| Buffers<CR>
+nnoremap <Leader>tf <Esc>:NERDTreeClose \| call FZFClose() \| History<CR>
+
+" tags mappings
+map <Leader>gg <Esc>:execute "!ctags . ".$VIRTUAL_ENV." ".GetPythonStandardLibiraryPath()<CR>
+map <Leader>gc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose <Bar> UndotreeHide <Bar> call FZFClose()<CR>
 
 " Surround
 " function call manipulation
@@ -620,6 +625,10 @@ augroup configgroup
   " 'formatoptions' This is a sequence of letters which describes how automatic formatting is to be done.
   autocmd FileType * set fo-=o fo-=c
   autocmd TermOpen * setlocal nolist
+  autocmd FileType fzf nnoremap <buffer> q :bd!<CR>
+  autocmd FileType fzf tnoremap <buffer> <C-6> <Nop>
+  autocmd FileType fzf tnoremap <buffer> <C-^> <Nop>
+  "autocmd BufLeave FileType fzf :bd!
 
   " Autoresize windows
   autocmd VimResized * :wincmd =
