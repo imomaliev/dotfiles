@@ -310,12 +310,10 @@ noremap ,, ,
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor\ -U\ -p\ \".direnv/.agignore\"\ $*
+  set grepprg=ag\ --nogroup\ --nocolor\ --hidden\ -U\ -p\ \".direnv/.agignore\"\ $*
 
   function! s:agwildignore()
     let ignore = join(map(split(&wig, ','), '"--ignore \"".v:val."\""'), ' ')
-
-    " Set the user_command option
   endfunction
 
   call s:agwildignore()
@@ -474,6 +472,13 @@ function! GetPythonStandardLibiraryPath()
   return fnamemodify(resolve(python_bin), ':h:h').'/lib/python'.python_version
 endfunction
 
+function! GetCtagsPaths()
+  if $VIRTUAL_ENV =~ $PWD
+    return ". ".GetPythonStandardLibiraryPath()
+  else
+    return ". "."$VIRTUAL_ENV ".GetPythonStandardLibiraryPath()
+  endif
+endfunction
 " spelling mappings
 map <Leader>ss <Esc>:setlocal spell!<CR>
 " always forget what mapping for adding spelling
@@ -514,15 +519,17 @@ function FZFClose()
   sleep 10m
 endfunction
 
+command! -nargs=0 -bar CloseAll :lclose | cclose | helpclose | NERDTreeClose | UndotreeHide | call FZFClose()
+
 " https://github.com/junegunn/fzf.vim/issues/113
-nnoremap <Leader>tt <Esc>:NERDTreeClose \| call FZFClose() \| GFiles<CR>
-nnoremap <Leader>tp <Esc>:NERDTreeClose \| call FZFClose() \| Tags<CR>
-nnoremap <Leader>tl <Esc>:NERDTreeClose \| call FZFClose() \| Buffers<CR>
-nnoremap <Leader>tf <Esc>:NERDTreeClose \| call FZFClose() \| History<CR>
+nnoremap <Leader>tt <Esc>:CloseAll \| GFiles<CR>
+nnoremap <Leader>tp <Esc>:CloseAll \| Tags<CR>
+nnoremap <Leader>tl <Esc>:CloseAll \| Buffers<CR>
+nnoremap <Leader>tf <Esc>:CloseAll \| History<CR>
 
 " tags mappings
-map <Leader>gg <Esc>:execute "!ctags . ".$VIRTUAL_ENV." ".GetPythonStandardLibiraryPath()<CR>
-map <Leader>gc :lclose <Bar> cclose <Bar> helpclose <Bar> NERDTreeClose <Bar> UndotreeHide <Bar> call FZFClose()<CR>
+map <Leader>gg <Esc>:execute "!ctags ".GetCtagsPaths()<CR>
+map <Leader>gc :CloseAll<CR>
 
 " Surround
 " function call manipulation
@@ -626,9 +633,10 @@ augroup configgroup
   autocmd FileType * set fo-=o fo-=c
   autocmd TermOpen * setlocal nolist
   autocmd FileType fzf nnoremap <buffer> q :bd!<CR>
+  autocmd FileType fzf nnoremap <buffer> <C-C> :bd!<CR>
   autocmd FileType fzf tnoremap <buffer> <C-6> <Nop>
   autocmd FileType fzf tnoremap <buffer> <C-^> <Nop>
-  "autocmd BufLeave FileType fzf :bd!
+  " autocmd BufLeave fzf :bd!
 
   " Autoresize windows
   autocmd VimResized * :wincmd =
