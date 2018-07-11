@@ -377,6 +377,7 @@ vnoremap <silent> K :call GrepVisualSelection()<CR>
 
 " Font and colorscheme
 ""set termguicolors
+" let g:zenburn_high_Contrast = 1
 let g:zenburn_force_dark_Background = 1
 color zenburn
 
@@ -505,7 +506,6 @@ nnoremap <Leader>nn <Esc>:NERDTreeToggle<CR>
 nnoremap <Leader>nf <Esc>:NERDTreeFind<CR>
 nnoremap <Leader>nc <Esc>:NERDTreeClose<CR>
 
-
 " FZF
 let g:fzf_layout = { 'down': '~30%' }
 
@@ -522,7 +522,7 @@ endfunction
 command! -nargs=0 -bar CloseAll :lclose | cclose | helpclose | NERDTreeClose | UndotreeHide | call FZFClose()
 
 " https://github.com/junegunn/fzf.vim/issues/113
-nnoremap <Leader>tt <Esc>:CloseAll \| GFiles<CR>
+nnoremap <Leader>tt <Esc>:CloseAll \| Files<CR>
 nnoremap <Leader>tp <Esc>:CloseAll \| Tags<CR>
 nnoremap <Leader>tl <Esc>:CloseAll \| Buffers<CR>
 nnoremap <Leader>tf <Esc>:CloseAll \| History<CR>
@@ -532,6 +532,7 @@ map <Leader>gg <Esc>:execute "!ctags ".GetCtagsPaths()<CR>
 map <Leader>gc :CloseAll<CR>
 
 " Surround
+let g:surround_{char2nr('c')} = "```\r```"
 " function call manipulation
 nmap dsf diw"_ds(:silent! call repeat#set("dsf")<CR>
 nmap <expr> daf 'viwl%"'.v:register.'d:silent! call repeat#set("daf")<CR>'

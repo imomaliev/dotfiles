@@ -46,3 +46,6 @@ nvim=$(which nvim)
 export EDITOR=$nvim
 export VIEWER=$nvim
 export PIPENV_VENV_IN_PROJECT=1
+export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -g ''"
+export PYENV_ROOT="$(pyenv root)"
+export PATH="$PYENV_ROOT/bin:$PATH"

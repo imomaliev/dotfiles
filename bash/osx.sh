@@ -8,7 +8,11 @@ export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # completion
 if [ -f /usr/local/share/bash-completion/bash_completion ]; then
-. /usr/local/share/bash-completion/bash_completion
+    . /usr/local/share/bash-completion/bash_completion
+fi
+
+if [ -x "$(command -v git)" ]; then
+    source <(doctl completion bash)
 fi
 
 source $HOME/Development/dotfiles/bash/aliases.sh
