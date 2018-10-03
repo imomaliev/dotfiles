@@ -250,6 +250,7 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'imomaliev/mac-russian-colemak.vim'
 
 " Visual
+" Plug '/Users/batiskaf/Development/Vim/zenburn.vim'
 Plug 'imomaliev/zenburn.vim'
 Plug 'itchyny/lightline.vim'
 
@@ -261,6 +262,7 @@ Plug 'neomake/neomake'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
+" Plug 'severin-lemaignan/vim-minimap'
 
 " completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -279,7 +281,7 @@ Plug 'tweekmonster/braceless.vim'
 Plug 'vim-scripts/camelcasemotion'
 Plug 'wellle/targets.vim'
 Plug 'machakann/vim-highlightedyank'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'maksimr/vim-jsbeautify'
 " Plug 'imomaliev/registers.vim'
 Plug 'bfredl/nvim-miniyank'
@@ -293,6 +295,8 @@ Plug 'mhinz/vim-signify'
 " Filetype plugins
 Plug 'tmux-plugins/vim-tmux'
 Plug 'digitaltoad/vim-pug'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
 Plug 'vim-scripts/python_match.vim'
 Plug 'niftylettuce/Vim-Jinja2-Syntax'
@@ -451,6 +455,9 @@ vnoremap <Leader>' :s/"\([^"]*\)"/'\1'/<CR>
 " https://stackoverflow.com/questions/7652590/is-it-possible-to-map-c-to-in-vim
 " mapping for <C-/> typed with <C-V><C-/>
 "" vnoremap  <C-O>/\%V
+
+let g:python_host_prog = '/Users/batiskaf/.config/nvim/python2/bin/python'
+let g:python3_host_prog = '/Users/batiskaf/.config/nvim/python3/bin/python'
 
 function! GetPythonStandardLibiraryPath()
   " https://github.com/neovim/neovim/blob/v0.1.7/runtime/autoload/health/provider.vim#L275
