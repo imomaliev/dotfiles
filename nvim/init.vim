@@ -15,6 +15,7 @@ set suffixes+=.pyc
 
 " Print the line number in front of each line.
 set number
+set relativenumber
 
 " If the 'ignorecase' option is on, the case of normal letters is ignored.
 set ignorecase
@@ -509,6 +510,7 @@ map <Leader>/ :Grep<Space>
 let g:NERDTreeIgnore = ['\.pyc$', '\.pyo$', '__pycache__']
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeBookmarksFile = '.direnv/nvim/.NERDTreeBookmarks'
+let g:NERDTreeShowLineNumbers = 1
 nnoremap <Leader>nn <Esc>:NERDTreeToggle<CR>
 nnoremap <Leader>nf <Esc>:NERDTreeFind<CR>
 nnoremap <Leader>nc <Esc>:NERDTreeClose<CR>
