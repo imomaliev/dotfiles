@@ -15,6 +15,7 @@ set suffixes+=.pyc
 
 " Print the line number in front of each line.
 set number
+" Show the line number relative to the line with the cursor in front of each line.
 set relativenumber
 
 " If the 'ignorecase' option is on, the case of normal letters is ignored.
@@ -22,11 +23,6 @@ set ignorecase
 set smartcase
 set tagcase=match
 
-" Show the line number relative to the line with the cursor in front of each line.
-""set relativenumber
-
-" Show the line and column number of the cursor position, separated by a comma.
-set ruler
 
 " Show tabs as CTRL-I is displayed, display $ after end of line.
 set list
