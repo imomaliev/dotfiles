@@ -19,7 +19,7 @@ __hg_ps1() {
 __venv_ps1() {
     if [[ -n "$VIRTUAL_ENV" ]]; then
         if [[ "$VIRTUAL_ENV" == *.venv ]]; then
-            echo "($(basename $PWD)) "
+            echo "($(basename $(dirname $(dirname $VIRTUAL_ENV)))) "
         else
             echo "($(basename $VIRTUAL_ENV)) "
         fi
@@ -29,8 +29,8 @@ __venv_ps1() {
 }
 
 __dotfiles_ps1() {
-    if [[ -n "$PIPENV_ACTIVE" ]]; then
-        echo "{$(basename $PWD)} "
+    if [[ -n "$DIRENV_DIR" ]]; then
+        echo "{$(basename ${DIRENV_DIR:1})} "
     else
         echo ""
     fi

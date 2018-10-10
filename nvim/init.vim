@@ -23,7 +23,6 @@ set ignorecase
 set smartcase
 set tagcase=match
 
-
 " Show tabs as CTRL-I is displayed, display $ after end of line.
 set list
 
@@ -62,6 +61,7 @@ set splitbelow
 
 " Minimal number of screen lines to keep above and below the cursor.
 set scrolloff=999
+
 " backup
 set nobackup
 set nowritebackup
@@ -564,6 +564,15 @@ call deoplete#custom#option('sources', {
 \})
 
 " Lightline
+function! LightlineMode()
+  return expand('%:t') ==# '__Tagbar__.1' ? 'Tagbar':
+        \ expand('%:t') ==# 'NERD_tree_1' ? 'NERDTree' :
+        \ &filetype ==# 'unite' ? 'Unite' :
+        \ &filetype ==# 'vimfiler' ? 'VimFiler' :
+        \ &filetype ==# 'vimshell' ? 'VimShell' :
+        \ lightline#mode()
+endfunction
+
 let g:lightline = {
     \ 'active': {
         \ 'left': [ [ 'mode', 'paste' ],
@@ -580,6 +589,9 @@ let g:lightline = {
     \ },
     \ 'component': {
     \   'tagbar': '%{tagbar#currenttag("[%s]", "", "f")}',
+    \ },
+    \ 'component_function': {
+    \   'mode': 'LightlineMode',
     \ }
 \}
 
