@@ -132,10 +132,10 @@ inoremap <CR> <C-G>u<CR>
 " nnoremap <CR> o<Esc>
 
 " with scrolloff!=0 'H' and 'L' are useless so we map them to start and end of line
-noremap <expr> H (col('.') == matchend(getline('.'), '^\s*')+1 ? '0' : '^')
-noremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$' : 'g_')
-" do not include endofline in visual selection
-vnoremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$h' : 'g_')
+" noremap <expr> H (col('.') == matchend(getline('.'), '^\s*')+1 ? '0' : '^')
+" noremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$' : 'g_')
+" " do not include endofline in visual selection
+" vnoremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$h' : 'g_')
 
 " virtual editing means that the cursor can be positioned where there is no actual character.
 " onemore: Allow the cursor to move just past the end of the line
@@ -250,12 +250,14 @@ Plug 'imomaliev/mac-russian-colemak.vim'
 " Plug '/Users/batiskaf/Development/Vim/zenburn.vim'
 Plug 'imomaliev/zenburn.vim'
 Plug 'itchyny/lightline.vim'
+" Plug 'ryanoasis/vim-devicons'
 
 " IDE
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'neomake/neomake'
+Plug 'ambv/black'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
@@ -538,6 +540,7 @@ map <Leader>gc :CloseAll<CR>
 
 " Surround
 let g:surround_{char2nr('c')} = "```\r```"
+let g:surround_{char2nr('d')} = '"""\r"""'
 " function call manipulation
 nmap dsf diw"_ds(:silent! call repeat#set("dsf")<CR>
 nmap <expr> daf 'viwl%"'.v:register.'d:silent! call repeat#set("daf")<CR>'
@@ -616,6 +619,11 @@ let g:highlightedyank_highlight_duration = 1000
 " opened.
 let g:neomake_open_list = 0
 
+" Black
+let g:black_skip_string_normalization = 1
+" let g:black_linelength = 100
+let g:black_virtualenv = '/Users/batiskaf/.config/nvim/python3/'
+
 " Use bash syntax as default for shell scripts
 let g:is_bash = 1
 
@@ -643,6 +651,7 @@ augroup configgroup
   " autocmd TextChanged,InsertLeave * if &buftype != 'nofile' | :lockmarks write
   " autocmd BufWritePost,BufEnter * Neomake
   autocmd BufWritePost * Neomake
+  autocmd BufWritePre *.py execute ':Black'
   autocmd FileType python BracelessEnable +indent
   autocmd FileType jinja,jinja.html setlocal commentstring={#\ %s\ #}
   autocmd BufRead,BufNewFile Dockerfile* setl filetype=dockerfile ts=4 sw=4 sts=4 et
