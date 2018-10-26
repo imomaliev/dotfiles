@@ -36,6 +36,7 @@
 	id = show-ref HEAD --hash
 	cl = "!f() { if [[ $# -eq 0 ]]; then git checkout -- . ; else git checkout -- $@; fi;}; f"
 	tags = tag --list
+	tp = "!f() { git tag -a $1 && git push origin $1;}; f"
 [core]
 	excludesfile = ~/.gitignore_global
 [merge]

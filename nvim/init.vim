@@ -38,13 +38,12 @@ set nowrap
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-""set expandtab
+set expandtab
 
 " When on, the ':substitute' flag 'g' is default on.
 set gdefault
 
 " (Nvim by default) indent when moving to the next line while writing code
-""set autoindent
 set smartindent
 
 " show a visual line under the cursor's current line
@@ -79,6 +78,9 @@ set autowriteall
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
+set encoding=utf-8
+
+set foldmethod=syntax
 " Enable the use of the mouse.
 set mouse=a
 
@@ -132,10 +134,10 @@ inoremap <CR> <C-G>u<CR>
 " nnoremap <CR> o<Esc>
 
 " with scrolloff!=0 'H' and 'L' are useless so we map them to start and end of line
-" noremap <expr> H (col('.') == matchend(getline('.'), '^\s*')+1 ? '0' : '^')
-" noremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$' : 'g_')
-" " do not include endofline in visual selection
-" vnoremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$h' : 'g_')
+noremap <expr> H (col('.') == matchend(getline('.'), '^\s*')+1 ? '0' : '^')
+noremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$' : 'g_')
+" do not include endofline in visual selection
+vnoremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$h' : 'g_')
 
 " virtual editing means that the cursor can be positioned where there is no actual character.
 " onemore: Allow the cursor to move just past the end of the line
@@ -651,13 +653,17 @@ augroup configgroup
   " autocmd TextChanged,InsertLeave * if &buftype != 'nofile' | :lockmarks write
   " autocmd BufWritePost,BufEnter * Neomake
   autocmd BufWritePost * Neomake
-  autocmd BufWritePre *.py execute ':Black'
+  " autocmd BufWritePre *.py execute ':Black'
   autocmd FileType python BracelessEnable +indent
   autocmd FileType jinja,jinja.html setlocal commentstring={#\ %s\ #}
+  autocmd FileType dosini setl ts=4 sw=4 sts=4 et
   autocmd BufRead,BufNewFile Dockerfile* setl filetype=dockerfile ts=4 sw=4 sts=4 et
   autocmd BufRead,BufNewFile Pipfile setl filetype=toml
   autocmd BufRead,BufNewFile Pipfile.lock setl filetype=json
   " autocmd BufRead,BufNewFile docker-compose*.{yaml,yml}* setl ts=2 sw=2 sts=2
+  autocmd BufRead,BufNewFile .circleci/config.yml setlocal ts=2 sw=2 sts=2 et
+  autocmd FileType conf setlocal ts=4 sw=4 sts=4 et
+  autocmd BufNewFile,BufRead default.template set filetype=conf
 
   " 'formatoptions' This is a sequence of letters which describes how automatic formatting is to be done.
   autocmd FileType * set fo-=o fo-=c
