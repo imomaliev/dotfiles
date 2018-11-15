@@ -29,9 +29,5 @@ layout_nvim() {
     mkdir -p $nvim_dir
   fi
   touch "${nvim_dir}init.vim"
-}
-
-
-layout_ag() {
   touch $(direnv_layout_dir)/.agignore
 }

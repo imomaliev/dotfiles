@@ -280,6 +280,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-repeat'
 Plug 'tweekmonster/braceless.vim'
 Plug 'vim-scripts/camelcasemotion'
+Plug 'mkomitee/vim-gf-python'
 Plug 'wellle/targets.vim'
 Plug 'machakann/vim-highlightedyank'
 " Plug 'ervandew/supertab'
@@ -626,6 +627,9 @@ let g:black_skip_string_normalization = 1
 " let g:black_linelength = 100
 let g:black_virtualenv = '/Users/batiskaf/.config/nvim/python3/'
 
+" Isort
+command! -range=% Isort :silent <line1>,<line2>! isort -
+
 " Use bash syntax as default for shell scripts
 let g:is_bash = 1
 
@@ -654,6 +658,7 @@ augroup configgroup
   " autocmd BufWritePost,BufEnter * Neomake
   autocmd BufWritePost * Neomake
   " autocmd BufWritePre *.py execute ':Black'
+  " autocmd BufWritePre *.py execute ':Isort'
   autocmd FileType python BracelessEnable +indent
   autocmd FileType jinja,jinja.html setlocal commentstring={#\ %s\ #}
   autocmd FileType dosini setl ts=4 sw=4 sts=4 et
