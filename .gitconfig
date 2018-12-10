@@ -3,6 +3,11 @@
 	useConfigOnly = true
 [color]
 	ui = true
+[color "diff"]
+	meta = yellow
+	frag = magenta
+	old = bold red
+	new = bold green
 [pull]
 	rebase = false
 [push]
