@@ -543,7 +543,7 @@ map <Leader>gc :CloseAll<CR>
 
 " Surround
 let g:surround_{char2nr('c')} = "```\r```"
-let g:surround_{char2nr('d')} = '"""\r"""'
+let g:surround_{char2nr('d')} = "\"\"\"\r\"\"\""
 " function call manipulation
 nmap dsf diw"_ds(:silent! call repeat#set("dsf")<CR>
 nmap <expr> daf 'viwl%"'.v:register.'d:silent! call repeat#set("daf")<CR>'

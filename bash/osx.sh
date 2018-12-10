@@ -22,3 +22,6 @@ source $HOME/Development/dotfiles/bash/completions.sh
 if [ -n "$VIRTUAL_ENV" ]; then
     source $VIRTUAL_ENV/bin/activate
 fi
+
+# added by travis gem
+[ -f /Users/batiskaf/.travis/travis.sh ] && source /Users/batiskaf/.travis/travis.sh
