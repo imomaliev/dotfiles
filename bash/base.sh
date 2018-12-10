@@ -39,7 +39,7 @@ __dotfiles_ps1() {
 eval "$(direnv hook bash)"
 
 # prompt customization
-export PS1=" \[\e[1;30m\]\$(__venv_ps1)\[\e[m\]\[\e[1;35m\]\$(__dotfiles_ps1)\[\e[m\]\\[\e[1;33m\]\[\e[1;34m\]\w\[\e[m\] \[\e[1;33m\]\$(__hg_ps1)\[\e[m\]\\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\[\e[1;32m\]|\D{%H:%M:%S %d-%b-%y}|\[\e[m\]\n ❯ "
+export PS1=" \[\e[1;32m\]\$(__venv_ps1)\[\e[m\]\[\e[1;35m\]\$(__dotfiles_ps1)\[\e[m\]\\[\e[1;33m\]\[\e[1;34m\]\w\[\e[m\] \[\e[1;33m\]\$(__hg_ps1)\[\e[m\]\\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\[\e[1;37m\]|\D{%H:%M:%S %d-%b-%y}|\[\e[m\]\n ❯ "
 
 # set default editor to nvim
 nvim=$(which nvim)
