@@ -23,9 +23,6 @@ alias docker_rm='docker rm $(docker ps -a -q)'
 alias docker_rmi='docker rmi $(docker images -q -f dangling=true)'
 alias docker_rmv='docker volume rm $(docker volume ls -qf dangling=true)'
 
-# https://github.com/direnv/direnv/wiki/Tmux
-alias tmux='direnv exec / tmux'
-
 # https://github.com/Bash-it/bash-it/blob/master/plugins/available/alias-completion.plugin.bash
 # Automatically add completion for all aliases to commands having completion functions
 function alias_completion {

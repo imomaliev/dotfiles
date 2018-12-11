@@ -7,13 +7,9 @@ export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
 
 
 # completion
-if [ -f /usr/local/share/bash-completion/bash_completion ]; then
-    . /usr/local/share/bash-completion/bash_completion
-fi
+[[ -f /usr/local/share/bash-completion/bash_completion ]] && . /usr/local/share/bash-completion/bash_completion
 
-if [ -x "$(command -v git)" ]; then
-    source <(doctl completion bash)
-fi
+[[ -x "$(command -v git)" ]] && . <(doctl completion bash)
 
 source $HOME/Development/dotfiles/bash/aliases.sh
 source $HOME/Development/dotfiles/bash/functions.sh
@@ -24,4 +20,4 @@ if [ -n "$VIRTUAL_ENV" ]; then
 fi
 
 # added by travis gem
-[ -f /Users/batiskaf/.travis/travis.sh ] && source /Users/batiskaf/.travis/travis.sh
+[[ -f /Users/batiskaf/.travis/travis.sh ]] && . /Users/batiskaf/.travis/travis.sh
