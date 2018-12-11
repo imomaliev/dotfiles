@@ -28,18 +28,19 @@ __venv_ps1() {
     fi
 }
 
-__dotfiles_ps1() {
+__bash_prompt_command() {
     if [[ -n "$DIRENV_DIR" ]]; then
-        echo "{$(basename ${DIRENV_DIR:1})} "
+        export PS1=" \[\e[1;32m\]\$(__venv_ps1)\[\e[m\]\[\e[1;33m\]\[\e[1;34m\]\[\e[4m\]\w\[\e[m\]\[\e[m\] \[\e[1;33m\]\$(__hg_ps1)\[\e[m\]\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\[\e[1;37m\]|\D{%H:%M:%S %d-%b-%y}|\[\e[m\]\n ❯ "
     else
-        echo ""
+        export PS1=" \[\e[1;32m\]\$(__venv_ps1)\[\e[m\]\[\e[1;33m\]\[\e[1;34m\]\w\[\e[m\] \[\e[1;33m\]\$(__hg_ps1)\[\e[m\]\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\[\e[1;37m\]|\D{%H:%M:%S %d-%b-%y}|\[\e[m\]\n ❯ "
     fi
 }
+
+export PROMPT_COMMAND=__bash_prompt_command
 
 eval "$(direnv hook bash)"
 
 # prompt customization
-export PS1=" \[\e[1;32m\]\$(__venv_ps1)\[\e[m\]\[\e[1;35m\]\$(__dotfiles_ps1)\[\e[m\]\\[\e[1;33m\]\[\e[1;34m\]\w\[\e[m\] \[\e[1;33m\]\$(__hg_ps1)\[\e[m\]\\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\[\e[1;37m\]|\D{%H:%M:%S %d-%b-%y}|\[\e[m\]\n ❯ "
 
 # set default editor to nvim
 nvim=$(which nvim)
