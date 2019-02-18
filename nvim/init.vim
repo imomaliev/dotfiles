@@ -275,7 +275,7 @@ Plug 'Shougo/context_filetype.vim'
 
 " Edit
 Plug 'Raimondi/delimitMate'
-Plug 'tpope/vim-commentary'
+Plug 'tyru/caw.vim'
 Plug 'tpope/vim-endwise'
 Plug 'imomaliev/vim-surround'
 Plug 'tommcdo/vim-exchange'
