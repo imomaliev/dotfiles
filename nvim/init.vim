@@ -435,6 +435,19 @@ map <Leader>Y "+Y
 map <Leader>d "+d
 map <Leader>D "+D
 
+nnoremap <F1> :mksession!<CR>
+imap <F1> <C-O>:mksession!<CR>
+
+nnoremap <F2> :set invpaste paste?<CR>
+imap <F2> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F2>
+
+nnoremap <F3> :vert sb #<CR>
+imap <F3> <C-O>:vert sb #<CR>
+
+nnoremap <F4> :TagbarToggle<CR>
+imap <F4> <C-O>:TagbarToggle<CR>
+
 " http://vim.wikia.com/wiki/Copy_filename_to_clipboard
 map <Leader><Leader>yf <Esc>:let @+=expand("%:t")<CR>
 map <Leader><Leader>yF <Esc>:let @+=expand("%:p")<CR>
@@ -666,12 +679,16 @@ augroup configgroup
   " autocmd BufWritePre *.py execute ':Isort'
   autocmd FileType python BracelessEnable +indent
   autocmd FileType jinja,jinja.html setlocal commentstring={#\ %s\ #}
-  autocmd FileType dosini setl ts=4 sw=4 sts=4 et
+  autocmd FileType dosini setl ts=4 sw=4 sts=4 et commentstring=#\ %s
+  autocmd FileType dosini let b:caw_oneline_comment = '#'
+
+  autocmd FileType typescript setl ts=2 sw=2 sts=2 et
   autocmd BufRead,BufNewFile Dockerfile* setl filetype=dockerfile ts=4 sw=4 sts=4 et
   autocmd BufRead,BufNewFile Pipfile setl filetype=toml
   autocmd BufRead,BufNewFile Pipfile.lock setl filetype=json
   " autocmd BufRead,BufNewFile docker-compose*.{yaml,yml}* setl ts=2 sw=2 sts=2
   autocmd BufRead,BufNewFile .circleci/config.yml setlocal ts=2 sw=2 sts=2 et
+  autocmd BufRead,BufNewFile .travis.yml setlocal ts=2 sw=2 sts=2 et
   autocmd FileType conf setlocal ts=4 sw=4 sts=4 et
   autocmd BufNewFile,BufRead default.template set filetype=conf
 
