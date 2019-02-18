@@ -20,4 +20,8 @@ if [ -n "$VIRTUAL_ENV" ]; then
 fi
 
 # added by travis gem
-[[ -f /Users/batiskaf/.travis/travis.sh ]] && . /Users/batiskaf/.travis/travis.sh
+[[ -f /Users/batiskaf/.travis/travis.sh ]] && . $HOME/.travis/travis.sh
+
+export NVM_DIR="$HOME/.nvm"
+[[ -f "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ]] && . "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"  # This loads nvm
+[[ -f "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion" ]] && . "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
