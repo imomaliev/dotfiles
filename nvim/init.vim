@@ -80,6 +80,8 @@ set nojoinspaces
 
 set encoding=utf-8
 
+
+set foldcolumn=1
 " set foldmethod=syntax
 " Enable the use of the mouse.
 set mouse=a
