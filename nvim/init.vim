@@ -92,6 +92,11 @@ set mouse=a
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
 
+" To define a mapping which uses the mapleader variable.
+let mapleader = "\<Space>"
+
+map <Leader>m <Esc>:marks<CR>
+
 " Netrw configuartion
 " Comma separated pattern list for hiding files
 let g:netrw_list_hide= '.*\.swp$,.*\.pyc$'
@@ -402,11 +407,6 @@ hi IndentGuidesEven ctermbg=darkgrey
 set keymap=mac-russian-colemak
 set iminsert=0
 set imsearch=0
-
-" To define a mapping which uses the mapleader variable.
-let mapleader = "\<Space>"
-
-map <Leader>m <Esc>:marks<CR>
 
 " Denite
 map <Leader>r <Esc>:Denite miniyank<CR>
