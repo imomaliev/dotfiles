@@ -290,6 +290,8 @@ Plug 'maksimr/vim-jsbeautify'
 " Plug 'imomaliev/registers.vim'
 Plug 'bfredl/nvim-miniyank'
 Plug 'roxma/vim-tmux-clipboard'
+" https://robots.thoughtbot.com/align-github-flavored-markdown-tables-in-vim
+Plug 'junegunn/vim-easy-align'
 
 " Vcs
 Plug 'tpope/vim-fugitive'
@@ -300,6 +302,7 @@ Plug 'mhinz/vim-signify'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'digitaltoad/vim-pug'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
 Plug 'vim-scripts/python_match.vim'
