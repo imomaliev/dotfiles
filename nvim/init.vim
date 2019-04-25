@@ -645,7 +645,7 @@ let g:neomake_open_list = 0
 " let g:neomake_python_pylint_args = neomake#makers#ft#python#pylint().args + ['--rcfile=backend/pylintrc']
 
 " Black
-let g:black_skip_string_normalization = 1
+" let g:black_skip_string_normalization = 1
 " let g:black_linelength = 100
 let g:black_virtualenv = '/Users/batiskaf/.config/nvim/python3/'
 
