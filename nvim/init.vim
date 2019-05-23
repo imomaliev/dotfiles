@@ -273,9 +273,7 @@ Plug 'mbbill/undotree'
 " Plug 'severin-lemaignan/vim-minimap'
 
 " completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'zchee/deoplete-jedi'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'Shougo/context_filetype.vim'
 
 " Edit
@@ -580,12 +578,6 @@ nmap <expr> yif 'f("'.v:register.'yi(:silent! call repeat#set("yif")<CR>'
 
 vmap af iwl%
 vmap if vf(vi(
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('sources', {
-\ 'python': ['jedi', 'buffer'],
-\})
 
 " Lightline
 function! LightlineMode()
