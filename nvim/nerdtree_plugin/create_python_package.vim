@@ -37,6 +37,6 @@ function! CreatePythonPackage()
 endfunction
 
 call NERDTreeAddMenuItem({
-    \ 'text': 'create python (p)ackage',
-    \ 'shortcut': 'p',
+    \ 'text': 'create python packa(g)e',
+    \ 'shortcut': 'g',
     \ 'callback': 'CreatePythonPackage' })

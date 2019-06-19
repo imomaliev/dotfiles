@@ -9,8 +9,6 @@ export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
 # completion
 [[ -f /usr/local/share/bash-completion/bash_completion ]] && . /usr/local/share/bash-completion/bash_completion
 
-[[ -x "$(command -v git)" ]] && . <(doctl completion bash)
-
 source $HOME/Development/dotfiles/bash/aliases.sh
 source $HOME/Development/dotfiles/bash/functions.sh
 source $HOME/Development/dotfiles/bash/completions.sh
