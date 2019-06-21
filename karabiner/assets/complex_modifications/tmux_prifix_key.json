@@ -1,0 +1,26 @@
+{
+    "title": "Fn Enter Key",
+    "rules": [
+        {
+            "description": "Enter Key (fn + m to enter key)",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "m",
+                        "modifiers": {
+                            "mandatory": [
+                                "fn"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "return_or_enter"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
