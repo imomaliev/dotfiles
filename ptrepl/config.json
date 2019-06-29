@@ -1,0 +1,28 @@
+{
+  "settings": {
+    "PARSE_PS1": true,
+    "EDITING_MODE": "vi",
+    "SHOW_MODE_IN_PROMPT": true,
+    "VI_INS_MODE_STRING": "+",
+    "VI_CMD_MODE_STRING": ":",
+    "PREPEND_SPACE": true,
+    "LOCAL_SHADA": true
+  },
+  "alias": {
+    "git alias": "git config --list | grep alias",
+    "git config main": "git config user.email 'sardorbek.imomaliev@gmail.com'",
+    "pipenv outdated": "pipenv run pip list -o",
+    "docker rmc": "docker rm $(docker ps -a -q)",
+    "docker rmi": "docker rmi $(docker images -q -f dangling=true)",
+    "docker rmv": "docker volume rm $(docker volume ls -qf dangling=true)",
+    "docker-compose runserver": "docker-compose run --service-ports --rm backend ./manage.py runserver 0.0.0.0:8000",
+    "docker-compose rmc": "docker rm $(docker ps -a -q)",
+    "docker-compose rmi": "docker rmi $(docker images -q -f dangling=true)",
+    "docker-compose rmv": "docker volume rm $(docker volume ls -qf dangling=true)",
+    "docker-compose volumes": "docker volume list | grep $(basename $PWD)",
+    "docker-compose volume": "docker volume",
+    "docker-compose run --no-deps --rm backend pipenv run manage mms": "docker-compose run --no-deps --rm backend pipenv run manage makemessages --locale ru",
+    "docker-compose run --no-deps --rm backend pipenv run manage cms": "docker-compose run --no-deps --rm backend pipenv run manage compilemessages --locale ru",
+    "docker-compose run --no-deps --rm backend pipenv run manage mmr": "docker-compose run --no-deps --rm backend pipenv run manage makemigrations"
+  }
+}
