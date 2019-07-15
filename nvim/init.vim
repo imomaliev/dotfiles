@@ -209,6 +209,9 @@ endfunction
 
 nnoremap <C-]> :call JumpToTagWithList()<CR>
 
+" https://stackoverflow.com/questions/33600608/how-to-cause-ctags-to-show-tag-definition-on-vertical-split-without-opening-a-ne
+nnoremap <Leader>] :execute "vertical stag " . expand("<cword>")<CR>
+
 " Keep the cursor in place while joining lines
 nnoremap J mzJ`z
 
