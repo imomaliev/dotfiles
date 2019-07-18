@@ -1,49 +1,40 @@
 {
     "title": "Tmux and vim",
-    "rules": [
-        {
+    "rules": [{
             "description": "Tmux prifix key Ctrl+B",
-            "manipulators": [
-                {
-                    "type": "basic",
-                    "from": {
-                        "key_code": "f20"
-                    },
-                    "to": [
-                        {
-                            "key_code": "b",
-                            "modifiers": [
-                                "left_control"
-                            ]
-                        }
+            "manipulators": [{
+                "type": "basic",
+                "from": {
+                    "key_code": "f20"
+                },
+                "to": [{
+                    "key_code": "b",
+                    "modifiers": [
+                        "left_control"
                     ]
-                }
-            ]
+                }]
+            }]
         },
         {
             "description": "Vim Ctrl+^",
-            "manipulators": [
-                {
-                    "type": "basic",
-                    "from": {
-                        "key_code": "f20",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_shift"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "key_code": "6",
-                            "modifiers": [
-                                "left_control",
-                                "left_shift"
-                            ]
-                        }
+            "manipulators": [{
+                "type": "basic",
+                "from": {
+                    "key_code": "f20",
+                    "modifiers": {
+                        "mandatory": [
+                            "left_shift"
+                        ]
+                    }
+                },
+                "to": [{
+                    "key_code": "6",
+                    "modifiers": [
+                        "left_control",
+                        "left_shift"
                     ]
-                }
-            ]
+                }]
+            }]
         }
     ]
 }

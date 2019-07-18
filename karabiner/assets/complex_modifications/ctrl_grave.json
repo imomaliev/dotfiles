@@ -1,0 +1,38 @@
+{
+    "title": "Ctrl as grave accent",
+    "rules": [{
+        "description": "Ctrl as grave accent",
+        "manipulators": [{
+                "type": "basic",
+                "from": {
+                    "key_code": "left_control"
+                },
+                "to": [{
+                    "key_code": "left_control"
+                }],
+                "to_if_alone": [{
+                    "key_code": "grave_accent_and_tilde"
+                }]
+            },
+            {
+                "type": "basic",
+                "from": {
+                    "key_code": "left_control",
+                    "modifiers": {
+                        "mandatory": [
+                            "left_shift"
+                        ]
+                    }
+                },
+                "to": [{
+                    "key_code": "left_control",
+                    "modifiers": "left_shift"
+                }],
+                "to_if_alone": [{
+                    "key_code": "grave_accent_and_tilde",
+                    "modifiers": "left_shift"
+                }]
+            }
+        ]
+    }]
+}
