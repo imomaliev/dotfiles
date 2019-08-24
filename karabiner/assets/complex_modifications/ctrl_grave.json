@@ -51,8 +51,26 @@
                     "key_code": "grave_accent_and_tilde",
                     "modifiers": "right_shift"
                 }]
+            },
+            {
+                "type": "basic",
+                "from": {
+                    "key_code": "left_control",
+                    "modifiers": {
+                        "mandatory": [
+                            "left_gui"
+                        ]
+                    }
+                },
+                "to": [{
+                    "key_code": "left_control",
+                    "modifiers": "left_gui"
+                }],
+                "to_if_alone": [{
+                    "key_code": "grave_accent_and_tilde",
+                    "modifiers": "left_gui"
+                }]
             }
-
         ]
     }]
 }
