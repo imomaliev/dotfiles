@@ -9,3 +9,4 @@ syntax: glob
 .tern-project
 .tern-port
 Session.vim
+.vim/
