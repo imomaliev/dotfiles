@@ -21,6 +21,7 @@
     "docker-compose rmv": "docker volume rm $(docker volume ls -qf dangling=true)",
     "docker-compose volumes": "docker volume list | grep $(basename $PWD)",
     "docker-compose volume": "docker volume",
+    "docker-compose bup": "docker-compose build --pull",
     "docker-compose run --no-deps --rm backend pipenv run manage mms": "docker-compose run --no-deps --rm backend pipenv run manage makemessages --locale ru",
     "docker-compose run --no-deps --rm backend pipenv run manage cms": "docker-compose run --no-deps --rm backend pipenv run manage compilemessages --locale ru",
     "docker-compose run --no-deps --rm backend pipenv run manage mmr": "docker-compose run --no-deps --rm backend pipenv run manage makemigrations"
