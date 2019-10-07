@@ -145,6 +145,10 @@ noremap <expr> H (col('.') == matchend(getline('.'), '^\s*')+1 ? '0' : '^')
 noremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$' : 'g_')
 " do not include endofline in visual selection
 vnoremap <expr> L (col('.') == match(getline('.'), '\s*$') ? '$h' : 'g_')
+noremap <expr> <S-Left> (col('.') == matchend(getline('.'), '^\s*')+1 ? '0' : '^')
+noremap <expr> <S-Right> (col('.') == match(getline('.'), '\s*$') ? '$' : 'g_')
+" do not include endofline in visual selection
+vnoremap <expr> <S-Right> (col('.') == match(getline('.'), '\s*$') ? '$h' : 'g_')
 
 " virtual editing means that the cursor can be positioned where there is no actual character.
 " onemore: Allow the cursor to move just past the end of the line
@@ -157,10 +161,10 @@ nnoremap <C-V> :setl virtualedit=<CR><C-V>
 " inoremap <expr> <C-R> '<C-G>u<C-O>:set paste<CR><C-R>'.nr2char(getchar()).'<C-O>:set nopaste<CR>'
 
 " Disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+noremap <Up> k
+noremap <Down> j
+noremap <Left> h
+noremap <Right> l
 noremap <PageUp> <Nop>
 noremap <PageDown> <Nop>
 noremap <F1> <Nop>
