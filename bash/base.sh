@@ -55,3 +55,6 @@ export PIPENV_VENV_IN_PROJECT=1
 export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -g ''"
 export PYENV_ROOT="$(pyenv root)"
 export PATH="$PYENV_ROOT/bin:$PATH"
+# https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally
+export NPM_CONFIG_PREFIX=$HOME/.local/npm
+export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
