@@ -73,7 +73,8 @@
                             "fn"
                         ],
                         "optional": [
-                            "left_shift"
+                            "left_shift",
+                            "left_alt"
                         ]
                     }
                 },
@@ -90,7 +91,8 @@
                             "fn"
                         ],
                         "optional": [
-                            "left_shift"
+                            "left_shift",
+                            "left_alt"
                         ]
                     }
                 },
@@ -107,7 +109,8 @@
                             "fn"
                         ],
                         "optional": [
-                            "left_shift"
+                            "left_shift",
+                            "left_alt"
                         ]
                     }
                 },
@@ -124,7 +127,8 @@
                             "fn"
                         ],
                         "optional": [
-                            "left_shift"
+                            "left_shift",
+                            "left_alt"
                         ]
                     }
                 },
