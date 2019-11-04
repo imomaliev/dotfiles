@@ -273,7 +273,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'neomake/neomake'
-Plug 'ambv/black'
+Plug 'sbdchd/neoformat'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
@@ -318,6 +318,7 @@ Plug 'posva/vim-vue'
 Plug 'vim-scripts/python_match.vim'
 Plug 'niftylettuce/Vim-Jinja2-Syntax'
 Plug 'cespare/vim-toml'
+Plug 'cakebaker/scss-syntax.vim'
 
 " https://github.com/junegunn/vim-plug/issues/300#issuecomment-149173517
 ""call ApplyLocalSettings(expand('.'), '/.direnv/nvim/plugins.vim')
@@ -643,10 +644,8 @@ let g:neomake_open_list = 0
 " Adding args to existing maker
 " let g:neomake_python_pylint_args = neomake#makers#ft#python#pylint().args + ['--rcfile=backend/pylintrc']
 
-" Black
-" let g:black_skip_string_normalization = 1
-" let g:black_linelength = 100
-let g:black_virtualenv = '/Users/batiskaf/.config/nvim/python3/'
+" Neoformat
+let g:neoformat_enabled_python = ['black']
 
 " Isort
 command! -range=% Isort :silent <line1>,<line2>! isort -
@@ -678,7 +677,6 @@ augroup configgroup
   " autocmd TextChanged,InsertLeave * if &buftype != 'nofile' | :lockmarks write
   " autocmd BufWritePost,BufEnter * Neomake
   autocmd BufWritePost * Neomake
-  " autocmd BufWritePre *.py execute ':Black'
   " autocmd BufWritePre *.py execute ':Isort'
   autocmd FileType python BracelessEnable +indent
   autocmd FileType jinja,jinja.html setlocal commentstring={#\ %s\ #}
