@@ -12,10 +12,6 @@ export HISTCONTROL="erasedups:ignoreboth"
 # A colon-separated list of patterns used to decide which command lines should be saved on the history list.
 ##export HISTIGNORE="history*:ls*"
 
-__hg_ps1() {
-    hg prompt "[{branch}] " 2> /dev/null
-}
-
 __venv_ps1() {
     if [[ -n "$VIRTUAL_ENV" ]]; then
         if [[ "$VIRTUAL_ENV" == *.venv ]]; then
@@ -33,7 +29,7 @@ __jobs_ps1() {
 }
 
 __bash_prompt_command() {
-    BASE_PROMPT="\$(__hg_ps1)\[\e[m\]\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\[\e[1;37m\]|\D{%H:%M:%S %d-%b-%y}|\[\e[m\] \[\e[1;35m\]\$(__jobs_ps1)\[\e[m\]\n ❯ "
+    BASE_PROMPT="\[\e[m\]\[\e[1;33m\]\$(__git_ps1 '[%s] ')\[\e[m\]\[\e[1;37m\]|\D{%H:%M:%S %d-%b-%y}|\[\e[m\] \[\e[1;35m\]\$(__jobs_ps1)\[\e[m\]\n ❯ "
     if [[ -n "$DIRENV_DIR" ]]; then
         export PS1=" \[\e[1;32m\]\$(__venv_ps1)\[\e[m\]\[\e[1;33m\]\[\e[1;34m\]\[\e[4m\]\w\[\e[m\]\[\e[m\] \[\e[1;33m\]$BASE_PROMPT"
     else

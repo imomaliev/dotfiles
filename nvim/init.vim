@@ -248,6 +248,7 @@ function! ApplyLocalSettings(dirname, filename)
       set tags+=.direnv/tags
       let g:fzf_history_dir = ".direnv/nvim/fzf-history"
       let g:miniyank_filename = ".direnv/nvim/.miniyank.mpack"
+      set shadafile=.direnv/nvim/.shadafile
   endif
 endfunction
 
