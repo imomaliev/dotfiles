@@ -417,6 +417,22 @@ set imsearch=0
 
 " Denite
 map <Leader>r <Esc>:Denite miniyank<CR>
+" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
 call denite#custom#map(
       \ 'insert',
       \ '<C-j>',
@@ -557,7 +573,7 @@ endfunction
 command! -nargs=0 -bar CloseAll :lclose | cclose | helpclose | NERDTreeClose | UndotreeHide | call FZFClose()
 
 " https://github.com/junegunn/fzf.vim/issues/113
-nnoremap <Leader>tt <Esc>:CloseAll \| Files<CR>
+nnoremap <Leader>tt <Esc>:CloseAll \| Files .<CR>
 nnoremap <Leader>tp <Esc>:CloseAll \| Tags<CR>
 nnoremap <Leader>tl <Esc>:CloseAll \| Buffers<CR>
 nnoremap <Leader>tf <Esc>:CloseAll \| History<CR>
