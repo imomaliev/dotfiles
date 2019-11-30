@@ -1,0 +1,27 @@
+--recurse=yes
+--tag-relative=yes
+
+--exclude=*/venv/local/*
+--exclude=*/.venv/local/*
+--exclude=*/.mypy_cache/*
+--exclude=*/.direnv/*
+--exclude=.tox
+--exclude=.git*
+--exclude=.hg*
+--exclude=*.h
+--exclude=*.pyc
+--exclude=*.pyo
+--exclude=*.hpp
+--exclude=*.pxd
+--exclude=*.pth
+--exclude=.DS_Store
+--exclude=*.min.js
+--exclude=*.spec.js
+--exclude=*/node_modules/.bin/*
+--exclude=*.css
+--exclude=*.html
+--exclude=static/*
+
+-f .direnv/tags
+
+--languages=Python,JavaScript

@@ -246,6 +246,8 @@ function! ApplyLocalSettings(dirname, filename)
       exe "set runtimepath+=" . a:dirname . "/.direnv/nvim"
       set undodir+=.direnv/nvim/undo
       set tags+=.direnv/tags
+      let g:gutentags_ctags_tagfile = ".direnv/tags"
+      let g:gutentags_file_list_command = "find ".GetCtagsPaths()." -type f"
       let g:fzf_history_dir = ".direnv/nvim/fzf-history"
       let g:miniyank_filename = ".direnv/nvim/.miniyank.mpack"
       set shadafile=.direnv/nvim/.shadafile
@@ -283,6 +285,8 @@ Plug 'mbbill/undotree'
 " completion
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'Shougo/context_filetype.vim'
+Plug 'universal-ctags/ctags'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Edit
 Plug 'Raimondi/delimitMate'
@@ -618,7 +622,8 @@ let g:lightline = {
     \ 'active': {
         \ 'left': [ [ 'mode', 'paste' ],
         \           [ 'readonly', 'relativepath', 'modified' ],
-        \           [ 'tagbar' ] ],
+        \           [ 'tagbar' ],
+        \           [ 'gutentags' ] ],
         \ 'right': [ [ 'lineinfo' ],
         \            [ 'percent' ],
         \            [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -630,11 +635,19 @@ let g:lightline = {
     \ },
     \ 'component': {
     \   'tagbar': '%{tagbar#currenttag("[%s]", "", "f")}',
+    \   'gutentags': '%{gutentags#statusline("[", "]")}',
     \ },
     \ 'component_function': {
     \   'mode': 'LightlineMode',
     \ }
 \}
+
+augroup MyGutentagsStatusLineRefresher
+    autocmd!
+    autocmd User GutentagsUpdating call lightline#update()
+    autocmd User GutentagsUpdated call lightline#update()
+augroup END
+
 
 " Tagbar
 let g:tagbar_status_func = 'TagbarStatusFunc'
