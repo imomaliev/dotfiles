@@ -14,7 +14,7 @@
     "pipenv outdated": "pipenv run pip list -o",
     "docker rmc": "docker rm $(docker ps -a -q)",
     "docker rmi": "docker rmi $(docker images -q -f dangling=true)",
-    "docker rmv": "docker volume rm $(docker volume ls -qf dangling=true)",
+    "docker rmv": "docker volume prune --filter 'label!=com.docker.compose.project'",
     "docker-compose runserver": "docker-compose run --service-ports --rm backend pipenv run server 0.0.0.0:8000",
     "docker-compose rmc": "docker rm $(docker ps -a -q)",
     "docker-compose rmi": "docker rmi $(docker images -q -f dangling=true)",

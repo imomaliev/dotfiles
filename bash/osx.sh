@@ -2,7 +2,7 @@ source $HOME/Development/dotfiles/bash/base.sh
 
 export HOMEBREW_PREFIX="$(brew --prefix)"
 # coreutlis -  as default command line tools
-export PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/opt/python/libexec/bin:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$HOMEBREW_PREFIX/opt/node@12/bin:$PATH:$HOMEBREW_PREFIX/sbin"
+export PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/opt/python/libexec/bin:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$HOMEBREW_PREFIX/opt/node@12/bin:$HOMEBREW_PREFIX/opt/python@3.8/bin:$PATH:$HOMEBREW_PREFIX/sbin"
 export MANPATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnuman:$MANPATH"
 
 
