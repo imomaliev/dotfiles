@@ -1,24 +1,30 @@
 layout_folder_pipenv() {
   local folder=.
-  local pipfile="Pipfile"
+  PIPENV_PIPFILE="${PIPENV_PIPFILE:-Pipfile}"
+
   if [[ $# -ne 0 ]]; then
 	  folder=$1
-      pipfile=$folder"Pipfile"
+      PIPENV_PIPFILE=$folder$PIPENV_PIPFILE
   fi
-  if [[ ! -f $pipfile ]]; then
-    log_error 'No Pipfile found.  Use `pipenv` to create a Pipfile first.'
+
+  if [[ ! -f "$PIPENV_PIPFILE" ]]; then
+    log_error "No Pipfile found.  Use \`pipenv\` to create a \`$PIPENV_PIPFILE\` first."
     exit 2
   fi
 
   cd $folder
-  local VENV=$(pipenv --bare --venv 2>/dev/null)
-  if [[ -z $VENV || ! -d $VENV ]]; then
+
+  VIRTUAL_ENV=$(pipenv --venv 2>/dev/null ; true)
+
+  if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
     pipenv install --dev
+    VIRTUAL_ENV=$(pipenv --venv)
   fi
 
-  export VIRTUAL_ENV=$(pipenv --venv)
   PATH_add "$VIRTUAL_ENV/bin"
   export PIPENV_ACTIVE=1
+  export VIRTUAL_ENV
+
   cd -
 }
 
