@@ -45,8 +45,38 @@ layout_poetry() {
     exit 2
   fi
 
-  local VENV=$(dirname $(poetry run which python))
+  local VENV=$(poetry env info --path)
   export VIRTUAL_ENV=$(echo "$VENV" | rev | cut -d'/' -f2- | rev)
   export POETRY_ACTIVE=1
   PATH_add "$VENV"
+}
+
+
+layout_folder_poetry() {
+  local folder=.
+  local pyproject_file="pyproject.toml"
+
+  if [[ $# -ne 0 ]]; then
+	  folder=$1
+      pyproject_file=$folder$pyproject_file
+  fi
+
+  if [[ ! -f "$pyproject_file" ]]; then
+    log_error 'No pyproject.toml found.  Use `poetry new` or `poetry init` to create one first.'
+    exit 2
+  fi
+
+  cd $folder
+
+  local VENV=$(poetry env info | grep Path | xargs echo | cut -d ' ' -f 2)
+  if [[ "$VENV" == "NA" ]]; then
+    poetry install
+  fi
+
+  VENV=$(poetry env info --path)
+  export VIRTUAL_ENV=$(echo "$VENV" | rev | cut -d'/' -f1- | rev)
+  export POETRY_ACTIVE=1
+  PATH_add "$VENV/bin"
+
+  cd -
 }
