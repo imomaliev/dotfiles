@@ -25,6 +25,9 @@ alias docker_rmv='docker volume rm $(docker volume ls -qf dangling=true)'
 
 alias tmux='direnv exec / tmux'
 
+alias ngrok_copy_short='curl --silent http://127.0.0.1:4040/api/tunnels | jq ".tunnels[0].public_url" | cut -d"\"" -f 2 | cut -d"." -f 1 | cut -d "/" -f 3 | xargs echo -n | pbcopy'
+alias ngrok_copy_full='curl --silent http://127.0.0.1:4040/api/tunnels | jq ".tunnels[0].public_url" | cut -d"\"" -f 2 | xargs echo -n | pbcopy'
+
 # https://github.com/Bash-it/bash-it/blob/master/plugins/available/alias-completion.plugin.bash
 # Automatically add completion for all aliases to commands having completion functions
 function alias_completion {
