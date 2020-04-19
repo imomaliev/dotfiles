@@ -80,7 +80,7 @@ editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
 ignore_ftp_chattr_errors=true
-skin=modarin256-defbg
+skin=modarin256
 
 filepos_max_saved_entries=1024
 
