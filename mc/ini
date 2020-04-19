@@ -14,7 +14,7 @@ confirm_execute=false
 confirm_history_cleanup=true
 confirm_exit=false
 confirm_directory_hotlist_delete=true
-safe_delete=false
+safe_delete=true
 mouse_repeat_rate=100
 double_click_speed=250
 use_8th_bit_as_meta=false
@@ -27,7 +27,7 @@ wrap_mode=true
 old_esc_mode=false
 old_esc_mode_timeout=1000000
 cd_symlinks=true
-show_all_if_ambiguous=false
+show_all_if_ambiguous=true
 max_dirt_limit=10
 use_file_to_guess_type=true
 alternate_plus_minus=false
@@ -86,7 +86,7 @@ filepos_max_saved_entries=1024
 
 editor_state_full_filename=false
 
-safe_overwrite=false
+safe_overwrite=true
 
 [Layout]
 message_visible=true
@@ -98,7 +98,7 @@ menubar_visible=true
 free_space=true
 horizontal_split=false
 vertical_equal=true
-left_panel_size=88
+left_panel_size=101
 horizontal_equal=true
 top_panel_size=26
 
@@ -146,6 +146,20 @@ simple_swap=false
 
 [HotlistConfig]
 expanded_view_of_groups=0
+
+[FindFile]
+file_case_sens=true
+file_shell_pattern=true
+file_find_recurs=true
+file_skip_hidden=false
+file_all_charsets=false
+content_case_sens=true
+content_regexp=false
+content_first_hit=false
+content_whole_words=false
+content_all_charsets=false
+ignore_dirs_enable=true
+ignore_dirs=
 
 [Panelize]
 Find *.orig after patching=find . -name \\*.orig -print

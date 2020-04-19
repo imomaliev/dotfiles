@@ -46,7 +46,7 @@ eval "$(direnv hook bash)"
 # set default editor to nvim
 nvim=$(which nvim)
 export EDITOR=$nvim
-export VIEWER=$nvim
+export VIEWER="$nvim -R"
 export PIPENV_VENV_IN_PROJECT=1
 export FZF_DEFAULT_COMMAND="ag --hidden --ignore .git -g ''"
 export PYENV_ROOT="$(pyenv root)"
