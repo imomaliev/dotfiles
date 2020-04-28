@@ -1,5 +1,9 @@
 source $HOME/Development/dotfiles/bash/base.sh
 
+# https://github.com/tmux/tmux/issues/120#issuecomment-143375064
+# setting explicitly for cli programs behave properly
+export TERM=xterm-256color
+
 export HOMEBREW_PREFIX="$(brew --prefix)"
 # coreutlis -  as default command line tools
 export PATH="$HOME/.local/bin:$HOMEBREW_PREFIX/opt/python/libexec/bin:$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$HOMEBREW_PREFIX/opt/node@12/bin:$HOMEBREW_PREFIX/opt/python@3.8/bin:$PATH:$HOMEBREW_PREFIX/sbin"
