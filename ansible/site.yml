@@ -40,3 +40,23 @@
       url: https://github.com/docker/compose/releases/download/1.25.5/docker-compose-Linux-x86_64
       dest: /usr/local/bin/docker-compose
       mode: '0755'
+
+  - name: Add user with proper privileges
+    block:
+      # https://stackoverflow.com/a/33362805
+      - name: Make sure we have a wheel group
+        group:
+          name: wheel
+          state: present
+      # https://stackoverflow.com/a/55876857
+      - name: sudo without password for wheel group
+        copy:
+          content: '%wheel ALL=(ALL:ALL) NOPASSWD:ALL'
+          dest: /etc/sudoers.d/wheel
+          mode: 0440
+          validate: visudo -cf %s
+      - name: Add user
+        user:
+          name: me
+          append: yes
+          groups: wheel,docker
