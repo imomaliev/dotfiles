@@ -1,0 +1,42 @@
+---
+- hosts: projecti
+  remote_user: root
+  tasks:
+  - name:  install neovim and tmux
+    apt:
+      name:
+        - neovim
+        - tmux
+      update_cache: yes
+      install_recommends: no
+
+  - name: purge snap
+    apt:
+      name: snapd
+      state: absent
+      purge: yes
+  # https://github.com/do-community/ansible-playbooks/blob/master/docker_ubuntu1804/playbook.yml
+
+  - name: install docker
+    block:
+      - name: Install required system packages
+        apt: update_cache=yes name={{ item }}
+        loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'gnupg-agent', 'software-properties-common' ]
+      - name: Add Docker GPG apt Key
+        apt_key:
+          url: https://download.docker.com/linux/ubuntu/gpg
+          id: 0EBFCD88
+          state: present
+      - name: Add Docker Repository
+        apt_repository:
+          repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+          state: present
+      - name: Update apt and install docker-ce
+        apt: update_cache=yes name={{ item }}
+        loop: [ 'docker-ce', 'docker-ce-cli', 'containerd.io']
+
+  - name: Install docker-compose
+    get_url:
+      url: https://github.com/docker/compose/releases/download/1.25.5/docker-compose-Linux-x86_64
+      dest: /usr/local/bin/docker-compose
+      mode: '0755'
