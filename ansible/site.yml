@@ -98,4 +98,19 @@
       repo: git@github.com:imomaliev/dotfiles.git
       dest: ~/development/dotfiles
       accept_hostkey: yes
-
+  - name: Link nvim config
+    block:
+    - name: Create a nvim directory if it does not exist
+      file:
+        path: ~/.config/nvim
+        state: directory
+    - name: Create a development directory if it does not exist
+      file:
+        src: ~/development/dotfiles/minimal/init.vim
+        dest: ~/.config/nvim/init.vim
+        state: link
+  - name: Link tmux config
+    file:
+      src: ~/development/dotfiles/minimal/tmux.conf
+      dest: ~/.tmux.conf
+      state: link
