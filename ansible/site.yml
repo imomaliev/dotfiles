@@ -104,7 +104,7 @@
       file:
         path: ~/.config/nvim
         state: directory
-    - name: Create a development directory if it does not exist
+    - name: Create symlink for nvim
       file:
         src: ~/development/dotfiles/minimal/init.vim
         dest: ~/.config/nvim/init.vim
@@ -114,3 +114,20 @@
       src: ~/development/dotfiles/minimal/tmux.conf
       dest: ~/.tmux.conf
       state: link
+  - name: Link bash config
+    block:
+    - name: Create a bash directory if it does not exist
+      file:
+        path: ~/.config/bash
+        state: directory
+    - name: Create symlink for bashrc
+      file:
+        src: ~/development/dotfiles/minimal/bashrc
+        dest: ~/.config/bash/bashrc
+        state: link
+    - name: Add sourcing line
+      lineinfile:
+        path: ~/.profile
+        state: present
+        insertafter: EOF
+        line: '[[ -f "$HOME/.config/bash/bashrc" ]] && . $HOME/.config/bash/bashrc'
