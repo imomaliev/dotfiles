@@ -74,3 +74,5 @@
 
 - import_playbook: dotfiles.yml
 - import_playbook: pyenv.yml
+- import_playbook: pipx.yml
+- import_playbook: nvm.yml
