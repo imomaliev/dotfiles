@@ -55,8 +55,8 @@
       blockinfile:
         path: ~/.profile
         state: present
+        marker: "# {mark} dotfiles ANSIBLE MANAGED BLOCK"
         block: |
-          # source dotfiles's bashrc
           [[ -f "$HOME/.config/bash/bashrc" ]] && . $HOME/.config/bash/bashrc
     - name: Create local config file for bash
       file:

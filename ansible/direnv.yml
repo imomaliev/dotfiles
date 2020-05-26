@@ -1,0 +1,15 @@
+---
+- name: Install direnv
+  hosts: projecti
+  remote_user: me
+  tasks:
+    - name: Install direnv
+      become: yes
+      apt: name=direnv update_cache=yes install_recommends=no
+    - name: Add sourcing line
+      blockinfile:
+        path: ~/.config/bash/local.sh
+        state: present
+        marker: "# {mark} direnv ANSIBLE MANAGED BLOCK"
+        block: |
+          eval "$(direnv hook bash)"

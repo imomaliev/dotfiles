@@ -77,3 +77,4 @@
 - import_playbook: pyenv.yml
 - import_playbook: pipx.yml
 - import_playbook: nvm.yml
+- import_playbook: direnv.yml
