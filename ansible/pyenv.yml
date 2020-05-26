@@ -1,0 +1,23 @@
+---
+- name: Install Pyenv
+  hosts: projecti
+  remote_user: me
+  tasks:
+    - name: Download pyenv-installer
+      get_url:
+        url: https://pyenv.run
+        dest: /tmp/pyenv_installer
+        mode: '0755'
+    - name: Run installer
+      shell: "bash /tmp/pyenv_installer"
+    - name: Add sourcing line
+      blockinfile:
+        path: ~/.config/bash/bashrc
+        state: present
+        insertafter: EOF
+        block: |
+            # pyenv config
+            export PATH="$HOME/.pyenv/bin:$PATH"
+            eval "$(pyenv init -)"
+            eval "$(pyenv virtualenv-init -)"
+
