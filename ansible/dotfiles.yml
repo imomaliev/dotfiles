@@ -25,31 +25,24 @@
       dest: ~/development/dotfiles
       accept_hostkey: yes
   - name: Link nvim config
-    block:
-    - name: Create a nvim directory if it does not exist
-      file:
-        path: ~/.config/nvim
-        state: directory
-    - name: Create symlink for nvim
-      file:
-        src: ~/development/dotfiles/minimal/init.vim
-        dest: ~/.config/nvim/init.vim
-        state: link
-  - name: Link tmux config
+    tags: files
     file:
-      src: ~/development/dotfiles/minimal/tmux.conf
+      src: ~/development/dotfiles/minimal/nvim
+      dest: ~/.config/nvim
+      state: link
+  - name: Link tmux config
+    tags: files
+    file:
+      src: ~/development/dotfiles/minimal/tmux/tmux.conf
       dest: ~/.tmux.conf
       state: link
   - name: Link bash config
+    tags: files
     block:
-    - name: Create a bash directory if it does not exist
+    - name: Create symlink for bash
       file:
-        path: ~/.config/bash
-        state: directory
-    - name: Create symlink for bashrc
-      file:
-        src: ~/development/dotfiles/minimal/bashrc
-        dest: ~/.config/bash/bashrc
+        src: ~/development/dotfiles/minimal/bash
+        dest: ~/.config/bash
         state: link
     - name: Add sourcing line
       blockinfile:
@@ -63,19 +56,8 @@
         dest: ~/.config/bash/local.sh
         state: touch
   - name: Link git config
-    tags: git
-    block:
-    - name: Create a git directory if it does not exist
-      file:
-        path: ~/.config/git
-        state: directory
-    - name: Create symlink for git config
-      file:
-        src: ~/development/dotfiles/minimal/gitconfig
-        dest: ~/.config/git/config
-        state: link
-    - name: Create symlink for git ignore global
-      file:
-        src: ~/development/dotfiles/minimal/gitignore
-        dest: ~/.config/git/ignore
-        state: link
+    tags: files
+    file:
+      src: ~/development/dotfiles/minimal/git
+      dest: ~/.config/git
+      state: link
