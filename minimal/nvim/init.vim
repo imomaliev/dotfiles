@@ -4,6 +4,7 @@ set number
 set hidden
 
 " automaticall determine search case
+set ignorecase
 set smartcase
 
 " When on, splitting a window will put the new window right and below of the current one.

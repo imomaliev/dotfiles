@@ -1,0 +1,7 @@
+$include /etc/inputrc
+
+set show-mode-in-prompt on
+set editing-mode vi
+set vi-ins-mode-string +
+set vi-cmd-mode-string :
+set keyseq-timeout 200
