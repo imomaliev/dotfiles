@@ -3,6 +3,12 @@
   hosts: projecti
   remote_user: me
   tasks:
+    - name: Install pyenv deps
+      apt:
+        name: build-essential
+      update_cache: yes
+      install_recommends: no
+      become: yes
     - name: Download pyenv-installer
       get_url:
         url: https://pyenv.run
