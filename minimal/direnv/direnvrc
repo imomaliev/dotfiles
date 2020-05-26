@@ -1,0 +1,40 @@
+layout_pipenv_in_dir() {
+  local _dir=.
+  PIPENV_PIPFILE="${PIPENV_PIPFILE:-Pipfile}"
+
+  if [[ $# -ne 0 ]]; then
+    _dir=$1
+    PIPENV_PIPFILE=$_dir/$PIPENV_PIPFILE
+  fi
+
+  if [[ ! -f "$PIPENV_PIPFILE" ]]; then
+    log_error "No Pipfile found.  Use \`pipenv\` to create a \`$PIPENV_PIPFILE\` first."
+    exit 2
+  fi
+
+  cd $_dir
+
+  VIRTUAL_ENV=$(pipenv --venv 2>/dev/null ; true)
+
+  if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+    pipenv install --dev
+    VIRTUAL_ENV=$(pipenv --venv)
+  fi
+
+  PATH_add "$VIRTUAL_ENV/bin"
+  export PIPENV_ACTIVE=1
+  export VIRTUAL_ENV
+
+  cd -
+}
+
+
+use_nvm() {
+  local node_version=$1
+
+  nvm_sh=~/.nvm/nvm.sh
+  if [[ -e $nvm_sh ]]; then
+    source $nvm_sh
+    nvm use $node_version
+  fi
+}

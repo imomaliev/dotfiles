@@ -13,3 +13,9 @@
         marker: "# {mark} direnv ANSIBLE MANAGED BLOCK"
         block: |
           eval "$(direnv hook bash)"
+    - name: Link config
+      tags: files
+      file:
+        src: ~/development/dotfiles/minimal/direnv
+        dest: ~/.config/direnv
+        state: link
