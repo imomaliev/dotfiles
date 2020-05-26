@@ -18,7 +18,7 @@
       dest: /tmp/nvm_installer
       mode: '0755'
   - name: Run installer
-    command: "bash /tmp/nvm_installer"
+    command: "PROFILE=/dev/null bash /tmp/nvm_installer"
   - name: Add bashrc config
     blockinfile:
       path: ~/.config/bash/local.sh
@@ -26,4 +26,5 @@
       marker: "# {mark} nvm ANSIBLE MANAGED BLOCK"
       block: |
         export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nv
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

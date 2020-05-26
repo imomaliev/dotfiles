@@ -62,4 +62,3 @@
       file:
         dest: ~/.config/bash/local.sh
         state: touch
-

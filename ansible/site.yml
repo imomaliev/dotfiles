@@ -11,6 +11,7 @@
         - neovim
         - tmux
         - mc
+        - direnv
       update_cache: yes
       install_recommends: no
 
