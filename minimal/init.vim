@@ -7,6 +7,8 @@ set expandtab
 
 set hidden
 
+set smartcase
+
 " Show tabs as CTRL-I is displayed, display $ after end of line.
 set list
 " Strings to use in 'list' mode and for the :list command.
