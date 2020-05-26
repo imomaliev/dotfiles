@@ -10,14 +10,13 @@
         mode: '0755'
     - name: Run installer
       shell: "bash /tmp/pyenv_installer"
-    - name: Add sourcing line
+    - name: Add bashrc config
       blockinfile:
-        path: ~/.config/bash/bashrc
+        path: ~/.config/bash/local.sh
         state: present
-        insertafter: EOF
+        marker: "# {mark} pyenv ANSIBLE MANAGED BLOCK"
         block: |
-            # pyenv config
-            export PATH="$HOME/.pyenv/bin:$PATH"
-            eval "$(pyenv init -)"
-            eval "$(pyenv virtualenv-init -)"
+          export PATH="$HOME/.pyenv/bin:$PATH"
+          eval "$(pyenv init -)"
+          eval "$(pyenv virtualenv-init -)"
 

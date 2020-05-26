@@ -55,8 +55,11 @@
       blockinfile:
         path: ~/.profile
         state: present
-        insertafter: EOF
         block: |
-            # source dotfiles's bashrc
-            [[ -f "$HOME/.config/bash/bashrc" ]] && . $HOME/.config/bash/bashrc
+          # source dotfiles's bashrc
+          [[ -f "$HOME/.config/bash/bashrc" ]] && . $HOME/.config/bash/bashrc
+    - name: Create local config file for bash
+      file:
+        dest: ~/.config/bash/local.sh
+        state: touch
 

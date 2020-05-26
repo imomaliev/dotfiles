@@ -12,10 +12,5 @@ export EDITOR=$nvim
 export VIEWER="$nvim -R"
 
 alias vim='nvim'
-# BEGIN ANSIBLE MANAGED BLOCK
 
-# pyenv config
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-# END ANSIBLE MANAGED BLOCK
+source "$HOME/.config/bash/local.sh"
