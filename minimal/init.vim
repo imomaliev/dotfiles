@@ -5,9 +5,16 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+" allow swtiching buffer when not saved
 set hidden
 
+" automaticall determine search case
 set smartcase
+" When on, splitting a window will put the new window right of the current one.
+set splitright
+
+" When on, splitting a window will put the new window below of the current one.
+set splitbelow
 
 " Show tabs as CTRL-I is displayed, display $ after end of line.
 set list
