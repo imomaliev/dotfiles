@@ -58,6 +58,9 @@ Plug 'jnurmine/Zenburn'
 
 Plug 'machakann/vim-highlightedyank'
 
+" Filetypes
+Plug 'posva/vim-vue'
+
 call plug#end()
 
 colorscheme zenburn
