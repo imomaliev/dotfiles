@@ -78,3 +78,4 @@
 - import_playbook: pipx.yml
 - import_playbook: nvm.yml
 - import_playbook: direnv.yml
+- import_playbook: fzf.yml

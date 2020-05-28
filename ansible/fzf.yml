@@ -1,0 +1,11 @@
+
+---
+- name: Install fzf
+  hosts: projecti
+  remote_user: me
+  tasks:
+    - name: Install fzf
+      apt: name=yes update_cache=yes install_recommends=no
+      become: yes
+    # Refer /usr/share/doc/fzf/README.Debian for quick instructions on how to
+    # add keybindings for Bash

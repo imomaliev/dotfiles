@@ -1,3 +1,6 @@
+" Enable the use of the mouse.
+set mouse=a
+
 set number
 
 " allow swtiching buffer when not saved
@@ -57,6 +60,9 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'jnurmine/Zenburn'
 
 Plug 'machakann/vim-highlightedyank'
+" Editor
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Filetypes
 Plug 'posva/vim-vue'
@@ -73,4 +79,5 @@ augroup config
   autocmd!
   autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 augroup END
