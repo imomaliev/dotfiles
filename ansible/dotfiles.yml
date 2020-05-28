@@ -30,12 +30,6 @@
       src: ~/development/dotfiles/minimal/nvim
       dest: ~/.config/nvim
       state: link
-  - name: Link tmux config
-    tags: files
-    file:
-      src: ~/development/dotfiles/minimal/tmux/tmux.conf
-      dest: ~/.tmux.conf
-      state: link
   - name: Link bash config
     tags: files
     block:

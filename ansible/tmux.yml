@@ -1,0 +1,20 @@
+---
+- name: Setup tmux
+  hosts: projecti
+  remote_user: me
+  tasks:
+  - name: install tmux
+    apt: name=tmux update_cache=yes install_recommends=no
+  - name: Link tmux config folder
+    tags: files
+    file:
+      src: ~/development/dotfiles/minimal/tmux
+      dest: ~/.config/tmux
+      state: link
+  - name: Link tmux config for old version
+    tags: files
+    file:
+      src: ~/.config/tmux/tmux.conf
+      dest: ~/.tmux.conf
+      state: link
+

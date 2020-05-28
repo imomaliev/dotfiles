@@ -1,3 +1,6 @@
+#!/bin/bash
+# ^ setting shebang for identify recognition
+
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\w\[\033[00m\]\n > '
 
 # https://github.com/tmux/tmux/issues/120#issuecomment-143375064

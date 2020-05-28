@@ -1,4 +1,3 @@
-
 ---
 - name: Install fzf
   hosts: projecti

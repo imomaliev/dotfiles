@@ -5,11 +5,10 @@
   tasks:
   - name: upgrade
     apt: update_cache=yes upgrade=full
-  - name: install neovim, tmux, mc
+  - name: install neovim, mc
     apt:
       name:
         - neovim
-        - tmux
         - mc
         - direnv
       update_cache: yes
@@ -74,6 +73,7 @@
           key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
 - import_playbook: dotfiles.yml
+- import_playbook: tmux.yml
 - import_playbook: pyenv.yml
 - import_playbook: pipx.yml
 - import_playbook: nvm.yml
