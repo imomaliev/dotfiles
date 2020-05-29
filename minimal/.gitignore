@@ -1,3 +1,4 @@
 bash/local.sh
 
+# set here bceause of g:netrw_home is set to $XDG_CONFIG_HOME/nvim
 nvim/.netrwhist

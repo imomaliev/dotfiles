@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+# https://unix.stackexchange.com/a/121390
+
+import os
+import atexit
+import readline
+
+
+readline_dir = os.path.join(os.path.expanduser('~'), '.local/share/python')
+if not os.path.exists(readline_dir):
+    os.makedirs(readline_dir)
+
+readline_history_file = os.path.join(readline_dir, '.python_history')
+
+try:
+    readline.read_history_file(readline_history_file)
+except IOError:
+    pass
+
+atexit.register(readline.write_history_file, readline_history_file)

@@ -14,7 +14,7 @@
         block: |
           eval "$(direnv hook bash)"
     - name: Link config
-      tags: files
+      tags: [configs, direnv]
       file:
         src: ~/development/dotfiles/minimal/direnv
         dest: ~/.config/direnv

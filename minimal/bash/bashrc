@@ -15,6 +15,9 @@ export VIEWER="$nvim -R"
 alias vim='nvim'
 
 export PIPENV_VENV_IN_PROJECT=1
+
+# clean home dir
 export INPUTRC="$HOME/.config/bash/inputrc"
+export PYTHONSTARTUP="$HOME/.config/python/pythonrc"
 
 source "$HOME/.config/bash/local.sh"
