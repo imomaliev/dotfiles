@@ -13,6 +13,8 @@
         marker: "# {mark} direnv ANSIBLE MANAGED BLOCK"
         block: |
           eval "$(direnv hook bash)"
+          # https://github.com/direnv/direnv/wiki/Tmux
+          alias tmux='direnv exec / tmux'
     - name: Link config
       tags: [configs, direnv]
       file:
