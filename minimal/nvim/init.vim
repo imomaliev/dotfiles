@@ -46,6 +46,9 @@ inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
 inoremap <CR> <C-G>u<CR>
 
+" Emacs like keys for the command line
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
 
 " Plug
 if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))

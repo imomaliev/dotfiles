@@ -1,7 +1,16 @@
 $include /etc/inputrc
 
-set show-mode-in-prompt on
 set editing-mode vi
+
+$if mode=vi
+set show-mode-in-prompt on
 set vi-ins-mode-string +
 set vi-cmd-mode-string :
 set keyseq-timeout 100
+
+set keymap vi-insert
+# these are for vi-insert mode
+Control-a: beginning-of-line
+Control-e: end-of-line
+
+$endif
