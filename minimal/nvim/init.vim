@@ -22,11 +22,18 @@ set listchars=trail:-,nbsp:+,tab:▸\ \,eol:¬,space:·
 " show a visual line under the cursor's current line
 set cursorline
 
+" Completion mode that is used for the character specified with 'wildchar'.
+set wildmode=longest:full,full
+
+
 " use normal regex for search
-nnoremap / /\v
-vnoremap / /\v
-nnoremap ? ?\v
-vnoremap ? ?\v
+" To define a mapping which uses the mapleader variable.
+let mapleader = "\<Space>"
+
+nnoremap <Leader>/ /\v
+vnoremap <Leader>/ /\v
+nnoremap <Leader>? ?\v
+vnoremap <Leader>? ?\v
 
 " make Y consistent with D, C
 nnoremap Y y$
@@ -35,10 +42,6 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
-" Split line (sister to [J]oin lines)
-" The normal use of S is covered by cc, so don't worry about shadowing it
-nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
-"
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
@@ -63,9 +66,12 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'jnurmine/Zenburn'
 
 Plug 'machakann/vim-highlightedyank'
+
 " Editor
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'Shougo/context_filetype.vim'
+Plug 'tyru/caw.vim'
 
 " Filetypes
 Plug 'posva/vim-vue'
