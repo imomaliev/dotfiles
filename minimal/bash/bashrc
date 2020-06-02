@@ -19,5 +19,6 @@ export PIPENV_VENV_IN_PROJECT=1
 # clean home dir
 export INPUTRC="$HOME/.config/bash/inputrc"
 export PYTHONSTARTUP="$HOME/.config/python/pythonrc"
+export LESSHISTFILE="$HOME/.cache/less/lesshst"
 
 source "$HOME/.config/bash/local.sh"

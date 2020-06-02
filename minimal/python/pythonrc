@@ -6,11 +6,11 @@ import atexit
 import readline
 
 
-readline_dir = os.path.join(os.path.expanduser('~'), '.local/share/python')
-if not os.path.exists(readline_dir):
-    os.makedirs(readline_dir)
+cache_dir = os.path.join(os.path.expanduser('~'), '.cache/python')
+if not os.path.exists(cache_dir):
+    os.makedirs(cache_dir)
 
-readline_history_file = os.path.join(readline_dir, '.python_history')
+readline_history_file = os.path.join(cache_dir, 'history')
 
 try:
     readline.read_history_file(readline_history_file)
