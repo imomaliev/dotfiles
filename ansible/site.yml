@@ -5,12 +5,10 @@
   tasks:
   - name: upgrade
     apt: update_cache=yes upgrade=full
-  - name: install neovim, mc
+  - name: install mc
     apt:
       name:
-        - neovim
         - mc
-        - direnv
       update_cache: yes
       install_recommends: no
 

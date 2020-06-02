@@ -24,12 +24,6 @@
       repo: git@github.com:imomaliev/dotfiles.git
       dest: ~/development/dotfiles
       accept_hostkey: yes
-  - name: Link nvim config
-    tags: [config, nvim]
-    file:
-      src: ~/development/dotfiles/minimal/nvim
-      dest: ~/.config/nvim
-      state: link
   - name: Link bash config
     tags: [config, bash]
     block:

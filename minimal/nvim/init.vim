@@ -53,6 +53,12 @@ inoremap <CR> <C-G>u<CR>
 cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
+
+let g:node_host_prog = '$HOME/.local/share/nvim/node/node_modules/.bin/neovim-node-host'
+let g:loaded_ruby_provider = 0
+let g:loaded_python_provider = 0
+let g:python3_host_prog = '$HOME/.local/share/nvim/python3/bin/python'
+
 " Plug
 if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
   " https://github.com/junegunn/vim-plug#neovim
