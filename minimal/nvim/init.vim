@@ -69,25 +69,35 @@ endi
 
 call plug#begin(stdpath('data') . '/plugged')
 
+" UI
 Plug 'jnurmine/Zenburn'
-
 Plug 'machakann/vim-highlightedyank'
+
+" Operators
+Plug 'machakann/vim-sandwich'
+Plug 'Shougo/context_filetype.vim'
+Plug 'tyru/caw.vim'
 
 " Editor
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/context_filetype.vim'
-Plug 'tyru/caw.vim'
 
 " Filetypes
 Plug 'posva/vim-vue'
 
 call plug#end()
 
+
 colorscheme zenburn
+
 
 " vim-highlightedyank
 let g:highlightedyank_highlight_duration = 200
+
+
+" vim sandwich
+" https://github.com/machakann/vim-sandwich/wiki/Introduce-vim-surround-keymappings
+runtime macros/sandwich/keymap/surround.vim
 
 
 augroup config
