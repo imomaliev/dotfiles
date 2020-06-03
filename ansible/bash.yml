@@ -1,0 +1,27 @@
+---
+- name: Setup bash
+  hosts: projecti
+  remote_user: me
+  tags: [bash, sh]
+  tasks:
+  - name: install bash
+    apt: name=bash update_cache=yes install_recommends=no
+  - name: Create symlink for bash
+    tags: [config]
+    file:
+      src: ~/development/dotfiles/minimal/bash
+      dest: ~/.config/bash
+      state: link
+  - name: Add sourcing line
+    tags: [config]
+    blockinfile:
+      path: ~/.bashrc
+      state: present
+      marker: "# {mark} dotfiles ANSIBLE MANAGED BLOCK"
+      block: |
+        [[ -f "$HOME/.config/bash/bashrc" ]] && . $HOME/.config/bash/bashrc
+  - name: Create local config file for bash
+    tags: [config]
+    file:
+      dest: ~/.config/bash/local.sh
+      state: touch

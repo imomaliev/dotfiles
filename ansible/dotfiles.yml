@@ -24,25 +24,6 @@
       repo: git@github.com:imomaliev/dotfiles.git
       dest: ~/development/dotfiles
       accept_hostkey: yes
-  - name: Link bash config
-    tags: [config, bash]
-    block:
-    - name: Create symlink for bash
-      file:
-        src: ~/development/dotfiles/minimal/bash
-        dest: ~/.config/bash
-        state: link
-    - name: Add sourcing line
-      blockinfile:
-        path: ~/.profile
-        state: present
-        marker: "# {mark} dotfiles ANSIBLE MANAGED BLOCK"
-        block: |
-          [[ -f "$HOME/.config/bash/bashrc" ]] && . $HOME/.config/bash/bashrc
-    - name: Create local config file for bash
-      file:
-        dest: ~/.config/bash/local.sh
-        state: touch
   - name: Link git config
     tags: [config, git]
     file:

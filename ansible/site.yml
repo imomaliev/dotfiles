@@ -71,6 +71,8 @@
           key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
 - import_playbook: dotfiles.yml
+- import_playbook: bash.yml
+- import_playbook: neovim.yml
 - import_playbook: tmux.yml
 - import_playbook: pyenv.yml
 - import_playbook: pipx.yml
