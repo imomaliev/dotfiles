@@ -1,0 +1,20 @@
+---
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/bash/files"
+    dest: ~/.config/bash
+    state: link
+- name: Ensure configs sourced
+  tags: [config]
+  blockinfile:
+    path: ~/.bashrc
+    state: present
+    marker: "# {mark} dotfiles ANSIBLE MANAGED BLOCK"
+    block: |
+      [[ -f "$HOME/.config/bash/bashrc" ]] && . $HOME/.config/bash/bashrc
+- name: Create local config
+  tags: [config]
+  file:
+    dest: ~/.config/bash/local.bash
+    state: touch

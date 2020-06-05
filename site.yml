@@ -3,6 +3,8 @@
   roles:
     - { role: homebrew, tags: [homebrew, brew] }
     - { role: git, tags: git }
-    - { role: zsh, tags: [zsh, sh] }
+    - { role: readline, tags: [readline] }
+    - { role: python, tags: [python] }
     - { role: fzf, tags: [fzf] }
+    - { role: zsh, tags: [zsh, sh] }
     - { role: neovim, tags: [neovim, nvim] }

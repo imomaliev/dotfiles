@@ -34,3 +34,8 @@
   file:
     path: ~/.cache/zsh
     state: directory
+- name: Ensure cache dir for less
+  tags: [config]
+  file:
+    path: ~/.cache/less
+    state: directory

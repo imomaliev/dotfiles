@@ -1,0 +1,7 @@
+---
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/readline/files"
+    dest: ~/.config/readline
+    state: link
