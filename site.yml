@@ -3,4 +3,5 @@
   roles:
     - { role: homebrew, tags: [homebrew, brew] }
     - { role: git, tags: git }
+    - { role: zsh, tags: [zsh, sh] }
     - { role: neovim, tags: [neovim, nvim] }

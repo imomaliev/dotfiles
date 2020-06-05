@@ -23,6 +23,8 @@ install_pipx() {
   echo 'export PIPX_HOME="$XDG_DATA_DIR/pipx"' >> ~/.zshrc
   echo 'export PIPX_BIN_DIR="$PIPX_HOME/bin"' >> ~/.zshrc
   echo 'export PATH="$LOCAL_VENV/bin:$PATH:$PIPX_BIN_DIR"' >> ~/.zshrc
+  echo 'export PROMPT="%n@%m %~ %# "' >> ~/.zshrc
+  echo 'run "pipx ensurepath"'
 }
 
 

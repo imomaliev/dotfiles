@@ -14,7 +14,7 @@ Currently for macOS Catalina
 
 1. Ensure inventory
 1. ```console
-   echo 'localhost ansible_connection=local ansible_python_interpreter="~/.local/pipx/venvs/ansible/bin/python3"' > inventory
+   echo 'localhost ansible_connection=local ansible_python_interpreter="~/.local/share/pipx/venvs/ansible/bin/python3"' > inventory
    ```
 1. Run playbook
    ```console

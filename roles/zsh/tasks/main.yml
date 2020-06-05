@@ -1,0 +1,30 @@
+---
+- name: Install from homebrew
+  tags: [install]
+  homebrew: name=zsh update_homebrew=yes
+- name: Copy zshenv
+  tags: [config]
+  copy:
+    src: "{{ playbook_dir }}/roles/zsh/files/.zshenv"
+    dest: ~/.zshenv
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/zsh/files"
+    dest: ~/.config/zsh
+    state: link
+- name: Create local config
+  tags: [config]
+  file:
+    dest: ~/.config/zsh/local.zsh
+    state: touch
+- name: Remove config from homedir
+  tags: [config]
+  file:
+    path: ~/.zshrc
+    state: absent
+- name: Remove history file from homedir
+  tags: [config]
+  file:
+    path: ~/.zsh_history
+    state: absent
