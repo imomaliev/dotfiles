@@ -1,0 +1,4 @@
+---
+- name: Install
+  tags: [install]
+  homebrew_cask: name=docker update_homebrew=yes
