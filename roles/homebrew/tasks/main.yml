@@ -3,15 +3,12 @@
   shell:
     cmd: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     creates: /usr/local/bin/brew
-
-- name: check analytics state
+- name: Check analytics state
   shell: brew analytics state
   register: brew_analytics
-
-- name: disable analytics
+- name: Disable analytics
   shell: brew analytics off
   when: brew_analytics.stdout != "Analytics are disabled."
-
-- name: update Homebrew
+- name: Update Homebrew
   homebrew: update_homebrew=yes
 

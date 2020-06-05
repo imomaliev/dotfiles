@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
   roles:
-    - { role: homebrew, tags: homebrew }
+    - { role: homebrew, tags: [homebrew, brew] }
     - { role: git, tags: git }
+    - { role: neovim, tags: [neovim, nvim] }

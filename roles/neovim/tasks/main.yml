@@ -1,0 +1,20 @@
+---
+- name: Install
+  tags: [install]
+  homebrew: name=neovim update_homebrew=yes
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/neovim/files"
+    dest: ~/.config/nvim
+    state: link
+# - name: Install pynvim in separate virtualenv
+#   tags: [data]
+#   pip:
+#     name: pynvim
+#     virtualenv: $HOME/.local/share/nvim/python3
+# - name: Install neovim in separate node env
+#   tags: [data]
+#   npm:
+#     name: neovim
+#     path: $HOME/.local/share/nvim/node

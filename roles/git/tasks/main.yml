@@ -1,10 +1,10 @@
 ---
-- name: Install fresh version
+- name: Install from homebrew
   tags: [install]
   homebrew: name=git update_homebrew=yes
-- name: Link config
+- name: Link configs
   tags: [config]
   file:
-    src: ~/development/dotfiles/roles/git/files
+    src: "{{ playbook_dir }}/roles/git/files"
     dest: ~/.config/git
     state: link
