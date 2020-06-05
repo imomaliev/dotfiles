@@ -1,9 +1,10 @@
 # Dotfiles
 
-## MacOS
+## macOS
+Currently for macOS Catalina
 
 ### Pre install
-1. Install xcode CLT(command line tools
-   ```sh-session
-   xcode-select --install
+1. Run install script
+   ```console
+   ./install.sh
    ```
