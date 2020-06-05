@@ -8,3 +8,4 @@
     - { role: fzf, tags: [fzf] }
     - { role: zsh, tags: [zsh, sh] }
     - { role: neovim, tags: [neovim, nvim] }
+    - { role: pyenv, tags: [pyenv] }

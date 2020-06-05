@@ -2,6 +2,8 @@
 - name: Install from homebrew
   tags: [install]
   homebrew: name=zsh update_homebrew=yes
+# https://wiki.archlinux.org/index.php/XDG_Base_Directory
+# we are linking only zshenv into home dir
 - name: Link zshenv
   tags: [config]
   file:
@@ -35,7 +37,7 @@
     path: ~/.cache/zsh
     state: directory
 - name: Ensure cache dir for less
-  tags: [config]
+  tags: [config, less]
   file:
     path: ~/.cache/less
     state: directory
