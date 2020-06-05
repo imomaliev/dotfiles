@@ -1,0 +1,4 @@
+---
+- name: Install
+  tags: [install]
+  homebrew: name=fzf update_homebrew=yes

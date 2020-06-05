@@ -17,7 +17,8 @@ export PIPX_HOME="$XDG_DATA_DIR/pipx"
 export PIPX_BIN_DIR="$PIPX_HOME/bin"
 # clean home dir
 export PYTHONSTARTUP="$HOME/.config/python/pythonrc"
-export LESSHISTFILE="$HOME/.cache/less/lesshst"
+export LESSHISTFILE="$HOME/.cache/less/history"
+export HISTFILE="$HOME/.cache/zsh/history"
 
 export PATH="$LOCAL_VENV/bin:$PATH:$PIPX_BIN_DIR"
 

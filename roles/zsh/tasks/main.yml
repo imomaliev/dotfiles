@@ -2,11 +2,12 @@
 - name: Install from homebrew
   tags: [install]
   homebrew: name=zsh update_homebrew=yes
-- name: Copy zshenv
+- name: Link zshenv
   tags: [config]
-  copy:
-    src: "{{ playbook_dir }}/roles/zsh/files/.zshenv"
+  file:
+    src: "{{ playbook_dir }}/roles/zsh/files/zshenv"
     dest: ~/.zshenv
+    state: link
 - name: Link configs
   tags: [config]
   file:
@@ -28,3 +29,8 @@
   file:
     path: ~/.zsh_history
     state: absent
+- name: Ensure cache dir
+  tags: [config]
+  file:
+    path: ~/.cache/zsh
+    state: directory
