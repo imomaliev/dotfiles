@@ -20,3 +20,7 @@ Currently for macOS Catalina
    ```console
    ansible-playbook -v -i inventory site.yml
    ```
+1. Remove .ansible folder
+   ```console
+   rm -r ~/.ansible
+   ```

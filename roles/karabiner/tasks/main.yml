@@ -1,0 +1,4 @@
+---
+- name: Install
+  tags: [install]
+  homebrew_cask: name=karabiner-elements update_homebrew=yes

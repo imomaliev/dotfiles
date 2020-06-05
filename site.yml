@@ -9,3 +9,4 @@
     - { role: zsh, tags: [zsh, sh] }
     - { role: neovim, tags: [neovim, nvim] }
     - { role: pyenv, tags: [pyenv] }
+    - { role: karabiner, tags: [karabiner-elements, karabiner]  }

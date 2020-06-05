@@ -9,6 +9,5 @@
 - name: Disable analytics
   shell: brew analytics off
   when: brew_analytics.stdout != "Analytics are disabled."
-- name: Update Homebrew
+- name: Update
   homebrew: update_homebrew=yes
-
