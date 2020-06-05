@@ -1,5 +1,5 @@
 ---
-- name: Setup macOS
-  hosts: localhost
+- hosts: localhost
   roles:
     - { role: homebrew, tags: homebrew }
+    - { role: git, tags: git }

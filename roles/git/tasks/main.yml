@@ -1,0 +1,10 @@
+---
+- name: Install fresh version
+  tags: [install]
+  homebrew: name=git update_homebrew=yes
+- name: Link config
+  tags: [config]
+  file:
+    src: ~/development/dotfiles/roles/git/files
+    dest: ~/.config/git
+    state: link

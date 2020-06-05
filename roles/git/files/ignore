@@ -2,4 +2,5 @@
 /.direnv
 /.nvmrc
 /.python-version
+*.swp
 /Session.vim
