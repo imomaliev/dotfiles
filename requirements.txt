@@ -1,6 +1,0 @@
-pip
-neovim
-setuptools
-ipython
-ipdb
-rpdb
