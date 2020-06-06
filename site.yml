@@ -8,6 +8,8 @@
     - { role: fzf, tags: [fzf] }
     - { role: zsh, tags: [zsh, sh] }
     - { role: neovim, tags: [neovim, nvim] }
+    - { role: tmux, tags: [tmux] }
+    - { role: direnv, tags: [direnv] }
     - { role: pyenv, tags: [pyenv] }
     - { role: karabiner, tags: [karabiner-elements, karabiner]  }
     - { role: docker, tags: [docker, docker-compose]  }

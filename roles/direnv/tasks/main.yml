@@ -1,0 +1,20 @@
+---
+- name: Install
+  tags: [install]
+  homebrew: name=direnv update_homebrew=yes
+- name: Setup config
+  tags: [config]
+  blockinfile:
+    path: ~/.config/zsh/local.zsh
+    state: present
+    marker: "# {mark} direnv ANSIBLE MANAGED BLOCK"
+    block: |
+      eval "$(direnv hook zsh)"
+      # https://github.com/direnv/direnv/wiki/Tmux
+      alias tmux='direnv exec / tmux'
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/direnv/files"
+    dest: ~/.config/direnv
+    state: link
