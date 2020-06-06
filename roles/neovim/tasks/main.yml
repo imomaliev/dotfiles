@@ -16,7 +16,8 @@
         cmd: virtualenv ~/.local/share/nvim/python3
         creates: ~/.local/share/nvim/python3
     - name: Create virtaulenv for neovim
-      debug: Installation of pynvim should be manually done to created venv
+      debug:
+        msg: Installation of pynvim should be manually done to created venv
     # installation should be manually done
     # - name: Install pynvim
     #   command:
