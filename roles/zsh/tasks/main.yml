@@ -21,6 +21,19 @@
   file:
     dest: ~/.config/zsh/local.zsh
     state: touch
+- name: Setup config
+  tags: [config]
+  blockinfile:
+    path: ~/.config/zsh/local.zsh
+    state: present
+    marker: "# {mark} ncurses ANSIBLE MANAGED BLOCK"
+    block: |
+      export PATH="/usr/local/opt/ncurses/bin:$PATH"
+      # For compilers to find ncurses you may need to set:
+      export LDFLAGS="-L/usr/local/opt/ncurses/lib"
+      export CPPFLAGS="-I/usr/local/opt/ncurses/include"
+      # For pkg-config to find ncurses you may need to set:
+      export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
 - name: Remove config from homedir
   tags: [config]
   file:

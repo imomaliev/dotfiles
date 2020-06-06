@@ -1,7 +1,7 @@
 #!/bin/bash
 # https://unix.stackexchange.com/questions/111499/how-do-i-know-the-name-of-a-tmux-session
 session_name=$(tmux display-message -p "#S")
-session_sha=$(echo "${session_name}" | sha1sum )
+session_sha=$(echo "${session_name}" | shasum )
 session_colour=${session_sha::6}
 # https://stackoverflow.com/questions/13280131/hexadecimal-to-decimal-in-shell-script
 # https://stackoverflow.com/questions/428109/extract-substring-in-bash#428580
@@ -14,7 +14,7 @@ b=$((16#${session_colour:4:2}))
 ((colour_id=(r*6/256)*36 + (g*6/256)*6 + (b*6/256)))
 
 TMUX_SESSION_COLOUR=colour$colour_id
-TMUX_SESSION_INVERTED_COLOUR=brightblack
+TMUX_SESSION_INVERTED_COLOUR=black
 tmux set-environment TMUX_SESSION_COLOUR $TMUX_SESSION_COLOUR
 tmux set-environment TMUX_SESSION_INVERTED_COLOUR $TMUX_SESSION_INVERTED_COLOUR
 tmux set-option status-style "bg=$TMUX_SESSION_COLOUR,fg=$TMUX_SESSION_INVERTED_COLOUR"
