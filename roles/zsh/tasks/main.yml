@@ -2,6 +2,16 @@
 - name: Install from homebrew
   tags: [install]
   homebrew: name=zsh update_homebrew=yes
+- name: Add to /etc/shells
+  tags: [setup]
+  become: yes
+  lineinfile:
+    path: /etc/shells
+    line: /usr/local/bin/zsh
+- name: Set default shell
+  tags: [setup]
+  shell:
+    cmd: chsh -s /usr/local/bin/zsh
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory
 # we are linking only zshenv into home dir
 - name: Link zshenv

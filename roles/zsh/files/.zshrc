@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export PROMPT="%~ %# "
+export PROMPT="%F{blue}%~%f %# "
 
 # use vi mode
 bindkey -v

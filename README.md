@@ -18,7 +18,7 @@ Currently for macOS Catalina
    ```
 1. Run playbook
    ```console
-   ansible-playbook -v -i inventory site.yml
+   ansible-playbook -v -i inventory --ask-become-password site.yml
    ```
 1. Remove .ansible folder
    ```console
