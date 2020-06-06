@@ -2,14 +2,16 @@
 - hosts: localhost
   roles:
     - { role: homebrew, tags: [homebrew, brew] }
-    - { role: git, tags: git }
-    - { role: readline, tags: [readline] }
-    - { role: python, tags: [python] }
-    - { role: fzf, tags: [fzf] }
     - { role: zsh, tags: [zsh, sh] }
+    - { role: pipx, tags: [pipx] }
+    - { role: readline, tags: [readline] }
+    - { role: git, tags: git }
+    - { role: python, tags: [python] }
+    - { role: pyenv, tags: [pyenv] }
+    - { role: nvm, tags: [nvm] }
     - { role: neovim, tags: [neovim, nvim] }
     - { role: tmux, tags: [tmux] }
+    - { role: fzf, tags: [fzf] }
     - { role: direnv, tags: [direnv] }
-    - { role: pyenv, tags: [pyenv] }
     - { role: karabiner, tags: [karabiner-elements, karabiner]  }
     - { role: docker, tags: [docker, docker-compose]  }

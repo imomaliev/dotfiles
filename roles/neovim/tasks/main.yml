@@ -8,13 +8,19 @@
     src: "{{ playbook_dir }}/roles/neovim/files"
     dest: ~/.config/nvim
     state: link
-# - name: Install pynvim in separate virtualenv
-#   tags: [data]
-#   pip:
-#     name: pynvim
-#     virtualenv: $HOME/.local/share/nvim/python3
-# - name: Install neovim in separate node env
-#   tags: [data]
-#   npm:
-#     name: neovim
-#     path: $HOME/.local/share/nvim/node
+- name: Install pynvim in separate virtualenv
+  tags: [data]
+  block:
+    - name: Create virtaulenv for neovim
+      shell:
+        cmd: virtualenv ~/.local/share/nvim/python3
+        creates: ~/.local/share/nvim/python3
+    # installation should be manually done
+    # - name: Install pynvim
+    #   command:
+    #     cmd: ~/.local/share/nvim/python3/bin/python -m pip install pynvim
+- name: Install neovim in separate node env
+  tags: [data]
+  npm:
+    name: neovim
+    path: ~/.local/share/nvim/node

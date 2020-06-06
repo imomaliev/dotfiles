@@ -1,0 +1,4 @@
+---
+- name: Install
+  tags: [install]
+  homebrew: name=sc-im update_homebrew=yes
