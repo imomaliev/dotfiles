@@ -2,3 +2,9 @@
 - name: Install
   tags: [install]
   homebrew_cask: name=karabiner-elements update_homebrew=yes
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/karabiner/files"
+    dest: ~/.config/karabiner
+    state: link

@@ -9,5 +9,26 @@
 - name: Disable analytics
   shell: brew analytics off
   when: brew_analytics.stdout != "Analytics are disabled."
-- name: Update
-  homebrew: update_homebrew=yes
+- name: Install apps
+  tags: [install]
+  homebrew:
+    name:
+      - mas
+    update_homebrew: yes
+- name: Install casks
+  tags: [install]
+  homebrew_cask:
+    name:
+      - firefox
+    update_homebrew: yes
+- name: Install app store apps
+  tags: [install]
+  shell:
+    cmd: mas install {{ item }}
+  loop:
+    # copy'em paste
+    - 876540291
+    # telegram
+    - 747648890
+    # slack
+    - 803453959
