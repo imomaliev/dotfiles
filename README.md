@@ -45,12 +45,16 @@ Currently for macOS Catalina
    ```
    Accessibility -> Display -> Cursor -> Shake mouse pointer to locate
    ```
-1. Trackpaq
+1. Trackpad
    ```
    Accessibility -> Pointer Control -> Trackpad Options -> Enable draggin -> three finger drag
    Trackpad -> More Gestures -> Swipe between full-screen apps -> Swipe left or right with four fingers
    Trackpad -> More Gestures -> Mission Control -> Swipe up with four fingers
    Trackpad -> More Gestures -> App Expose -> Swipe down with four fingers
+   ```
+1. Spelling
+   ```
+   Keyboard -> Text -> *Disable everything
    ```
 
 
