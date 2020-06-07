@@ -45,6 +45,15 @@ ansible-playbook -v -l localhost -i inventory --ask-become-pass site.yml
    ```
    Keyboard -> Text -> *Disable everything
    ```
+1. Time
+   ```
+   Date & Time -> Clock -> Display the time with seconds
+   Date & Time -> Clock -> Show date
+   ```
+1. Windows
+   ```
+   Dock -> Minimize windows using -> Scale Effect
+   ```
 
 
 ## TODO
