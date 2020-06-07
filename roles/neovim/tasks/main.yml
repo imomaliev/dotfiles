@@ -9,21 +9,15 @@
     dest: ~/.config/nvim
     state: link
 - name: Install pynvim in separate virtualenv
-  tags: [data]
-  block:
-    - name: Create virtaulenv for neovim
-      shell:
-        cmd: virtualenv ~/.local/share/nvim/python3
-        creates: ~/.local/share/nvim/python3
-    - name: Create virtaulenv for neovim
-      debug:
-        msg: Installation of pynvim should be manually done to created venv
-    # installation should be manually done
-    # - name: Install pynvim
-    #   command:
-    #     cmd: ~/.local/share/nvim/python3/bin/python -m pip install pynvim
+  tags: [setup]
+  pip:
+    name: pynvim
+    virtualenv: ~/.local/share/nvim/python3
+    # using venv here because for some reason virtualenv is installing into ansible's virtaulenv
+    # TODO: create a bug report
+    virtualenv_command: python -m venv
 - name: Install neovim in separate node env
-  tags: [data]
+  tags: [setup]
   npm:
     name: neovim
     path: ~/.local/share/nvim/node

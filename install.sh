@@ -35,11 +35,13 @@ _install_ansible() {
     fi
 }
 
+
 _run_ansible() {
-   echo 'localhost ansible_connection=local ansible_python_interpreter="'"$HOME"'/.local/share/pipx/venvs/ansible/bin/python3"' > inventory
-   ansible-playbook -v -l localhost -i inventory --ask-become-pass site.yml
+    echo 'using implicit localhost'
+    ansible-playbook -v -ask-become-pass site.yml
 
 }
+
 
 run_setup() {
     _install_clt
@@ -47,5 +49,7 @@ run_setup() {
     _install_ansible
     _run_ansible
 }
+
+
 run_setup
 unset run_setup

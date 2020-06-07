@@ -1,6 +1,13 @@
 ---
+# https://github.com/ansible/ansible/issues/16724
+# https://willthames.github.io/2018/07/01/connection-local-vs-delegate_to-localhost.html
+# https://docs.ansible.com/ansible/latest/inventory/implicit_localhost.html
 - hosts:
     - localhost
+  vars:
+    ansible_connection: local
+    ansible_python_interpreter: "{{ ansible_playbook_python }}"
+
   roles:
     - { role: homebrew, tags: [homebrew, brew] }
     - { role: zsh, tags: [zsh, sh] }
@@ -14,5 +21,5 @@
     - { role: tmux, tags: [tmux] }
     - { role: fzf, tags: [fzf] }
     - { role: direnv, tags: [direnv] }
-    - { role: karabiner, tags: [karabiner-elements, karabiner]  }
-    - { role: docker, tags: [docker, docker-compose]  }
+    - { role: karabiner, tags: [karabiner-elements, karabiner] }
+    - { role: docker, tags: [docker, docker-compose] }

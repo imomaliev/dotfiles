@@ -13,15 +13,10 @@ Currently for macOS Catalina
    ```console
    rm -r ~/.ansible
    ```
-1. For now pynvim is not installed automatically because if wierd issue with ansible installing it inside its venv
-   ```console
-   cd ~/.local/share/nvim/python3
-   source bin/activate
-   pip install pynvim
-   ```
 #### Run playbook
+Using implicit `localhost`
 ```console
-ansible-playbook -v -l localhost -i inventory --ask-become-pass site.yml
+ansible-playbook -v --ask-become-pass site.yml
 ```
 
 ### Manual Setup
@@ -60,4 +55,3 @@ ansible-playbook -v -l localhost -i inventory --ask-become-pass site.yml
 
 ## TODO
 1. osx_defaults
-1. fix pynvim problem
