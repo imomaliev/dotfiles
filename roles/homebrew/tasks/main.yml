@@ -6,6 +6,7 @@
 - name: Check analytics state
   shell: brew analytics state
   register: brew_analytics
+  check_mode: no
 - name: Disable analytics
   shell: brew analytics off
   when: brew_analytics.stdout != "Analytics are disabled."
