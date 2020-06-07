@@ -39,10 +39,6 @@ Currently for macOS Catalina
    ```
    Keyboard -> Keyboard -> Use F1, F2...
    Keyboard -> Keyboard -> Modifiers Keys -> Caps Lock Key -> No Action
-   Keyboard -> Shortcuts -> Input sources -> Select the previous input source -> CMD + Space
-   Keyboard -> Shortcuts -> Input sources -> Select the next input source -> CMD + ALT + Space
-   Keyboard -> Shortcuts -> Spotlight -> Show spotlight search -> CTRL + Space
-   Keyboard -> Shortcuts -> Spotlight -> Show Finder search window -> CTRL + ALT + Space
    ```
 1. Disable mouse pinter locate
    ```
