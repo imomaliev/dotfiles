@@ -17,13 +17,14 @@
       - mas
     update_homebrew: yes
 - name: Install casks
-  tags: [install]
+  tags: [install, cask]
   homebrew_cask:
     name:
       - firefox
+      - zoom
     update_homebrew: yes
 - name: Install app store apps
-  tags: [install]
+  tags: [install, mas]
   shell:
     cmd: mas install {{ item }}
   loop:

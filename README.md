@@ -50,9 +50,11 @@ ansible-playbook -v -l localhost -i inventory --ask-become-pass site.yml
    Date & Time -> Clock -> Display the time with seconds
    Date & Time -> Clock -> Show date
    ```
-1. Windows
+1. Dock
    ```
    Dock -> Minimize windows using -> Scale Effect
+   Dock -> Position on screen -> Left
+   Dock -> Automatically hide and show Dock
    ```
 
 
