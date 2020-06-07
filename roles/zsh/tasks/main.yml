@@ -3,13 +3,13 @@
   tags: [install]
   homebrew: name=zsh update_homebrew=yes
 - name: Add to /etc/shells
-  tags: [setup]
+  tags: [setup, set_shell]
   become: yes
   lineinfile:
     path: /etc/shells
     line: /usr/local/bin/zsh
 - name: Set default shell
-  tags: [setup]
+  tags: [setup, set_shell]
   shell:
     cmd: chsh -s /usr/local/bin/zsh
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory
@@ -27,40 +27,42 @@
     dest: ~/.config/zsh
     state: link
 - name: Create local config
-  tags: [config]
+  tags: [setup]
   file:
     dest: ~/.config/zsh/local.zsh
     state: touch
 - name: Setup config
-  tags: [config]
+  tags: [setup]
   blockinfile:
     path: ~/.config/zsh/local.zsh
     state: present
     marker: "# {mark} ncurses ANSIBLE MANAGED BLOCK"
     block: |
       export PATH="/usr/local/opt/ncurses/bin:$PATH"
+      # This is needed for terminfo db generation
+      export TERMINFO="$HOME/.local/share/terminfo"
       # For compilers to find ncurses you may need to set:
       export LDFLAGS="-L/usr/local/opt/ncurses/lib"
       export CPPFLAGS="-I/usr/local/opt/ncurses/include"
       # For pkg-config to find ncurses you may need to set:
       export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
 - name: Remove config from homedir
-  tags: [config]
+  tags: [setup]
   file:
     path: ~/.zshrc
     state: absent
 - name: Remove history file from homedir
-  tags: [config]
+  tags: [setup]
   file:
     path: ~/.zsh_history
     state: absent
 - name: Ensure cache dir
-  tags: [config]
+  tags: [setup]
   file:
     path: ~/.cache/zsh
     state: directory
 - name: Ensure cache dir for less
-  tags: [config, less]
+  tags: [setup, less]
   file:
     path: ~/.cache/less
     state: directory

@@ -8,3 +8,29 @@
     src: "{{ playbook_dir }}/roles/tmux/files"
     dest: ~/.config/tmux
     state: link
+# https://github.com/tmux/tmux/issues/2262
+- name: Check that the terminfo exists
+  tags: [setup]
+  stat:
+    path: ~/.local/share/terminfo/74/tmux-256color
+  register: terminfo_stat
+- name: Setup terminfo
+  tags: [setup]
+  block:
+    - name: Generate tmux terminfo with newer version of ncurses
+      shell:
+        cmd: "infocmp -x tmux-256color > /tmp/tmux-256color.terminfo"
+        creates: /tmp/tmux-256color.terminfo
+    - name: Ensure terminfo folder exists
+      file:
+        path: ~/.local/share/terminfo
+        state: directory
+    - name: Compile terminfo with system tic
+      shell:
+        cmd: "/usr/bin/tic -o ~/.local/share/terminfo -x /tmp/tmux-256color.terminfo"
+        creates: ~/.local/share/terminfo/74
+    - name: Cleanup terminfo file
+      file:
+        path: /tmp/tmux-256color.terminfo
+        state: absent
+  when: not terminfo_stat.stat.exists
