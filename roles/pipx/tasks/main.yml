@@ -1,16 +1,16 @@
 ---
 - name: Create data folder
   file:
-    path: ~/.local/share
+    path: ~/.local/opt
     state: directory
 - name: Create default venv
   shell:
-    cmd: python3 -m venv ~/.local/share/venv
-    creates: ~/.local/share/venv
+    cmd: /usr/bin/python3 -m venv ~/.local/opt/venv
+    creates: ~/.local/opt/venv
 - name: Install
   shell:
-    cmd: ~/.local/share/venv/bin/pip install pipx
-    creates: ~/.local/share/venv/bin/pipx
+    cmd: ~/.local/opt/venv/bin/pip install pipx
+    creates: ~/.local/opt/venv/bin/pipx
 - name: Add venv PATH and PIPX path
   tags: [config]
   blockinfile:
@@ -19,10 +19,8 @@
     marker: "# {mark} pipx ANSIBLE MANAGED BLOCK"
     insertbefore: BOF
     block: |
-      export LOCAL_VENV="${XDG_DATA_DIR:-$HOME/.local/share}/venv"
-      export PIPX_HOME="${XDG_DATA_DIR:-$HOME/.local/share}/pipx"
-      export PIPX_BIN_DIR="$PIPX_HOME/bin"
-      export PATH="$LOCAL_VENV/bin:$PATH:$PIPX_BIN_DIR"
+      export PIPX_HOME="$HOME/.local/share/pipx"
+      export PATH="$HOME/.local/opt/venv/bin:$PATH:$HOME/.local/bin"
 - name: Install
   shell: pipx install {{ item }}
   loop:

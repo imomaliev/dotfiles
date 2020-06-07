@@ -1,7 +1,6 @@
 ---
 - hosts:
     - localhost
-    - localhost.become
   roles:
     - { role: homebrew, tags: [homebrew, brew] }
     - { role: zsh, tags: [zsh, sh] }

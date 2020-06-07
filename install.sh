@@ -2,39 +2,50 @@
 
 set -e
 
-install_clt() {
+_install_clt() {
   echo 'Install CLT'
   xcode-select --install
 }
 
 
-install_pipx() {
-  echo 'Create user venv'
-  XDG_DATA_DIR="${XDG_DATA_DIR:-$HOME/.local/share}"
-  mkdir -p $XDG_DATA_DIR
-  LOCAL_VENV="$XDG_DATA_DIR/venv"
-  python3 -m venv $LOCAL_VENV
-  echo 'Install pipx into user venv'
-  $LOCAL_VENV/bin/pip install pipx
-  echo 'Manually ensurepath for pipx'
-  # this will be replaced later with ansible configs
-  echo 'export XDG_DATA_DIR="${XDG_DATA_DIR:-$HOME/.local/share}"' >> ~/.zshrc
-  echo 'export LOCAL_VENV="$XDG_DATA_DIR/venv"' >> ~/.zshrc
-  echo 'export PIPX_HOME="$XDG_DATA_DIR/pipx"' >> ~/.zshrc
-  echo 'export PIPX_BIN_DIR="$PIPX_HOME/bin"' >> ~/.zshrc
-  echo 'export PATH="$LOCAL_VENV/bin:$PATH:$PIPX_BIN_DIR"' >> ~/.zshrc
-  echo 'export PROMPT="%n@%m %~ %# "' >> ~/.zshrc
-  echo 'run "pipx ensurepath"'
+_install_pipx() {
+    if ! [ -x "$(command -v pipx)" ]; then
+        mkdir -p "$HOME"/.local/opt
+        echo 'Create user venv'
+        /usr/bin/python3 -m venv "$HOME"/.local/opt/venv
+        echo 'Install pipx into user venv'
+        "$HOME"/.local/opt/venv/bin/pip install pipx
+        echo 'Manually ensurepath for pipx'
+        # this will be replaced later with ansible configs
+        export PIPX_HOME="$HOME/.local/share/pipx"
+        export PATH="$HOME/.local/opt/venv/bin:$PATH:$HOME/.local/bin"
+        pipx ensurepath
+    else
+        echo 'pipx already installed'
+    fi
 }
 
 
-ensurepath_pipx() {
-  echo 'ensurepath pipx'
-  pipx ensurepath
+_install_ansible() {
+    if ! [ -x "$(command -v ansible)" ]; then
+        echo 'Install ansible with pipx'
+        pipx install ansible
+    else
+        echo 'ansible already installed'
+    fi
 }
 
+_run_ansible() {
+   echo 'localhost ansible_connection=local ansible_python_interpreter="'"$HOME"'/.local/share/pipx/venvs/ansible/bin/python3"' > inventory
+   ansible-playbook -v -l localhost -i inventory --ask-become-pass site.yml
 
-install_ansible() {
-  echo 'Install ansible with pipx'
-  pipx install ansible
 }
+
+run_setup() {
+    _install_clt
+    _install_pipx
+    _install_ansible
+    _run_ansible
+}
+run_setup
+unset run_setup

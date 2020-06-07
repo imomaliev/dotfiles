@@ -3,25 +3,11 @@
 ## macOS
 Currently for macOS Catalina
 
-### Pre install
+### Setup
 
 1. Run install script
    ```console
    ./install.sh
-   ```
-
-### Run ansible playbook
-
-1. Ensure inventory
-1. ```console
-   echo 'localhost ansible_connection=local ansible_python_interpreter="~/.local/share/pipx/venvs/ansible/bin/python3"' > inventory
-   echo 'localhost.become ansible_connection=local ansible_python_interpreter="/usr/bin/python3"' >> inventory
-   ```
-1. Run playbook
-   ```console
-   ansible-playbook -v -l localhost -i inventory --skip-tags set_shell site.yml
-   # this should be run with different python_interpriter for some reason set it to /usr/bin/python3
-   ansible-playbook -v -l localhost.become -i inventory --tags set_shell --ask-become-password site.yml
    ```
 1. Remove .ansible folder
    ```console
@@ -33,8 +19,12 @@ Currently for macOS Catalina
    source bin/activate
    pip install pynvim
    ```
+#### Run playbook
+```console
+ansible-playbook -v -l localhost -i inventory --ask-become-pass site.yml
+```
 
-### Setup
+### Manual Setup
 1. Keyboard
    ```
    Keyboard -> Keyboard -> Use F1, F2...
