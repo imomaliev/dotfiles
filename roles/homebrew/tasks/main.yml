@@ -21,7 +21,7 @@
   homebrew_cask:
     name:
       - firefox
-      - zoom
+      - zoomus
     update_homebrew: yes
 - name: Install app store apps
   tags: [install, mas]
@@ -34,3 +34,5 @@
     - 747648890
     # slack
     - 803453959
+    # Pages
+    - 409201541
