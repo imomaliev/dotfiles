@@ -31,3 +31,11 @@ export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export HISTFILE="$XDG_CACHE_HOME/zsh/history"
 
 . "$XDG_CONFIG_HOME/zsh/local.zsh"
+
+# The following lines were added by compinstall
+# zstyle :compinstall filename "$HOME/.config/.zshrc"
+
+# run: compaudit | xargs chmod g-w
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
