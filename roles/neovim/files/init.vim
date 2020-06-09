@@ -106,6 +106,7 @@ augroup config
   autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType vue setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   " Autoresize windows
   autocmd VimResized * :wincmd =
 augroup END

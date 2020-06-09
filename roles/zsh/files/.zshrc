@@ -2,8 +2,8 @@
 
 export PROMPT="%F{blue}%~%f %# "
 
-# use vi mode
-bindkey -v
+# use emacs mode
+bindkey -e
 
 # set default editor to nvim
 nvim=$(which nvim)
