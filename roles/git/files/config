@@ -1,6 +1,20 @@
+[user]
+	name = Sardorbek Imomaliev
+	useConfigOnly = true
 [core]
 	excludesfile = ~/.config/git/ignore
+[pull]
+	# When merges (or just m), pass the --rebase-merges option to git rebase so that
+	# the local merge commits are included in the rebase (see git-rebase(1) for details).
+	rebase = false
+[push]
+	# simple - in centralized workflow, work like upstream with an added safety to refuse 
+	# to push if the upstream branch's name is different from the local one.
+	default = simple
+[fetch]
+	prune = true
 [merge]
 	tool = vimdiff2
 [mergetool "vimdiff2"]
 	path = "nvim"
+# vi: ft=gitconfig
