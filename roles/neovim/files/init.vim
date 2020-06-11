@@ -42,6 +42,12 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
+
+" https://hg.stevelosh.com/dotfiles/file/tip/vim/vimrc#l421
+" Split line (sister to [J]oin lines)
+" The normal use of S is covered by cc, so don't worry about shadowing it.
+nnoremap S i<cr><esc>
+
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
@@ -107,6 +113,7 @@ augroup config
   autocmd FileType sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType vue setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   " Autoresize windows
   autocmd VimResized * :wincmd =
 augroup END
