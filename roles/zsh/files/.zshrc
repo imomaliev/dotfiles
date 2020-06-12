@@ -18,6 +18,9 @@ export PIPENV_VENV_IN_PROJECT=1
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+if [ "$(uname)" = "Darwin" ]; then
+    export HOMEBREW_PATH=$(brew --prefix)
+fi
 
 # show hidden files
 export FZF_DEFAULT_COMMAND='find . -type f'

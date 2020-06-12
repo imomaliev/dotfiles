@@ -2,7 +2,6 @@
 
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 # https://unix.stackexchange.com/questions/53789/whats-the-newline-symbol-in-zshs-ps1
-HOMEBREW_PATH=$(brew --prefix)
 source $HOMEBREW_PATH/etc/bash_completion.d/git-prompt.sh
 
 prompt_dotfiles_help () {
@@ -14,21 +13,11 @@ EOF
 }
 
 prompt_dotfiles_setup () {
-  setopt localoptions nowarncreateglobal
-
-  _prompt="%F{blue}%~%f %F{yellow}$( __git_ps1 '[%s]' )%f${prompt_newline}"
-
-  setopt extendedglob
-
   add-zsh-hook precmd prompt_dotfiles_precmd
 }
 
 prompt_dotfiles_precmd () {
-  setopt localoptions noxtrace nowarncreateglobal
-
-  PS1="$_prompt%# "
-  PS2="$_prompt%_> "
-  PS3="$_prompt?# "
+  PROMPT="%F{blue}%~%f %F{yellow}$( __git_ps1 '[%s]' )%f${prompt_newline}%# "
 }
 
 prompt_dotfiles_setup "$@"

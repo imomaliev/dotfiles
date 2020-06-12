@@ -38,14 +38,14 @@
     state: present
     marker: "# {mark} ncurses ANSIBLE MANAGED BLOCK"
     block: |
-      export PATH="/usr/local/opt/ncurses/bin:$PATH"
+      export PATH="$HOMEBREW_PATH/opt/ncurses/bin:$PATH"
       # This is needed for terminfo db generation
       export TERMINFO="$HOME/.local/share/terminfo"
       # For compilers to find ncurses you may need to set:
-      export LDFLAGS="-L/usr/local/opt/ncurses/lib"
-      export CPPFLAGS="-I/usr/local/opt/ncurses/include"
+      export LDFLAGS="-L$HOMEBREW_PATH/opt/ncurses/lib"
+      export CPPFLAGS="-I$HOMEBREW_PATH/opt/ncurses/include"
       # For pkg-config to find ncurses you may need to set:
-      export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
+      export PKG_CONFIG_PATH="$HOMEBREW_PATH/opt/ncurses/lib/pkgconfig"
 - name: Remove config from homedir
   tags: [setup]
   file:
