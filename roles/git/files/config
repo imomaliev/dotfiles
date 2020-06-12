@@ -17,4 +17,9 @@
 	tool = vimdiff2
 [mergetool "vimdiff2"]
 	path = "nvim"
+[alias]
+	st = status
+	di = diff
+	dic = diff --cached
+	dih = diff HEAD
 # vi: ft=gitconfig
