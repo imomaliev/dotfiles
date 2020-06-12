@@ -25,6 +25,8 @@ set cursorline
 " Completion mode that is used for the character specified with 'wildchar'.
 set wildmode=longest:full,full
 
+" undohistory
+set undofile
 
 " use normal regex for search
 " To define a mapping which uses the mapleader variable.

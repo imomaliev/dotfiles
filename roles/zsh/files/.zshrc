@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-export PROMPT="%F{blue}%~%f %# "
-
 # use emacs mode
 bindkey -e
 
@@ -30,7 +28,6 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export HISTFILE="$XDG_CACHE_HOME/zsh/history"
 
-. "$XDG_CONFIG_HOME/zsh/local.zsh"
 
 # The following lines were added by compinstall
 # zstyle :compinstall filename "$HOME/.config/.zshrc"
@@ -39,3 +36,11 @@ export HISTFILE="$XDG_CACHE_HOME/zsh/history"
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# https://github.com/denysdovhan/spaceship-prompt#example
+fpath=( "$XDG_CONFIG_HOME/zsh/functions" $fpath )
+autoload -Uz promptinit
+promptinit
+prompt dotfiles
+
+. "$XDG_CONFIG_HOME/zsh/local.zsh"
