@@ -44,6 +44,9 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
+" Reselect last-pasted text
+" https://vim.fandom.com/wiki/Selecting_your_pasted_text
+nnoremap <expr> <Leader>gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " https://hg.stevelosh.com/dotfiles/file/tip/vim/vimrc#l421
 " Split line (sister to [J]oin lines)
@@ -85,6 +88,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'machakann/vim-sandwich'
 Plug 'Shougo/context_filetype.vim'
 Plug 'tyru/caw.vim'
+Plug 'wellle/targets.vim'
 
 " Editor
 Plug 'junegunn/fzf'
