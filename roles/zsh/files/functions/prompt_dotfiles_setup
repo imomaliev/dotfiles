@@ -2,7 +2,7 @@
 
 # https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
 # https://unix.stackexchange.com/questions/53789/whats-the-newline-symbol-in-zshs-ps1
-source $HOMEBREW_PATH/etc/bash_completion.d/git-prompt.sh
+source $HOMEBREW_PREFIX/etc/bash_completion.d/git-prompt.sh
 
 prompt_dotfiles_help () {
   cat <<'EOF'

@@ -97,6 +97,7 @@ Plug 'junegunn/fzf.vim'
 
 " Filetypes
 Plug 'posva/vim-vue'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
@@ -116,6 +117,8 @@ augroup config
   autocmd FileType vue setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd BufRead,BufNewFile Pipfile setlocal filetype=toml
+  autocmd BufRead,BufNewFile Pipfile.lock setlocal filetype=json
   " Autoresize windows
   autocmd VimResized * :wincmd =
 augroup END
