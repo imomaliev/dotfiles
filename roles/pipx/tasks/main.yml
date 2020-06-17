@@ -1,13 +1,16 @@
 ---
 - name: Create data folder
+  tags: [setup]
   file:
     path: ~/.local/opt
     state: directory
 - name: Create default venv
+  tags: [setup]
   shell:
     cmd: /usr/bin/python3 -m venv ~/.local/opt/venv
     creates: ~/.local/opt/venv
 - name: Install
+  tags: [install]
   shell:
     cmd: ~/.local/opt/venv/bin/pip install pipx
     creates: ~/.local/opt/venv/bin/pipx
@@ -23,7 +26,9 @@
       export PATH="$HOME/.local/opt/venv/bin:$PATH:$HOME/.local/bin"
 - name: Install
   shell: pipx install {{ item }}
+  tags: [install]
   loop:
     - ansible
     - pre-commit
     - virtualenv
+    - pipenv

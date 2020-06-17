@@ -1,5 +1,11 @@
 #!/bin/zsh
 
+# https://stackoverflow.com/a/41139331/3627387
+# Commands output encoding
+export LC_ALL=en_US.UTF-8
+# Deafult language
+export LANG=en_US.UTF-8
+
 # use emacs mode
 bindkey -e
 
@@ -13,6 +19,8 @@ export VIEWER="$nvim -R"
 alias vim='nvim'
 
 export PIPENV_VENV_IN_PROJECT=1
+export PIPENV_IGNORE_VIRTUALENVS=1
+
 
 # https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
