@@ -1,5 +1,7 @@
 [user]
 	name = Sardorbek Imomaliev
+	# Instruct Git to avoid trying to guess defaults for user.email and user.name, and
+	# instead retrieve the values only from the configuration.
 	useConfigOnly = true
 [core]
 	excludesfile = ~/.config/git/ignore
@@ -8,18 +10,21 @@
 	# the local merge commits are included in the rebase (see git-rebase(1) for details).
 	rebase = false
 [push]
-	# simple - in centralized workflow, work like upstream with an added safety to refuse 
+	# simple - in centralized workflow, work like upstream with an added safety to refuse
 	# to push if the upstream branch's name is different from the local one.
 	default = simple
 [fetch]
+	# If true, fetch will automatically behave as if the --prune option was given on the command
+	# line. See also remote.<name>.prune and the PRUNING section of git-fetch(1).
 	prune = true
 [merge]
+	# https://github.com/git/git/blob/master/mergetools/vimdiff#L18
+	# "$merge_tool_path" -f -d -c 'wincmd l'"$LOCAL" "$MERGED" "$REMOTE"
 	tool = vimdiff2
 [mergetool "vimdiff2"]
 	path = "nvim"
 [alias]
 	st = status
-	di = diff
-	dic = diff --cached
+	di = diff --cached
 	dih = diff HEAD
-# vi: ft=gitconfig
+# vim: ft=gitconfig

@@ -32,6 +32,7 @@ set undofile
 " To define a mapping which uses the mapleader variable.
 let mapleader = "\<Space>"
 
+" Maps for magic mode in search
 nnoremap <Leader>/ /\v
 vnoremap <Leader>/ /\v
 nnoremap <Leader>? ?\v
@@ -61,7 +62,6 @@ inoremap <C-W> <C-G>u<C-W>
 inoremap <CR> <C-G>u<CR>
 
 " Emacs like keys for the command line
-cnoremap <C-A> <Home>
 cnoremap <C-E> <End>
 
 
@@ -69,6 +69,7 @@ let g:node_host_prog = '$HOME/.local/share/nvim/node/node_modules/.bin/neovim-no
 let g:loaded_ruby_provider = 0
 let g:loaded_python_provider = 0
 let g:python3_host_prog = '$HOME/.local/share/nvim/python3/bin/python'
+
 
 " Plug
 if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
@@ -105,11 +106,6 @@ colorscheme zenburn
 
 " vim-highlightedyank
 let g:highlightedyank_highlight_duration = 200
-
-
-" vim sandwich
-" https://github.com/machakann/vim-sandwich/wiki/Introduce-vim-surround-keymappings
-runtime macros/sandwich/keymap/surround.vim
 
 
 augroup config
