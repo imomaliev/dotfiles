@@ -62,7 +62,9 @@ inoremap <C-W> <C-G>u<C-W>
 inoremap <CR> <C-G>u<CR>
 
 " Emacs like keys for the command line
-cnoremap <C-E> <End>
+cnoremap <C-A> <Home>
+" do not lose default mapping
+cnoremap <C-B> <C-A>
 
 
 let g:node_host_prog = '$HOME/.local/share/nvim/node/node_modules/.bin/neovim-node-host'
