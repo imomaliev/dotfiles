@@ -96,6 +96,7 @@ Plug 'wellle/targets.vim'
 " Editor
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'roxma/vim-tmux-clipboard'
 
 " Filetypes
 Plug 'posva/vim-vue'
@@ -110,6 +111,17 @@ colorscheme zenburn
 " vim-highlightedyank
 let g:highlightedyank_highlight_duration = 200
 
+" vim-sandwitch
+" use vim-surround mappings
+runtime macros/sandwich/keymap/surround.vim
+let g:sandwich#recipes += [
+      \   {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['{']},
+      \   {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['[']},
+      \   {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['(']},
+      \   {'buns': ['{\s*', '\s*}'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['{']},
+      \   {'buns': ['\[\s*', '\s*\]'], 'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['[']},
+      \   {'buns': ['(\s*', '\s*)'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['(']},
+      \ ]
 
 augroup config
   autocmd!
@@ -118,6 +130,8 @@ augroup config
   autocmd FileType sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType vue setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd BufRead,BufNewFile Pipfile setlocal filetype=toml
   autocmd BufRead,BufNewFile Pipfile.lock setlocal filetype=json
