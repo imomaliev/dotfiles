@@ -29,12 +29,14 @@ layout_pipenv_in_dir() {
 }
 
 
+# https://github.com/direnv/direnv/wiki/Node#using-nvm
 use_nvm() {
   local node_version=$1
 
-  nvm_sh=~/.nvm/nvm.sh
-  if [[ -e $nvm_sh ]]; then
-    source $nvm_sh
+  if [[ -s $NVM_EXE ]]; then
+    . $NVM_EXE
     nvm use $node_version
   fi
 }
+
+# vim: ft=sh

@@ -25,6 +25,7 @@
 	path = "nvim"
 [alias]
 	ci = commit
+	amend = commit --amend --no-edit
 	di = diff --cached
 	dih = diff HEAD
 	st = status

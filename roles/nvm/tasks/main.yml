@@ -10,5 +10,6 @@
     state: present
     marker: "# {mark} nvm ANSIBLE MANAGED BLOCK"
     block: |
-      export NVM_DIR="${XDG_DATA_DIR:-$HOME/.local/share}/nvm"
-      [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+      export NVM_DIR="$XDG_DATA_HOME/nvm"
+      export NVM_EXE="$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
+      # nvm loaded in direnv
