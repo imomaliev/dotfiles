@@ -8,11 +8,11 @@
 [pull]
 	# When merges (or just m), pass the --rebase-merges option to git rebase so that
 	# the local merge commits are included in the rebase (see git-rebase(1) for details).
-	rebase = false
+	rebase = merges
 [push]
-	# simple - in centralized workflow, work like upstream with an added safety to refuse
-	# to push if the upstream branch's name is different from the local one.
-	default = simple
+	# current - push the current branch to update a branch with the same name
+	# on the receiving end. Works in both central and non-central workflows.
+	default = current
 [fetch]
 	# If true, fetch will automatically behave as if the --prune option was given on the command
 	# line. See also remote.<name>.prune and the PRUNING section of git-fetch(1).
