@@ -25,8 +25,14 @@
 	path = "nvim"
 [alias]
 	ci = commit
+	cim = commit -m
 	amend = commit --amend --no-edit
 	di = diff --cached
-	dih = diff HEAD
+	df = diff HEAD
 	st = status
+	graph = log --graph
+	# https://stackoverflow.com/questions/13064613/how-to-prune-local-tracking-branches-that-do-not-exist-on-remote-anymore
+	brprune = "!f() { git branch --merged ${1:-HEAD} | grep -vE '(master|develop|\\*)' | xargs -n 1 git branch -d; }; f"
+[grep]
+	lineNumber = true
 # vim: ft=gitconfig
