@@ -97,6 +97,8 @@ Plug 'wellle/targets.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'roxma/vim-tmux-clipboard'
+Plug 'tpope/vim-fugitive'
+Plug 'mhinz/vim-signify'
 
 " Filetypes
 Plug 'posva/vim-vue'
@@ -111,6 +113,7 @@ colorscheme zenburn
 " vim-highlightedyank
 let g:highlightedyank_highlight_duration = 200
 
+
 " vim-sandwitch
 " use vim-surround mappings
 runtime macros/sandwich/keymap/surround.vim
@@ -122,6 +125,20 @@ let g:sandwich#recipes += [
       \   {'buns': ['\[\s*', '\s*\]'], 'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['[']},
       \   {'buns': ['(\s*', '\s*)'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['(']},
       \ ]
+
+
+" FZF
+nnoremap <Leader>tt :<C-U>Files .<CR>
+nnoremap <Leader>tl :<C-U>Buffers<CR>
+nnoremap <Leader>tr :<C-U>History<CR>
+nnoremap <Leader>tp :<C-U>Tags<CR>
+
+
+" Signify
+" Make colors more visible
+highlight SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
+highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
+highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
 
 augroup config
   autocmd!
