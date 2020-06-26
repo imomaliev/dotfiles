@@ -1,0 +1,19 @@
+---
+# tasks file for roles/skel
+- name: Add tap
+  tags: [install]
+  homebrew_tap:
+    name:
+      - universal-ctags/universal-ctags
+- name: Install
+  tags: [install]
+  homebrew:
+    name: universal-ctags
+    install_options: [HEAD]
+    update_homebrew: yes
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/ctags/files"
+    dest: ~/.config/ctags
+    state: link

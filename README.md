@@ -18,6 +18,11 @@ Using implicit `localhost`
 ```console
 ansible-playbook -v --ask-become-pass site.yml
 ```
+#### Run one role
+https://stackoverflow.com/questions/38350674/ansible-can-i-execute-role-from-command-line
+```console
+ansible localhost -m include_role -a name="{name}"
+```
 
 ### Manual Setup
 1. Keyboard

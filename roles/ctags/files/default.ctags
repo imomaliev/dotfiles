@@ -1,0 +1,7 @@
+--recurse=yes
+
+--exclude=.DS_Store
+--exclude=*/.mypy_cache/*
+--exclude=*/.git/*
+
+--languages=Python
