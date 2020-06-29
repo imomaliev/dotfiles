@@ -9,6 +9,7 @@ set hidden
 " automaticall determine search case
 set ignorecase
 set smartcase
+set tagcase=match
 
 " When on, splitting a window will put the new window right and below of the current one.
 set splitright
@@ -65,6 +66,39 @@ inoremap <CR> <C-G>u<CR>
 cnoremap <C-A> <Home>
 " do not lose default mapping
 cnoremap <C-B> <C-A>
+
+" Open tag in location window and jump to first occurence
+" https://vi.stackexchange.com/a/16805/7820
+" http://andrewradev.com/2011/06/08/vim-and-ctags/
+function! JumpToTagWithLocationList()
+  let l:word = expand("<cword>")
+  let l:taglist_len = len(taglist('^'.l:word.'$'))
+  if  l:taglist_len == 0
+    echohl ErrorMsg | echo "E426: tag not found: " . l:word | echohl None
+  elseif l:taglist_len == 1
+    execute 'tag ' . l:word
+  else
+    execute 'ltag ' . l:word . ' | lopen | wincmd p'
+  endif
+endfunction
+
+function! SplitJumpToTagWithLocationList()
+  let l:word = expand("<cword>")
+  let l:taglist_len = len(taglist('^'.l:word.'$'))
+  if  l:taglist_len == 0
+    echohl ErrorMsg | echo "E426: tag not found: " . l:word | echohl None
+  elseif l:taglist_len == 1
+    execute 'vertical stag ' . l:word
+  else
+    execute 'vertical stag ' . l:word . ' | ltag ' . l:word . ' | lopen | wincmd p'
+  endif
+endfunction
+
+nnoremap <C-]> :call JumpToTagWithLocationList()<CR>
+nnoremap <C-W>] :call SplitJumpToTagWithLocationList()<CR>
+
+
+command! -nargs=+ Grep execute 'silent lgrep! <args>' | lopen
 
 
 let g:node_host_prog = '$HOME/.local/share/nvim/node/node_modules/.bin/neovim-node-host'
@@ -132,6 +166,7 @@ nnoremap <Leader>tt :<C-U>Files .<CR>
 nnoremap <Leader>tl :<C-U>Buffers<CR>
 nnoremap <Leader>tr :<C-U>History<CR>
 nnoremap <Leader>tp :<C-U>Tags<CR>
+let $FZF_DEFAULT_COMMAND='find -E . -type f -not -regex ".*\.(pyc|json)"'
 
 
 " Signify
