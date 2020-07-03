@@ -42,10 +42,10 @@
       # This is needed for terminfo db generation
       export TERMINFO="$HOME/.local/share/terminfo"
       # For compilers to find ncurses you may need to set:
-      export LDFLAGS="-L$HOMEBREW_PREFIX/opt/ncurses/lib"
-      export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/ncurses/include"
+      export LDFLAGS="-L$HOMEBREW_PREFIX/opt/ncurses/lib $LDFLAGS"
+      export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/ncurses/include $CPPFLAGS"
       # For pkg-config to find ncurses you may need to set:
-      export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/ncurses/lib/pkgconfig"
+      export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/ncurses/lib/pkgconfig:$PKG_CONFIG_PATH"
 - name: Remove config from homedir
   tags: [setup]
   file:

@@ -3,7 +3,7 @@
   tags: [install]
   homebrew: name=direnv update_homebrew=yes
 - name: Setup config
-  tags: [config]
+  tags: [setup]
   blockinfile:
     path: ~/.config/zsh/local.zsh
     state: present

@@ -96,6 +96,7 @@ endfunction
 
 nnoremap <C-]> :call JumpToTagWithLocationList()<CR>
 nnoremap <C-W>] :call SplitJumpToTagWithLocationList()<CR>
+nnoremap <expr> <C-W>} ':topleft ptag ' . expand("<cword>") . '<CR>'
 
 
 command! -nargs=+ Grep execute 'silent lgrep! <args>' | lopen
