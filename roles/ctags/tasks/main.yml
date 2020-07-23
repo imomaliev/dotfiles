@@ -29,6 +29,12 @@
       export LDFLAGS="-L/usr/local/opt/python@3.8/lib $LDFLAGS"
       # For pkg-config to find python@3.8 you may need to set:
       export PKG_CONFIG_PATH="/usr/local/opt/python@3.8/lib/pkgconfig:$PKG_CONFIG_PATH"
+      # openssl
+      # For compilers to find openssl@1.1 you may need to set:
+      export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include $CPPFLAGS"
+      export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib $LDFLAGS"
+      # For pkg-config to find openssl@1.1 you may need to set:
+      export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
 - name: Link configs
   tags: [config]
   file:

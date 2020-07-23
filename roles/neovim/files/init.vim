@@ -167,7 +167,7 @@ nnoremap <Leader>tt :<C-U>Files .<CR>
 nnoremap <Leader>tl :<C-U>Buffers<CR>
 nnoremap <Leader>tr :<C-U>History<CR>
 nnoremap <Leader>tp :<C-U>Tags<CR>
-let $FZF_DEFAULT_COMMAND='find -E . -type f -not -regex ".*\.(pyc|json)"'
+let $FZF_DEFAULT_COMMAND='find -E . -type f -not -regex ".*\.(pyc)"'
 
 
 " Signify
