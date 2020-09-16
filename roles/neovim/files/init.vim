@@ -127,6 +127,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'Shougo/context_filetype.vim'
 Plug 'tyru/caw.vim'
 Plug 'wellle/targets.vim'
+Plug 'chaoren/vim-wordmotion'
 
 " Editor
 Plug 'junegunn/fzf'
@@ -178,6 +179,24 @@ highlight SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
 highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
 highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
 
+
+" Wordmotion
+nnoremap <silent> <Leader>, :call WordMotionToggle()<cr>
+
+let g:wordmotion_prefix = '<Leader><F20>'
+
+function! WordMotionToggle()
+  if g:wordmotion_prefix == '<Leader><F20>'
+    let g:wordmotion_prefix = ''
+  else
+    let g:wordmotion_prefix = '<Leader><F20>'
+  endif
+  unlet g:loaded_wordmotion
+  runtime plugin/wordmotion.vim
+endfunction
+
+
+" Autocommands config
 augroup config
   autocmd!
   autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
