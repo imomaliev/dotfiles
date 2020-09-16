@@ -118,6 +118,9 @@ endi
 
 call plug#begin(stdpath('data') . '/plugged')
 
+" Keymap
+Plug 'imomaliev/mac-russian-colemak.vim'
+
 " UI
 Plug 'jnurmine/Zenburn'
 Plug 'machakann/vim-highlightedyank'
@@ -144,8 +147,45 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 call plug#end()
 
+" Keymap
+set keymap=mac-russian-colemak
+set iminsert=0
+" -1  the value of 'iminsert' is used, makes it look like 'iminsert' is also used when typing a search pattern
+set imsearch=-1
 
+function! LangMapToggle()
+  if &iminsert == 0
+    set iminsert=1
+  else
+    set iminsert=0
+  endif
+endfunction
+
+nnoremap <Leader>^ :call LangMapToggle()<CR>
+
+" Colorscheme
 colorscheme zenburn
+
+
+" Statusline
+" Emulating default statusline
+function IsWordMotion()
+  if g:wordmotion_prefix == ''
+    return '<wm> '
+  endif
+  return ''
+endfunction
+
+function IsLangMap()
+  if &iminsert == 1
+    return '<' . b:keymap_name . '> '
+  endif
+  return ''
+endfunction
+
+" probably default
+" set statusline=%<%f\ %h%r%=%k\ %-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%r%=%{IsWordMotion()}%{IsLangMap()}%-14.(%l,%c%V%)\ %P
 
 
 " vim-highlightedyank
