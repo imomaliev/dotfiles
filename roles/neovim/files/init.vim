@@ -139,6 +139,7 @@ Plug 'mhinz/vim-signify'
 Plug 'posva/vim-vue'
 Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-terraform'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 call plug#end()
 
