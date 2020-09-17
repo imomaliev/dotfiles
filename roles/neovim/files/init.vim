@@ -170,7 +170,7 @@ colorscheme zenburn
 " Statusline
 " Emulating default statusline
 function IsWordMotion()
-  if g:wordmotion_prefix == ''
+  if g:wordmotion_disable_default_mappings == 0
     return '<wm> '
   endif
   return ''
@@ -223,13 +223,13 @@ highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
 " Wordmotion
 nnoremap <silent> <Leader>, :call WordMotionToggle()<cr>
 
-let g:wordmotion_prefix = '<Leader><F20>'
+let g:wordmotion_disable_default_mappings = 1
 
 function! WordMotionToggle()
-  if g:wordmotion_prefix == '<Leader><F20>'
-    let g:wordmotion_prefix = ''
+  if g:wordmotion_disable_default_mappings == 0
+    let g:wordmotion_disable_default_mappings = 1
   else
-    let g:wordmotion_prefix = '<Leader><F20>'
+    let g:wordmotion_disable_default_mappings = 0
   endif
   unlet g:loaded_wordmotion
   runtime plugin/wordmotion.vim
