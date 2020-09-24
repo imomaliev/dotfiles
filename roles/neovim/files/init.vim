@@ -29,7 +29,6 @@ set wildmode=longest:full,full
 " undohistory
 set undofile
 
-" use normal regex for search
 " To define a mapping which uses the mapleader variable.
 let mapleader = "\<Space>"
 
@@ -184,8 +183,24 @@ function IsLangMap()
 endfunction
 
 " probably default
-" set statusline=%<%f\ %h%r%=%k\ %-14.(%l,%c%V%)\ %P
-set statusline=%<%f\ %h%r%=%{IsWordMotion()}%{IsLangMap()}%-14.(%l,%c%V%)\ %P
+" set statusline=%<%f\ %h%m%r%=%k\ %-14.(%l,%c%V%)\ %P
+
+set statusline=%<
+set statusline+=%f
+set statusline+=\ "whitespace
+set statusline+=%h
+set statusline+=%m
+set statusline+=%r
+" https://github.com/scrooloose/vimfiles/blob/a9689e8eace5b38d9fb640294e6e4b681e18981a/vimrc#L175
+" display a warning if &paste is set
+set statusline+=%{&paste?'[paste]':''}
+" right part
+set statusline+=%=
+set statusline+=%{IsWordMotion()}
+set statusline+=%{IsLangMap()}
+set statusline+=%-14.(%l,%c%V%)
+set statusline+=\ "whitespace
+set statusline+=%P
 
 
 " vim-highlightedyank
