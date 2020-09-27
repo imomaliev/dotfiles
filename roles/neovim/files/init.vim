@@ -66,6 +66,13 @@ cnoremap <C-A> <Home>
 " do not lose default mapping
 cnoremap <C-B> <C-A>
 
+
+let g:node_host_prog = '$HOME/.local/share/nvim/node/node_modules/.bin/neovim-node-host'
+let g:loaded_ruby_provider = 0
+let g:loaded_python_provider = 0
+let g:python3_host_prog = '$HOME/.local/share/nvim/python3/bin/python'
+
+
 " Open tag in location window and jump to first occurence
 " https://vi.stackexchange.com/a/16805/7820
 " http://andrewradev.com/2011/06/08/vim-and-ctags/
@@ -99,12 +106,6 @@ nnoremap <expr> <C-W>} ':topleft ptag ' . expand("<cword>") . '<CR>'
 
 
 command! -nargs=+ Grep execute 'silent lgrep! <args>' | lopen
-
-
-let g:node_host_prog = '$HOME/.local/share/nvim/node/node_modules/.bin/neovim-node-host'
-let g:loaded_ruby_provider = 0
-let g:loaded_python_provider = 0
-let g:python3_host_prog = '$HOME/.local/share/nvim/python3/bin/python'
 
 
 " Plug
@@ -146,6 +147,7 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 call plug#end()
 
+
 " Keymap
 set keymap=mac-russian-colemak
 set iminsert=0
@@ -161,6 +163,7 @@ function! LangMapToggle()
 endfunction
 
 nnoremap <Leader>^ :call LangMapToggle()<CR>
+
 
 " Colorscheme
 colorscheme zenburn
@@ -236,8 +239,6 @@ highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
 
 
 " Wordmotion
-nnoremap <silent> <Leader>, :call WordMotionToggle()<cr>
-
 let g:wordmotion_disable_default_mappings = 1
 
 function! WordMotionToggle()
@@ -249,6 +250,8 @@ function! WordMotionToggle()
   unlet g:loaded_wordmotion
   runtime plugin/wordmotion.vim
 endfunction
+
+nnoremap <silent> <Leader>, :call WordMotionToggle()<cr>
 
 
 " Autocommands config
