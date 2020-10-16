@@ -11,6 +11,9 @@ set ignorecase
 set smartcase
 set tagcase=match
 
+" all matches in a line are substituted instead of one
+set gdefault
+
 " When on, splitting a window will put the new window right and below of the current one.
 set splitright
 set splitbelow
