@@ -2,12 +2,6 @@
 - name: Install
   tags: [install]
   homebrew: name=tmux update_homebrew=yes
-- name: Link configs
-  tags: [config]
-  file:
-    src: "{{ playbook_dir }}/roles/tmux/files"
-    dest: ~/.config/tmux
-    state: link
 # https://github.com/tmux/tmux/issues/2262
 - name: Check that the terminfo exists
   tags: [setup]
@@ -34,3 +28,14 @@
         path: /tmp/tmux-256color.terminfo
         state: absent
   when: not terminfo_stat.stat.exists
+- name: Install TPM(tmux plugin manager)
+  tags: [setup, plugins]
+  git:
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest: ~/.local/share/tmux/plugins/tpm
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/tmux/files"
+    dest: ~/.config/tmux
+    state: link

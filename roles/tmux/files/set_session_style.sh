@@ -17,10 +17,16 @@ TMUX_SESSION_COLOUR=colour$colour_id
 TMUX_SESSION_INVERTED_COLOUR=black
 tmux set-environment TMUX_SESSION_COLOUR $TMUX_SESSION_COLOUR
 tmux set-environment TMUX_SESSION_INVERTED_COLOUR $TMUX_SESSION_INVERTED_COLOUR
-tmux set-option status-right "#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,} %H:%M %d-%b-%y #($HOME/.config/tmux/get_keyboard_layout.sh) "
+tmux set-option @prefix_highlight_fg "$TMUX_SESSION_COLOUR"
+tmux set-option @prefix_highlight_bg "$TMUX_SESSION_INVERTED_COLOUR"
+tmux set-option status-right "#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,} #{prefix_highlight} %H:%M %d-%b-%y #($HOME/.config/tmux/get_keyboard_layout.sh) "
 tmux set-option status-style "bg=$TMUX_SESSION_COLOUR,fg=$TMUX_SESSION_INVERTED_COLOUR"
 tmux set-option window-status-style "bg=$TMUX_SESSION_COLOUR,fg=$TMUX_SESSION_INVERTED_COLOUR"
 tmux set-option window-status-current-style "bg=$TMUX_SESSION_INVERTED_COLOUR,fg=$TMUX_SESSION_COLOUR"
 tmux set-option window-status-activity-style "bg=$TMUX_SESSION_COLOUR,fg=$TMUX_SESSION_INVERTED_COLOUR"
 tmux set-option pane-border-style "fg=$TMUX_SESSION_INVERTED_COLOUR"
 tmux set-option pane-active-border-style "fg=$TMUX_SESSION_COLOUR"
+
+# https://github.com/koalaman/shellcheck/wiki/SC1090
+# shellcheck source=/dev/null
+source "$HOME/.local/share/tmux/plugins/tmux-prefix-highlight/prefix_highlight.tmux"
