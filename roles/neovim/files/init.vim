@@ -70,10 +70,10 @@ cnoremap <C-A> <Home>
 cnoremap <C-B> <C-A>
 
 
-let g:node_host_prog = '$HOME/.local/share/nvim/node/node_modules/.bin/neovim-node-host'
+let g:node_host_prog = stdpath('data') . '/node/node_modules/.bin/neovim-node-host'
 let g:loaded_ruby_provider = 0
 let g:loaded_python_provider = 0
-let g:python3_host_prog = '$HOME/.local/share/nvim/python3/bin/python'
+let g:python3_host_prog = stdpath('data') . '/python3/bin/python'
 
 
 " Open tag in location window and jump to first occurence
@@ -147,6 +147,7 @@ Plug 'posva/vim-vue'
 Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-terraform'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'Glench/Vim-Jinja2-Syntax'
 
 call plug#end()
 
