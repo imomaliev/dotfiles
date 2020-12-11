@@ -5,19 +5,34 @@
 source $HOMEBREW_PREFIX/etc/bash_completion.d/git-prompt.sh
 
 prompt_dotfiles_help () {
-  cat <<'EOF'
+    cat <<'EOF'
 This is dotfiles prompt
 
   prompt dotfiles
 EOF
 }
 
+# https://github.com/tonyseek/oh-my-zsh-virtualenv-prompt/blob/master/virtualenv-prompt.plugin.zsh
+__virtualenv_ps1 () {
+    local printf_format=' (%s)'
+    printf_format="${1:-$printf_format}"
+    if [ -n "$VIRTUAL_ENV" ]; then
+        if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT-}" ] ; then
+            if [ "x" != x ] ; then
+                printf
+            else
+                printf -- $printf_format "`basename \"$VIRTUAL_ENV\"`"
+            fi
+        fi
+    fi
+}
+
 prompt_dotfiles_setup () {
-  add-zsh-hook precmd prompt_dotfiles_precmd
+    add-zsh-hook precmd prompt_dotfiles_precmd
 }
 
 prompt_dotfiles_precmd () {
-  PROMPT="%F{blue}%~%f %F{yellow}$( __git_ps1 '[%s]' )%f${prompt_newline}%# "
+    PROMPT="%F{green}$( __virtualenv_ps1 '(%s) ' )%f%F{blue}%~%f %F{yellow}$( __git_ps1 '[%s]' )%f${prompt_newline}%# "
 }
 
 prompt_dotfiles_setup "$@"
