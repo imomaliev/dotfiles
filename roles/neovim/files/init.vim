@@ -271,6 +271,8 @@ augroup config
   autocmd FileType html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd Filetype dockerfile setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd Filetype terraform setlocal expandtab
+  autocmd FileType cfg setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType toml setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd BufRead,BufNewFile Dockerfile* setlocal filetype=dockerfile
   autocmd BufRead,BufNewFile Pipfile setlocal filetype=toml
   autocmd BufRead,BufNewFile Pipfile.lock setlocal filetype=json
