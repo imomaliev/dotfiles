@@ -108,7 +108,16 @@ nnoremap <C-W>] :call SplitJumpToTagWithLocationList()<CR>
 nnoremap <expr> <C-W>} ':topleft ptag ' . expand("<cword>") . '<CR>'
 
 
-command! -nargs=+ Grep execute 'silent lgrep! <args>' | lopen
+" https://stackoverflow.com/a/6565519/3627387
+let g:grep_exclude_dirs = [
+\  'backend/.venv',
+\  'backend/.mypy_cache',
+\  'backend/.pytest_cache',
+\  'frontend/node_modules',
+\  ]
+
+let s:grep_args = ' --exclude-dir=' . '{' . join(g:grep_exclude_dirs, ',') . '}'
+command! -nargs=+ Grep execute 'silent lgrep!' . s:grep_args . ' <args>' | lopen
 
 
 " Plug
@@ -148,6 +157,7 @@ Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-terraform'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'neomutt/neomutt.vim'
 
 call plug#end()
 
@@ -218,13 +228,13 @@ let g:highlightedyank_highlight_duration = 200
 " use vim-surround mappings
 runtime macros/sandwich/keymap/surround.vim
 let g:sandwich#recipes += [
-      \   {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['{']},
-      \   {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['[']},
-      \   {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['(']},
-      \   {'buns': ['{\s*', '\s*}'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['{']},
-      \   {'buns': ['\[\s*', '\s*\]'], 'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['[']},
-      \   {'buns': ['(\s*', '\s*)'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['(']},
-      \ ]
+\  {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['{']},
+\  {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['[']},
+\  {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['(']},
+\  {'buns': ['{\s*', '\s*}'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['{']},
+\  {'buns': ['\[\s*', '\s*\]'], 'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['[']},
+\  {'buns': ['(\s*', '\s*)'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['(']},
+\ ]
 
 
 " FZF
@@ -277,6 +287,7 @@ augroup config
   autocmd BufRead,BufNewFile Dockerfile* setlocal filetype=dockerfile
   autocmd BufRead,BufNewFile Pipfile setlocal filetype=toml
   autocmd BufRead,BufNewFile Pipfile.lock setlocal filetype=json
+  autocmd BufRead,BufNewFile *.muttrc setlocal filetype=neomuttrc
   " Autoresize windows
   autocmd VimResized * :wincmd =
 augroup END
