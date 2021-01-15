@@ -1,0 +1,22 @@
+---
+- name: Install rustup
+  tags: [install]
+  homebrew:
+    name:
+      - rustup
+    update_homebrew: yes
+- name: Setup config
+  tags: [config]
+  blockinfile:
+    path: ~/.config/zsh/local.zsh
+    state: present
+    marker: "# {mark} rust ANSIBLE MANAGED BLOCK"
+    block: |
+      export RUSTUP_HOME="$HOME/.local/opt/rustup"
+      export CARGO_HOME="$HOME/.local/opt/cargo"
+      export PATH="$PATH:$CARGO_HOME/bin"
+- name: Run rustup-init
+  tags: [install]
+  shell:
+    cmd: RUSTUP_HOME="$HOME/.local/opt/rustup" CARGO_HOME="$HOME/.local/opt/cargo" rustup-init --no-modify-path -y -q
+    creates: ~/.local/opt/rustup

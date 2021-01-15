@@ -158,6 +158,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'neomutt/neomutt.vim'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 

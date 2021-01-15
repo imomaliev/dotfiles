@@ -1,0 +1,18 @@
+---
+- name: Install
+  tags: [install]
+  homebrew: name=gnupg update_homebrew=yes
+- name: Create data folder
+  tags: [config]
+  file:
+    path: ~/.local/share/gnupg
+    state: directory
+    mode: "0700"
+- name: Setup config
+  tags: [config]
+  blockinfile:
+    path: ~/.config/zsh/local.zsh
+    state: present
+    marker: "# {mark} gnupg ANSIBLE MANAGED BLOCK"
+    block: |
+      export GNUPGHOME="$HOME/.local/share/gnupg"
