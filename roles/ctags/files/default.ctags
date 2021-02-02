@@ -4,4 +4,4 @@
 --exclude=*/.mypy_cache/*
 --exclude=*/.git/*
 
---languages=Python
+--languages=Python,Rust
