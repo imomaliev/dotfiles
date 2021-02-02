@@ -5,3 +5,11 @@
     src: "{{ playbook_dir }}/roles/python/files"
     dest: ~/.config/python
     state: link
+- name: Add config
+  tags: [config]
+  blockinfile:
+    path: ~/.config/zsh/local.zsh
+    state: present
+    marker: "# {mark} pylint ANSIBLE MANAGED BLOCK"
+    block: |
+      export PYLINTHOME="$XDG_DATA_HOME/pylint"

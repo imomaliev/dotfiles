@@ -25,3 +25,4 @@
     - { role: docker, tags: [docker, docker-compose] }
     - { role: gnupg, tags: [gnupg, gpg] }
     - { role: rust, tags: [rust] }
+    - { role: mc, tags: [mc, midnight-commander] }

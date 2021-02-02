@@ -1,0 +1,10 @@
+---
+- name: Install
+  tags: [install]
+  homebrew: name=mc update_homebrew=yes
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/mc/files"
+    dest: ~/.config/mc
+    state: link
