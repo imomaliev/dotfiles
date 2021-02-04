@@ -39,6 +39,9 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export HISTFILE="$XDG_CACHE_HOME/zsh/history"
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
 
 # The following lines were added by compinstall
 # zstyle :compinstall filename "$HOME/.config/.zshrc"

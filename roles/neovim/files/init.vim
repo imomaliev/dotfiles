@@ -150,6 +150,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
+Plug 'editorconfig/editorconfig-vim'
 
 " Filetypes
 Plug 'posva/vim-vue'
@@ -281,6 +282,7 @@ augroup config
   autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType json setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType jinja.html setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab comments=s:{#,ex:#} commentstring={#\ %s\ #} | let b:caw_wrap_oneline_comment = ['{#', '#}']
   autocmd Filetype dockerfile setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd Filetype terraform setlocal expandtab
   autocmd FileType cfg setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
