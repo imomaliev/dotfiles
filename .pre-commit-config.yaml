@@ -1,10 +1,22 @@
 repos:
--   repo: https://github.com/shellcheck-py/shellcheck-py
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.2.1
+    hooks:
+      - id: prettier
+        types_or: [yaml, javascript, css, markdown]
+  - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.7.1.1
     hooks:
-    -   id: shellcheck
+      - id: shellcheck
         exclude: ^roles/zsh/files/.*$
--   repo: https://github.com/ansible/ansible-lint.git
-    rev: v4.2.0
+  - repo: https://github.com/ansible/ansible-lint.git
+    rev: v5.0.1
     hooks:
-      -   id: ansible-lint
+      - id: ansible-lint
+        entry: ansible-lint
