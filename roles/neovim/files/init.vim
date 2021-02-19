@@ -288,10 +288,16 @@ augroup config
   autocmd Filetype terraform setlocal expandtab
   autocmd FileType cfg setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType toml setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  " Autoresize windows
+  autocmd VimResized * :wincmd =
+augroup END
+
+" append to neovim's internal group for file type detection
+augroup filetypedetect
   autocmd BufRead,BufNewFile Dockerfile* setlocal filetype=dockerfile
   autocmd BufRead,BufNewFile Pipfile setlocal filetype=toml
   autocmd BufRead,BufNewFile Pipfile.lock setlocal filetype=json
   autocmd BufRead,BufNewFile *.muttrc setlocal filetype=neomuttrc
-  " Autoresize windows
-  autocmd VimResized * :wincmd =
+  " https://vi.stackexchange.com/questions/9962/get-filetype-by-extension-or-filename-in-vimscript
+  autocmd BufRead,BufNewFile *.template execute "doautocmd filetypedetect BufRead " . fnameescape(expand("<afile>:r"))
 augroup END
