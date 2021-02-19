@@ -29,6 +29,12 @@ layout_pipenv_in_dir() {
 }
 
 
+use_nvim() {
+  local extra_vimrc=${1:-$(direnv_layout_dir)/nvim/init.vim}
+  use_vim $extra_vimrc
+}
+
+
 # https://github.com/direnv/direnv/wiki/Node#using-nvm
 use_nvm() {
   local node_version=$1

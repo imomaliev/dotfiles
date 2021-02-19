@@ -151,6 +151,7 @@ Plug 'roxma/vim-tmux-clipboard'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'direnv/direnv.vim'
 
 " Filetypes
 Plug 'posva/vim-vue'
