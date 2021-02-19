@@ -1,6 +1,7 @@
 # Dotfiles
 
 ## macOS
+
 Currently for macOS Catalina
 
 ### Setup
@@ -13,18 +14,25 @@ Currently for macOS Catalina
    ```console
    rm -r ~/.ansible
    ```
+
 #### Run playbook
+
 Using implicit `localhost`
+
 ```console
 ansible-playbook -v --ask-become-pass site.yml
 ```
+
 #### Run one role
+
 https://stackoverflow.com/questions/38350674/ansible-can-i-execute-role-from-command-line
+
 ```console
 ansible localhost -m include_role -a name="{name}"
 ```
 
 ### Manual Setup
+
 1. Keyboard
    ```
    Keyboard -> Keyboard -> Use F1, F2...
@@ -57,6 +65,6 @@ ansible localhost -m include_role -a name="{name}"
    Dock -> Automatically hide and show Dock
    ```
 
-
 ## TODO
+
 1. osx_defaults
