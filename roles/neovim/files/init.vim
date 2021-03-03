@@ -245,7 +245,20 @@ nnoremap <Leader>tt :<C-U>Files .<CR>
 nnoremap <Leader>tl :<C-U>Buffers<CR>
 nnoremap <Leader>tr :<C-U>History<CR>
 nnoremap <Leader>tp :<C-U>Tags<CR>
-let $FZF_DEFAULT_COMMAND='find -E . -type f -not -regex ".*\.(pyc)"'
+let $FZF_DEFAULT_COMMAND='find -E . -type f -not -regex ".*\.(pyc)$"'
+" An action can be a reference to a function that processes selected lines
+function! s:build_quickfix_list(lines)
+  call setqflist([], ' ', { 'title': 'FZF Selected', 'items': map(copy(a:lines), '{ "filename": v:val }') })
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+\  'ctrl-q': function('s:build_quickfix_list'),
+\  'ctrl-t': 'tab split',
+\  'ctrl-x': 'split',
+\  'ctrl-v': 'vsplit',
+\  }
 
 
 " Signify
