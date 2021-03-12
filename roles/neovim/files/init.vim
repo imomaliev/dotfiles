@@ -29,6 +29,11 @@ set cursorline
 " Completion mode that is used for the character specified with 'wildchar'.
 set wildmode=longest:full,full
 
+" A comma separated list of options for Insert mode completion ins-completion.
+" default: menu,preview
+" https://stackoverflow.com/a/15698653/3627387
+set completeopt+=longest
+
 " undohistory
 set undofile
 
@@ -120,6 +125,13 @@ let s:grep_args = ' --exclude-dir=' . '{' . join(g:grep_exclude_dirs, ',') . '}'
 command! -nargs=+ Grep execute 'silent lgrep!' . s:grep_args . ' <args>' | lopen
 
 
+" Spell
+" spelling mappings
+map <Leader>ss <Esc>:setlocal spell!<CR>
+" always forget what mapping for adding spelling
+" map <Leader>sa zg
+" map <Leader>sc <Esc>:setlocal nospell!<CR>
+
 " Plug
 if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
   " https://github.com/junegunn/vim-plug#neovim
@@ -136,6 +148,7 @@ Plug 'imomaliev/mac-russian-colemak.vim'
 " UI
 Plug 'jnurmine/Zenburn'
 Plug 'machakann/vim-highlightedyank'
+Plug 'wellle/context.vim'
 
 " Operators
 Plug 'machakann/vim-sandwich'
@@ -152,6 +165,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'direnv/direnv.vim'
+Plug 'preservim/tagbar'
 
 " Filetypes
 Plug 'posva/vim-vue'
@@ -282,6 +296,18 @@ function! WordMotionToggle()
 endfunction
 
 nnoremap <silent> <Leader>, :call WordMotionToggle()<cr>
+
+
+" Context
+let g:context_filetype_blacklist = ['help']
+" " https://github.com/wellle/context.vim/issues/23
+" let g:context_nvim_no_redraw = 1
+let g:context_enabled = 0
+
+
+" Tagbar
+" disaable sort
+let g:tagbar_sort = 0
 
 
 " Autocommands config
