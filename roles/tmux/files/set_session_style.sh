@@ -1,4 +1,6 @@
 #!/bin/bash
+set -euo pipefail
+
 # https://unix.stackexchange.com/questions/111499/how-do-i-know-the-name-of-a-tmux-session
 session_name=$(tmux display-message -p "#S")
 session_sha=$(echo "${session_name}" | shasum )
@@ -20,7 +22,7 @@ tmux set-environment TMUX_SESSION_INVERTED_COLOUR $TMUX_SESSION_INVERTED_COLOUR
 tmux set-option @prefix_highlight_fg "$TMUX_SESSION_COLOUR"
 tmux set-option @prefix_highlight_bg "$TMUX_SESSION_INVERTED_COLOUR"
 tmux set-option status-left "#[fg=$TMUX_SESSION_COLOUR,bg=$TMUX_SESSION_INVERTED_COLOUR] #S #[default] "
-tmux set-option status-right "#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,} #{prefix_highlight} %H:%M %d-%b-%y #[fg=$TMUX_SESSION_COLOUR,bg=$TMUX_SESSION_INVERTED_COLOUR] #($HOME/.config/tmux/get_keyboard_layout.sh) #[default]"
+tmux set-option status-right "#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,} #{prefix_highlight} %H:%M %d-%b-%y #[fg=$TMUX_SESSION_COLOUR,bg=$TMUX_SESSION_INVERTED_COLOUR] #{keyboard_layout} #[default]"
 tmux set-option status-style "bg=$TMUX_SESSION_COLOUR,fg=$TMUX_SESSION_INVERTED_COLOUR"
 tmux set-option window-status-format " #I:#W#{?window_flags,#{window_flags}, } "
 tmux set-option window-status-style "bg=$TMUX_SESSION_COLOUR,fg=$TMUX_SESSION_INVERTED_COLOUR"
@@ -32,4 +34,5 @@ tmux set-option pane-active-border-style "fg=$TMUX_SESSION_COLOUR"
 
 # https://github.com/koalaman/shellcheck/wiki/SC1090
 # shellcheck source=/dev/null
-source "$HOME/.local/share/tmux/plugins/tmux-prefix-highlight/prefix_highlight.tmux"
+tmux run-shell -b "${TMUX_PLUGIN_MANAGER_PATH}/tmux-prefix-highlight/prefix_highlight.tmux"
+tmux run-shell -b "${TMUX_PLUGIN_MANAGER_PATH}/tmux-keyboard-layout/keyboard_layout.tmux"
