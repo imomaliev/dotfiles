@@ -1,7 +1,12 @@
 ---
 - name: Install
   tags: [install]
-  homebrew: name=neovim update_homebrew=yes
+  homebrew:
+    name:
+      - neovim
+      - fd
+      - rg
+    update_homebrew: yes
 - name: Link configs
   tags: [config]
   file:

@@ -259,10 +259,10 @@ nnoremap <Leader>tt :<C-U>Files .<CR>
 nnoremap <Leader>tl :<C-U>Buffers<CR>
 nnoremap <Leader>tr :<C-U>History<CR>
 nnoremap <Leader>tp :<C-U>Tags<CR>
-let $FZF_DEFAULT_COMMAND='find -E . -type f -not -regex ".*\.(pyc)$"'
+let $FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git'
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
-  call setqflist([], ' ', { 'title': 'FZF Selected', 'items': map(copy(a:lines), '{ "filename": v:val }') })
+  call setqflist([], ' ', { 'title': 'FZF Selected', 'items': map(copy(a:lines), '{ "filename": v:val, "lnum": 1, "text": v:val }') })
   copen
   cc
 endfunction
@@ -333,10 +333,11 @@ augroup END
 
 " append to neovim's internal group for file type detection
 augroup filetypedetect
-  autocmd BufRead,BufNewFile Dockerfile* setlocal filetype=dockerfile
   autocmd BufRead,BufNewFile Pipfile setlocal filetype=toml
   autocmd BufRead,BufNewFile Pipfile.lock setlocal filetype=json
-  autocmd BufRead,BufNewFile *.muttrc setlocal filetype=neomuttrc
+  autocmd BufRead,BufNewFile *.tmux setlocal filetype=bash
+  " autocmd BufRead,BufNewFile Dockerfile* setlocal filetype=dockerfile
+  " autocmd BufRead,BufNewFile *.muttrc setlocal filetype=neomuttrc
   " https://vi.stackexchange.com/questions/9962/get-filetype-by-extension-or-filename-in-vimscript
   autocmd BufRead,BufNewFile *.template execute "doautocmd filetypedetect BufRead " . fnameescape(expand("<afile>:r"))
 augroup END
