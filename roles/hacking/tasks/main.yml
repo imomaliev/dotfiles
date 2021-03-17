@@ -1,0 +1,8 @@
+---
+- name: Install casks
+  tags: [install, cask]
+  homebrew_cask:
+    name:
+      - openvpn-connect
+      - wireshark
+    update_homebrew: yes
