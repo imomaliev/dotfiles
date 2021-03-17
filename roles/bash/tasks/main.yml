@@ -18,3 +18,4 @@
   file:
     dest: ~/.config/bash/local.bash
     state: touch
+    mode: "0644"

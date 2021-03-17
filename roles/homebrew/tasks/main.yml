@@ -4,11 +4,12 @@
     cmd: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     creates: /usr/local/bin/brew
 - name: Check analytics state
-  shell: brew analytics state
+  command: brew analytics state
   register: brew_analytics
+  changed_when: brew_analytics.stdout != "Analytics are disabled."
   check_mode: no
 - name: Disable analytics
-  shell: brew analytics off
+  command: brew analytics off
   when: brew_analytics.stdout != "Analytics are disabled."
 - name: Install apps
   tags: [install]
@@ -21,13 +22,22 @@
   homebrew_cask:
     name:
       - firefox
-      - zoomus
+      # requires root
+      # - zoomus
       - notion
     update_homebrew: yes
-- name: Install app store apps
-  tags: [install, mas]
+- name: List App Store apps
+  tags: [mas, check]
   shell:
+    cmd: mas list | cut -d ' ' -f 1
+  register: mas_installed
+  changed_when: false
+  check_mode: no
+- name: Install app store apps
+  tags: [mas, install]
+  command:
     cmd: mas install {{ item }}
+  changed_when: "not mas_installed.stdout|regex_search(item | string, multiline=True)"
   loop:
     # copy'em paste
     - 876540291

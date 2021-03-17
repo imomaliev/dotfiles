@@ -4,14 +4,15 @@
   file:
     path: ~/.local/opt
     state: directory
+    mode: "0755"
 - name: Create default venv
   tags: [setup]
-  shell:
+  command:
     cmd: /usr/bin/python3 -m venv ~/.local/opt/venv
     creates: ~/.local/opt/venv
 - name: Install
   tags: [install]
-  shell:
+  command:
     cmd: ~/.local/opt/venv/bin/pip install pipx
     creates: ~/.local/opt/venv/bin/pipx
 - name: Add venv PATH and PIPX path
@@ -24,9 +25,17 @@
     block: |
       export PIPX_HOME="$HOME/.local/share/pipx"
       export PATH="$HOME/.local/opt/venv/bin:$PATH:$HOME/.local/bin"
+- name: List pipx apps
+  tags: [check]
+  shell:
+    cmd: pipx list | grep package | tr -s ' ' | cut -d ' ' -f 3
+  register: pipx_installed
+  changed_when: false
+  check_mode: no
 - name: Install
-  shell: pipx install {{ item }}
   tags: [install]
+  command: pipx install {{ item }}
+  changed_when: "not pipx_installed.stdout|regex_search(item | string, multiline=True)"
   loop:
     - ansible
     - pre-commit

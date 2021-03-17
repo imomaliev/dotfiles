@@ -16,7 +16,7 @@ repos:
       - id: shellcheck
         exclude: ^roles/zsh/files/.*$
   - repo: https://github.com/ansible/ansible-lint.git
-    rev: v5.0.1
+    rev: v5.0.3
     hooks:
       - id: ansible-lint
         entry: ansible-lint

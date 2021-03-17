@@ -8,9 +8,10 @@
   lineinfile:
     path: /etc/shells
     line: /usr/local/bin/zsh
-- name: Set default shell
+# TODO: add changed_when
+- name: Set default shell # noqa: no-changed-when
   tags: [setup, set_shell]
-  shell:
+  command:
     cmd: chsh -s /usr/local/bin/zsh
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory
 # we are linking only zshenv into home dir
@@ -31,6 +32,7 @@
   file:
     dest: ~/.config/zsh/local.zsh
     state: touch
+    mode: "0644"
 - name: Setup config
   tags: [setup]
   blockinfile:
@@ -61,8 +63,10 @@
   file:
     path: ~/.cache/zsh
     state: directory
+    mode: "0755"
 - name: Ensure cache dir for less
   tags: [setup, less]
   file:
     path: ~/.cache/less
     state: directory
+    mode: "0755"
