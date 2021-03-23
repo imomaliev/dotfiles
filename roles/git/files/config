@@ -20,9 +20,9 @@
 [merge]
 	# https://github.com/git/git/blob/master/mergetools/vimdiff#L18
 	# "$merge_tool_path" -f -d -c 'wincmd l'"$LOCAL" "$MERGED" "$REMOTE"
-	tool = vimdiff2
-[mergetool "vimdiff2"]
-	path = "nvim"
+	tool = nvimdiff2
+[mergetool]
+	keepBackup = false
 [alias]
 	ci = commit
 	cim = commit -m
