@@ -4,7 +4,6 @@
   homebrew:
     name:
       - neovim
-      - fd
       - rg
     update_homebrew: yes
 - name: Link configs

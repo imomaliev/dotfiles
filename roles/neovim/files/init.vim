@@ -111,17 +111,14 @@ endfunction
 nnoremap <expr> <C-W>} '<Esc>:topleft ptag ' . expand("<cword>") . '<CR>'
 
 
-" https://stackoverflow.com/a/6565519/3627387
-let g:grep_exclude_dirs = [
-\  'backend/.venv',
-\  'backend/.mypy_cache',
-\  'backend/.pytest_cache',
-\  'frontend/node_modules',
-\  ]
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+  " https://github.com/jremmen/vim-ripgrep/blob/ec87af6b69387abb3c4449ce8c4040d2d00d745e/plugin/vim-ripgrep.vim#L12
+  set grepformat=%f:%l:%c:%m
+  let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --glob "!.git"'
+endif
 
-let s:grep_args = ' --exclude-dir=' . '{' . join(g:grep_exclude_dirs, ',') . '}'
-command! -nargs=+ Grep execute 'silent lgrep!' . s:grep_args . ' <args>' | lopen
-
+command! -nargs=+ Grep execute 'silent lgrep! <args>' | lopen
 
 " Spell
 " spelling mappings
@@ -257,7 +254,6 @@ nnoremap <Leader>tt :<C-U>Files .<CR>
 nnoremap <Leader>tl :<C-U>Buffers<CR>
 nnoremap <Leader>tr :<C-U>History<CR>
 nnoremap <Leader>tp :<C-U>Tags<CR>
-let $FZF_DEFAULT_COMMAND='fd --type file --hidden --exclude .git'
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
   call setqflist([], ' ', { 'title': 'FZF Selected', 'items': map(copy(a:lines), '{ "filename": v:val, "lnum": 1, "text": v:val }') })
