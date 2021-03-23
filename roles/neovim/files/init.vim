@@ -108,9 +108,7 @@ function! SplitJumpToTagWithLocationList()
   endif
 endfunction
 
-nnoremap <C-]> :call JumpToTagWithLocationList()<CR>
-nnoremap <C-W>] :call SplitJumpToTagWithLocationList()<CR>
-nnoremap <expr> <C-W>} ':topleft ptag ' . expand("<cword>") . '<CR>'
+nnoremap <expr> <C-W>} '<Esc>:topleft ptag ' . expand("<cword>") . '<CR>'
 
 
 " https://stackoverflow.com/a/6565519/3627387
@@ -313,6 +311,7 @@ let g:tagbar_sort = 0
 " Autocommands config
 augroup config
   autocmd!
+  autocmd Filetype * if &filetype != 'help' | nnoremap <buffer> <C-]> <Cmd>call JumpToTagWithLocationList()<CR> | nnoremap <buffer> <C-W>] <Cmd>call SplitJumpToTagWithLocationList()<CR> | endif
   autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType sh setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
