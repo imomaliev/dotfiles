@@ -120,6 +120,10 @@ endif
 
 command! -nargs=+ Grep execute 'silent lgrep! <args>' | lopen
 
+" most configs are set in ~/.config/ctags/default.ctags
+let g:ctags_command = 'ctags -f .direnv/tags .'
+command! Ctags execute 'silent !' . g:ctags_command
+
 " Spell
 " spelling mappings
 map <Leader>ss <Esc>:setlocal spell!<CR>

@@ -1,7 +1,9 @@
 --recurse=yes
+--tag-relative=yes
 
 --exclude=.DS_Store
 --exclude=*/.mypy_cache/*
+--exclude=*/.pytest_cache/*
 --exclude=*/.git/*
 
---languages=Python,Rust
+--languages=Python
