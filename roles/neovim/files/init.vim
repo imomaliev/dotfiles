@@ -125,6 +125,10 @@ let g:ctags_command = 'ctags -f .direnv/tags .'
 command! Ctags execute 'silent !' . g:ctags_command
 
 " Spell
+set spelllang=en,ru
+" It may also be a comma separated list of names.  A count before the 'zg' and 'zw'
+" commands can be used to access each
+let &spellfile=stdpath('config') . "/spell/en.utf-8.add," . stdpath('config') . "/spell/ru.utf-8.add"
 " spelling mappings
 map <Leader>ss <Esc>:setlocal spell!<CR>
 " always forget what mapping for adding spelling
