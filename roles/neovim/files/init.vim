@@ -112,10 +112,11 @@ nnoremap <expr> <C-W>} '<Esc>:topleft ptag ' . expand("<cword>") . '<CR>'
 
 
 if executable('rg')
-  set grepprg=rg\ --vimgrep
+  let g:rg_command = 'rg --no-ignore --hidden --glob="!.git" --glob="!__pycache__"'
+  let &grepprg=g:rg_command . ' --vimgrep'
   " https://github.com/jremmen/vim-ripgrep/blob/ec87af6b69387abb3c4449ce8c4040d2d00d745e/plugin/vim-ripgrep.vim#L12
   set grepformat=%f:%l:%c:%m
-  let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --glob "!.git"'
+  let $FZF_DEFAULT_COMMAND=g:rg_command . ' --files'
 endif
 
 command! -nargs=+ Grep execute 'silent lgrep! <args>' | lopen
@@ -134,6 +135,11 @@ map <Leader>ss <Esc>:setlocal spell!<CR>
 " always forget what mapping for adding spelling
 " map <Leader>sa zg
 " map <Leader>sc <Esc>:setlocal nospell!<CR>
+
+" Plugins
+" Pack
+" packadd! matchit  " Loaded automatically
+packadd cfilter  " Quickfix list and Location list filter
 
 " Plug
 if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
