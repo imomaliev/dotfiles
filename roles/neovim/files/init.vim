@@ -225,24 +225,40 @@ function IsLangMap()
   return ''
 endfunction
 
+" https://github.com/neovim/neovim/blob/8665a96b92553b26c8c9c215900964b8a898595f/src/nvim/screen.c#L5039
+" https://unix.stackexchange.com/a/518439
 " probably default
-" set statusline=%<%f\ %h%m%r%=%k\ %-14.(%l,%c%V%)\ %P
+" set statusline=%<%f\ %h%w%m%r%=%k\ %-14.(%l,%c%V%)\ %P
 
-set statusline=%<
+" Buffer number
+set statusline=%n:
+" Where to truncate line if too long
+set statusline+=%<
+" Path to the file in the buffer, as typed or relative to current directory
 set statusline+=%f
-set statusline+=\ "whitespace
+set statusline+=\ " whitespace
+" Help buffer flag, text is "[help]"
 set statusline+=%h
+" Preview window flag, text is "[Preview]"
+set statusline+=%w
+" Modified flag, text is "[+]"; "[-]" if 'modifiable' is off
 set statusline+=%m
+" Readonly flag, text is "[RO]"
 set statusline+=%r
 " https://github.com/scrooloose/vimfiles/blob/a9689e8eace5b38d9fb640294e6e4b681e18981a/vimrc#L175
 " display a warning if &paste is set
 set statusline+=%{&paste?'[paste]':''}
-" right part
+" Separation point between alignment sections
 set statusline+=%=
 set statusline+=%{IsWordMotion()}
 set statusline+=%{IsLangMap()}
+" - Where to truncate line if too long.
+" l Line number
+" c Column number
+" V Virtual column number as -{num}
 set statusline+=%-14.(%l,%c%V%)
-set statusline+=\ "whitespace
+set statusline+=\ " whitespace
+" Percentage through file of displayed window
 set statusline+=%P
 
 
