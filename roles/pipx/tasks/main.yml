@@ -23,6 +23,7 @@
     marker: "# {mark} pipx ANSIBLE MANAGED BLOCK"
     insertbefore: BOF
     block: |
+      alias pip="printf 'use pipx\n'"
       export PIPX_HOME="$HOME/.local/share/pipx"
       export PATH="$HOME/.local/opt/venv/bin:$PATH:$HOME/.local/bin"
 - name: List pipx apps

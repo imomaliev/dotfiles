@@ -44,7 +44,7 @@ zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
 # The following lines were added by compinstall
-# zstyle :compinstall filename "$HOME/.config/.zshrc"
+# zstyle :compinstall filename "$HOME/.config/zsh/.zshrc"
 
 # run: compaudit | xargs chmod g-w
 autoload -Uz compinit
