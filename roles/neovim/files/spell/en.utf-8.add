@@ -18,3 +18,8 @@ plugin
 plugins
 url
 SEO
+debian
+healthcheck
+backend
+frontend
+https
