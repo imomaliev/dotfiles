@@ -1,3 +1,5 @@
+# https://opensource.com/article/19/4/gpg-subkeys-ssh
+# https://gist.github.com/mcattarinussi/834fc4b641ff4572018d0c665e5a94d3
 ---
 - name: Install
   tags: [install]
@@ -16,3 +18,13 @@
     marker: "# {mark} gnupg ANSIBLE MANAGED BLOCK"
     block: |
       export GNUPGHOME="$HOME/.local/share/gnupg"
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      gpgconf --launch gpg-agent
+- name: Setup gnupg-agent
+  tags: [config]
+  blockinfile:
+    path: ~/.local/share/gnupg/gpg-agent.conf
+    state: present
+    marker: "# {mark} gnupg ANSIBLE MANAGED BLOCK"
+    block: |
+      enable-ssh-support
