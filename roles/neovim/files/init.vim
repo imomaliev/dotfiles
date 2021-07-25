@@ -112,7 +112,7 @@ nnoremap <expr> <C-W>} '<Esc>:topleft ptag ' . expand("<cword>") . '<CR>'
 
 
 if executable('rg')
-  let g:rg_command = 'rg --no-ignore --hidden --glob="!.git" --glob="!__pycache__" --glob="!.direnv/tags"'
+  let g:rg_command = 'rg --no-ignore --hidden --glob="!.git" --glob="!__pycache__" --glob="!.direnv/tags" --glob="!.direnv/nvim/fzf-history"'
   let &grepprg=g:rg_command . ' --vimgrep'
   " https://github.com/jremmen/vim-ripgrep/blob/ec87af6b69387abb3c4449ce8c4040d2d00d745e/plugin/vim-ripgrep.vim#L12
   set grepformat=%f:%l:%c:%m
