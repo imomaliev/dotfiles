@@ -136,6 +136,12 @@ map <Leader>ss <Esc>:setlocal spell!<CR>
 " map <Leader>sa zg
 " map <Leader>sc <Esc>:setlocal nospell!<CR>
 
+
+" netrw
+" https://github.com/deepredsky/dotfiles/commit/2784bf650d3212d1674ec820db74f862c0dbe3fb
+nnoremap <silent> gx :execute 'silent! !open ' . shellescape(expand('<cWORD>'), 1)<cr>
+
+
 " Plugins
 " Pack
 " packadd! matchit  " Loaded automatically

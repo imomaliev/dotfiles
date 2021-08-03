@@ -23,3 +23,5 @@ healthcheck
 backend
 frontend
 https
+config
+TailwindCSS
