@@ -184,6 +184,10 @@ Plug 'direnv/direnv.vim'
 Plug 'preservim/tagbar'
 
 " Filetypes
+Plug 'vim-python/python-syntax'
+let g:python_highlight_all = 1
+let g:python_highlight_class_vars = 0
+let g:python_highlight_func_calls = 0
 Plug 'posva/vim-vue'
 Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-terraform'
