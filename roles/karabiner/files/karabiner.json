@@ -204,7 +204,7 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "key_code": "non_us_backslash"
+                                        "key_code": "grave_accent_and_tilde"
                                     }
                                 ],
                                 "type": "basic"
