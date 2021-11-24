@@ -113,7 +113,7 @@ nnoremap <expr> <C-W>} '<Esc>:topleft ptag ' . expand("<cword>") . '<CR>'
 
 
 if executable('rg')
-  let g:rg_command = 'rg --no-ignore --hidden --glob="!.git" --glob="!__pycache__" --glob="!.direnv/tags" --glob="!.direnv/nvim/fzf-history"'
+  let g:rg_command = 'rg --no-ignore --hidden --glob="!.git" --glob="!__pycache__" --glob="!.direnv/tags" --glob="!.direnv/nvim/fzf-history" --glob="!.DS_Store" --glob="!*.png" --glob="!.mypy_cache" --glob="!.pytest_cache"'
   let &grepprg=g:rg_command . ' --vimgrep'
   " https://github.com/jremmen/vim-ripgrep/blob/ec87af6b69387abb3c4449ce8c4040d2d00d745e/plugin/vim-ripgrep.vim#L12
   set grepformat=%f:%l:%c:%m
@@ -182,6 +182,7 @@ Plug 'mhinz/vim-signify'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'direnv/direnv.vim'
 Plug 'preservim/tagbar'
+Plug 'godlygeek/tabular'
 
 " Filetypes
 Plug 'vim-python/python-syntax'
@@ -195,6 +196,7 @@ Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'neomutt/neomutt.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
