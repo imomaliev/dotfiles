@@ -17,6 +17,8 @@ export VISUAL=$nvim
 export VIEWER="$nvim -R"
 
 alias vim='nvim'
+# Use ANSI color sequences to distinguish file types.
+export CLICOLOR=1
 
 export PIPENV_VENV_IN_PROJECT=1
 export PIPENV_IGNORE_VIRTUALENVS=1
