@@ -76,6 +76,7 @@ cnoremap <C-B> <C-A>
 
 
 let g:node_host_prog = stdpath('data') . '/node/node_modules/.bin/neovim-node-host'
+:let g:loaded_perl_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_python_provider = 0
 let g:python3_host_prog = stdpath('data') . '/python3/bin/python'
