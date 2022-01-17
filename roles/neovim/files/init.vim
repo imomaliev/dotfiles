@@ -365,6 +365,7 @@ augroup config
   autocmd Filetype terraform setlocal expandtab
   autocmd FileType cfg setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType toml setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType markdown setlocal nofoldenable
   " Autoresize windows
   autocmd VimResized * :wincmd =
 augroup END
