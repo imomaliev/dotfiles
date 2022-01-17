@@ -18,6 +18,7 @@
     - { role: pyenv, tags: [pyenv] }
     - { role: nvm, tags: [nvm] }
     - { role: neovim, tags: [neovim, nvim, vim] }
+    - { role: ctags, tags: [ctags] }
     - { role: tmux, tags: [tmux] }
     - { role: fzf, tags: [fzf] }
     - { role: direnv, tags: [direnv] }
