@@ -16,15 +16,21 @@
   homebrew:
     name:
       - mas
+      - htop
     update_homebrew: yes
 - name: Install casks
   tags: [install, cask]
   homebrew_cask:
     name:
+      - choosy
       - firefox
       # requires root
       # - zoomus
       - notion
+      - tunnelbear
+      - vlc
+      - dash
+      - homebrew/cask-drivers/zsa-wally
     update_homebrew: yes
 - name: List App Store apps
   tags: [mas, check]
@@ -48,6 +54,6 @@
     # Pages
     - 409201541
     # Numbers
-    - 409201541
+    - 409203825
     # Keynote
     - 409183694
