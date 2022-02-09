@@ -366,6 +366,7 @@ augroup config
   autocmd FileType cfg setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType toml setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType markdown setlocal nofoldenable
+  autocmd FileType go setlocal tabstop=4 shiftwidth=4 softtabstop=4
   " Autoresize windows
   autocmd VimResized * :wincmd =
 augroup END
@@ -375,6 +376,7 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile Pipfile setlocal filetype=toml
   autocmd BufRead,BufNewFile Pipfile.lock setlocal filetype=json
   autocmd BufRead,BufNewFile *.tmux setlocal filetype=bash
+  autocmd BufRead,BufNewFile .dprint.json setlocal filetype=jsonc
   " autocmd BufRead,BufNewFile Dockerfile* setlocal filetype=dockerfile
   " autocmd BufRead,BufNewFile *.muttrc setlocal filetype=neomuttrc
   " https://vi.stackexchange.com/questions/9962/get-filetype-by-extension-or-filename-in-vimscript
