@@ -33,12 +33,18 @@
   register: pipx_installed
   changed_when: false
   check_mode: no
+- debug:
+    msg: "{{ item in pipx_installed.stdout_lines }}"
+  with_items:
+    - ansible
 - name: Install
   tags: [install]
   command: pipx install {{ item }}
-  changed_when: "not pipx_installed.stdout|regex_search(item | string, multiline=True)"
-  loop:
+  when: "item not in pipx_installed.stdout_lines"
+  with_items:
     - ansible
     - pre-commit
     - virtualenv
     - pipenv
+    - django
+    - poetry
