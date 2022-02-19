@@ -1,0 +1,30 @@
+- name: Install go
+  tags: [install]
+  homebrew:
+    name:
+      - go
+    update_homebrew: yes
+- name: Setup config
+  tags: [config]
+  blockinfile:
+    path: ~/.config/zsh/local.zsh
+    state: present
+    marker: "# {mark} go ANSIBLE MANAGED BLOCK"
+    block: |
+      export GOPATH="$HOME/.local/opt/go"
+      export PATH="$PATH:$GOPATH/bin"
+- name: Create sdk folder as symlink to $GOHOME/sdk
+  block:
+    - file:
+        path: $HOME/.local/opt/go/sdk
+        state: directory
+        mode: "755"
+    - file:
+        src: $HOME/.local/opt/go/sdk
+        # this is hardcoded read more here https://stackoverflow.com/q/65869687/3627387
+        # https://go.googlesource.com/dl/+/be2bfd84e4cf/internal/version/version.go#421
+        # TODO: mb fix this in golang
+        path: $HOME/sdk
+        state: link
+        mode: "755"
+

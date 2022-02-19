@@ -26,4 +26,5 @@
     - { role: docker, tags: [docker, docker-compose] }
     - { role: gnupg, tags: [gnupg, gpg] }
     - { role: rust, tags: [rust] }
+    - { role: go, tags: [go] }
     - { role: mc, tags: [mc, midnight-commander] }
