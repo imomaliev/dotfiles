@@ -1,0 +1,12 @@
+---
+- name: Install
+  tags: [install]
+  homebrew: name=alacritty update_homebrew=yes
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/alacritty/files"
+    dest: ~/.config/alacritty
+    state: link
+  # https://github.com/alacritty/alacritty/blob/master/INSTALL.md#terminfo
+  # TODO: terminfo installation like in tmux
