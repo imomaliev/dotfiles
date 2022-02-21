@@ -31,6 +31,11 @@ https://stackoverflow.com/questions/38350674/ansible-can-i-execute-role-from-com
 ansible localhost -m include_role -a name="{name}"
 ```
 
+#### Create new role
+```console
+ansible-galaxy init --role-skeleton=roles/skel roles/new_role
+```
+
 ### Manual Setup
 
 1. Keyboard

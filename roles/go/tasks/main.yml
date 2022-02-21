@@ -3,6 +3,7 @@
   homebrew:
     name:
       - go
+      - delve
     update_homebrew: yes
 - name: Setup config
   tags: [config]
