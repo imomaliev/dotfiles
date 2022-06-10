@@ -3,8 +3,9 @@
 	# Instruct Git to avoid trying to guess defaults for user.email and user.name, and
 	# instead retrieve the values only from the configuration.
 	useConfigOnly = true
+	signingKey = D23B569C3C56DD78
 [core]
-	excludesfile = ~/.config/git/ignore
+	excludesFile = ~/.config/git/ignore
 [pull]
 	# When merges (or just m), pass the --rebase-merges option to git rebase so that
 	# the local merge commits are included in the rebase (see git-rebase(1) for details).
@@ -30,11 +31,12 @@
 	di = diff --cached
 	df = diff HEAD
 	st = status
+	slog = log --show-signature
 	graph = log --graph
 	# https://stackoverflow.com/questions/13064613/how-to-prune-local-tracking-branches-that-do-not-exist-on-remote-anymore
 	brprune = "!f() { git branch --merged ${1:-HEAD} | grep -vE '(main|master|develop|stable|\\*)' | xargs -n 1 git branch -d; }; f"
 [grep]
-	lineNumber = true
+	lineNumber = false
 [init]
 	 # Allows overriding the default branch name e.g. when initializing a new repository or when cloning an empty repository.
 	defaultBranch = main
