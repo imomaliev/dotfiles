@@ -113,7 +113,7 @@ nnoremap <expr> <C-W>} '<Esc>:topleft ptag ' . expand("<cword>") . '<CR>'
 
 
 if executable('rg')
-  let g:rg_command = 'rg --no-ignore --hidden --glob="!.git" --glob="!__pycache__" --glob="!.direnv/tags" --glob="!.direnv/nvim/fzf-history" --glob="!.DS_Store" --glob="!*.png" --glob="!.mypy_cache" --glob="!.pytest_cache"'
+  let g:rg_command = 'rg --no-ignore --hidden --glob="!.git" --glob="!__pycache__" --glob="!.direnv/tags" --glob="!.direnv/nvim/fzf-history" --glob="!.DS_Store" --glob="!*.png" --glob="!.mypy_cache" --glob="!.pytest_cache" --glob="!*.sql"'
   let &grepprg=g:rg_command . ' --vimgrep'
   " https://github.com/jremmen/vim-ripgrep/blob/ec87af6b69387abb3c4449ce8c4040d2d00d745e/plugin/vim-ripgrep.vim#L12
   set grepformat=%f:%l:%c:%m
@@ -183,6 +183,9 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'direnv/direnv.vim'
 Plug 'preservim/tagbar'
 Plug 'godlygeek/tabular'
+" open files on specific line in traceback format
+Plug 'wsdjeg/vim-fetch'
+Plug 'nicwest/vim-camelsnek'
 
 " Filetypes
 Plug 'vim-python/python-syntax'
@@ -197,6 +200,8 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'neomutt/neomutt.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'plasticboy/vim-markdown'
+" TODO: use g:go_bin_path
+" Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -367,6 +372,7 @@ augroup config
   autocmd FileType toml setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType markdown setlocal nofoldenable
   autocmd FileType go setlocal tabstop=4 shiftwidth=4 softtabstop=4
+  autocmd FileType gohtmltmpl setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab comments=s:{{/*,ex:*/}} commentstring={{/*\ %s\ */}} | let b:caw_wrap_oneline_comment = ['{{/*', '*/}}']
   " Autoresize windows
   autocmd VimResized * :wincmd =
 augroup END
