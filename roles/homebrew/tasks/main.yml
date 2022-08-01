@@ -24,13 +24,14 @@
     name:
       - choosy
       - firefox
-      # requires root
-      # - zoomus
+      - zoom
       - notion
       - tunnelbear
       - vlc
       - dash
       - homebrew/cask-drivers/zsa-wally
+      - brave
+      - tor-browser
     update_homebrew: yes
 - name: List App Store apps
   tags: [mas, check]
