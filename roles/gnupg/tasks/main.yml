@@ -1,5 +1,7 @@
 # https://opensource.com/article/19/4/gpg-subkeys-ssh
 # https://gist.github.com/mcattarinussi/834fc4b641ff4572018d0c665e5a94d3
+# https://unix.stackexchange.com/a/587691/172777
+# https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key
 ---
 - name: Install
   tags: [install]
@@ -18,8 +20,12 @@
     marker: "# {mark} gnupg ANSIBLE MANAGED BLOCK"
     block: |
       export GNUPGHOME="$HOME/.local/share/gnupg"
-      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-      gpgconf --launch gpg-agent
+      unset SSH_AGENT_PID
+      if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+        export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+      fi
+      export GPG_TTY=$(tty)
+      gpg-connect-agent updatestartuptty /bye >/dev/null
 - name: Setup gnupg-agent
   tags: [config]
   blockinfile:
