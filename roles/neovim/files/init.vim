@@ -122,6 +122,11 @@ endif
 
 command! -nargs=+ Grep execute 'silent lgrep! <args>' | lopen
 
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+"
 " most configs are set in ~/.config/ctags/default.ctags
 let g:ctags_command = 'ctags -f .direnv/tags .'
 command! Ctags execute 'silent !' . g:ctags_command
@@ -142,6 +147,13 @@ map <Leader>ss <Esc>:setlocal spell!<CR>
 " https://github.com/deepredsky/dotfiles/commit/2784bf650d3212d1674ec820db74f862c0dbe3fb
 nnoremap <silent> gx :execute 'silent! !open ' . shellescape(expand('<cWORD>'), 1)<cr>
 
+function! Scratch()
+  setlocal buftype=nofile
+  setlocal bufhidden=hide
+  setlocal noswapfile
+endfunction
+
+command! -nargs=0 Scratch call Scratch()
 
 " Plugins
 " Pack
@@ -383,6 +395,7 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile Pipfile.lock setlocal filetype=json
   autocmd BufRead,BufNewFile *.tmux setlocal filetype=bash
   autocmd BufRead,BufNewFile .dprint.json setlocal filetype=jsonc
+  autocmd BufRead,BufNewFile .ansible-lint setlocal filetype=yaml
   " autocmd BufRead,BufNewFile Dockerfile* setlocal filetype=dockerfile
   " autocmd BufRead,BufNewFile *.muttrc setlocal filetype=neomuttrc
   " https://vi.stackexchange.com/questions/9962/get-filetype-by-extension-or-filename-in-vimscript
