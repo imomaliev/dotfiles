@@ -7,4 +7,8 @@ syn include @SQL syntax/sql.vim
 "      \ end=+\z1+
 "      \ contains=@SQL
 "
+
+" vim-python/python-syntax overriders incorrectly
+syn keyword pythonTodo    FIXME NOTE NOTES TODO XXX contained
+
 let b:current_syntax = 'python'

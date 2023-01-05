@@ -334,7 +334,9 @@ let g:fzf_action = {
 highlight SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
 highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
 highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
-
+highlight WinSeparator      guifg=#2e3330 ctermfg=236
+" deprecated: need to remove later
+highlight VertSplit         guifg=#2e3330 ctermfg=236
 
 " Wordmotion
 let g:wordmotion_disable_default_mappings = 1
