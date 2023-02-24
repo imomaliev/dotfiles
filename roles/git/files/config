@@ -6,6 +6,7 @@
 	signingKey = D23B569C3C56DD78
 [core]
 	excludesFile = ~/.config/git/ignore
+	pager = less --tabs 4
 [pull]
 	# When merges (or just m), pass the --rebase-merges option to git rebase so that
 	# the local merge commits are included in the rebase (see git-rebase(1) for details).
