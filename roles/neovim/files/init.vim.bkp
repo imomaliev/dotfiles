@@ -111,8 +111,6 @@ Plug 'machakann/vim-highlightedyank'
 
 " Operators
 Plug 'machakann/vim-sandwich'
-Plug 'Shougo/context_filetype.vim'
-Plug 'tyru/caw.vim'
 Plug 'wellle/targets.vim'
 Plug 'chaoren/vim-wordmotion'
 

@@ -128,6 +128,13 @@ require("lazy").setup {
     },
     build = ":TSUpdate",
   },
+  -- https://github.com/numToStr/Comment.nvim#-installation
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("Comment").setup()
+    end,
+  },
 }
 
 -- [[Mappings]]
