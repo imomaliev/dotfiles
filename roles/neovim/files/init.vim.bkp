@@ -12,13 +12,6 @@ vnoremap <Leader>/ /\v
 nnoremap <Leader>? ?\v
 vnoremap <Leader>? ?\v
 
-" make Y consistent with D, C
-nnoremap Y y$
-
-" Keep selection when indenting
-vnoremap < <gv
-vnoremap > >gv
-
 " Reselect last-pasted text
 " https://vim.fandom.com/wiki/Selecting_your_pasted_text
 nnoremap <expr> <Leader>gp '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -27,18 +20,6 @@ nnoremap <expr> <Leader>gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 " Split line (sister to [J]oin lines)
 " The normal use of S is covered by cc, so don't worry about shadowing it.
 nnoremap S i<cr><esc>
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
-" Some for CTRL-W
-inoremap <C-W> <C-G>u<C-W>
-inoremap <CR> <C-G>u<CR>
-
-" Emacs like keys for the command line
-cnoremap <C-A> <Home>
-" do not lose default mapping
-cnoremap <C-B> <C-A>
 
 
 let g:node_host_prog = stdpath('data') . '/node/node_modules/.bin/neovim-node-host'
@@ -108,10 +89,6 @@ map <Leader>ss <Esc>:setlocal spell!<CR>
 " map <Leader>sa zg
 " map <Leader>sc <Esc>:setlocal nospell!<CR>
 
-
-" netrw
-" https://github.com/deepredsky/dotfiles/commit/2784bf650d3212d1674ec820db74f862c0dbe3fb
-nnoremap <silent> gx :execute 'silent! !open ' . shellescape(expand('<cWORD>'), 1)<cr>
 
 function! Scratch()
   setlocal buftype=nofile

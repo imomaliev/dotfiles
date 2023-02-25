@@ -6,6 +6,18 @@ NOTE: There are many options enabled by default in comparison to vim
     "man.lua" plugin is enabled, so `:Man` is available by default.
     "matchit" plugin is enabled. To disable it in your config: >
 
+  Default Mappings:
+  https://github.com/neovim/neovim/blob/5732aa706c639b3d775573d91d1139f24624629c/runtime/lua/vim/_editor.lua#L870
+    map('n', 'Y', 'y$')
+    -- Use normal! <C-L> to prevent inserting raw <C-L> when using i_<C-O>. #17473
+    map('n', '<C-L>', '<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>')
+    map('i', '<C-U>', '<C-G>u<C-U>')
+    map('i', '<C-W>', '<C-G>u<C-W>')
+    map('x', '*', 'y/\\V<C-R>"<CR>')
+    map('x', '#', 'y?\\V<C-R>"<CR>')
+    -- Use : instead of <Cmd> so that ranges are supported. #19365
+    map('n', '&', ':&&<CR>')
+
 
 SUGGESTION: use pre-installed colorscheme 'habamax' instead of default it is much
 more pleasant for the eyes
@@ -98,6 +110,31 @@ require("lazy").setup {
   -- https://github.com/roxma/vim-tmux-clipboard
   "roxma/vim-tmux-clipboard",
 }
+
+-- Mappings
+--   :help vim.keymap.set()
+
+local map = vim.keymap.set
+
+-- Keep selection when indenting
+--
+-- Shift the highlighted lines
+map("v", ">", ">gv")
+map("v", "<", "<gv")
+
+-- Emacs like keys for the command line
+--
+-- Cursor to beginning of command-line
+map("c", "<C-A>", "<Home>")
+-- Do not lose default mapping
+--
+-- All names that match the pattern in front of the cursor are inserted.
+map("c", "<C-B>", "<C-A>")
+
+-- Use CTRL-G u to first break undo, so that you can undo each i_<CR> separately
+--
+-- Begin new line.
+map('i', '<CR>', '<C-G>u<CR>')
 
 -- XXX: remove this
 vim.cmd.colorscheme "habamax"
