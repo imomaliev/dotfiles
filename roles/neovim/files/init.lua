@@ -24,6 +24,7 @@ more pleasant for the eyes
 
   :colorscheme habamax
 --]]
+
 -- [[Options]]
 -- Print the line number in front of each line.
 vim.o.number = true
@@ -254,6 +255,22 @@ require("nvim-treesitter.configs").setup {
     -- TODO: :help nvim-treesitter-textobjects-lsp_interop-submod
   },
 }
+
+-- [[Autocommands]]
+-- :help nvim_create_augroup
+local augroup = vim.api.nvim_create_augroup
+-- :help nvim_create_autocmd
+local autocmd = vim.api.nvim_create_autocmd
+
+-- Append to neovim's internal group for file type detection
+local FileTypeDetectGroup = augroup("filetypedetect", { clear = false })
+autocmd({ "BufRead", "BufNewFile" }, {
+  group = FileTypeDetectGroup,
+  pattern = ".ansible-lint",
+  callback = function()
+    vim.bo.filetype = "yaml"
+  end,
+})
 
 -- XXX: remove this
 vim.cmd.colorscheme "habamax"
