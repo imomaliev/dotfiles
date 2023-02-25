@@ -108,12 +108,8 @@ Plug 'imomaliev/mac-russian-colemak.vim'
 " UI
 Plug 'jnurmine/Zenburn'
 Plug 'machakann/vim-highlightedyank'
-Plug 'wellle/context.vim'
 
 " Operators
-Plug 'machakann/vim-sandwich'
-Plug 'Shougo/context_filetype.vim'
-Plug 'tyru/caw.vim'
 Plug 'wellle/targets.vim'
 Plug 'chaoren/vim-wordmotion'
 
@@ -127,20 +123,11 @@ Plug 'wsdjeg/vim-fetch'
 Plug 'nicwest/vim-camelsnek'
 
 " Filetypes
-Plug 'vim-python/python-syntax'
-let g:python_highlight_all = 1
-let g:python_highlight_class_vars = 0
-let g:python_highlight_func_calls = 0
 Plug 'posva/vim-vue'
-Plug 'cespare/vim-toml'
-Plug 'hashivim/vim-terraform'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'neomutt/neomutt.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'plasticboy/vim-markdown'
-" TODO: use g:go_bin_path
-" Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -223,19 +210,6 @@ set statusline+=%P
 let g:highlightedyank_highlight_duration = 200
 
 
-" vim-sandwitch
-" use vim-surround mappings
-runtime macros/sandwich/keymap/surround.vim
-let g:sandwich#recipes += [
-\  {'buns': ['{ ', ' }'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['{']},
-\  {'buns': ['[ ', ' ]'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['[']},
-\  {'buns': ['( ', ' )'], 'nesting': 1, 'match_syntax': 1, 'kind': ['add', 'replace'], 'action': ['add'], 'input': ['(']},
-\  {'buns': ['{\s*', '\s*}'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['{']},
-\  {'buns': ['\[\s*', '\s*\]'], 'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['[']},
-\  {'buns': ['(\s*', '\s*)'],   'nesting': 1, 'regex': 1, 'match_syntax': 1, 'kind': ['delete', 'replace', 'textobj'], 'action': ['delete'], 'input': ['(']},
-\ ]
-
-
 " FZF
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
@@ -275,13 +249,6 @@ function! WordMotionToggle()
 endfunction
 
 nnoremap <silent> <Leader>, :call WordMotionToggle()<cr>
-
-
-" Context
-let g:context_filetype_blacklist = ['help']
-" " https://github.com/wellle/context.vim/issues/23
-" let g:context_nvim_no_redraw = 1
-let g:context_enabled = 0
 
 
 " Tagbar
