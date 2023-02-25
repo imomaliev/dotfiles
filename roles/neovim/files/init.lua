@@ -135,6 +135,13 @@ require("lazy").setup {
       require("Comment").setup()
     end,
   },
+  -- https://github.com/kylechui/nvim-surround#package-installation
+  {
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup()
+    end,
+  },
 }
 
 -- [[Mappings]]
