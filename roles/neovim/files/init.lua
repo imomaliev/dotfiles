@@ -272,5 +272,16 @@ autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+-- Personal configuration
+local ConfigGroup = augroup("config", {})
+-- Autoresize windows when window size changes
+autocmd("VimResized", {
+  group = ConfigGroup,
+  pattern = "*",
+  callback = function()
+    vim.cmd "wincmd ="
+  end,
+})
+
 -- XXX: remove this
 vim.cmd.colorscheme "habamax"
