@@ -120,9 +120,11 @@ require("lazy").setup {
   -- https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation#lazynvim
   {
     "nvim-treesitter/nvim-treesitter",
-    -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     dependencies = {
+      -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
       "nvim-treesitter/nvim-treesitter-textobjects",
+      -- https://github.com/nvim-treesitter/nvim-treesitter-context
+      "nvim-treesitter/nvim-treesitter-context",
     },
     build = ":TSUpdate",
   },

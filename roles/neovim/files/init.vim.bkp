@@ -108,7 +108,6 @@ Plug 'imomaliev/mac-russian-colemak.vim'
 " UI
 Plug 'jnurmine/Zenburn'
 Plug 'machakann/vim-highlightedyank'
-Plug 'wellle/context.vim'
 
 " Operators
 Plug 'machakann/vim-sandwich'
@@ -266,13 +265,6 @@ function! WordMotionToggle()
 endfunction
 
 nnoremap <silent> <Leader>, :call WordMotionToggle()<cr>
-
-
-" Context
-let g:context_filetype_blacklist = ['help']
-" " https://github.com/wellle/context.vim/issues/23
-" let g:context_nvim_no_redraw = 1
-let g:context_enabled = 0
 
 
 " Tagbar
