@@ -286,7 +286,7 @@ autocmd("VimResized", {
 -- Highlight on yank (default 150ms)
 --
 -- :help vim.highlight.on_yank()
-local YankHighlightGroup = augroup "YankHighlight"
+local YankHighlightGroup = augroup("YankHighlight", {})
 autocmd("TextYankPost", {
   group = highlight_group,
   pattern = "*",
