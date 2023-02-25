@@ -15,8 +15,12 @@ repos:
     hooks:
       - id: shellcheck
         exclude: ^roles/zsh/files/.*$
-  - repo: https://github.com/ansible/ansible-lint.git
-    rev: v5.3.2
+  # - repo: https://github.com/ansible/ansible-lint.git
+  #   rev: v5.3.2
+  #   hooks:
+  #     - id: ansible-lint
+  #       entry: ansible-lint
+  - repo: https://github.com/JohnnyMorganz/StyLua
+    rev: v0.16.1
     hooks:
-      - id: ansible-lint
-        entry: ansible-lint
+      - id: stylua
