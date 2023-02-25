@@ -63,6 +63,14 @@ vim.o.splitbelow = true
 -- read.
 vim.o.undofile = true
 
+
+-- Providers
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+
+
 -- Package Manager
 --
 -- https://github.com/folke/lazy.nvim#-installation
@@ -108,6 +116,7 @@ require("lazy").setup {
     },
   },
   -- https://github.com/roxma/vim-tmux-clipboard
+  -- TODO: check if we can just use g:clipboard
   "roxma/vim-tmux-clipboard",
 }
 
