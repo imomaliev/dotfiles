@@ -127,20 +127,11 @@ Plug 'wsdjeg/vim-fetch'
 Plug 'nicwest/vim-camelsnek'
 
 " Filetypes
-Plug 'vim-python/python-syntax'
-let g:python_highlight_all = 1
-let g:python_highlight_class_vars = 0
-let g:python_highlight_func_calls = 0
 Plug 'posva/vim-vue'
-Plug 'cespare/vim-toml'
-Plug 'hashivim/vim-terraform'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'neomutt/neomutt.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'plasticboy/vim-markdown'
-" TODO: use g:go_bin_path
-" Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
