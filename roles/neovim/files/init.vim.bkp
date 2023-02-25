@@ -6,9 +6,6 @@ set wildmode=longest:full,full
 " https://stackoverflow.com/a/15698653/3627387
 set completeopt+=longest
 
-" To define a mapping which uses the mapleader variable.
-let mapleader = "\<Space>"
-
 " Maps for magic mode in search
 nnoremap <Leader>/ /\v
 vnoremap <Leader>/ /\v
@@ -129,14 +126,6 @@ command! -nargs=0 Scratch call Scratch()
 " packadd! matchit  " Loaded automatically
 packadd cfilter  " Quickfix list and Location list filter
 
-" Plug
-if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
-  " https://github.com/junegunn/vim-plug#neovim
-  execute '!curl -fLo ' . stdpath('data') . '/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  execute ':source $MYVIMRC'
-  execute ':PlugInstall'
-endi
-
 call plug#begin(stdpath('data') . '/plugged')
 
 " Keymap
@@ -155,13 +144,8 @@ Plug 'wellle/targets.vim'
 Plug 'chaoren/vim-wordmotion'
 
 " Editor
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'roxma/vim-tmux-clipboard'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'direnv/direnv.vim'
 Plug 'preservim/tagbar'
 Plug 'godlygeek/tabular'
 " open files on specific line in traceback format
@@ -279,10 +263,6 @@ let g:sandwich#recipes += [
 
 
 " FZF
-nnoremap <Leader>tt :<C-U>Files .<CR>
-nnoremap <Leader>tl :<C-U>Buffers<CR>
-nnoremap <Leader>tr :<C-U>History<CR>
-nnoremap <Leader>tp :<C-U>Tags<CR>
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
   call setqflist([], ' ', { 'title': 'FZF Selected', 'items': map(copy(a:lines), '{ "filename": v:val, "lnum": 1, "text": v:val }') })
