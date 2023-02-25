@@ -118,7 +118,14 @@ require("lazy").setup {
   -- TODO: check if we can just use g:clipboard
   "roxma/vim-tmux-clipboard",
   -- https://github.com/nvim-treesitter/nvim-treesitter/wiki/Installation#lazynvim
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
+    build = ":TSUpdate",
+  },
 }
 
 -- [[Mappings]]
@@ -160,6 +167,7 @@ require("nvim-treesitter.configs").setup {
 
   -- :help nvim-treesitter-highlight-mod
   highlight = { enable = true },
+
   -- :help nvim-treesitter-incremental-selection-mod
   -- - keymaps:
   --   - init_selection: in normal mode, start incremental selection.
@@ -171,8 +179,64 @@ require("nvim-treesitter.configs").setup {
   --   - node_decremental: in visual mode, decrement to the previous named node.
   --     Defaults to `grm`.
   incremental_selection = { enable = true },
+
   -- :help nvim-treesitter-indentation-mod
   indent = { enable = true },
+
+  -- :help nvim-treesitter-text-objects
+  -- https://github.com/nvim-lua/kickstart.nvim/blob/72364ad9acb35bb44d7e0af64f977f2a4b3c59db/init.lua#L307
+  textobjects = {
+    -- :help nvim-treesitter-text-objects-select-submod
+    select = {
+      enable = true,
+      -- Automatically jump forward to textobjects, similar to targets.vim
+      lookahead = true,
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["aa"] = "@parameter.outer",
+        ["ia"] = "@parameter.inner",
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+      },
+    },
+
+    -- :help nvim-treesitter-text-objects-swap-submod
+    -- swap = {
+    --   enable = true,
+    --   swap_next = {
+    --     ["<leader>a"] = "@parameter.inner",
+    --   },
+    --   swap_previous = {
+    --     ["<leader>A"] = "@parameter.inner",
+    --   },
+    -- },
+
+    -- :help nvim-treesitter-text-objects-move-submod
+    move = {
+      enable = true,
+      -- whether to set jumps in the jumplist
+      set_jumps = true,
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
+    },
+    -- TODO: :help nvim-treesitter-textobjects-lsp_interop-submod
+  },
 }
 
 -- XXX: remove this
