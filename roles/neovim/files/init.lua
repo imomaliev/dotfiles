@@ -273,13 +273,25 @@ autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- Personal configuration
-local ConfigGroup = augroup("config", {})
+local ConfigGroup = augroup("Config", {})
 -- Autoresize windows when window size changes
 autocmd("VimResized", {
   group = ConfigGroup,
   pattern = "*",
   callback = function()
     vim.cmd "wincmd ="
+  end,
+})
+
+-- Highlight on yank (default 150ms)
+--
+-- :help vim.highlight.on_yank()
+local YankHighlightGroup = augroup "YankHighlight"
+autocmd("TextYankPost", {
+  group = highlight_group,
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
   end,
 })
 
