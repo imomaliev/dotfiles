@@ -107,7 +107,6 @@ Plug 'imomaliev/mac-russian-colemak.vim'
 
 " UI
 Plug 'jnurmine/Zenburn'
-Plug 'machakann/vim-highlightedyank'
 
 " Operators
 Plug 'wellle/targets.vim'
@@ -206,10 +205,6 @@ set statusline+=\ " whitespace
 set statusline+=%P
 
 
-" vim-highlightedyank
-let g:highlightedyank_highlight_duration = 200
-
-
 " FZF
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
@@ -259,6 +254,7 @@ let g:tagbar_sort = 0
 " Autocommands config
 augroup config
   autocmd!
+  " TODO: use filetype group for setting filetype configuration
   autocmd Filetype * if &filetype != 'help' | nnoremap <buffer> <C-]> <Cmd>call JumpToTagWithLocationList()<CR> | nnoremap <buffer> <C-W>] <Cmd>call SplitJumpToTagWithLocationList()<CR> | endif
   autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
@@ -277,8 +273,6 @@ augroup config
   autocmd FileType markdown setlocal nofoldenable
   autocmd FileType go setlocal tabstop=4 shiftwidth=4 softtabstop=4
   autocmd FileType gohtmltmpl setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab comments=s:{{/*,ex:*/}} commentstring={{/*\ %s\ */}} | let b:caw_wrap_oneline_comment = ['{{/*', '*/}}']
-  " Autoresize windows
-  autocmd VimResized * :wincmd =
 augroup END
 
 " append to neovim's internal group for file type detection
@@ -287,7 +281,6 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile Pipfile.lock setlocal filetype=json
   autocmd BufRead,BufNewFile *.tmux setlocal filetype=bash
   autocmd BufRead,BufNewFile .dprint.json setlocal filetype=jsonc
-  autocmd BufRead,BufNewFile .ansible-lint setlocal filetype=yaml
   " autocmd BufRead,BufNewFile Dockerfile* setlocal filetype=dockerfile
   " autocmd BufRead,BufNewFile *.muttrc setlocal filetype=neomuttrc
   " https://vi.stackexchange.com/questions/9962/get-filetype-by-extension-or-filename-in-vimscript
