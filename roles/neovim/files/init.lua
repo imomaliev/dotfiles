@@ -66,6 +66,7 @@ vim.o.splitbelow = true
 vim.o.undofile = true
 
 -- [[Providers]]
+-- TODO: if providers needed store them in stdpath("data")/providers
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
@@ -132,16 +133,12 @@ require("lazy").setup {
   -- https://github.com/numToStr/Comment.nvim#-installation
   {
     "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
+    config = true,
   },
   -- https://github.com/kylechui/nvim-surround#package-installation
   {
     "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup()
-    end,
+    config = true,
   },
 }
 
