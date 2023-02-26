@@ -34,7 +34,7 @@ vim.o.number = true
 vim.o.list = true
 -- Strings to use in 'list' mode and for the `:list` command.  It is a
 -- comma-separated list of string settings.
---     (default: "tab:> ,trail:-,nbsp:+")
+--   (default: "tab:> ,trail:-,nbsp:+")
 vim.opt.listchars:append { tab = "▸ ", eol = "¬", space = "·" }
 
 -- Highlight the text line of the cursor with CursorLine `hl-CursorLine`.
@@ -47,7 +47,7 @@ vim.o.ignorecase = true
 -- option is on.
 vim.o.smartcase = true
 -- This option specifies how case is handled when searching the tags file:
---     match: Match case
+--   match: Match case
 vim.o.tagcase = "match"
 
 -- When on, the ":substitute" flag 'g' is default on.  This means that all
@@ -139,6 +139,17 @@ require("lazy").setup {
   {
     "kylechui/nvim-surround",
     config = true,
+  },
+  -- NOTE: This is where your plugins related to LSP can be installed.
+  -- The configuration is done below. Search for lspconfig to find it below.
+  -- LSP Configuration & Plugins
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      -- Automatically install LSPs to stdpath for neovim
+      { "williamboman/mason.nvim", config = true },
+      "williamboman/mason-lspconfig.nvim",
+    },
   },
 }
 
@@ -251,6 +262,51 @@ require("nvim-treesitter.configs").setup {
     },
     -- TODO: :help nvim-treesitter-textobjects-lsp_interop-submod
   },
+}
+
+-- [[LSP]]
+-- Diagnostic settings
+-- https://neovim.discourse.group/t/disable-inline-diagnostics/1263/2
+vim.diagnostic.config {
+  virtual_text = false,
+  signs = false,
+  underline = false,
+}
+require("mason-lspconfig").setup {
+  ensure_installed = { "lua_ls", "pyright", "gopls" },
+}
+-- LSP settings.
+-- This function gets run when an LSP connects to a particular buffer.
+-- https://github.com/nvim-lua/kickstart.nvim/blob/72364ad9acb35bb44d7e0af64f977f2a4b3c59db/init.lua#L359
+local on_attach = function(_, bufnr)
+  -- NOTE: Remember that lua is a real programming language, and as such it is possible
+  -- to define small helper and utility functions so you don't have to repeat yourself
+  -- many times.
+  --
+  -- In this case, we create a function that lets us more easily define mappings specific
+  -- for LSP related items. It sets the mode, buffer and description for us each time.
+  local nmap = function(keys, func, desc)
+    if desc then
+      desc = "LSP: " .. desc
+    end
+
+    vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  nmap("gd", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+  nmap("<C-]>", vim.lsp.buf.definition, "[G]oto [D]efinition")
+
+  -- See `:help K` for why this keymap
+  nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+end
+
+-- :help setup_handlers
+require("mason-lspconfig").setup_handlers {
+  function(server_name)
+    require("lspconfig")[server_name].setup {
+      on_attach = on_attach,
+    }
+  end,
 }
 
 -- [[Autocommands]]
