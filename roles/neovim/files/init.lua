@@ -72,6 +72,9 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 
+-- Enables 24-bit RGB color in the "TUI"
+vim.o.termguicolors = true
+
 -- [[Package Manager]]
 --
 -- https://github.com/folke/lazy.nvim#-installation
@@ -96,7 +99,19 @@ vim.opt.runtimepath:prepend(lazypath)
 -- If "g:mapleader" is not set or empty, a backslash is used instead.
 vim.g.mapleader = " "
 
-require("lazy").setup {
+require("lazy").setup({
+  {
+    "jnurmine/Zenburn",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme "zenburn"
+      -- TODO: use nvim_set_hl
+      vim.cmd "highlight WinSeparator guifg=#2e3330 ctermfg=236"
+      -- TODO: deprecated: need to remove later
+      vim.cmd "highlight VertSplit guifg=#2e3330 ctermfg=236"
+    end,
+  },
   -- https://github.com/direnv/direnv.vim
   "direnv/direnv.vim",
   -- https://github.com/editorconfig/editorconfig-vim
@@ -151,7 +166,12 @@ require("lazy").setup {
       "williamboman/mason-lspconfig.nvim",
     },
   },
-}
+}, {
+  install = {
+    -- try to load one of these colorschemes when starting an installation during startup
+    colorscheme = { "zenburn", "habamax" },
+  },
+})
 
 -- [[Mappings]]
 --   :help vim.keymap.set()
@@ -279,6 +299,9 @@ require("mason-lspconfig").setup {
 -- This function gets run when an LSP connects to a particular buffer.
 -- https://github.com/nvim-lua/kickstart.nvim/blob/72364ad9acb35bb44d7e0af64f977f2a4b3c59db/init.lua#L359
 local on_attach = function(_, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -290,10 +313,11 @@ local on_attach = function(_, bufnr)
       desc = "LSP: " .. desc
     end
 
-    vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+    vim.keymap.set("n", keys, func, { remap = true, silent = true, buffer = bufnr, desc = desc })
   end
 
-  nmap("gd", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+  -- :help lspconfig-keybindings
+  -- nmap("gd", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
   nmap("<C-]>", vim.lsp.buf.definition, "[G]oto [D]efinition")
 
   -- See `:help K` for why this keymap
@@ -347,6 +371,3 @@ autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
-
--- XXX: remove this
-vim.cmd.colorscheme "habamax"
