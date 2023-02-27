@@ -1,11 +1,3 @@
-" Completion mode that is used for the character specified with 'wildchar'.
-set wildmode=longest:full,full
-
-" A comma separated list of options for Insert mode completion ins-completion.
-" default: menu,preview
-" https://stackoverflow.com/a/15698653/3627387
-set completeopt+=longest
-
 " Maps for magic mode in search
 nnoremap <Leader>/ /\v
 vnoremap <Leader>/ /\v
@@ -15,11 +7,6 @@ vnoremap <Leader>? ?\v
 " Reselect last-pasted text
 " https://vim.fandom.com/wiki/Selecting_your_pasted_text
 nnoremap <expr> <Leader>gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-" https://hg.stevelosh.com/dotfiles/file/tip/vim/vimrc#l421
-" Split line (sister to [J]oin lines)
-" The normal use of S is covered by cc, so don't worry about shadowing it.
-nnoremap S i<cr><esc>
 
 
 let g:node_host_prog = stdpath('data') . '/node/node_modules/.bin/neovim-node-host'

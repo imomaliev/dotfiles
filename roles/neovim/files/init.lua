@@ -75,6 +75,15 @@ vim.g.loaded_perl_provider = 0
 -- Enables 24-bit RGB color in the "TUI"
 vim.o.termguicolors = true
 
+-- Completion mode that is used for the character specified with 'wildchar'.
+-- default: "full"
+vim.opt.wildmode = { "longest:full", "full" }
+
+-- A comma-separated list of options for Insert mode completion 'ins-completion'.
+-- default: "menu,preview"
+-- https://stackoverflow.com/a/15698653/3627387
+vim.opt.completeopt:append { "longest" }
+
 -- [[Package Manager]]
 --
 -- https://github.com/folke/lazy.nvim#-installation
@@ -181,22 +190,28 @@ local map = vim.keymap.set
 -- Keep selection when indenting
 --
 -- Shift the highlighted lines
-map("v", ">", ">gv")
-map("v", "<", "<gv")
+map("v", ">", ">gv", { desc = "Shift {motion} lines one 'shiftwidth' rightwards and keep selection" })
+map("v", "<", "<gv", { desc = "Shift {motion} lines one 'shiftwidth' leftwards and keep selection" })
 
 -- Emacs like keys for the command line
 --
 -- Cursor to beginning of command-line
-map("c", "<C-A>", "<Home>")
+map("c", "<C-A>", "<Home>", { desc = "Cursor to beginning of command-line" })
 -- Do not lose default mapping
 --
 -- All names that match the pattern in front of the cursor are inserted.
-map("c", "<C-B>", "<C-A>")
+map("c", "<C-B>", "<C-A>", { desc = "All names that match the pattern in front of the cursor are inserted." })
 
--- Use CTRL-G u to first break undo, so that you can undo each i_<CR> separately
+-- Use CTRL-G u to close undo sequence and start new change, so that you can undo each
+-- i_<CR> separately
 --
 -- Begin new line.
-map("i", "<CR>", "<C-G>u<CR>")
+map("i", "<CR>", "<C-G>u<CR>", { desc = "Begin new line and close undo sequence, start new change" })
+
+-- Split line (sister to [J]oin lines)
+-- The normal use of S is covered by cc, so don't worry about shadowing it.
+-- https://hg.stevelosh.com/dotfiles/file/tip/vim/vimrc#l421
+map("n", "S", "i<cr><esc>", { desc = "Split line" })
 
 -- [[TreeSitter]]
 -- :help nvim-treesitter-quickstart
@@ -318,7 +333,7 @@ local on_attach = function(_, bufnr)
 
   -- :help lspconfig-keybindings
   -- nmap("gd", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-  nmap("<C-]>", vim.lsp.buf.definition, "[G]oto [D]efinition")
+  nmap("<C-]>", vim.lsp.buf.definition, "Goto Definition")
 
   -- See `:help K` for why this keymap
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
