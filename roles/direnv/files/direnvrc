@@ -30,7 +30,7 @@ layout_pipenv_in_dir() {
 
 
 use_nvim() {
-  local extra_vimrc=${1:-$(direnv_layout_dir)/nvim/init.vim}
+  local extra_vimrc=${1:-$(direnv_layout_dir)/nvim/init.lua}
   use_vim $extra_vimrc
 }
 

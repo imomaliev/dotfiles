@@ -34,7 +34,7 @@ vim.o.number = true
 vim.o.list = true
 -- Strings to use in 'list' mode and for the `:list` command.  It is a
 -- comma-separated list of string settings.
---     (default: "tab:> ,trail:-,nbsp:+")
+--   (default: "tab:> ,trail:-,nbsp:+")
 vim.opt.listchars:append { tab = "▸ ", eol = "¬", space = "·" }
 
 -- Highlight the text line of the cursor with CursorLine `hl-CursorLine`.
@@ -47,7 +47,7 @@ vim.o.ignorecase = true
 -- option is on.
 vim.o.smartcase = true
 -- This option specifies how case is handled when searching the tags file:
---     match: Match case
+--   match: Match case
 vim.o.tagcase = "match"
 
 -- When on, the ":substitute" flag 'g' is default on.  This means that all
@@ -66,10 +66,23 @@ vim.o.splitbelow = true
 vim.o.undofile = true
 
 -- [[Providers]]
+-- TODO: if providers needed store them in stdpath("data")/providers
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
+
+-- Enables 24-bit RGB color in the "TUI"
+vim.o.termguicolors = true
+
+-- Completion mode that is used for the character specified with 'wildchar'.
+-- default: "full"
+vim.opt.wildmode = { "longest:full", "full" }
+
+-- A comma-separated list of options for Insert mode completion 'ins-completion'.
+-- default: "menu,preview"
+-- https://stackoverflow.com/a/15698653/3627387
+vim.opt.completeopt:append { "longest" }
 
 -- [[Package Manager]]
 --
@@ -95,7 +108,19 @@ vim.opt.runtimepath:prepend(lazypath)
 -- If "g:mapleader" is not set or empty, a backslash is used instead.
 vim.g.mapleader = " "
 
-require("lazy").setup {
+require("lazy").setup({
+  {
+    "jnurmine/Zenburn",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme "zenburn"
+      -- TODO: use nvim_set_hl
+      vim.cmd "highlight WinSeparator guifg=#2e3330 ctermfg=236"
+      -- TODO: deprecated: need to remove later
+      vim.cmd "highlight VertSplit guifg=#2e3330 ctermfg=236"
+    end,
+  },
   -- https://github.com/direnv/direnv.vim
   "direnv/direnv.vim",
   -- https://github.com/editorconfig/editorconfig-vim
@@ -108,10 +133,9 @@ require("lazy").setup {
     "junegunn/fzf.vim",
     keys = {
       -- TODO: understand why we are using <C-U> instead of <Cmd>
-      { "<Leader>tt", ":<C-U>Files .<CR>", desc = "FZF Files" },
+      { "<Leader>tt", ":<C-U>GitFiles .<CR>", desc = "FZF GitFiles" },
       { "<Leader>tl", ":<C-U>Buffers<CR>", desc = "FZF Buffers" },
       { "<Leader>tr", ":<C-U>History<CR>", desc = "FZF History" },
-      { "<Leader>tp", ":<C-U>Tags<CR>", desc = "FZF Tags" },
       { "<Leader>tw", ":<C-U>Windows<CR>", desc = "FZF Windows" },
     },
   },
@@ -132,18 +156,30 @@ require("lazy").setup {
   -- https://github.com/numToStr/Comment.nvim#-installation
   {
     "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup()
-    end,
+    config = true,
   },
   -- https://github.com/kylechui/nvim-surround#package-installation
   {
     "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup()
-    end,
+    config = true,
   },
-}
+  -- NOTE: This is where your plugins related to LSP can be installed.
+  -- The configuration is done below. Search for lspconfig to find it below.
+  -- LSP Configuration & Plugins
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      -- Automatically install LSPs to stdpath for neovim
+      { "williamboman/mason.nvim", config = true },
+      "williamboman/mason-lspconfig.nvim",
+    },
+  },
+}, {
+  install = {
+    -- try to load one of these colorschemes when starting an installation during startup
+    colorscheme = { "zenburn", "habamax" },
+  },
+})
 
 -- [[Mappings]]
 --   :help vim.keymap.set()
@@ -153,22 +189,28 @@ local map = vim.keymap.set
 -- Keep selection when indenting
 --
 -- Shift the highlighted lines
-map("v", ">", ">gv")
-map("v", "<", "<gv")
+map("v", ">", ">gv", { desc = "Shift {motion} lines one 'shiftwidth' rightwards and keep selection" })
+map("v", "<", "<gv", { desc = "Shift {motion} lines one 'shiftwidth' leftwards and keep selection" })
 
 -- Emacs like keys for the command line
 --
 -- Cursor to beginning of command-line
-map("c", "<C-A>", "<Home>")
+map("c", "<C-A>", "<Home>", { desc = "Cursor to beginning of command-line" })
 -- Do not lose default mapping
 --
 -- All names that match the pattern in front of the cursor are inserted.
-map("c", "<C-B>", "<C-A>")
+map("c", "<C-B>", "<C-A>", { desc = "All names that match the pattern in front of the cursor are inserted." })
 
--- Use CTRL-G u to first break undo, so that you can undo each i_<CR> separately
+-- Use CTRL-G u to close undo sequence and start new change, so that you can undo each
+-- i_<CR> separately
 --
 -- Begin new line.
-map("i", "<CR>", "<C-G>u<CR>")
+map("i", "<CR>", "<C-G>u<CR>", { desc = "Begin new line and close undo sequence, start new change" })
+
+-- Split line (sister to [J]oin lines)
+-- The normal use of S is covered by cc, so don't worry about shadowing it.
+-- https://hg.stevelosh.com/dotfiles/file/tip/vim/vimrc#l421
+map("n", "S", "i<cr><esc>", { desc = "Split line" })
 
 -- [[TreeSitter]]
 -- :help nvim-treesitter-quickstart
@@ -256,6 +298,56 @@ require("nvim-treesitter.configs").setup {
   },
 }
 
+-- [[LSP]]
+-- Diagnostic settings
+-- https://neovim.discourse.group/t/disable-inline-diagnostics/1263/2
+vim.diagnostic.config {
+  virtual_text = false,
+  signs = false,
+  underline = false,
+}
+require("mason-lspconfig").setup {
+  ensure_installed = { "lua_ls", "pyright", "gopls" },
+}
+-- LSP settings.
+-- This function gets run when an LSP connects to a particular buffer.
+-- https://github.com/nvim-lua/kickstart.nvim/blob/72364ad9acb35bb44d7e0af64f977f2a4b3c59db/init.lua#L359
+local on_attach = function(_, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  -- NOTE: Remember that lua is a real programming language, and as such it is possible
+  -- to define small helper and utility functions so you don't have to repeat yourself
+  -- many times.
+  --
+  -- In this case, we create a function that lets us more easily define mappings specific
+  -- for LSP related items. It sets the mode, buffer and description for us each time.
+  local nmap = function(keys, func, desc)
+    if desc then
+      desc = "LSP: " .. desc
+    end
+
+    vim.keymap.set("n", keys, func, { remap = true, silent = true, buffer = bufnr, desc = desc })
+  end
+
+  -- :help lspconfig-keybindings
+  -- nmap("gd", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+  nmap("<C-]>", vim.lsp.buf.definition, "Goto Definition")
+  nmap("<Leader>tp", vim.lsp.buf.workspace_symbol, "List Symbols")
+
+  -- See `:help K` for why this keymap
+  nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+end
+
+-- :help setup_handlers
+require("mason-lspconfig").setup_handlers {
+  function(server_name)
+    require("lspconfig")[server_name].setup {
+      on_attach = on_attach,
+    }
+  end,
+}
+
 -- [[Autocommands]]
 -- :help nvim_create_augroup
 local augroup = vim.api.nvim_create_augroup
@@ -294,6 +386,3 @@ autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
-
--- XXX: remove this
-vim.cmd.colorscheme "habamax"
