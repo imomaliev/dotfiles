@@ -133,10 +133,9 @@ require("lazy").setup({
     "junegunn/fzf.vim",
     keys = {
       -- TODO: understand why we are using <C-U> instead of <Cmd>
-      { "<Leader>tt", ":<C-U>Files .<CR>", desc = "FZF Files" },
+      { "<Leader>tt", ":<C-U>GitFiles .<CR>", desc = "FZF GitFiles" },
       { "<Leader>tl", ":<C-U>Buffers<CR>", desc = "FZF Buffers" },
       { "<Leader>tr", ":<C-U>History<CR>", desc = "FZF History" },
-      { "<Leader>tp", ":<C-U>Tags<CR>", desc = "FZF Tags" },
       { "<Leader>tw", ":<C-U>Windows<CR>", desc = "FZF Windows" },
     },
   },
@@ -334,6 +333,7 @@ local on_attach = function(_, bufnr)
   -- :help lspconfig-keybindings
   -- nmap("gd", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
   nmap("<C-]>", vim.lsp.buf.definition, "Goto Definition")
+  nmap("<Leader>tp", vim.lsp.buf.workspace_symbol, "List Symbols")
 
   -- See `:help K` for why this keymap
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
