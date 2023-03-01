@@ -257,6 +257,4 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile *.tmux setlocal filetype=bash
   autocmd BufRead,BufNewFile .dprint.json setlocal filetype=jsonc
   " autocmd BufRead,BufNewFile *.muttrc setlocal filetype=neomuttrc
-  " https://vi.stackexchange.com/questions/9962/get-filetype-by-extension-or-filename-in-vimscript
-  autocmd BufRead,BufNewFile *.template execute "doautocmd filetypedetect BufRead " . fnameescape(expand("<afile>:r"))
 augroup END

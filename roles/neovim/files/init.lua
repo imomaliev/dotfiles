@@ -364,33 +364,46 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- Append to neovim's internal group for file type detection
 local filetype_detect_group = augroup("filetypedetect", { clear = false })
+
 autocmd({ "BufRead", "BufNewFile" }, {
   group = filetype_detect_group,
   pattern = ".ansible-lint",
+  desc = "Set yaml filetype for .ansible-lint file",
   callback = function()
     vim.bo.filetype = "yaml"
   end,
 })
 
--- Personal configuration
-local config_group = augroup("Config", {})
--- Autoresize windows when window size changes
-autocmd("VimResized", {
-  group = config_group,
-  pattern = "*",
+autocmd({ "BufRead", "BufNewFile" }, {
+  group = filetype_detect_group,
+  pattern = { "*.bkp", "*.template" },
+  desc = "Auto detect original filetype for .bkp and .template files",
   callback = function()
-    vim.cmd "wincmd ="
+    -- https://vi.stackexchange.com/questions/9962/get-filetype-by-extension-or-filename-in-vimscript
+    -- TODO: rewrite in lua
+    vim.cmd("doautocmd filetypedetect BufRead " .. vim.fn.fnameescape(vim.fn.expand "<afile>:r"))
   end,
 })
 
--- Highlight on yank (default 150ms)
---
 -- :help vim.highlight.on_yank()
 local yank_highlight_group = augroup("YankHighlight", {})
 autocmd("TextYankPost", {
   group = yank_highlight_group,
   pattern = "*",
+  desc = "Highlight on yank (default 150ms)",
   callback = function()
     vim.highlight.on_yank()
+  end,
+})
+
+-- Personal configuration
+local config_group = augroup("Config", {})
+
+autocmd("VimResized", {
+  group = config_group,
+  pattern = "*",
+  desc = "Autoresize windows when window size changes",
+  callback = function()
+    vim.cmd "wincmd ="
   end,
 })
