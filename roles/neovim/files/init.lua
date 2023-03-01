@@ -212,11 +212,19 @@ map("i", "<CR>", "<C-G>u<CR>", { desc = "Begin new line and close undo sequence,
 -- https://hg.stevelosh.com/dotfiles/file/tip/vim/vimrc#l421
 map("n", "S", "i<cr><esc>", { desc = "Split line" })
 
+-- Redraw, line [count] at center of window for some jumps
+map("n", "n", "nzz", {
+  desc = 'Repeat the latest "/" or "?" [count] times and redraw, line [count] at center of window',
+})
+map("n", "N", "Nzz", {
+  desc = 'Repeat the latest "/" or "?" [count] times in opposite direction and redraw, line [count] at center of window',
+})
+
 -- [[TreeSitter]]
 -- :help nvim-treesitter-quickstart
 require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "lua", "vim", "help", "python", "toml", "terraform", "markdown", "go", "yaml" },
+  ensure_installed = { "lua", "vim", "help", "python", "toml", "terraform", "markdown", "go", "yaml", "bash" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
