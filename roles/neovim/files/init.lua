@@ -194,30 +194,41 @@ require("lazy").setup({
 local map = vim.keymap.set
 
 -- Keep selection when indenting
---
--- Shift the highlighted lines
-map("v", ">", ">gv", { desc = "Shift {motion} lines one 'shiftwidth' rightwards and keep selection" })
-map("v", "<", "<gv", { desc = "Shift {motion} lines one 'shiftwidth' leftwards and keep selection" })
+map(
+  "v",
+  ">",
+  ">gv",
+  { desc = "Shift {motion} lines one 'shiftwidth' rightwards and keep selection" }
+)
+map(
+  "v",
+  "<",
+  "<gv",
+  { desc = "Shift {motion} lines one 'shiftwidth' leftwards and keep selection" }
+)
 
 -- Emacs like keys for the command line
---
--- Cursor to beginning of command-line
 map("c", "<C-A>", "<Home>", { desc = "Cursor to beginning of command-line" })
 -- Do not lose default mapping
---
--- All names that match the pattern in front of the cursor are inserted.
-map("c", "<C-B>", "<C-A>", { desc = "All names that match the pattern in front of the cursor are inserted." })
+map(
+  "c",
+  "<C-B>",
+  "<C-A>",
+  { desc = "All names that match the pattern in front of the cursor are inserted." }
+)
 
 -- Use CTRL-G u to close undo sequence and start new change, so that you can undo each
 -- i_<CR> separately
---
--- Begin new line.
-map("i", "<CR>", "<C-G>u<CR>", { desc = "Begin new line and close undo sequence, start new change" })
+map(
+  "i",
+  "<CR>",
+  "<C-G>u<CR>",
+  { desc = "Begin new line and close undo sequence, start new change" }
+)
 
--- Split line (sister to [J]oin lines)
 -- The normal use of S is covered by cc, so don't worry about shadowing it.
 -- https://hg.stevelosh.com/dotfiles/file/tip/vim/vimrc#l421
-map("n", "S", "i<cr><esc>", { desc = "Split line" })
+map("n", "S", "i<cr><esc>", { desc = "[S]plit line" })
 
 -- Redraw, line [count] at center of window for some jumps
 map("n", "n", "nzz", {
@@ -231,7 +242,18 @@ map("n", "N", "Nzz", {
 -- :help nvim-treesitter-quickstart
 require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "lua", "vim", "help", "python", "toml", "terraform", "markdown", "go", "yaml", "bash" },
+  ensure_installed = {
+    "lua",
+    "vim",
+    "help",
+    "python",
+    "toml",
+    "terraform",
+    "markdown",
+    "go",
+    "yaml",
+    "bash",
+  },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -342,7 +364,12 @@ local on_attach = function(_, bufnr)
       desc = "LSP: " .. desc
     end
 
-    vim.keymap.set("n", keys, func, { remap = true, silent = true, buffer = bufnr, desc = desc })
+    vim.keymap.set(
+      "n",
+      keys,
+      func,
+      { remap = true, silent = true, buffer = bufnr, desc = desc }
+    )
   end
 
   -- :help lspconfig-keybindings
@@ -388,7 +415,10 @@ autocmd({ "BufRead", "BufNewFile" }, {
   callback = function()
     -- https://vi.stackexchange.com/questions/9962/get-filetype-by-extension-or-filename-in-vimscript
     -- TODO: rewrite in lua
-    vim.cmd("doautocmd filetypedetect BufRead " .. vim.fn.fnameescape(vim.fn.expand "<afile>:r"))
+    vim.cmd(
+      "doautocmd filetypedetect BufRead "
+        .. vim.fn.fnameescape(vim.fn.expand "<afile>:r")
+    )
   end,
 })
 
