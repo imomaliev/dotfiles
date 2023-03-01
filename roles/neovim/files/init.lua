@@ -355,9 +355,9 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 -- Append to neovim's internal group for file type detection
-local FileTypeDetectGroup = augroup("filetypedetect", { clear = false })
+local filetype_detect_group = augroup("filetypedetect", { clear = false })
 autocmd({ "BufRead", "BufNewFile" }, {
-  group = FileTypeDetectGroup,
+  group = filetype_detect_group,
   pattern = ".ansible-lint",
   callback = function()
     vim.bo.filetype = "yaml"
@@ -365,10 +365,10 @@ autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 -- Personal configuration
-local ConfigGroup = augroup("Config", {})
+local config_group = augroup("Config", {})
 -- Autoresize windows when window size changes
 autocmd("VimResized", {
-  group = ConfigGroup,
+  group = config_group,
   pattern = "*",
   callback = function()
     vim.cmd "wincmd ="
@@ -378,9 +378,9 @@ autocmd("VimResized", {
 -- Highlight on yank (default 150ms)
 --
 -- :help vim.highlight.on_yank()
-local YankHighlightGroup = augroup("YankHighlight", {})
+local yank_highlight_group = augroup("YankHighlight", {})
 autocmd("TextYankPost", {
-  group = highlight_group,
+  group = yank_highlight_group,
   pattern = "*",
   callback = function()
     vim.highlight.on_yank()
