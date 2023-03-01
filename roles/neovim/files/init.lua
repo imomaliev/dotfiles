@@ -25,7 +25,7 @@ more pleasant for the eyes
   :colorscheme habamax
 --]]
 
--- [[Options]]
+-- [Options]
 -- Print the line number in front of each line.
 vim.o.number = true
 
@@ -65,7 +65,7 @@ vim.o.splitbelow = true
 -- read.
 vim.o.undofile = true
 
--- [[Providers]]
+-- [Providers]
 -- TODO: if providers needed store them in stdpath("data")/providers
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
@@ -84,8 +84,15 @@ vim.opt.wildmode = { "longest:full", "full" }
 -- https://stackoverflow.com/a/15698653/3627387
 vim.opt.completeopt:append { "longest" }
 
--- [[Package Manager]]
---
+-- [Package Management]
+
+-- [[Pack]]
+
+-- Quickfix list and Location list filter
+vim.cmd "packadd cfilter"
+
+-- [[Lazy]]
+
 -- https://github.com/folke/lazy.nvim#-installation
 -- TODO: should I use `stdpath("data")/site` as recommended in `:help runtimepath`?
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -181,7 +188,7 @@ require("lazy").setup({
   },
 })
 
--- [[Mappings]]
+-- [Mappings]
 --   :help vim.keymap.set()
 
 local map = vim.keymap.set
@@ -220,7 +227,7 @@ map("n", "N", "Nzz", {
   desc = 'Repeat the latest "/" or "?" [count] times in opposite direction and redraw, line [count] at center of window',
 })
 
--- [[TreeSitter]]
+-- [TreeSitter]
 -- :help nvim-treesitter-quickstart
 require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
@@ -306,7 +313,7 @@ require("nvim-treesitter.configs").setup {
   },
 }
 
--- [[LSP]]
+-- [LSP]
 -- Diagnostic settings
 -- https://neovim.discourse.group/t/disable-inline-diagnostics/1263/2
 vim.diagnostic.config {
@@ -356,7 +363,7 @@ require("mason-lspconfig").setup_handlers {
   end,
 }
 
--- [[Autocommands]]
+-- [Autocommands]
 -- :help nvim_create_augroup
 local augroup = vim.api.nvim_create_augroup
 -- :help nvim_create_autocmd

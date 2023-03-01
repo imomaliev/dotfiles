@@ -82,10 +82,6 @@ endfunction
 
 command! -nargs=0 Scratch call Scratch()
 
-" Plugins
-" Pack
-" packadd! matchit  " Loaded automatically
-packadd cfilter  " Quickfix list and Location list filter
 
 call plug#begin(stdpath('data') . '/plugged')
 
