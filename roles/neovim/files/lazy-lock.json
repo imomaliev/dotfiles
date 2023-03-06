@@ -12,5 +12,6 @@
   "nvim-treesitter": { "branch": "master", "commit": "5a87bc98dabd0d38152a6fa774005f7ecbd40f1b" },
   "nvim-treesitter-context": { "branch": "master", "commit": "895ec44f5c89bc67ba5440aef3d1f2efa3d59a41" },
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "4b30081d2736e09f90c890a8a7adfe4df36f5b36" },
+  "playground": { "branch": "master", "commit": "4044b53c4d4fcd7a78eae20b8627f78ce7dc6f56" },
   "vim-tmux-clipboard": { "branch": "master", "commit": "e1be6608410c260479dc4807ad8c103faf5460d8" }
 }

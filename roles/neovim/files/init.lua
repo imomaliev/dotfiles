@@ -159,6 +159,8 @@ require("lazy").setup({
       "nvim-treesitter/nvim-treesitter-textobjects",
       -- https://github.com/nvim-treesitter/nvim-treesitter-context
       "nvim-treesitter/nvim-treesitter-context",
+      -- https://github.com/nvim-treesitter/playground
+      "nvim-treesitter/playground",
     },
     build = ":TSUpdate",
   },
@@ -281,6 +283,7 @@ command("Grep", "execute 'silent lgrep! <args>' | lopen", {
 require("nvim-treesitter.configs").setup {
   -- A list of parser names, or "all"
   ensure_installed = {
+    "query",
     "lua",
     "vim",
     "help",
