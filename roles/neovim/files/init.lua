@@ -140,7 +140,8 @@ require("lazy").setup({
     "junegunn/fzf.vim",
     keys = {
       -- TODO: understand why we are using <C-U> instead of <Cmd>
-      { "<Leader>tt", ":<C-U>GitFiles .<CR>", desc = "FZF: GitFiles" },
+      { "<Leader>tt", ":<C-U>GitFiles<CR>", desc = "FZF: GitFiles" },
+      { "<Leader>tf", ":<C-U>Files .<CR>", desc = "FZF: Files" },
       { "<Leader>tl", ":<C-U>Buffers<CR>", desc = "FZF: Buffers" },
       { "<Leader>tr", ":<C-U>History<CR>", desc = "FZF: History" },
       { "<Leader>tp", ":<C-U>Tags<CR>", desc = "FZF: Tags" },
@@ -237,6 +238,42 @@ map("n", "n", "nzz", {
 })
 map("n", "N", "Nzz", {
   desc = 'Repeat the latest "/" or "?" [count] times in opposite direction and redraw, line [count] at center of window',
+})
+
+-- [[FZF]]
+if vim.fn.executable "rg" then
+  -- TODO rewrite in lua form
+  -- TODO: make lazy call
+  local rg_command = "rg --no-ignore --hidden "
+  local rg_ignores = {
+    ".git",
+    ".DS_Store",
+    "*.png",
+    "*.sql",
+    "tags",
+    ".direnv/tags",
+    ".direnv/nvim/fzf-history",
+    "__pycache__",
+    ".mypy_cache",
+    ".pytest_cache",
+  }
+
+  for _, ignore in ipairs(rg_ignores) do
+    rg_command = rg_command .. string.format(" --glob=!%q", ignore)
+  end
+  vim.o.grepprg = rg_command .. " --vimgrep"
+  -- https://github.com/jremmen/vim-ripgrep/blob/ec87af6b69387abb3c4449ce8c4040d2d00d745e/plugin/vim-ripgrep.vim#L12
+  vim.o.grepformat = "%f:%l:%c:%m"
+  vim.env.FZF_DEFAULT_COMMAND = rg_command .. " --files"
+end
+
+local command = vim.api.nvim_create_user_command
+
+command("Grep", "execute 'silent lgrep! <args>' | lopen", {
+  desc = "Call lgrep and open location list",
+  bang = true,
+  nargs = "+",
+  complete = "file",
 })
 
 -- [TreeSitter]
