@@ -65,6 +65,8 @@ vim.o.splitbelow = true
 -- read.
 vim.o.undofile = true
 
+-- TODO: statusline config with winbar
+
 -- [Providers]
 -- TODO: if providers needed store them in stdpath("data")/providers
 vim.g.loaded_python3_provider = 0
@@ -185,6 +187,7 @@ require("lazy").setup({
       "williamboman/mason-lspconfig.nvim",
     },
   },
+  "mzlogin/vim-markdown-toc",
 }, {
   install = {
     -- try to load one of these colorschemes when starting an installation during startup
