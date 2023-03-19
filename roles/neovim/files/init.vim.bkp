@@ -240,7 +240,6 @@ augroup END
 
 " append to neovim's internal group for file type detection
 augroup filetypedetect
-  autocmd BufRead,BufNewFile *.tmux setlocal filetype=bash
   autocmd BufRead,BufNewFile .dprint.json setlocal filetype=jsonc
   " autocmd BufRead,BufNewFile *.muttrc setlocal filetype=neomuttrc
 augroup END

@@ -235,7 +235,7 @@ map(
 
 -- The normal use of S is covered by cc, so don't worry about shadowing it.
 -- https://hg.stevelosh.com/dotfiles/file/tip/vim/vimrc#l421
-map("n", "S", "i<cr><esc>", { desc = "[S]plit line" })
+map("n", "S", "i<CR><Esc>", { desc = "[S]plit line" })
 
 -- Redraw, line [count] at center of window for some jumps
 map("n", "n", "nzz", {
@@ -459,6 +459,15 @@ autocmd({ "BufRead", "BufNewFile" }, {
   desc = "Set yaml filetype for .ansible-lint file",
   callback = function()
     vim.bo.filetype = "yaml"
+  end,
+})
+
+autocmd({ "BufRead", "BufNewFile" }, {
+  group = filetype_detect_group,
+  pattern = "*.tmux",
+  desc = "Set bash filetype for *.tmux files",
+  callback = function()
+    vim.bo.filetype = "bash"
   end,
 })
 
