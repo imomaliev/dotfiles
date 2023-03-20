@@ -65,15 +65,6 @@ vim.o.splitbelow = true
 -- read.
 vim.o.undofile = true
 
--- TODO: statusline config with winbar
-
--- [Providers]
--- TODO: if providers needed store them in stdpath("data")/providers
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_node_provider = 0
-vim.g.loaded_perl_provider = 0
-
 -- Enables 24-bit RGB color in the "TUI"
 vim.o.termguicolors = true
 
@@ -85,6 +76,15 @@ vim.opt.wildmode = { "longest:full", "full" }
 -- default: "menu,preview"
 -- https://stackoverflow.com/a/15698653/3627387
 vim.opt.completeopt:append { "longest" }
+
+-- TODO: statusline config with winbar
+
+-- [Providers]
+-- TODO: if providers needed store them in stdpath("data")/providers
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
 
 -- [Package Management]
 
@@ -187,7 +187,9 @@ require("lazy").setup({
       "williamboman/mason-lspconfig.nvim",
     },
   },
+  -- https://github.com/mzlogin/vim-markdown-toc#installation
   "mzlogin/vim-markdown-toc",
+  -- https://github.com/tpope/vim-fugitive#installation
   "tpope/vim-fugitive",
 }, {
   install = {
@@ -486,6 +488,21 @@ autocmd({ "BufRead", "BufNewFile" }, {
       "doautocmd filetypedetect BufRead "
         .. vim.fn.fnameescape(vim.fn.expand "<afile>:r")
     )
+  end,
+})
+
+-- Append to neovim's internal filetypeplugin group for setting indentation
+local filetype_plugin_group = augroup("filetypeplugin", { clear = false })
+
+autocmd("FileType", {
+  group = filetype_plugin_group,
+  pattern = "go",
+  desc = "Set indent_size=4 for go",
+  callback = function()
+    local indent_size = 4
+    vim.bo.tabstop = indent_size
+    vim.bo.shiftwidth = indent_size
+    vim.bo.softtabstop = indent_size
   end,
 })
 

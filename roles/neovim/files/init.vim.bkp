@@ -233,7 +233,6 @@ augroup config
   autocmd FileType cfg setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType toml setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType markdown setlocal nofoldenable
-  autocmd FileType go setlocal tabstop=4 shiftwidth=4 softtabstop=4
   autocmd FileType gohtmltmpl setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab comments=s:{{/*,ex:*/}} commentstring={{/*\ %s\ */}} | let b:caw_wrap_oneline_comment = ['{{/*', '*/}}']
 augroup END
 
