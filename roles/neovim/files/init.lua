@@ -188,6 +188,7 @@ require("lazy").setup({
     },
   },
   "mzlogin/vim-markdown-toc",
+  "tpope/vim-fugitive",
 }, {
   install = {
     -- try to load one of these colorschemes when starting an installation during startup
@@ -297,6 +298,9 @@ require("nvim-treesitter.configs").setup {
     "go",
     "yaml",
     "bash",
+    "javascript",
+    "typescript",
+    "vue",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)

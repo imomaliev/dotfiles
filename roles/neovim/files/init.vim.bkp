@@ -83,7 +83,6 @@ Plug 'wellle/targets.vim'
 Plug 'chaoren/vim-wordmotion'
 
 " Editor
-Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'preservim/tagbar'
 Plug 'godlygeek/tabular'
