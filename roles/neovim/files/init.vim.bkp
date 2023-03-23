@@ -85,7 +85,6 @@ Plug 'chaoren/vim-wordmotion'
 " Editor
 Plug 'mhinz/vim-signify'
 Plug 'preservim/tagbar'
-Plug 'godlygeek/tabular'
 " open files on specific line in traceback format
 Plug 'wsdjeg/vim-fetch'
 Plug 'nicwest/vim-camelsnek'
@@ -232,7 +231,6 @@ augroup config
   autocmd Filetype terraform setlocal expandtab
   autocmd FileType cfg setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType toml setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-  autocmd FileType markdown setlocal nofoldenable
   autocmd FileType gohtmltmpl setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab comments=s:{{/*,ex:*/}} commentstring={{/*\ %s\ */}} | let b:caw_wrap_oneline_comment = ['{{/*', '*/}}']
 augroup END
 

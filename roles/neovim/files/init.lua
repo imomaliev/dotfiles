@@ -187,10 +187,28 @@ require("lazy").setup({
       "williamboman/mason-lspconfig.nvim",
     },
   },
-  -- https://github.com/mzlogin/vim-markdown-toc#installation
-  "mzlogin/vim-markdown-toc",
   -- https://github.com/tpope/vim-fugitive#installation
   "tpope/vim-fugitive",
+  -- https://github.com/mzlogin/vim-markdown-toc#installation
+  {
+    "mzlogin/vim-markdown-toc",
+    config = function()
+      -- disable update existing table of contents on save automatically
+      vim.g.vmt_auto_update_on_save = 0
+    end,
+  },
+  -- https://github.com/preservim/vim-markdown#installation
+  -- TODO: maybe find LSP for this
+  {
+    "preservim/vim-markdown",
+    dependencies = { "godlygeek/tabular" },
+    config = function()
+      -- disable default key mappings
+      vim.g.vim_markdown_no_default_key_mappings = 1
+      -- disable the folding configuration
+      vim.g.vim_markdown_folding_disabled = 1
+    end,
+  },
 }, {
   install = {
     -- try to load one of these colorschemes when starting an installation during startup
@@ -494,15 +512,32 @@ autocmd({ "BufRead", "BufNewFile" }, {
 -- Append to neovim's internal filetypeplugin group for setting indentation
 local filetype_plugin_group = augroup("filetypeplugin", { clear = false })
 
+local set_indent_size = function(indent_size, expandtab)
+  expandtab = expandtab or nil
+  if expandtab ~= nil then
+    vim.bo.expandtab = expandtab
+  end
+  vim.bo.tabstop = indent_size
+  vim.bo.shiftwidth = indent_size
+  vim.bo.softtabstop = indent_size
+end
+
 autocmd("FileType", {
   group = filetype_plugin_group,
   pattern = "go",
   desc = "Set indent_size=4 for go",
   callback = function()
-    local indent_size = 4
-    vim.bo.tabstop = indent_size
-    vim.bo.shiftwidth = indent_size
-    vim.bo.softtabstop = indent_size
+    set_indent_size(4)
+  end,
+})
+
+autocmd("FileType", {
+  group = filetype_plugin_group,
+  pattern = "markdown",
+  desc = "Extra configuration for markdown",
+  callback = function()
+    -- set_indent_size(2, true)
+    map("n", "gO", ":Toch<CR>", { desc = "Show markdown TOC outline" })
   end,
 })
 
