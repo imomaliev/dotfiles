@@ -412,7 +412,8 @@ vim.diagnostic.config {
   underline = false,
 }
 require("mason-lspconfig").setup {
-  ensure_installed = { "lua_ls", "pyright", "gopls" },
+  -- :help mason-lspconfig-mapping.txt
+  ensure_installed = { "lua_ls", "pyright", "gopls", "volar" },
 }
 -- LSP settings.
 -- This function gets run when an LSP connects to a particular buffer.
