@@ -209,6 +209,7 @@ require("lazy").setup({
       vim.g.vim_markdown_folding_disabled = 1
     end,
   },
+  "mbbill/undotree",
 }, {
   install = {
     -- try to load one of these colorschemes when starting an installation during startup
