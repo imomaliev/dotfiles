@@ -128,6 +128,9 @@ require("lazy").setup({
       vim.cmd "highlight WinSeparator guifg=#2e3330 ctermfg=236"
       -- TODO: deprecated: need to remove later
       vim.cmd "highlight VertSplit guifg=#2e3330 ctermfg=236"
+      -- Use darker CursorLine and ColorColumn
+      vim.cmd "highlight CursorLine guibg=#363636 ctermbg=235 cterm=none"
+      vim.cmd "highlight ColorColumn guibg=#333333 ctermbg=235 cterm=none"
     end,
   },
   -- https://github.com/direnv/direnv.vim
