@@ -7,3 +7,4 @@
 --exclude=*/.git/*
 
 --languages=Python
+--languages=Go
