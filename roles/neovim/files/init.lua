@@ -319,6 +319,7 @@ require("nvim-treesitter.configs").setup {
     "toml",
     "terraform",
     "markdown",
+    "markdown_inline",
     "go",
     "yaml",
     "bash",
@@ -518,9 +519,10 @@ autocmd({ "BufRead", "BufNewFile" }, {
 local filetype_plugin_group = augroup("filetypeplugin", { clear = false })
 
 local set_indent_size = function(indent_size, expandtab)
-  expandtab = expandtab or nil
   if expandtab ~= nil then
     vim.bo.expandtab = expandtab
+  else
+    vim.bo.expandtab = true
   end
   vim.bo.tabstop = indent_size
   vim.bo.shiftwidth = indent_size
@@ -532,7 +534,16 @@ autocmd("FileType", {
   pattern = "go",
   desc = "Set indent_size=4 for go",
   callback = function()
-    set_indent_size(4)
+    set_indent_size(4, false)
+  end,
+})
+
+autocmd("FileType", {
+  group = filetype_plugin_group,
+  pattern = { "terraform" },
+  desc = "Set indent_size=2 for terraform",
+  callback = function()
+    set_indent_size(2)
   end,
 })
 
