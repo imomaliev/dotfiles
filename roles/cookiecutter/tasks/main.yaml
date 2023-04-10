@@ -1,0 +1,21 @@
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/cookiecutter/files"
+    dest: ~/.config/cookiecutter
+    state: link
+- name: Create data folder
+  tags: [config]
+  file:
+    path: ~/.local/share/cookiecutter
+    state: directory
+    mode: "0700"
+- name: Add cookiecutter COOKIECUTTER_CONFIG
+  tags: [config]
+  blockinfile:
+    path: ~/.config/zsh/local.zsh
+    state: present
+    marker: "# {mark} cookiecutter ANSIBLE MANAGED BLOCK"
+    insertbefore: BOF
+    block: |
+      export COOKIECUTTER_CONFIG="$HOME/.config/cookiecutter/config.yaml"
