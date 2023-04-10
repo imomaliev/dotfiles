@@ -28,3 +28,4 @@
     - { role: rust, tags: [rust] }
     - { role: go, tags: [go] }
     - { role: mc, tags: [mc, midnight-commander] }
+    - { role: cookiecutter, tags: [cookiecutter] }

@@ -24,10 +24,9 @@
 #         marker: "# {mark} alacritty ANSIBLE MANAGED BLOCK"
 #         block: |
 #           export TERMINFO_DIRS="$TERMINFO:$HOME/.terminfo"
-    # - name: ~
-    #   file:
-    #     src: "$HOME/.terminfo/61"
-    #     dest: ~/.config/alacritty
-    #     state: link
-    #   when: terminfo_stat.stat.exists
-
+# - name: ~
+#   file:
+#     src: "$HOME/.terminfo/61"
+#     dest: ~/.config/alacritty
+#     state: link
+#   when: terminfo_stat.stat.exists

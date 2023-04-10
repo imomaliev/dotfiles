@@ -28,4 +28,3 @@
         path: $HOME/sdk
         state: link
         mode: "755"
-
