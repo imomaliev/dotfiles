@@ -135,8 +135,6 @@ require("lazy").setup({
   },
   -- https://github.com/direnv/direnv.vim
   "direnv/direnv.vim",
-  -- https://github.com/editorconfig/editorconfig-vim
-  "editorconfig/editorconfig-vim",
   -- https://github.com/junegunn/fzf/blob/master/README-VIM.md#installation
   { dir = vim.fn.system("brew --prefix fzf"):gsub("\n", "") },
   -- https://github.com/junegunn/fzf.vim
