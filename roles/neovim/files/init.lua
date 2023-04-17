@@ -513,6 +513,16 @@ autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+autocmd({ "BufRead", "BufNewFile" }, {
+  group = filetype_detect_group,
+  pattern = { ".dprint.json", "dprint.json" },
+  desc = "Set dprint config filetype as jsonc",
+  callback = function()
+    -- TODO: use json5 when it is added
+    vim.bo.filetype = "jsonc"
+  end,
+})
+
 -- Append to neovim's internal filetypeplugin group for setting indentation
 local filetype_plugin_group = augroup("filetypeplugin", { clear = false })
 

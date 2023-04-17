@@ -233,9 +233,3 @@ augroup config
   autocmd FileType toml setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType gohtmltmpl setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab comments=s:{{/*,ex:*/}} commentstring={{/*\ %s\ */}} | let b:caw_wrap_oneline_comment = ['{{/*', '*/}}']
 augroup END
-
-" append to neovim's internal group for file type detection
-augroup filetypedetect
-  autocmd BufRead,BufNewFile .dprint.json setlocal filetype=jsonc
-  " autocmd BufRead,BufNewFile *.muttrc setlocal filetype=neomuttrc
-augroup END
