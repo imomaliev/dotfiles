@@ -7,12 +7,12 @@
   become: yes
   lineinfile:
     path: /etc/shells
-    line: /usr/local/bin/zsh
+    line: /opt/homebrew/bin/zsh
 # TODO: add changed_when
 - name: Set default shell # noqa: no-changed-when
   tags: [setup, set_shell]
   command:
-    cmd: chsh -s /usr/local/bin/zsh
+    cmd: chsh -s /opt/homebrew/bin/zsh
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory
 # we are linking only zshenv into home dir
 - name: Link zshenv

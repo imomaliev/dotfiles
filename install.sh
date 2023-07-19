@@ -29,7 +29,7 @@ _install_pipx() {
 _install_ansible() {
     if ! [ -x "$(command -v ansible)" ]; then
         echo 'Install ansible with pipx'
-        pipx install ansible
+        pipx install --install-deps ansible
     else
         echo 'ansible already installed'
     fi
@@ -38,7 +38,7 @@ _install_ansible() {
 
 _run_ansible() {
     echo 'using implicit localhost'
-    ansible-playbook -v -ask-become-pass site.yml
+    ansible-playbook -v --ask-become-pass site.yaml
 
 }
 

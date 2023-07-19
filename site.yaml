@@ -8,24 +8,80 @@
     ansible_connection: local
     ansible_python_interpreter: "{{ ansible_playbook_python }}"
 
+  tasks:
+    - name: homebrew
+      ansible.builtin.include_role:
+        name: homebrew
+        apply:
+          tags: [homebrew, brew]
+    - name: Create data folder
+      tags: [setup]
+      file:
+        path: ~/.config
+        state: directory
+        mode: "0755"
+    - name: karabiner
+      ansible.builtin.include_role:
+        name: karabiner
+        apply:
+          tags: [karabiner]
+    - name: alacritty
+      ansible.builtin.include_role:
+        name: alacritty
+        apply:
+          tags: [alacritty]
+    - name: zsh
+      ansible.builtin.include_role:
+        name: zsh
+        apply:
+          tags: [zsh, sh]
+    - name: gnupg
+      ansible.builtin.include_role:
+        name: gnupg
+        apply:
+          tags: [gnupg, gpg]
+    - name: git
+      ansible.builtin.include_role:
+        name: git
+        apply:
+          tags: [git]
+    - name: tmux
+      ansible.builtin.include_role:
+        name: tmux
+        apply:
+          tags: [tmux]
+    - name: fzf
+      ansible.builtin.include_role:
+        name: fzf
+        apply:
+          tags: [fzf]
+    - name: direnv
+      ansible.builtin.include_role:
+        name: direnv
+        apply:
+          tags: [direnv]
+    - name: ctags
+      ansible.builtin.include_role:
+        name: ctags
+        apply:
+          tags: [ctags]
+    - name: neovim
+      ansible.builtin.include_role:
+        name: neovim
+        apply:
+          tags: [neovim, nvim, vim]
+    - name: docker
+      ansible.builtin.include_role:
+        name: docker
+        apply:
+          tags: [docker, docker-compose]
   roles:
-    - { role: homebrew, tags: [homebrew, brew] }
-    - { role: zsh, tags: [zsh, sh] }
-    - { role: pipx, tags: [pipx] }
-    - { role: readline, tags: [readline] }
-    - { role: git, tags: git }
-    - { role: python, tags: [python] }
-    - { role: pyenv, tags: [pyenv] }
-    - { role: nvm, tags: [nvm] }
-    - { role: neovim, tags: [neovim, nvim, vim] }
-    - { role: ctags, tags: [ctags] }
-    - { role: tmux, tags: [tmux] }
-    - { role: fzf, tags: [fzf] }
-    - { role: direnv, tags: [direnv] }
-    - { role: karabiner, tags: [karabiner-elements, karabiner] }
-    - { role: docker, tags: [docker, docker-compose] }
-    - { role: gnupg, tags: [gnupg, gpg] }
-    - { role: rust, tags: [rust] }
-    - { role: go, tags: [go] }
-    - { role: mc, tags: [mc, midnight-commander] }
-    - { role: cookiecutter, tags: [cookiecutter] }
+#    - { role: pipx, tags: [pipx] }
+#    - { role: readline, tags: [readline] }
+#    - { role: python, tags: [python] }
+#    - { role: pyenv, tags: [pyenv] }
+#    - { role: nvm, tags: [nvm] }
+#    - { role: rust, tags: [rust] }
+#    - { role: go, tags: [go] }
+#    - { role: mc, tags: [mc, midnight-commander] }
+#    - { role: cookiecutter, tags: [cookiecutter] }

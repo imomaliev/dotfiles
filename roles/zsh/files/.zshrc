@@ -9,6 +9,8 @@ export LANG=en_US.UTF-8
 # use emacs mode
 bindkey -e
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # set default editor to nvim
 nvim=$(which nvim)
 export EDITOR=$nvim

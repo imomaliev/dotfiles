@@ -312,7 +312,7 @@ require("nvim-treesitter.configs").setup {
     "query",
     "lua",
     "vim",
-    "help",
+--     "help",
     "python",
     "toml",
     "terraform",
@@ -416,7 +416,12 @@ vim.diagnostic.config {
 }
 require("mason-lspconfig").setup {
   -- :help mason-lspconfig-mapping.txt
-  ensure_installed = { "lua_ls", "pyright", "gopls", "volar" },
+  ensure_installed = {
+    "lua_ls",
+    "pyright",
+    -- "gopls",
+    "volar"
+  },
 }
 -- LSP settings.
 -- This function gets run when an LSP connects to a particular buffer.
