@@ -387,16 +387,6 @@
                         },
                         {
                             "from": {
-                                "key_code": "grave_accent_and_tilde"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "z"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
                                 "key_code": "v"
                             },
                             "to": [
@@ -422,6 +412,16 @@
                             "to": [
                                 {
                                     "key_code": "x"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "grave_accent_and_tilde"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "z"
                                 }
                             ]
                         }

@@ -17,6 +17,7 @@
     name:
       - mas
       - htop
+      - terraform
     update_homebrew: yes
 - name: Install casks
   tags: [install, cask]
@@ -25,13 +26,19 @@
       - choosy
       - firefox
       - zoom
-#      - notion
-#      - tunnelbear
-#      - vlc
-#      - dash
+      # personal
+      - hey
+      - obsidian
       - zsa-wally
-#      - brave
-#      - tor-browser
+      - dash
+      - alt-tab
+      # - languagetool
+      #
+      # - notion
+      # - tunnelbear
+      # - vlc
+      # - brave
+      # - tor-browser
     update_homebrew: yes
 - name: List App Store apps
   tags: [mas, check]
@@ -52,6 +59,8 @@
     - 747648890
     # slack
     - 803453959
+    # LanguageTool
+    - 1534275760
 #    # Pages
 #    - 409201541
 #    # Numbers

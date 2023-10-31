@@ -75,13 +75,30 @@
         name: docker
         apply:
           tags: [docker, docker-compose]
+    - name: pipx
+      ansible.builtin.include_role:
+        name: pipx
+        apply:
+          tags: [pipx]
+    - name: pyenv
+      ansible.builtin.include_role:
+        name: pyenv
+        apply:
+          tags: [pyenv]
+    - name: go
+      ansible.builtin.include_role:
+        name: go
+        apply:
+          tags: [go]
+    - name: rust
+      ansible.builtin.include_role:
+        name: rust
+        apply:
+          tags: [rust]
+
   roles:
-#    - { role: pipx, tags: [pipx] }
 #    - { role: readline, tags: [readline] }
 #    - { role: python, tags: [python] }
-#    - { role: pyenv, tags: [pyenv] }
 #    - { role: nvm, tags: [nvm] }
-#    - { role: rust, tags: [rust] }
-#    - { role: go, tags: [go] }
 #    - { role: mc, tags: [mc, midnight-commander] }
 #    - { role: cookiecutter, tags: [cookiecutter] }

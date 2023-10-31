@@ -324,6 +324,7 @@ require("nvim-treesitter.configs").setup {
     "javascript",
     "typescript",
     "vue",
+    "json",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -419,7 +420,7 @@ require("mason-lspconfig").setup {
   ensure_installed = {
     "lua_ls",
     "pyright",
-    -- "gopls",
+    "gopls",
     "volar"
   },
 }
