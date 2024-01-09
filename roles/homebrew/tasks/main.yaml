@@ -1,22 +1,23 @@
 ---
 - name: Install
   shell:
-    cmd: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    creates: /usr/local/bin/brew
+    cmd: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    creates: /opt/homebrew/bin/brew
 - name: Check analytics state
   command: brew analytics state
   register: brew_analytics
-  changed_when: brew_analytics.stdout != "Analytics are disabled."
+  changed_when: brew_analytics.stdout != "InfluxDB analytics are disabled.\nGoogle Analytics were destroyed."
   check_mode: no
 - name: Disable analytics
   command: brew analytics off
-  when: brew_analytics.stdout != "Analytics are disabled."
+  when: brew_analytics.stdout != "InfluxDB analytics are disabled.\nGoogle Analytics were destroyed."
 - name: Install apps
   tags: [install]
   homebrew:
     name:
       - mas
       - htop
+      - terraform
     update_homebrew: yes
 - name: Install casks
   tags: [install, cask]
@@ -25,13 +26,19 @@
       - choosy
       - firefox
       - zoom
-      - notion
-      - tunnelbear
-      - vlc
+      # personal
+      - hey
+      - obsidian
+      - zsa-wally
       - dash
-      - homebrew/cask-drivers/zsa-wally
-      - brave
-      - tor-browser
+      - alt-tab
+      # - languagetool
+      #
+      # - notion
+      # - tunnelbear
+      # - vlc
+      # - brave
+      # - tor-browser
     update_homebrew: yes
 - name: List App Store apps
   tags: [mas, check]
@@ -52,9 +59,11 @@
     - 747648890
     # slack
     - 803453959
-    # Pages
-    - 409201541
-    # Numbers
-    - 409203825
-    # Keynote
-    - 409183694
+    # LanguageTool
+    - 1534275760
+#    # Pages
+#    - 409201541
+#    # Numbers
+#    - 409203825
+#    # Keynote
+#    - 409183694

@@ -1,0 +1,48 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#709080"
+blue = "#94bff3"
+cyan = "#93e0e3"
+green = "#c3bf9f"
+magenta = "#ec93d3"
+red = "#dca3a3"
+white = "#ffffff"
+yellow = "#e0cf9f"
+
+[colors.cursor]
+cursor = "#8faf9f"
+text = "#000d18"
+
+[colors.normal]
+black = "#4d4d4d"
+blue = "#9fafaf"
+cyan = "#8cd0d3"
+green = "#60b48a"
+magenta = "#dc8cc3"
+red = "#dca3a3"
+white = "#dcdccc"
+yellow = "#f0dfaf"
+
+[colors.primary]
+background = "#3f3f3f"
+foreground = "#dcdccc"
+
+[colors.selection]
+background = "#21322f"
+text = "#c2d87a"
+
+[font]
+size = 14
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Space"
+mode = "~Search"
+mods = "Shift|Alt"
+
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "T"
+mods = "Command"
