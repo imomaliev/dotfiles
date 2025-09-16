@@ -1,0 +1,55 @@
+- name: Install
+  tags: [install]
+  homebrew_cask: name=ghostty update_homebrew=yes
+- name: Link terminfo
+  tags: [terminfo]
+  block:
+    - name: Ensure terminfo/78 folder exists
+      file:
+        path: ~/.local/share/terminfo/78/
+        state: directory
+        mode: "0755"
+    - name: Link xterm-ghostty terminfo
+      file:
+        src: "/Applications/Ghostty.app/Contents/Resources/terminfo/78/xterm-ghostty"
+        dest: ~/.local/share/terminfo/78/xterm-ghostty
+        state: link
+    - name: Ensure terminfo/67 folder exists
+      file:
+        path: ~/.local/share/terminfo/67/
+        state: directory
+        mode: "0755"
+    - name: Link ghostty terminfo
+      file:
+        src: "/Applications/Ghostty.app/Contents/Resources/terminfo/78/xterm-ghostty"
+        dest: ~/.local/share/terminfo/67/ghostty
+        state: link
+- name: Link configs
+  tags: [config]
+  file:
+    src: "{{ playbook_dir }}/roles/ghostty/files"
+    dest: ~/.config/ghostty
+    state: link
+  # https://github.com/alacritty/alacritty/blob/master/INSTALL.md#terminfo
+  # https://github.com/Homebrew/homebrew-cask/pull/118146/files
+# - name: Setup terminfo
+#   tags: [setup]
+#   block:
+#     - name: Check that the terminfo exists
+#       tags: [setup]
+#       stat:
+#         path: $HOME/.terminfo/61
+#       register: terminfo_stat
+#     - name: Check that the terminfo exists
+#       blockinfile:
+#         path: ~/.config/zsh/local.zsh
+#         state: absent
+#         marker: "# {mark} alacritty ANSIBLE MANAGED BLOCK"
+#         block: |
+#           export TERMINFO_DIRS="$TERMINFO:$HOME/.terminfo"
+# - name: ~
+#   file:
+#     src: "$HOME/.terminfo/61"
+#     dest: ~/.config/alacritty
+#     state: link
+#   when: terminfo_stat.stat.exists
