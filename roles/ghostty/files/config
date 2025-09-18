@@ -1,1 +1,4 @@
-theme = "zenburn-light"
+theme = zenburn-light
+# bold-color = bright
+font-feature = -calt, -liga, -dlig
+font-size = 14
