@@ -325,7 +325,9 @@ require("nvim-treesitter.configs").setup {
     "typescript",
     "vue",
     "json",
-    "tlaplus"
+    "tlaplus",
+    "proto",
+    "zig",
   },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -422,7 +424,8 @@ require("mason-lspconfig").setup {
     "lua_ls",
     "pyright",
     "gopls",
-    "volar"
+    "zls",
+    -- "volar"
   },
 }
 -- LSP settings.
