@@ -17,6 +17,7 @@ export EDITOR=$nvim
 export VISUAL=$nvim
 # for mc
 export VIEWER="$nvim -R"
+export MANPAGER='nvim +Man!'
 
 alias vim='nvim'
 # Use ANSI color sequences to distinguish file types.
