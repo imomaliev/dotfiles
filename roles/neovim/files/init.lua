@@ -304,6 +304,50 @@ command("Grep", "execute 'silent lgrep! <args>' | lopen", {
   complete = "file",
 })
 
+-- TODO: send this to upstream
+-- switch vim.net.fetch https://github.com/neovim/neovim/pull/34140/files
+command(
+  'ManOpen',
+  function(opts)
+    local a = opts.args
+    if a == '' then
+      vim.notify('Usage: :ManOpen <path_or_url>', vim.log.levels.WARN)
+      return
+    end
+
+    local lines, ret
+    if a:match('^https?://') then
+      -- run curl and mandoc, capture stdout lines; shellescape for safety
+      local cmd = 'curl -sSf ' .. vim.fn.shellescape(a) .. ' | mandoc -T utf8'
+      lines = vim.fn.systemlist(cmd)
+      ret = vim.v.shell_error
+    else
+      lines = vim.fn.systemlist('mandoc -T utf8 ' .. vim.fn.shellescape(a))
+      ret = vim.v.shell_error
+    end
+
+    if ret ~= 0 then
+      vim.notify(':ManOpen failed to fetch/man: exit code ' .. tostring(ret), vim.log.levels.ERROR)
+      return
+    end
+
+    -- replace current buffer contents with the fetched lines (quietly)
+    local buf = vim.api.nvim_create_buf({ listed = true }, nil)
+    if buf == 0 then
+      vim.notify(':ManOpen failed to create empty buffer', vim.log.levels.ERROR)
+      return
+    end
+    vim.api.nvim_set_current_buf(buf)
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+    -- then open Man!
+    pcall(vim.cmd, 'Man!')
+  end,
+  {
+    nargs = 1,
+    complete = 'file'
+  }
+)
+
 -- [TreeSitter]
 -- :help nvim-treesitter-quickstart
 require("nvim-treesitter.configs").setup {
