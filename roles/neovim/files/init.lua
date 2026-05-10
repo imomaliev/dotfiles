@@ -337,14 +337,45 @@ command(
       vim.notify(':ManOpen failed to create empty buffer', vim.log.levels.ERROR)
       return
     end
-    vim.api.nvim_set_current_buf(buf)
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
     -- then open Man!
+    local win = vim.api.nvim_open_win(buf, false, { split = "below" })
+    vim.api.nvim_win_set_buf(win, buf)
+    vim.api.nvim_set_current_win(win)
     pcall(vim.cmd, 'Man!')
   end,
   {
     nargs = 1,
     complete = 'file'
+  }
+)
+
+command(
+  "Less",
+  function(opts)
+    local a = opts.args
+    if a == '' then
+      vim.notify('Usage: :Less <command|!!>', vim.log.levels.WARN)
+      return
+    elseif a == '!!' then
+      a = vim.fn.histget("cmd", -2)
+    end
+
+    -- replace current buffer contents with the fetched lines (quietly)
+
+    local ret = vim.api.nvim_exec2(a, { output = true })
+    local buf = vim.api.nvim_create_buf(true, true)
+    local lines = vim.split(ret.output, "\n", { plain = true })
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+    vim.api.nvim_set_option_value("modifiable", false, { buf = buf })
+    vim.api.nvim_set_option_value("readonly", true, { buf = buf })
+    local win = vim.api.nvim_open_win(buf, false, { split = "below" })
+    vim.api.nvim_win_set_buf(win, buf)
+    vim.api.nvim_set_current_win(win)
+  end,
+  {
+    nargs = "+",
+    complete = "command"
   }
 )
 
